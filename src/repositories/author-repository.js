@@ -32,3 +32,12 @@ exports.put = async(id, req) => {
 exports.delete = async(id) => {
      await Author.findOneAndRemove(id);
 }
+
+exports.authenticate = async (data) => {
+    const res = await Author.findOne({
+        email: data.email, 
+        password: data.password
+    });
+    return res;
+}
+

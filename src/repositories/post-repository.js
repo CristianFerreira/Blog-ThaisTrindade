@@ -5,27 +5,27 @@ const Post = mongoose.model('Post');
 
 
 exports.get = async() => {
-   const res = await Post.find({});
+   const res = await Post.find({}).populate('author','name email');
    return res;
 }
 
 exports.getByContinent = async(continent) => {
-    const res = await Post.find({continent: continent});
+    const res = await Post.find({continent: continent}).populate('author','name email');
     return res;
 }
 
 exports.getById = async(id) => {
-     const res = await Post.findById(id);
+     const res = await Post.findById(id).populate('author','name email');
      return res;
 }
 
 exports.getByTag = async(tag) => {
-     const res = await Post.find({tags: tag});
+     const res = await Post.find({tags: tag}).populate('author','name email');
      return res;
 }
 
 exports.getByCategory = async(category) => {
-     const res = await Post.find({category: category});
+     const res = await Post.find({category: category}).populate('author','name email');
      return res;
 }
 
