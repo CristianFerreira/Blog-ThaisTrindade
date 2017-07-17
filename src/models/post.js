@@ -10,29 +10,42 @@ const schema = new Schema({
         trim: true
     },
     description: {
-        type:
-    }
-
+        type: String,
+        required: true
+    },
+    date: {
+        type: Date,
+        required: true,
+        default: Date.now
+    },
+    category: {
+            type: String,
+            required: true
+    },
+    author:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Author'
+    },
+    continent: {
+        type: String,
+        required: true
+    },
+    country: {
+        type: String,
+        required: true
+    },
+    state: {
+        type: String,
+        required: true,
+    },
+    city: {
+        type: String,
+        required: true
+    },
+    tags: [{
+        type: String,
+        required: false
+    }]   
 });
 
 module.exports = mongoose.model('Post', schema);
-
-
-
-     public int Id { get; set; }
-        public string Title { get; set; }
-        public string Text { get; set; }
-        public string Hashtag { get; set; }
-        public DateTime Date { get; set; }
-        public string Picture { get; set; }
-        public string Video { get; set; }
-        public string icon { get; set; }
-
-        public int CategoryId { get; set; }
-        public Category Category { get; set; }
-
-        public int CityId { get; set; }
-        public City City { get; set; }
-
-        public int UserId { get; set; }
-        public User User { get; set; }
