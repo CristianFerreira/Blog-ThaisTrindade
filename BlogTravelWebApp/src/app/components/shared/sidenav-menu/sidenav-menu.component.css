@@ -1,0 +1,25 @@
+.container { 
+  height: 100vh;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.menu-sidenav {
+    background-color: #e91e63;
+    padding: 8px 16px;
+}
+
+.sidenav {
+    width: 75%;
+    max-width: 400px;
+}
+
+.toolbar-sidenav {
+    background-color: #303030;
+    color: #fff;
+}
+
+.btn-close-sidenav{
+    background-color: #303030;
+    color: #fff;
+}
+

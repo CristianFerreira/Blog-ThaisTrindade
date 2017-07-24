@@ -1,7 +1,19 @@
 .card-login {
-    height: 50vh !important;
+    padding-bottom: 65px;
 }
 
-.height-full {
-    height: 98vh;
+.title-login {
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 32px;
+    padding: 0px 8px;
 }
+
+.mat-card {
+    border-left: 8px solid #3f51b5;
+}
+
+.color-touch {
+    height: 100vh; 
+}
+

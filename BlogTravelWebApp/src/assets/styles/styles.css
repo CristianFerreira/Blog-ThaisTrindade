@@ -1,0 +1,64 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
+
+/* fallback */
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(iconfont/MaterialIcons-Regular.eot);
+  src: local('Material Icons'), 
+        local('MaterialIcons-Regular'), 
+        url(iconfont/MaterialIcons-Regular.woff2) format('woff2'),
+        url(iconfont/MaterialIcons-Regular.woff) format('woff'),
+        url(iconfont/MaterialIcons-Regular.ttf) format('ttf');
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -moz-font-feature-settings: 'liga';
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+body {
+    font-family: 'Roboto',sans-serif;
+    font-size: 14px;
+    margin: 0;
+    padding: 0;   
+}
+
+
+/* .icon-facebook-black:before {
+  content: url("../../assets/images/facebook-black.svg");  
+}
+
+.icon-twitter-black:before {
+  content: url("../../assets/images/twitter-black.svg");  
+}
+
+.icon-instagram-black:before {
+  content: url("../../assets/images/instagram-black.svg");  
+}
+
+
+.icon-spotify-black:before {
+  content: url("../../assets/images/spotify-black.svg");  
+}
+
+
+.icon-snapchat-black:before {
+  content: url("../../assets/images/snapchat-black.svg");  
+} */

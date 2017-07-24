@@ -1,0 +1,52 @@
+
+
+.sub-menu {
+    color: #fff;
+    text-transform: uppercase;
+    background: rgba(121, 42, 42, 0);
+}
+
+md-input-container label {
+  color: red !important;
+}
+
+/* When the input is focused */
+md-input-container.md-input-focused label {
+  color: white !important;
+}
+
+.input-pesquisa {
+    width: 12em;
+    font: inherit;
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+    outline: none;
+    border-bottom-color: rgba(255, 255, 255, 0.82);;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+
+.txt-input-pesquisa {
+    font-size: 16px;
+    font-weight: 400;
+    color: #fff;  
+    padding: 2px 0;
+}
+
+::-webkit-input-placeholder {
+   color: #fff;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: #fff;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: #fff;  
+}
+
+:-ms-input-placeholder {  
+   color: #fff;  
+}

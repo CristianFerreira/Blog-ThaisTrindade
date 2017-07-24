@@ -19,7 +19,9 @@ import {
         MdDialogModule, 
         MdIconModule, 
         MdDatepickerModule, 
-        MdNativeDateModule 
+        MdNativeDateModule,
+        MdMenuModule,
+        MdSidenavModule
 } from '@angular/material';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import 'hammerjs';
@@ -28,9 +30,12 @@ import 'hammerjs';
 //Declarations
 import { AppComponent } from './app.component';
 import { HeadBarComponent } from './components/shared/head-bar/head-bar.component';
-import { SubMenuComponent } from './components/shared/sub-menu/sub-menu.component';
+import { SubMenuComponent } from './components/shared/head-bar/components/sub-menu/sub-menu.component';
 import { FroalaComponent } from './components/froala/froala.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { PostPageComponent } from './pages/post-page/post-page.component';
+import { SidenavMenuComponent } from './components/shared/sidenav-menu/sidenav-menu.component';
+import { SidenavSubMenuComponent } from './components/shared/sidenav-menu/components/sidenav-sub-menu/sidenav-sub-menu.component';
 
 
 
@@ -41,6 +46,9 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
     SubMenuComponent,
     FroalaComponent,
     LoginPageComponent,
+    PostPageComponent,
+    SidenavMenuComponent,
+    SidenavSubMenuComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,6 +69,8 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
     MdDialogModule,
     MdDatepickerModule,
     MdNativeDateModule,
+    MdMenuModule,
+    MdSidenavModule,
     MdIconModule,
     FlexLayoutModule,
     FroalaEditorModule.forRoot(), 
