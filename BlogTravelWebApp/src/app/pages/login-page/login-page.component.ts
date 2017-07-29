@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { CustomValidator } from '../../validators/custom.validator';
 
 @Component({
   selector: 'app-login-page',
@@ -15,7 +16,8 @@ export class LoginPageComponent implements OnInit {
       email: ['', Validators.compose([
         Validators.minLength(5),
         Validators.maxLength(160),
-        Validators.required
+        Validators.required,
+        CustomValidator.EmailValidator
       ])],
       password: ['', Validators.compose([
         Validators.minLength(6),

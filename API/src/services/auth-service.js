@@ -12,7 +12,6 @@ exports.decodeToken = async (token) => {
 
 exports.authorize = function (req, res, next) {
     var token = req.body.token || req.query.token || req.headers['x-access-token'];
-
     if(!token){
         res.status(401).json({
             message: 'Acesso Restrito'

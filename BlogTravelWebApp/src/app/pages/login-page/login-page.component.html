@@ -1,0 +1,49 @@
+<div fxLayout="row" fxFlex="100" fxLayoutAlign="center center" class="color-touch" style="background: -webkit-gradient(linear, left top, right top, from(#ffffff), to(rgba(0, 0, 0, 0.13))) no-repeat !important; 
+    background: -moz-linear-gradient(top, #ffffff, rgba(0, 0, 0, 0.13));">
+  <form [formGroup]="form">
+    <md-card fxFlex.gt-sm="40" fxFlex.gt-md="20" fxFlex="100" class="card-login">
+      <md-card-header>
+        <md-card-title>
+          <h3 class="title-login">Iniciar sessão</h3>
+        </md-card-title>
+      </md-card-header>
+      <md-card-content>
+        <div fxLayout="row wrap" fxLayoutAlign="center center">
+          <md-input-container fxFlex="90">
+            <input mdInput placeholder="Email" type="email" formControlName="email">
+            <md-error *ngIf="form.controls.email.hasError('required')">
+              E-mail é obrigatório
+            </md-error>
+            <md-error *ngIf="form.controls.email.invalid && !form.controls.email.hasError('required')">
+              E-mail inválido
+            </md-error>
+          </md-input-container>
+          <md-input-container fxFlex="90">
+            <input mdInput placeholder="Introduza a palavra-passe" type="password" formControlName="password">
+            <md-error *ngIf="form.controls.password.hasError('required')">
+              Palavra-passe é obrigatório
+            </md-error>
+            <md-error *ngIf="form.controls.password.hasError('minlength')">
+              Palavra-passe deve obter no minimo 6 caracteres
+            </md-error>
+            <md-error *ngIf="form.controls.password.hasError('maxlength')">
+              Palavra-passe deve obter no maximo 20 caracteres
+            </md-error>
+          </md-input-container>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <button md-button routerLink="." style="color: #4285f4;">
+            Esqueceu sua senha ?
+          </button>
+        </div>
+      </md-card-content>
+      <md-card-actions>
+        <div fxLayout="row" fxLayoutAlign="end center" fxFlex="90">
+          <button (click)="submit()" [disabled]="!form.valid" md-button md-raised-button color="primary">
+                  Entrar
+          </button>
+        </div>
+      </md-card-actions>
+    </md-card>
+  </form>
+</div>
