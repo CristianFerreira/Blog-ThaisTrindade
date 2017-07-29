@@ -5,8 +5,9 @@ import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+ // MaterialModule,
 import { 
-        // MaterialModule,
         MdProgressSpinnerModule,
         MdListModule,
         MdCardModule,
@@ -26,18 +27,27 @@ import {
 import { FlexLayoutModule } from "@angular/flex-layout";
 import 'hammerjs';
 
+//Rotas
+import { Routing, RoutingProviders } from './app.routing';
 
-//Declarations
+// Root 
 import { AppComponent } from './app.component';
+
+// Shared
 import { HeadBarComponent } from './components/shared/head-bar/head-bar.component';
 import { SubMenuComponent } from './components/shared/head-bar/components/sub-menu/sub-menu.component';
+import { LoginPageComponent } from './pages/shared/login-page/login-page.component';
+
+// new post
 import { FroalaComponent } from './components/froala/froala.component';
-import { LoginPageComponent } from './pages/login-page/login-page.component';
-import { PostPageComponent } from './pages/post-page/post-page.component';
-import { SidenavMenuComponent } from './components/shared/sidenav-menu/sidenav-menu.component';
-import { SidenavSubMenuComponent } from './components/shared/sidenav-menu/components/sidenav-sub-menu/sidenav-sub-menu.component';
 
+// Web mobile
+import { SidenavMenuComponent } from './pages/mobile/sidenav-menu/sidenav-menu.component';
+import { SidenavSubMenuComponent } from './pages/mobile/sidenav-menu/components/sidenav-sub-menu/sidenav-sub-menu.component';
+import { PostMobilePageComponent } from './pages/mobile/post-mobile-page/post-mobile-page.component';
 
+// Web
+import { PostWebPageComponent } from './pages/post-web-page/post-web-page.component';
 
 @NgModule({
   declarations: [
@@ -46,9 +56,10 @@ import { SidenavSubMenuComponent } from './components/shared/sidenav-menu/compon
     SubMenuComponent,
     FroalaComponent,
     LoginPageComponent,
-    PostPageComponent,
     SidenavMenuComponent,
     SidenavSubMenuComponent,
+    PostMobilePageComponent,
+    PostWebPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,6 +67,7 @@ import { SidenavSubMenuComponent } from './components/shared/sidenav-menu/compon
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
+    
     // MaterialModule,
     MdProgressSpinnerModule,
     MdListModule,
@@ -72,9 +84,11 @@ import { SidenavSubMenuComponent } from './components/shared/sidenav-menu/compon
     MdMenuModule,
     MdSidenavModule,
     MdIconModule,
+
     FlexLayoutModule,
     FroalaEditorModule.forRoot(), 
-    FroalaViewModule.forRoot()
+    FroalaViewModule.forRoot(),
+    Routing
   ],
   providers: [],
   bootstrap: [AppComponent]
