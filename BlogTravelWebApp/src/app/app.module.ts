@@ -36,10 +36,13 @@ import { AppComponent } from './app.component';
 // Shared
 import { HeadBarComponent } from './components/shared/head-bar/head-bar.component';
 import { SubMenuComponent } from './components/shared/head-bar/components/sub-menu/sub-menu.component';
+import { LoadInfoComponent } from './components/load-info/load-info.component';
+import { FroalaComponent } from './components/froala/froala.component';
+
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 
 // new post
-import { FroalaComponent } from './components/froala/froala.component';
+
 
 // Web mobile
 import { SidenavMenuComponent } from './pages/mobile/sidenav-menu/sidenav-menu.component';
@@ -48,6 +51,7 @@ import { PostMobilePageComponent } from './pages/mobile/post-mobile-page/post-mo
 
 // Web
 import { PostWebPageComponent } from './pages/post-web-page/post-web-page.component';
+
 
 @NgModule({
   declarations: [
@@ -60,6 +64,7 @@ import { PostWebPageComponent } from './pages/post-web-page/post-web-page.compon
     SidenavSubMenuComponent,
     PostMobilePageComponent,
     PostWebPageComponent,
+    LoadInfoComponent,
   ],
   imports: [
     BrowserModule,
@@ -91,6 +96,10 @@ import { PostWebPageComponent } from './pages/post-web-page/post-web-page.compon
     Routing
   ],
   providers: [],
+
+  //configuração modal
+  entryComponents: [LoadInfoComponent],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

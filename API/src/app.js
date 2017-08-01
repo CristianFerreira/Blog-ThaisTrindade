@@ -33,7 +33,7 @@ app.use(function (req, res, next){
 });
 
 app.use('/', indexRoute);
-app.use('/post', postRoute)
-app.use('/author', authorRoute)
+app.use('/post', postRoute);
+app.use('/author', authorRoute);
 
 module.exports = app;

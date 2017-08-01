@@ -80,7 +80,7 @@ exports.authenticate = async (req, res, next) => {
 
         res.status(201).send({
             token: token,
-            data: {
+            author: {
                 email: author.email,
                 name: author.name,
                 roles: author.roles

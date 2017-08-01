@@ -5,6 +5,7 @@ const repository = require('../repositories/post-repository');
 exports.get = async(req, res) => {
     try {
         var data = await repository.get();
+        console.log("aaaa: "+data);
         res.status(200).send(data);
     } catch (e) {
         res.status(400).send({message: 'Falha ao buscar as postagens', data: e});

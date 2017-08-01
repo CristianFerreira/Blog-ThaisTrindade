@@ -2,5 +2,7 @@
     padding: 8px 16px;
     background: #e91e63;
     width: 100%;
-    margin: 0px;
+    position: fixed;
+    overflow: hidden;
+    top: 0;
 }
