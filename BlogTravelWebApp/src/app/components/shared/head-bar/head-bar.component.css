@@ -1,8 +1,10 @@
 .nav-bar {
-    padding: 8px 16px;
+    /* padding: 10px; */
     background: #e91e63;
-    width: 100%;
+     width: 100%; 
     position: fixed;
     overflow: hidden;
     top: 0;
+    height: 50px;
+    z-index: 999;
 }

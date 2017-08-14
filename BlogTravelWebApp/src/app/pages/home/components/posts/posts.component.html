@@ -1,0 +1,53 @@
+<div *ngFor="let post of posts" class="animated animatedFadeInUp fadeInUp">
+  <md-card fxFlex="100" style="margin-bottom: 50px;">
+    <div fxLayout="column">
+      <div fxLayout="row">
+        <div fxFlex="10">
+          <button md-fab class="btn-caregory">
+            <md-icon svgIcon="{{post.category}}"></md-icon>
+          </button>
+        </div>
+        <div fxFlex>
+          <div>
+            <a [routerLink]="['/post/categoria', post.category]" class="txt-category-post">{{post.category}}</a>
+          </div>
+          <div>
+            <a [routerLink]="['/post', post._id]" class="title-post"> {{post.title}}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <md-card-content>
+      <div>
+        <div [innerHTML]="post.description | sanitizeHtml"></div>
+      </div>
+    </md-card-content>
+    <md-card-actions>
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <div fxFlex class="line-col3"></div>
+      </div>
+      <div fxLayout="row" style="padding: 4px 20px 4px 20px;">
+        <div fxLayoutAlign="start center" fxFlex>
+          <div fxLayout="column">
+            <span class="txt-mais-posts">Veja mais posts sobre</span>
+            <div fxLayout="row" fxLayoutAlign="start center">
+              <span *ngFor="let tag of post.tags">
+                <a class="sobre-posts" [routerLink]="['/post/tags', tag]">#{{tag}}</a>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div fxLayoutAlign="end center" fxFlex>
+          <div fxLayout="column">
+            <div fxLayout="row" fxLayoutAlign="end center">
+              <div fxFlex>
+                <button *ngIf="logged" md-icon-button aria-label="editar" (click)="pageEditPost(post._id)"><md-icon style="color:#5a5858">&#xE254;</md-icon></button>
+                <button *ngIf="logged" md-icon-button (click)="openSnackBarDelete(post._id)"><md-icon style="color:#d63150">&#xE92B;</md-icon></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </md-card-actions>
+  </md-card>
+</div>

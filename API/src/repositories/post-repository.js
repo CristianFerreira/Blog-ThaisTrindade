@@ -24,6 +24,11 @@ exports.getByTag = async(tag) => {
      return res;
 }
 
+exports.getAllTags = async() => {
+     const res = await Post.find({},'tags');
+     return res;
+}
+
 exports.getByCategory = async(category) => {
      const res = await Post.find({category: category}).populate('author','name email');
      return res;
@@ -34,8 +39,9 @@ exports.post = async(post) => {
     await post.save();
 }
 
-exports.put = async(id, req) => {
-        await Post.findByIdAndUpdate(req.params.id, {
+exports.put = async(req) => {
+        console.log(req.body.id);
+        await Post.findByIdAndUpdate(req.body._id, {
         $set: {
             title: req.body.title,
             description: req.body.description,

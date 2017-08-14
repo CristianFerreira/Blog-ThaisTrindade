@@ -1,0 +1,15 @@
+
+.btn-right-top{
+    top: auto;
+    left: auto;
+    position: fixed;
+    background-color: #d63150;
+    right: 20px;
+    bottom: 20px;
+}
+
+#btn-right {
+    display: none;
+}
+
+

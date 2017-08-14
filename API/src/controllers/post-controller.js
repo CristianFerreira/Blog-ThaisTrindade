@@ -5,7 +5,6 @@ const repository = require('../repositories/post-repository');
 exports.get = async(req, res) => {
     try {
         var data = await repository.get();
-        console.log("aaaa: "+data);
         res.status(200).send(data);
     } catch (e) {
         res.status(400).send({message: 'Falha ao buscar as postagens', data: e});
@@ -35,7 +34,17 @@ exports.getByTag = async(req, res) => {
         var data = await repository.getByTag(req.params.tag);
         res.status(200).send({data});
     } catch (e) {
-        res.status(400).send({message: 'Falha ao buscar postagem', data: e});
+        res.status(400).send({message: 'Falha ao buscar tag', data: e});
+    }
+};
+
+exports.getAllTags = async(req, res) => {
+    console.log("chegoy")
+    try {
+        var data = await repository.getAllTags();
+        res.status(200).send({data});
+    } catch (e) {
+        res.status(400).send({message: 'Falha ao buscar tags', data: e});
     }
 };
 
@@ -59,18 +68,20 @@ exports.post = async(req, res) => {
 
 exports.put = async(req, res) => {
     try {
-        await repository.put(req.params.id, req);
+        await repository.put(req);
         res.status(200).send({message: "Postagem atualizada com sucesso!"});
     } catch (e) {
         res.status(400).send({message: 'Falha ao atualizar postagem', data: e});
     }
 };
 
-exports.delete = async(req, res, next) => {
+exports.delete = async(req, res) => {
     try {
-        await repository.delete(req.body.id);
+        console.log(req.params);
+        await repository.delete(req.params.id);
         res.status(200).send({message: "Postagem removida com sucesso!"});
     } catch (e) {
         res.status(400).send({message: 'Falha ao remover postagem', data: e});
     }
 };
+

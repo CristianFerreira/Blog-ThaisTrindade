@@ -16,7 +16,7 @@ export abstract class HttpServiceBaseService {
     protected snackBar: MdSnackBar;
     protected dialog: MdDialog;
     protected habilitarDepuracaoRequisicoes: boolean;
-    private loadInfoDialog: MdDialogRef<LoadInfoComponent>;
+    public static loadInfoDialog: MdDialogRef<LoadInfoComponent>;
 
     constructor(http: Http, router: Router, snackBar: MdSnackBar, dialog: MdDialog) { 
         this.http = http;
@@ -74,14 +74,14 @@ export abstract class HttpServiceBaseService {
 
     // Ocorre no inicio da requisicao
     private requestInterceptor(): void {
-        if(!this.loadInfoDialog){
-            this.loadInfoDialog = this.dialog.open(LoadInfoComponent);
+        if(!HttpServiceBaseService.loadInfoDialog){
+            HttpServiceBaseService.loadInfoDialog = this.dialog.open(LoadInfoComponent);
         }
     }
 
     // Ocorre no fim da requisicao
     private responseInterceptor(): void {
-        this.loadInfoDialog.close();
+        HttpServiceBaseService.loadInfoDialog.close();
         this.logDepuracao("Fechando a conexao", "");
     }
 

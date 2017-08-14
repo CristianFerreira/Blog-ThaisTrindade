@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:500,700');
+
+.facebook {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.6em;
+    text-align: center;
+    text-transform: uppercase;
+    color: #fff;
+    background-color: #d63150;
+    margin: 1px;
+}

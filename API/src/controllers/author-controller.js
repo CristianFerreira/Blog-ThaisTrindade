@@ -81,6 +81,7 @@ exports.authenticate = async (req, res, next) => {
         res.status(201).send({
             token: token,
             author: {
+                id: author._id,
                 email: author.email,
                 name: author.name,
                 roles: author.roles
@@ -122,5 +123,18 @@ exports.refreshToken = async (req, res, next) => {
         });
     } catch (e) {
         res.status(400).send({ message: 'Erro ao gerar token', data: e });
+    }
+};
+
+
+exports.verifyToken = async (req, res, next) => {
+    try {
+        const token = req.body.token || req.query.token || req.headers['x-access-token'];
+        const verifyToken = await authService.decodeToken(token);
+        res.status(201).send({
+           token: verifyToken
+        });
+    } catch (e) {
+        res.status(400).send({ message: 'Erro ao verificar token', data: e });
     }
 };

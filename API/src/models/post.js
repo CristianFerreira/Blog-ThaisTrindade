@@ -45,7 +45,7 @@ const schema = new Schema({
     tags: [{
         type: String,
         required: false
-    }]   
+    }]
 });
 
 module.exports = mongoose.model('Post', schema);

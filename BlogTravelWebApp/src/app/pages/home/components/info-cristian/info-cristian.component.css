@@ -1,0 +1,62 @@
+.cristian {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background: url(../../../../../assets/images/people/cristian-home.jpg) no-repeat center;
+    background-size: cover;
+    float: left;
+}
+
+@media only screen and (max-width: 1400px) {
+    .desc {
+        font-size: 12px;
+        line-height: 15px;
+        background: #eee;
+        padding: 18px;
+        margin: 19px 0 0 50px;
+        z-index: -1;
+    }
+    .name {
+        right: 98px;
+        position: absolute;
+        padding: 2px 8px;
+        text-transform: uppercase;
+        text-decoration: none;
+        font-weight: 900;
+        font-style: none;
+        background: #d63150;
+        color: #fff;
+        font-size: 12px;
+        margin: -28px 0 0 0;
+        border-radius: 3px;
+    }
+}
+
+
+@media only screen and (min-width: 1400px) {
+    .desc {
+        font-size: 13px;
+        line-height: 17px;
+        background: #eee;
+        padding: 18px;
+        margin: 19px 0 0 70px;
+        z-index: -1;
+    }
+    .name {
+        position: absolute;
+        padding: 2px 8px;
+        text-transform: uppercase;
+        text-decoration: none;
+        font-weight: 900;
+        font-style: none;
+        background: #d63150;
+        color: #fff;
+        font-size: 12px;
+        margin: -28px 0 0 0;
+        border-radius: 3px;
+    }
+}
+
+.name:hover {
+    opacity: 0.60;
+}

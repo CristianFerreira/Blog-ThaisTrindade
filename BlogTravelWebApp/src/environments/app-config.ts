@@ -11,13 +11,13 @@ export const AppConfig = {
     
     // configuracao para ambiente de desenvolvimento, comando: ng build --prod
     serviceProdConfig: {
-        rootServiceRoute: "",
+        rootServiceRoute: "http://www.thaistrindade.com/",
         habilitarDepuracaoRequisicoes: false
     },
 
     // configuracao para ambiente de desenvolvimento, comando: ng build
     serviceDevConfig: {
-        rootServiceRoute: "http://localhost:5000/",
+        rootServiceRoute: "http://www.thaistrindade.com/",
         habilitarDepuracaoRequisicoes: true
     },
     serviceInfo: () => {
@@ -30,10 +30,17 @@ export const AppConfig = {
     serviceUrls: () => {
         return {
             Authenticate: {
-                Author: AppConfig.serviceInfo().rootServiceRoute + "author/authenticate"
+                AuthorAuthenticate: AppConfig.serviceInfo().rootServiceRoute + "author/authenticate",
+                AuthorVerifyToken: AppConfig.serviceInfo().rootServiceRoute + "author/verify-token"
             },
             post: {
-                listAll: AppConfig.serviceInfo().rootServiceRoute + "post",
+                getAll: AppConfig.serviceInfo().rootServiceRoute + "post",
+                create: AppConfig.serviceInfo().rootServiceRoute + "post",
+                update: AppConfig.serviceInfo().rootServiceRoute + "post",
+                getById: AppConfig.serviceInfo().rootServiceRoute + "post",
+                getByTag: AppConfig.serviceInfo().rootServiceRoute + "post/tag",
+                getByCategory: AppConfig.serviceInfo().rootServiceRoute + "post/categoria",
+                delete: AppConfig.serviceInfo().rootServiceRoute + "post",
             }
         };
     },

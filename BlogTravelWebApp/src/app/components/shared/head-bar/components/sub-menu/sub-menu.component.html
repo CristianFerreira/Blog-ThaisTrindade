@@ -1,15 +1,32 @@
-<div fxLayout="row" fxFlex="100" fxLayoutAlign="start center">
-  <button md-button class="sub-menu">Home</button>
-  <button md-button [mdMenuTriggerFor]="menu" class="sub-menu">Destinos</button>
-  <md-menu #menu="mdMenu">
-    <button md-menu-item>America do sul</button>
-    <button md-menu-item>Europa</button>
-  </md-menu>
-  <button md-button class="sub-menu">Contato</button>
-  <div fxLayout="row" fxLayoutAlign="end center" fxFlex="100" style="padding-right: 30px;">
-     <md-icon style="color: #fff">search</md-icon>&nbsp;&nbsp;<input class="input-pesquisa txt-input-pesquisa" type="text" placeholder="Pesquisar..." [(ngModel)]="filtro"/> 
-     &nbsp;&nbsp;
-     <button md-icon-button (click)="filtro = ''"><md-icon style="color:#fff" *ngIf="filtro">close</md-icon></button>
+<div fxLayout="row" fxFlex="100" style="width: 100%;padding: 12px;">
+  <div fxLayout="row" fxLayoutAlign="start center" style="width: 100%;">
+    <button md-button class="sub-menu" fxFlex="6" (click)="home()">Home</button>
+    <button md-button [mdMenuTriggerFor]="destinos" class="sub-menu" fxFlex.md="17" fxFlex.lg="13" fxFlex.xl="11">Destinos</button>
+    <md-menu #destinos="mdMenu">
+      <button md-menu-item class="btn-menu-item">America do sul</button>
+      <button md-menu-item class="btn-menu-item">Europa</button>
+    </md-menu>
+    <button md-button class="sub-menu" fxFlex.md="17" fxFlex.lg="13" fxFlex.xl="11" (click)="contact()">Contato</button>
+    <button *ngIf="logged" md-button class="sub-menu" (click)="newPost()" fxFlex.md="26" fxFlex.lg="20" fxFlex.xl="17">Nova Postagem</button>
   </div>
-  <button md-button class="sub-menu" (click)="logout()">Sair</button>
+  <div fxLayout="row" fxLayoutAlign="end center" style="width: 100%;">
+    <div style="padding: 25px;" fxLayout="row" fxLayoutAlign="end center">
+      <md-icon style="color: #fff">search</md-icon>&nbsp;&nbsp;
+      <input class="input-pesquisa txt-input-pesquisa" type="text" placeholder="Pesquisar..." [(ngModel)]="filtro" /> &nbsp;&nbsp;
+      <button *ngIf="filtro" md-icon-button (click)="filtro = ''">
+        <md-icon style="color:#fff">close</md-icon>
+      </button>
+    </div>
+    <button *ngIf="logged" md-icon-button [mdMenuTriggerFor]="configAuthor" fxFlex="5" style="right: 5px;">
+        <md-icon style="color: #fff">&#xE5D4;</md-icon>
+    </button>
+    <md-menu #configAuthor="mdMenu">
+      <button md-menu-item (click)="alterPassword()" class="btn-menu-item">
+        <md-icon class="icon-menu-item">&#xE899;</md-icon> Alterar minha senha
+      </button>
+      <button md-menu-item (click)="logout()" class="btn-menu-item">
+        <md-icon class="icon-menu-item">&#xE8AC;</md-icon> Sair
+      </button>
+    </md-menu>
+  </div>
 </div>

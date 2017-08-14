@@ -1,0 +1,31 @@
+<div id="head-bar">
+  <app-head-bar [style.xs]="{display: 'none'}" [style.sm]="{display: 'none'}"></app-head-bar>
+</div>
+<div fxLayout="row" fxLayout.xs="column" class="body-post">
+  <div fxFlex.md="5" fxFlex.lg="10" fxFlex.xl="20" fxLayoutAlign="center start" [style.xs]="{display: 'none'}" [style.sm]="{display: 'none'}">
+    <div fxLayout="column">
+    </div>
+  </div>
+  <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="60" fxFlex.lg="60" fxFlex.xl="45" fxLayoutAlign="center start">
+    <div fxLayout="column">
+      <app-posts></app-posts>
+    </div>
+  </div>
+  <div fxFlex.md="35" fxFlex.lg="30" fxFlex.xl="35" fxLayoutAlign="center start" [style.xs]="{display: 'none'}" [style.sm]="{display: 'none'}">
+    <div fxLayout="row">
+      <div fxFlex.md="80" fxFlex.lg="80" fxFlex.xl="60">
+        <div fxLayout="column">
+          <app-info-thais></app-info-thais>
+          <div fxLayout="row" fxLayoutAlign="start center" style=" padding-left: 40px;">
+            <div fxFlex.sm="90" fxFlex.md="90" fxFlex.lg="80" fxFlex.xl="80" class="line-col3"></div>
+          </div>
+          <app-info-cristian></app-info-cristian>
+          <app-instagram></app-instagram>
+          <app-facebook></app-facebook>
+        </div>
+      </div>
+      <div fxFlex.md="20" fxFlex.lg="20" fxFlex.xl="40">
+        <app-back-to-top></app-back-to-top>
+      </div>
+    </div>
+  </div>

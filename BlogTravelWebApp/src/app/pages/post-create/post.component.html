@@ -1,0 +1,63 @@
+<app-head-bar [style.xs]="{display: 'none'}" [style.sm]="{display: 'none'}"></app-head-bar>
+<form [formGroup]="form" style="margin-top:70px;">
+    <div fxLayout="row">
+        <div fxLayout="column" fxFlex>
+            <div fxLayout="row" fxLayoutAlign="center center" style="padding: 20px;">
+                <div fxFlex="45" fxFlex.gt-md="40" fxFlex.gt-lg="35">
+                    <md-input-container fxFlex="95">
+                        <input [(ngModel)]="post.title" mdInput placeholder="Titulo" type="text" formControlName="title">
+                    </md-input-container>
+                </div>
+                <div fxFlex="45" fxFlex.gt-md="40" fxFlex.gt-lg="35">
+                    <md-input-container fxFlex="95">
+                        <input [(ngModel)]="post.category" mdInput placeholder="Categoria" type="text" formControlName="category">
+                    </md-input-container>
+                </div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="center center" style="padding: 20px;">
+                <div fxFlex="45" fxFlex.gt-md="40" fxFlex.gt-lg="35">
+                    <md-input-container fxFlex="95">
+                        <input [(ngModel)]="post.continent" mdInput placeholder="Continente" type="text" formControlName="continent">
+                    </md-input-container>
+                </div>
+                <div fxFlex="45" fxFlex.gt-md="40" fxFlex.gt-lg="35">
+                    <md-input-container fxFlex="95">
+                        <input [(ngModel)]="post.country" mdInput placeholder="Pais" type="text"  formControlName="country">
+                    </md-input-container>
+                </div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="center center" style="padding: 20px;">
+                <div fxFlex="45" fxFlex.gt-md="40" fxFlex.gt-lg="35">
+                    <md-input-container fxFlex="95">
+                        <input [(ngModel)]="post.state" mdInput placeholder="Estado" type="text" formControlName="state">
+                    </md-input-container>
+                </div>
+                <div fxFlex="45" fxFlex.gt-md="40" fxFlex.gt-lg="35">
+                    <md-input-container fxFlex="95">
+                        <input [(ngModel)]="post.city" mdInput placeholder="Cidade" type="text" formControlName="city">
+                    </md-input-container>
+                </div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="center center">
+                <div fxFlex="90" fxFlex.gt-md="80" fxFlex.gt-lg="70">
+                    <tag-input [(ngModel)]="post.tags" [onlyFromAutocomplete]="false" formControlName="tags" [secondaryPlaceholder]="'Informe as tags'">
+                        <tag-input-dropdown [showDropdownIfEmpty]="true" [autocompleteItems]="['iTem1', 'item2', 'item3']">
+                        </tag-input-dropdown>
+                    </tag-input>
+                </div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="center center">
+                <h5>style="max-height: 100%;max-width: 100%;width: auto;height: auto;"</h5>
+            </div>
+        </div>
+    </div>
+    <div fxLayout="row wrap" fxLayoutAlign="center center" style="margin-top:50px;">
+        <!-- <app-froala fxFlex="90" fxFlex.gt-md="80" fxFlex.gt-lg="70" formControlName="description"></app-froala> -->
+        <div fxFlex="90" fxFlex.gt-md="80" fxFlex.gt-lg="70" [froalaEditor] [(froalaModel)]="post.description" formControlName="description"></div>
+    </div>
+    <div fxLayout="row wrap" fxLayoutAlign="center center" style="margin-top:50px;">
+        <button (click)="submit()" [disabled]="!form.valid" md-button md-raised-button color="primary">
+                  {{!post._id ? 'Adicionar Postagem' : 'Editar Postagem'}}
+        </button>
+    </div>
+</form>

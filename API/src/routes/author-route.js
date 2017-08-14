@@ -13,5 +13,6 @@ router.put('/:id', authService.authorize, authorController.put);
 router.delete('/', authService.isAdmin, authorController.delete);
 router.post('/authenticate', authorController.authenticate);
 router.post('/refresh-token', authService.authorize, authorController.refreshToken);
+router.post('/verify-token', authorController.verifyToken);
 
 module.exports = router;
