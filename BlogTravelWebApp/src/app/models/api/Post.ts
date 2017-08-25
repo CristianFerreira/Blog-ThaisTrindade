@@ -13,6 +13,6 @@ export class Post {
         public tags: Array<string>;
         
         constructor() {
-            
+            this.tags = new Array<string>();
         }
 }

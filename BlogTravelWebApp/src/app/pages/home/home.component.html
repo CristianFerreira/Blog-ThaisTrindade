@@ -1,10 +1,12 @@
-<div id="head-bar">
-  <app-head-bar [style.xs]="{display: 'none'}" [style.sm]="{display: 'none'}"></app-head-bar>
+<div fxLayout="row" style="margin-top: 50px;" [style.xs]="{display: 'none'}" [style.sm]="{display: 'none'}">
+  <img src="../../../assets/images/banner.jpg" class="img-header"/>
+</div>
+<div id="head-bar" [style.xs]="{display: 'none'}" [style.sm]="{display: 'none'}">
+  <app-head-bar></app-head-bar>
 </div>
 <div fxLayout="row" fxLayout.xs="column" class="body-post">
   <div fxFlex.md="5" fxFlex.lg="10" fxFlex.xl="20" fxLayoutAlign="center start" [style.xs]="{display: 'none'}" [style.sm]="{display: 'none'}">
-    <div fxLayout="column">
-    </div>
+    <div fxLayout="column"></div>
   </div>
   <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="60" fxFlex.lg="60" fxFlex.xl="45" fxLayoutAlign="center start">
     <div fxLayout="column">
@@ -29,3 +31,4 @@
       </div>
     </div>
   </div>
+</div>

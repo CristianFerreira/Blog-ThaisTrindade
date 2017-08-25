@@ -18,6 +18,7 @@ export class PostComponent implements OnInit {
   public form: FormGroup;
   public author: Author;
   public post: Post;
+  public btnConfiguracao: boolean;
 
   constructor(private fb: FormBuilder, private authenticateService: AuthenticateDataService, private postService: PostDataService, 
               private route: ActivatedRoute, private router: Router) {
@@ -39,24 +40,21 @@ export class PostComponent implements OnInit {
       continent: ['', Validators.compose([
         Validators.minLength(4),
         Validators.maxLength(40),
-        Validators.required
       ])],
       country: ['', Validators.compose([
         Validators.minLength(4),
         Validators.maxLength(40),
-        Validators.required
       ])],
       state: ['', Validators.compose([
         Validators.minLength(2),
         Validators.maxLength(40),
-        Validators.required
       ])],
       city: ['', Validators.compose([
         Validators.minLength(4),
         Validators.maxLength(40),
-        Validators.required
       ])],
-      tags: ['']
+      tags: [''],
+      btnConfiguracao: ['']
     });
     this.post = new Post();
     this.author = this.authenticateService.contextoLogado();

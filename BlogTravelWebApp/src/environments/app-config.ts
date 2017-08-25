@@ -8,16 +8,12 @@ export const AppConfig = {
     auth_app_session: "blog_travel_app_session",
     defaultRoute: "/",
     excludeAuthenticationRoute: ["/altera-senha"],
-    
-    // configuracao para ambiente de desenvolvimento, comando: ng build --prod
     serviceProdConfig: {
-        rootServiceRoute: "http://www.thaistrindade.com/",
+        rootServiceRoute: "http://thaistrindade.com/",
         habilitarDepuracaoRequisicoes: false
     },
-
-    // configuracao para ambiente de desenvolvimento, comando: ng build
     serviceDevConfig: {
-        rootServiceRoute: "http://www.thaistrindade.com/",
+        rootServiceRoute: "http://localhost:3000/",
         habilitarDepuracaoRequisicoes: true
     },
     serviceInfo: () => {
@@ -30,24 +26,18 @@ export const AppConfig = {
     serviceUrls: () => {
         return {
             Authenticate: {
-                AuthorAuthenticate: AppConfig.serviceInfo().rootServiceRoute + "author/authenticate",
-                AuthorVerifyToken: AppConfig.serviceInfo().rootServiceRoute + "author/verify-token"
+                AuthorAuthenticate: AppConfig.serviceInfo().rootServiceRoute + "api/author/authenticate",
+                AuthorVerifyToken: AppConfig.serviceInfo().rootServiceRoute + "api/author/verify-token"
             },
             post: {
-                getAll: AppConfig.serviceInfo().rootServiceRoute + "post",
-                create: AppConfig.serviceInfo().rootServiceRoute + "post",
-                update: AppConfig.serviceInfo().rootServiceRoute + "post",
-                getById: AppConfig.serviceInfo().rootServiceRoute + "post",
-                getByTag: AppConfig.serviceInfo().rootServiceRoute + "post/tag",
-                getByCategory: AppConfig.serviceInfo().rootServiceRoute + "post/categoria",
-                delete: AppConfig.serviceInfo().rootServiceRoute + "post",
+                getAll: AppConfig.serviceInfo().rootServiceRoute + "api/post",
+                create: AppConfig.serviceInfo().rootServiceRoute + "api/post",
+                update: AppConfig.serviceInfo().rootServiceRoute + "api/post",
+                getById: AppConfig.serviceInfo().rootServiceRoute + "api/post",
+                getByTag: AppConfig.serviceInfo().rootServiceRoute + "api/post/tag",
+                getByCategory: AppConfig.serviceInfo().rootServiceRoute + "api/post/categoria",
+                delete: AppConfig.serviceInfo().rootServiceRoute + "api/post",
             }
         };
-    },
-    formMsgs: {
-        numeroInvalido: "Número inválido",
-        cepInvalido: "CEP inválido",
-        selecioneUmaOpcao: "Selecione uma opção.",
-        emailInvalido: "E-mail inválido"
     }
 };

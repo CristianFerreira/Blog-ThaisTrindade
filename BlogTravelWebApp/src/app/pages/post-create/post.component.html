@@ -14,41 +14,50 @@
                     </md-input-container>
                 </div>
             </div>
-            <div fxLayout="row" fxLayoutAlign="center center" style="padding: 20px;">
-                <div fxFlex="45" fxFlex.gt-md="40" fxFlex.gt-lg="35">
-                    <md-input-container fxFlex="95">
-                        <input [(ngModel)]="post.continent" mdInput placeholder="Continente" type="text" formControlName="continent">
-                    </md-input-container>
-                </div>
-                <div fxFlex="45" fxFlex.gt-md="40" fxFlex.gt-lg="35">
-                    <md-input-container fxFlex="95">
-                        <input [(ngModel)]="post.country" mdInput placeholder="Pais" type="text"  formControlName="country">
-                    </md-input-container>
-                </div>
-            </div>
-            <div fxLayout="row" fxLayoutAlign="center center" style="padding: 20px;">
-                <div fxFlex="45" fxFlex.gt-md="40" fxFlex.gt-lg="35">
-                    <md-input-container fxFlex="95">
-                        <input [(ngModel)]="post.state" mdInput placeholder="Estado" type="text" formControlName="state">
-                    </md-input-container>
-                </div>
-                <div fxFlex="45" fxFlex.gt-md="40" fxFlex.gt-lg="35">
-                    <md-input-container fxFlex="95">
-                        <input [(ngModel)]="post.city" mdInput placeholder="Cidade" type="text" formControlName="city">
-                    </md-input-container>
-                </div>
-            </div>
             <div fxLayout="row" fxLayoutAlign="center center">
-                <div fxFlex="90" fxFlex.gt-md="80" fxFlex.gt-lg="70">
+                <div fxFlex="88" fxFlex.gt-md="78" fxFlex.gt-lg="68">
                     <tag-input [(ngModel)]="post.tags" [onlyFromAutocomplete]="false" formControlName="tags" [secondaryPlaceholder]="'Informe as tags'">
-                        <tag-input-dropdown [showDropdownIfEmpty]="true" [autocompleteItems]="['iTem1', 'item2', 'item3']">
+                        <tag-input-dropdown [showDropdownIfEmpty]="true" [autocompleteItems]="['']">
                         </tag-input-dropdown>
                     </tag-input>
                 </div>
             </div>
+            <div fxLayout="row" fxLayoutAlign="center center" style="padding: 25px 25px 10px 20px;">
+                <div fxFlex="90" fxFlex.gt-md="80" fxFlex.gt-lg="70">
+                    <md-checkbox [(ngModel)]="btnConfiguracao" formControlName="btnConfiguracao">Outras configurações</md-checkbox>
+                </div>
+            </div>        
+            <span *ngIf="btnConfiguracao">
+                <div fxLayout="row" fxLayoutAlign="center center" style="padding: 20px;">
+                    <div fxFlex="45" fxFlex.gt-md="40" fxFlex.gt-lg="35">
+                        <md-input-container fxFlex="95">
+                            <input [(ngModel)]="post.continent" mdInput placeholder="Continente" type="text" formControlName="continent">
+                        </md-input-container>
+                    </div>
+                    <div fxFlex="45" fxFlex.gt-md="40" fxFlex.gt-lg="35">
+                        <md-input-container fxFlex="95">
+                            <input [(ngModel)]="post.country" mdInput placeholder="Pais" type="text" formControlName="country">
+                        </md-input-container>
+                    </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="center center" style="padding: 20px;">
+                    <div fxFlex="45" fxFlex.gt-md="40" fxFlex.gt-lg="35">
+                        <md-input-container fxFlex="95">
+                            <input [(ngModel)]="post.state" mdInput placeholder="Estado" type="text" formControlName="state">
+                        </md-input-container>
+                    </div>
+                    <div fxFlex="45" fxFlex.gt-md="40" fxFlex.gt-lg="35">
+                        <md-input-container fxFlex="95">
+                            <input [(ngModel)]="post.city" mdInput placeholder="Cidade" type="text" formControlName="city">
+                        </md-input-container>
+                    </div>
+                </div>
+            </span>           
             <div fxLayout="row" fxLayoutAlign="center center">
-                <h5>style="max-height: 100%;max-width: 100%;width: auto;height: auto;"</h5>
+                <h5>style="max-height: 100%;max-width: 100%;width: auto;height: auto;box-shadow: 0 29px 32px -30px rgba(0,0,0,0.5);margin: 2vh auto 20px;border-radius: 8px;"</h5>         
             </div>
+            <h5>No começo do p.     >>>>>>>>>    div style="padding: 0px 15px 0px 15px;"</h5>
+            <h5> No final do p. >>>>>>>>>>>>   /div</h5>
         </div>
     </div>
     <div fxLayout="row wrap" fxLayoutAlign="center center" style="margin-top:50px;">

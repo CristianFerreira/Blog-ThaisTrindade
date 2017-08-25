@@ -1,5 +1,5 @@
-<div *ngFor="let post of posts" class="animated animatedFadeInUp fadeInUp">
-  <md-card fxFlex="100" style="margin-bottom: 50px;">
+<div *ngFor="let post of postsRender" class="animated animatedFadeInUp fadeInUp" fxLayout="row wrap">
+  <md-card fxFlex="100" style="margin-bottom: 50px;" [style.xs]="{display: 'none'}" [style.sm]="{display: 'none'}">
     <div fxLayout="column">
       <div fxLayout="row">
         <div fxFlex="10">
@@ -15,12 +15,17 @@
             <a [routerLink]="['/post', post._id]" class="title-post"> {{post.title}}</a>
           </div>
         </div>
+        <!-- <div fxFlex>width="97" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"
+            <div class="fb-share-button" data-href="postURL(post._id)" width="97" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.thaistrindade.com%2F%23%2Fpost%2F5988b328cc111f0d60ccf5ef&amp;src=sdkpreparse">Compartilhar</a></div>
+        
+         
+        </div> -->
+
+        <!-- <social-share><share-button social='facebook'></share-button></social-share> -->
       </div>
     </div>
     <md-card-content>
-      <div>
-        <div [innerHTML]="post.description | sanitizeHtml"></div>
-      </div>
+      <div [innerHTML]="post.description | sanitizeHtml"></div>
     </md-card-content>
     <md-card-actions>
       <div fxLayout="row" fxLayoutAlign="start center">
@@ -50,4 +55,67 @@
       </div>
     </md-card-actions>
   </md-card>
+  <div class="post-mobile" [style.md]="{display: 'none'}" [style.lg]="{display: 'none'}" [style.xl]="{display: 'none'}" [style.xxl]="{display: 'none'}">
+    <div fxLayout="column">
+      <div fxLayout="row" class="title-mobile">
+        <div fxFlex="10">
+          <button md-fab class="btn-caregory">
+                <md-icon svgIcon="{{post.category}}"></md-icon>
+              </button>
+        </div>
+        <div fxFlex>
+          <div>
+            <a [routerLink]="['/post/categoria', post.category]" class="txt-category-post">{{post.category}}</a>
+          </div>
+          <div>
+            <a [routerLink]="['/post', post._id]" class="title-post"> {{post.title}}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div [innerHTML]="post.description | sanitizeHtml"></div>
+    <div>
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <div fxFlex class="line-col3"></div>
+      </div>
+      <div fxLayout="row" style="padding: 15px 20px 15px;">
+        <div fxLayoutAlign="start center" fxFlex>
+          <div fxLayout="column">
+            <span class="txt-mais-posts">Veja mais posts sobre</span>
+            <div fxLayout="row" fxLayoutAlign="start center">
+              <span *ngFor="let tag of post.tags">
+                    <a class="sobre-posts" [routerLink]="['/post/tags', tag]">#{{tag}}</a>
+                  </span>
+            </div>
+          </div>
+        </div>
+        <div fxLayoutAlign="end center" fxFlex>
+          <div fxLayout="column">
+            <div fxLayout="row" fxLayoutAlign="end center">
+              <div fxFlex>
+                <button *ngIf="logged" md-icon-button aria-label="editar" (click)="pageEditPost(post._id)"><md-icon style="color:#5a5858">&#xE254;</md-icon></button>
+                <button *ngIf="logged" md-icon-button (click)="openSnackBarDelete(post._id)"><md-icon style="color:#d63150">&#xE92B;</md-icon></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div fxLayout="row wrap"> -->
+  <!-- <disqus [identifier]="post._id"></disqus>  -->
+
+  <!-- <div id="disqus_thread"></div>
+    <script id="dsq-count-scr" src="//thaistrindade.disqus.com/count.js" async></script>                          -->
+  <!-- </div> -->
+</div>
+<div fxLayout="row">
+  <div fxFlex fxLayoutAlign="center center">
+    <md-paginator [length]="posts.length"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="pageSizeOptions"
+    (page)="updateTablePosts(pageEvent = $event)">
+    </md-paginator>
+  </div>
 </div>

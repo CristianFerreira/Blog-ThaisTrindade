@@ -157,7 +157,16 @@ a:hover.title-post {
 .line-col3 {
     margin-top: 20px;
     margin-bottom: 20px;
-    border-top: 3px solid #eeeeee;
+    border-top: 1px solid #cfcfcf;
 }
 
 
+.post-mobile {
+    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+    margin: 2vh auto 40px;
+}
+
+.title-mobile {
+    padding: 0px 2px 0px 8px;
+    margin-top: 20px;
+}

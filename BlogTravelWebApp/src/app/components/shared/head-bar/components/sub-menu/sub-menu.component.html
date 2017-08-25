@@ -6,14 +6,14 @@
       <button md-menu-item class="btn-menu-item">America do sul</button>
       <button md-menu-item class="btn-menu-item">Europa</button>
     </md-menu>
-    <button md-button class="sub-menu" fxFlex.md="17" fxFlex.lg="13" fxFlex.xl="11" (click)="contact()">Contato</button>
+    <button md-button class="sub-menu" fxFlex.md="17" fxFlex.lg="13" fxFlex.xl="11">Contato</button>
     <button *ngIf="logged" md-button class="sub-menu" (click)="newPost()" fxFlex.md="26" fxFlex.lg="20" fxFlex.xl="17">Nova Postagem</button>
   </div>
   <div fxLayout="row" fxLayoutAlign="end center" style="width: 100%;">
     <div style="padding: 25px;" fxLayout="row" fxLayoutAlign="end center">
       <md-icon style="color: #fff">search</md-icon>&nbsp;&nbsp;
-      <input class="input-pesquisa txt-input-pesquisa" type="text" placeholder="Pesquisar..." [(ngModel)]="filtro" /> &nbsp;&nbsp;
-      <button *ngIf="filtro" md-icon-button (click)="filtro = ''">
+      <input class="input-pesquisa txt-input-pesquisa" type="text" placeholder="Pesquisar..." /> &nbsp;&nbsp;
+      <button md-icon-button>
         <md-icon style="color:#fff">close</md-icon>
       </button>
     </div>
@@ -21,7 +21,7 @@
         <md-icon style="color: #fff">&#xE5D4;</md-icon>
     </button>
     <md-menu #configAuthor="mdMenu">
-      <button md-menu-item (click)="alterPassword()" class="btn-menu-item">
+      <button md-menu-item class="btn-menu-item">
         <md-icon class="icon-menu-item">&#xE899;</md-icon> Alterar minha senha
       </button>
       <button md-menu-item (click)="logout()" class="btn-menu-item">

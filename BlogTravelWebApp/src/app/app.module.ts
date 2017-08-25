@@ -6,32 +6,32 @@ import { BrowserModule } from '@angular/platform-browser';
 import { TagInputModule } from 'ngx-chips';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { APP_BASE_HREF } from '@angular/common';
+import { DisqusModule } from 'ngx-disqus';
 
 
 
-
-
- // MaterialModule,
+ // MaterialModule
 import { 
         MdProgressSpinnerModule,
-        MdListModule,
         MdCardModule,
         MdToolbarModule,
         MdSnackBarModule,
         MdButtonModule,
-        MdButtonToggleModule,
-        MdChipsModule,
         MdInputModule,
         MdDialogModule, 
         MdIconModule, 
-        MdDatepickerModule, 
         MdNativeDateModule,
         MdMenuModule,
         MdSidenavModule,
-        MdTooltipModule
+        MdTooltipModule,
+        MdCheckboxModule,
+        MdPaginatorModule,
 } from '@angular/material';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import 'hammerjs';
+
+// import {MdPaginatorIntl} from '@angular/material/typings/paginator/paginator-intl';
 
 //Rotas
 import { Routing, RoutingProviders } from './app.routing';
@@ -63,14 +63,14 @@ import { BackToTopComponent } from './pages/home/components/back-to-top/back-to-
 import { PostsComponent } from './pages/home/components/posts/posts.component';
 
 import { PostComponent } from './pages/post-create/post.component';
-
-
 import { AuthorizationService } from './services/authorization.service';
-
 import { SanitizeHtmlPipe } from './pipe/sanitize-html-pipe';
 
 //userLoggedService
 import {UserLoggedService} from './services/user-logged.service';
+
+import { AppConfig } from "../environments/app-config";
+import { environment } from "../environments/environment";
 
 @NgModule({
   declarations: [
@@ -99,35 +99,50 @@ import {UserLoggedService} from './services/user-logged.service';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
+    DisqusModule.forRoot('ngx'),
     HttpModule,
     // MaterialModule,
     MdProgressSpinnerModule,
-    MdListModule,
     MdCardModule,
     MdToolbarModule,
     MdSnackBarModule,
     MdButtonModule,
-    MdButtonToggleModule,
-    MdChipsModule,
     MdInputModule,
     MdDialogModule,
-    MdDatepickerModule,
     MdNativeDateModule,
     MdMenuModule,
     MdSidenavModule,
     MdIconModule,
     MdTooltipModule,
-
+    MdCheckboxModule,
+    MdPaginatorModule,
+    // MdPaginatorIntl,
     FlexLayoutModule,
     FroalaEditorModule.forRoot(), 
     FroalaViewModule.forRoot(),
-    Routing
+    Routing,
   ],
-  providers: [AuthorizationService, UserLoggedService],
+  providers: [{ provide: APP_BASE_HREF, useValue: environment.APP_BASE_HREF }, 
+              // {provide: MdPaginatorIntl, useValue: getSpanishPaginatorIntl()},
+                AuthorizationService, UserLoggedService],
 
   //configuração modal
   entryComponents: [LoadInfoComponent],
 
   bootstrap: [AppComponent]
+
+
+
 })
+
+// export function getSpanishPaginatorIntl() {
+//   // const paginatorIntl = new MdPaginatorIntl();
+  
+//   paginatorIntl.itemsPerPageLabel = 'Artículos por página:';
+//   paginatorIntl.nextPageLabel = 'Siguiente página';
+//   paginatorIntl.previousPageLabel = 'Pagina anterior';
+  
+//   return paginatorIntl;
+// }
+
 export class AppModule { }

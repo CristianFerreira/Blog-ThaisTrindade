@@ -1,6 +1,7 @@
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { HomeComponent } from './pages/home/home.component';
 import { PostComponent } from './pages/post-create/post.component';
@@ -19,4 +20,4 @@ const appRoutes: Routes = [
 ];
 
 export const RoutingProviders: any[] = [];
-export const Routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
+export const Routing: ModuleWithProviders = RouterModule.forRoot(appRoutes,{useHash: true});
