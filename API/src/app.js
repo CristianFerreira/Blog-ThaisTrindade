@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const config = require('./config');
 const app = express();
 const router = express.Router();
+var path    = require("path");
 
 // Connecta no banco
 mongoose.connect(config.connectionString);
@@ -32,8 +33,17 @@ app.use(function (req, res, next){
     next();
 });
 
-app.use('/', indexRoute);
-app.use('/post', postRoute);
-app.use('/author', authorRoute);
+app.use('/dist',express.static('./dist'));
+app.use('/assets',express.static('./dist/assets'));
 
+app.get('/', (req, res)=>{
+    res.sendFile(path.join(process.cwd()+'/dist/index.html'))
+})
+// app.use('/',express.static('dist'));
+// app.use('/dist', require("./dist"));
+
+app.use('/api', indexRoute);
+app.use('/api/post', postRoute);
+app.use('/api/author', authorRoute);
+ 
 module.exports = app;

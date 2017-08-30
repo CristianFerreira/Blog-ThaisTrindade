@@ -1,15 +1,12 @@
-
 .btn-right-top{
     top: auto;
     left: auto;
     position: fixed;
-    background-color: #d63150;
+    background-color: #1bbc9b;
     right: 20px;
     bottom: 20px;
-}
-
-#btn-right {
+  }
+  
+  #btn-right {
     display: none;
-}
-
-
+  }

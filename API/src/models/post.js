@@ -28,24 +28,28 @@ const schema = new Schema({
     },
     continent: {
         type: String,
-        required: true
+        required: false
     },
     country: {
         type: String,
-        required: true
+        required: false
     },
     state: {
         type: String,
-        required: true,
+        required: false,
     },
     city: {
         type: String,
-        required: true
+        required: false
     },
     tags: [{
         type: String,
         required: false
-    }]
+    }],
+    active: {
+        type: Boolean,
+        required: false
+    },
 });
 
 module.exports = mongoose.model('Post', schema);

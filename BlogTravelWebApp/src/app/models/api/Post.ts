@@ -11,6 +11,7 @@ export class Post {
         public state: string;
         public city: string;
         public tags: Array<string>;
+        public active: Boolean;
         
         constructor() {
             this.tags = new Array<string>();

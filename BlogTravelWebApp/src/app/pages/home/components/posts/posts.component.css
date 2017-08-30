@@ -54,8 +54,8 @@
         color: #908f8f;
         text-decoration: none;
     }
-    .btn-caregory {
-        background-color: #5a5858;
+    .btn-category {
+        background-color: #1bbc9b;
         box-shadow: none;
         width: 45px;
         height: 45px;
@@ -82,8 +82,8 @@
         color: #908f8f;
         text-decoration: none;
     }
-    .btn-caregory {
-        background-color: #5a5858;
+    .btn-category {
+        background-color: #1bbc9b;
         box-shadow: none;
     }
 }
@@ -103,8 +103,8 @@
         color: #908f8f;
         text-decoration: none;
     }
-    .btn-caregory {
-        background-color: #5a5858;
+    .btn-category {
+        background-color: #1bbc9b;
         box-shadow: none;
     }
 }
@@ -122,7 +122,7 @@ a:hover.txt-category-post {
 
 .sobre-posts {
     font-size: 13px;
-    background: #d63150;
+    background: #b6b1a5;;
     text-decoration: none;
     color: #ffffff;
     line-height: 14px;
@@ -150,7 +150,7 @@ a:hover.txt-category-post {
 }
 
 a:hover.title-post {
-    color: #e91e63;
+    color: #16a086;
 }
 
 
@@ -169,4 +169,17 @@ a:hover.title-post {
 .title-mobile {
     padding: 0px 2px 0px 8px;
     margin-top: 20px;
+}
+
+.icon-fab-category {
+    font-size: 36px;
+    height: 36px;
+    width: 36px; 
+    padding: 10px !important;
+}
+
+
+iframe .video-post{
+    width: 100% !important;
+    height: 440px !important;
 }

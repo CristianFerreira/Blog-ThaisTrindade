@@ -1,0 +1,18 @@
+<div *ngIf="posts">
+  <h1 md-dialog-title>Postagens inativas</h1>
+  <div md-dialog-content>
+      <md-list>
+          <md-list-item *ngFor="let post of posts">
+            <h4 md-line style="margin: 0px;">{{post.title}}
+                <button md-icon-button aria-label="editar" (click)="pageEditPost(post._id)">
+                    <md-icon style="color:#5a5858">&#xE254;</md-icon>
+                </button>
+            </h4>       
+            <p md-line style="margin: 0px 0px 15px;"> {{post.date | date: 'dd/MM/yyyy'}} </p>
+          </md-list-item>     
+        </md-list>     
+  </div>
+  <div md-dialog-actions style="float: right;">
+    <button md-button md-raised-button md-dialog-close class="green">Fechar</button>
+  </div>
+</div>

@@ -2,71 +2,92 @@
 <form [formGroup]="form" style="margin-top:70px;">
     <div fxLayout="row">
         <div fxLayout="column" fxFlex>
-            <div fxLayout="row" fxLayoutAlign="center center" style="padding: 20px;">
-                <div fxFlex="45" fxFlex.gt-md="40" fxFlex.gt-lg="35">
+            <div fxLayout="row wrap" fxLayoutAlign="center center" style="padding: 20px;">
+                <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="35" fxFlex.lg="40" fxFlex.xl="40">
                     <md-input-container fxFlex="95">
                         <input [(ngModel)]="post.title" mdInput placeholder="Titulo" type="text" formControlName="title">
                     </md-input-container>
                 </div>
-                <div fxFlex="45" fxFlex.gt-md="40" fxFlex.gt-lg="35">
+                <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="35" fxFlex.lg="40" fxFlex.xl="40">
                     <md-input-container fxFlex="95">
                         <input [(ngModel)]="post.category" mdInput placeholder="Categoria" type="text" formControlName="category">
                     </md-input-container>
                 </div>
-            </div>
-            <div fxLayout="row" fxLayoutAlign="center center">
-                <div fxFlex="88" fxFlex.gt-md="78" fxFlex.gt-lg="68">
-                    <tag-input [(ngModel)]="post.tags" [onlyFromAutocomplete]="false" formControlName="tags" [secondaryPlaceholder]="'Informe as tags'">
-                        <tag-input-dropdown [showDropdownIfEmpty]="true" [autocompleteItems]="['']">
+                <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="70" fxFlex.lg="80" fxFlex.xl="80">
+                    <tag-input style="margin: 0px 18px 0px 0px;" [(ngModel)]="post.tags" 
+                               [onlyFromAutocomplete]="false" formControlName="tags" [secondaryPlaceholder]="'Informe as tags'">
+                        <tag-input-dropdown [showDropdownIfEmpty]="true" [limitItemsTo]="5" [autocompleteItems]="tags">
                         </tag-input-dropdown>
                     </tag-input>
                 </div>
             </div>
-            <div fxLayout="row" fxLayoutAlign="center center" style="padding: 25px 25px 10px 20px;">
-                <div fxFlex="90" fxFlex.gt-md="80" fxFlex.gt-lg="70">
+            <div fxLayout="row wrap" fxLayoutAlign="center center" style="padding: 25px 25px 10px 20px;">
+                <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="35" fxFlex.lg="40" fxFlex.xl="40">
+                    <md-checkbox [(ngModel)]="post.active" formControlName="active">Ativo</md-checkbox>
+                </div>
+                <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="35" fxFlex.lg="40" fxFlex.xl="40">
                     <md-checkbox [(ngModel)]="btnConfiguracao" formControlName="btnConfiguracao">Outras configurações</md-checkbox>
                 </div>
-            </div>        
+            </div>
             <span *ngIf="btnConfiguracao">
-                <div fxLayout="row" fxLayoutAlign="center center" style="padding: 20px;">
-                    <div fxFlex="45" fxFlex.gt-md="40" fxFlex.gt-lg="35">
+                <div fxLayout="row wrap" fxLayoutAlign="center center" style="padding: 20px;">
+                    <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="35" fxFlex.lg="40" fxFlex.xl="40">
                         <md-input-container fxFlex="95">
                             <input [(ngModel)]="post.continent" mdInput placeholder="Continente" type="text" formControlName="continent">
                         </md-input-container>
                     </div>
-                    <div fxFlex="45" fxFlex.gt-md="40" fxFlex.gt-lg="35">
+                    <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="35" fxFlex.lg="40" fxFlex.xl="40">
                         <md-input-container fxFlex="95">
                             <input [(ngModel)]="post.country" mdInput placeholder="Pais" type="text" formControlName="country">
                         </md-input-container>
                     </div>
-                </div>
-                <div fxLayout="row" fxLayoutAlign="center center" style="padding: 20px;">
-                    <div fxFlex="45" fxFlex.gt-md="40" fxFlex.gt-lg="35">
+                    <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="35" fxFlex.lg="40" fxFlex.xl="40">
                         <md-input-container fxFlex="95">
                             <input [(ngModel)]="post.state" mdInput placeholder="Estado" type="text" formControlName="state">
                         </md-input-container>
                     </div>
-                    <div fxFlex="45" fxFlex.gt-md="40" fxFlex.gt-lg="35">
+                    <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="35" fxFlex.lg="40" fxFlex.xl="40">
                         <md-input-container fxFlex="95">
                             <input [(ngModel)]="post.city" mdInput placeholder="Cidade" type="text" formControlName="city">
                         </md-input-container>
                     </div>
                 </div>
-            </span>           
-            <div fxLayout="row" fxLayoutAlign="center center">
-                <h5>style="max-height: 100%;max-width: 100%;width: auto;height: auto;box-shadow: 0 29px 32px -30px rgba(0,0,0,0.5);margin: 2vh auto 20px;border-radius: 8px;"</h5>         
-            </div>
-            <h5>No começo do p.     >>>>>>>>>    div style="padding: 0px 15px 0px 15px;"</h5>
-            <h5> No final do p. >>>>>>>>>>>>   /div</h5>
+            </span>
         </div>
     </div>
     <div fxLayout="row wrap" fxLayoutAlign="center center" style="margin-top:50px;">
-        <!-- <app-froala fxFlex="90" fxFlex.gt-md="80" fxFlex.gt-lg="70" formControlName="description"></app-froala> -->
-        <div fxFlex="90" fxFlex.gt-md="80" fxFlex.gt-lg="70" [froalaEditor] [(froalaModel)]="post.description" formControlName="description"></div>
+        <div fxFlex.xs="60" fxFlex.sm="60" fxFlex.md="70" fxFlex.lg="80" fxFlex.xl="80" [froalaEditor] [(froalaModel)]="post.description" formControlName="description"></div>
     </div>
     <div fxLayout="row wrap" fxLayoutAlign="center center" style="margin-top:50px;">
-        <button (click)="submit()" [disabled]="!form.valid" md-button md-raised-button color="primary">
+        <button (click)="submit()" [disabled]="!form.valid" md-button md-raised-button class="green">
                   {{!post._id ? 'Adicionar Postagem' : 'Editar Postagem'}}
         </button>
     </div>
 </form>
+
+<div class="btn-right-size btn-right-top">
+    <smd-fab-speed-dial [(open)]="open" [direction]="top" [animationMode]="animationMode" [fixed]="fixed">
+        <smd-fab-trigger>
+            <button md-fab class="green"><md-icon>settings</md-icon></button>
+        </smd-fab-trigger>
+
+        <smd-fab-actions>
+            <button md-mini-fab class="green" (click)="copyVideo()"
+                    mdTooltip="Copiar estilo para video" mdTooltipPosition="above">
+                <md-icon>&#xE04A;</md-icon>
+            </button>
+            <button md-mini-fab class="green" (click)="copyImg()"
+                    mdTooltip="Copiar estilo para imagem" mdTooltipPosition="above">
+                <md-icon>&#xE412;</md-icon>
+            </button>
+            <button md-mini-fab class="green" (click)="removeClassVideo()" 
+                    mdTooltip="Continuar após add video" mdTooltipPosition="above">
+                <md-icon>&#xE04C;</md-icon>
+            </button>
+            <button md-mini-fab class="green" (click)="copyPaddingTxt()"
+                    mdTooltip="Copiar estilo para texto centralizado" mdTooltipPosition="above">
+                <md-icon>&#xE165;</md-icon>
+            </button>          
+        </smd-fab-actions>
+    </smd-fab-speed-dial>
+</div>

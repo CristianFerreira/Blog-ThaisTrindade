@@ -5,12 +5,22 @@ const Post = mongoose.model('Post');
 
 
 exports.get = async() => {
-   const res = await Post.find({}).populate('author','name email');
+   const res = await Post.find({active: true}).populate('author','name email').sort({date: -1});
    return res;
 }
 
+exports.getInactive = async() => {
+    const res = await Post.find({active: false}).populate('author','name email').sort({date: -1});
+    return res;
+ }
+
 exports.getByContinent = async(continent) => {
-    const res = await Post.find({continent: continent}).populate('author','name email');
+    const res = await Post.find({active: true, continent: continent}).populate('author','name email').sort({date: -1});
+    return res;
+}
+
+exports.getAllContinents = async() => {
+    const res = await Post.find({active: true, "continent":{$ne:null}},'continent').populate('author','name email').sort({date: -1});
     return res;
 }
 
@@ -20,17 +30,17 @@ exports.getById = async(id) => {
 }
 
 exports.getByTag = async(tag) => {
-     const res = await Post.find({tags: tag}).populate('author','name email');
+     const res = await Post.find({active: true, tags: tag}).populate('author','name email').sort({date: -1});
      return res;
 }
 
 exports.getAllTags = async() => {
-     const res = await Post.find({},'tags');
+     const res = await Post.find({"tags":{$ne:null}},'tags');
      return res;
 }
 
 exports.getByCategory = async(category) => {
-     const res = await Post.find({category: category}).populate('author','name email');
+     const res = await Post.find({active: true, category: category}).populate('author','name email').sort({date: -1});
      return res;
 }
 
@@ -52,11 +62,12 @@ exports.put = async(req) => {
             country: req.body.country,
             state: req.body.state,
             city: req.body.city,
-            tags: req.body.tags
+            tags: req.body.tags,
+            active: req.body.active
         }
     });
 }
 
 exports.delete = async(id) => {
-     await Post.findOneAndRemove(id);
+    await Post.remove({_id: id});
 }

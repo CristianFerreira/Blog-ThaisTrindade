@@ -13,11 +13,23 @@
     .icon-rede-social { 
         width: 32px !important;
     }
+
+    .txt-aboutme {
+        font-size: 15px;
+        text-align: center;
+        line-height: 24px;
+    }
 }
 
 @media only screen and (min-width: 1000px), screen and (max-width: 1400px) {
     .icon-rede-social { 
         width: 28px !important;
+    }
+
+    .txt-aboutme {
+        font-size: 14px;
+        text-align: center;
+        line-height: 24px;
     }
 }
 
@@ -25,4 +37,11 @@
     .icon-rede-social { 
         width: 24px !important;
     }
+
+    .txt-aboutme {
+        font-size: 13px;
+        text-align: center;
+        line-height: 24px;
+    }
 }   
+

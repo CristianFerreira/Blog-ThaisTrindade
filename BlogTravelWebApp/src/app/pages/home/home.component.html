@@ -1,8 +1,8 @@
-<div fxLayout="row" style="margin-top: 50px;" [style.xs]="{display: 'none'}" [style.sm]="{display: 'none'}">
-  <img src="../../../assets/images/banner.jpg" class="img-header"/>
-</div>
 <div id="head-bar" [style.xs]="{display: 'none'}" [style.sm]="{display: 'none'}">
   <app-head-bar></app-head-bar>
+</div>
+<div fxLayout="row" style="margin-top: 50px;" [style.xs]="{display: 'none'}" [style.sm]="{display: 'none'}">
+  <img src="../../../assets/images/banner.jpg" class="img-header"/>
 </div>
 <div fxLayout="row" fxLayout.xs="column" class="body-post">
   <div fxFlex.md="5" fxFlex.lg="10" fxFlex.xl="20" fxLayoutAlign="center start" [style.xs]="{display: 'none'}" [style.sm]="{display: 'none'}">
@@ -24,6 +24,8 @@
           <app-info-cristian></app-info-cristian>
           <app-instagram></app-instagram>
           <app-facebook></app-facebook>
+          <app-spotify></app-spotify>   
+          <app-snapchat></app-snapchat>     
         </div>
       </div>
       <div fxFlex.md="20" fxFlex.lg="20" fxFlex.xl="40">
@@ -32,3 +34,4 @@
     </div>
   </div>
 </div>
+<app-footer></app-footer>

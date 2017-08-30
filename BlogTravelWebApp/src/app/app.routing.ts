@@ -13,6 +13,8 @@ const appRoutes: Routes = [
     { path: 'post/:id', component: HomeComponent },
     { path: 'post/tags/:tag', component: HomeComponent },
     { path: 'post/categoria/:category', component: HomeComponent },
+    { path: 'post/comments/:comment', component: HomeComponent },
+    { path: 'post/destino/:destiny', component: HomeComponent },
     { path: 'login', component: LoginPageComponent },
     { path: 'post-create', canActivate:[AuthorizationService], component: PostComponent },
     { path: 'post-create/:id', canActivate:[AuthorizationService], component: PostComponent },

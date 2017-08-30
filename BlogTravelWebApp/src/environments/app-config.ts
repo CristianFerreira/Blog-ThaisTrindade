@@ -31,11 +31,15 @@ export const AppConfig = {
             },
             post: {
                 getAll: AppConfig.serviceInfo().rootServiceRoute + "api/post",
+                getInactive: AppConfig.serviceInfo().rootServiceRoute + "api/post/Inactive",
                 create: AppConfig.serviceInfo().rootServiceRoute + "api/post",
                 update: AppConfig.serviceInfo().rootServiceRoute + "api/post",
                 getById: AppConfig.serviceInfo().rootServiceRoute + "api/post",
                 getByTag: AppConfig.serviceInfo().rootServiceRoute + "api/post/tag",
+                getAllTags: AppConfig.serviceInfo().rootServiceRoute + "api/post/tags/getAll/",
                 getByCategory: AppConfig.serviceInfo().rootServiceRoute + "api/post/categoria",
+                getAllContinents: AppConfig.serviceInfo().rootServiceRoute +  "api/post/continents/getAll/",
+                getByContinent: AppConfig.serviceInfo().rootServiceRoute +  "api/post/continent",
                 delete: AppConfig.serviceInfo().rootServiceRoute + "api/post",
             }
         };

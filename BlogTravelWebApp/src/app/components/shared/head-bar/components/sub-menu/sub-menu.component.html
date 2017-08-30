@@ -1,13 +1,18 @@
 <div fxLayout="row" fxFlex="100" style="width: 100%;padding: 12px;">
   <div fxLayout="row" fxLayoutAlign="start center" style="width: 100%;">
     <button md-button class="sub-menu" fxFlex="6" (click)="home()">Home</button>
-    <button md-button [mdMenuTriggerFor]="destinos" class="sub-menu" fxFlex.md="17" fxFlex.lg="13" fxFlex.xl="11">Destinos</button>
+    <button *ngIf="continents.length > 0" md-button [mdMenuTriggerFor]="destinos" class="sub-menu" fxFlex.md="17" fxFlex.lg="13" fxFlex.xl="11">Destinos</button>
     <md-menu #destinos="mdMenu">
-      <button md-menu-item class="btn-menu-item">America do sul</button>
-      <button md-menu-item class="btn-menu-item">Europa</button>
+      <span *ngFor="let continent of continents">
+        <button md-menu-item class="btn-menu-item" [routerLink]="['/post/destino/', continent]">{{continent}}</button>
+      </span>
     </md-menu>
     <button md-button class="sub-menu" fxFlex.md="17" fxFlex.lg="13" fxFlex.xl="11">Contato</button>
-    <button *ngIf="logged" md-button class="sub-menu" (click)="newPost()" fxFlex.md="26" fxFlex.lg="20" fxFlex.xl="17">Nova Postagem</button>
+    <button *ngIf="logged" md-button md-button [mdMenuTriggerFor]="postagem" class="sub-menu" fxFlex.md="18" fxFlex.lg="14" fxFlex.xl="12">Postagem</button>
+    <md-menu #postagem="mdMenu">
+        <button md-menu-item class="btn-menu-item" (click)="newPost()">Nova Postagem</button>
+        <button md-menu-item class="btn-menu-item" (click)="openDialogPostsInactive()">Postagens inativas</button>
+    </md-menu>
   </div>
   <div fxLayout="row" fxLayoutAlign="end center" style="width: 100%;">
     <div style="padding: 25px;" fxLayout="row" fxLayoutAlign="end center">

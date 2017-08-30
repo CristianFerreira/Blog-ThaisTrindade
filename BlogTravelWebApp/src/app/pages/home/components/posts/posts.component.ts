@@ -1,12 +1,12 @@
-import { Component, OnInit,Input,Output, OnChanges, SimpleChanges  } from '@angular/core';
+import { Component, OnInit, Input, Output, OnChanges, SimpleChanges } from '@angular/core';
 import { Post } from '../../../../models/api/Post';
 import { PostDataService } from '../../../../services/post-data.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MdSnackBar } from '@angular/material';
 import { UserLoggedService } from '../../../../services/user-logged.service';
 import { AuthenticateDataService } from '../../../../services/authenticate-data.service';
-import { DomSanitizer, SafeHtml} from '@angular/platform-browser';
-import {PageEvent} from '@angular/material';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { PageEvent } from '@angular/material';
 // import {MdPaginatorIntl} from '@angular/material/typings/paginator/paginator-intl';
 
 
@@ -23,20 +23,23 @@ export class PostsComponent implements OnInit {
   public length: number;
   public pageSize: number;
   public currentPage: number;
-  public pageSizeOptions = [5, 10, 15];
+  public pageSizeOptions: any;
+  public idPost: number;
 
   // MdPaginator Output
-   pageEvent: PageEvent;
+  pageEvent: PageEvent;
 
 
-  
 
-  constructor(private postDataService: PostDataService, private autenticationService: AuthenticateDataService,  private router: Router, public snackBar: MdSnackBar, 
-              private route: ActivatedRoute, private userLoggedService: UserLoggedService, public sanitizer: DomSanitizer) {
+
+  constructor(private postDataService: PostDataService, private autenticationService: AuthenticateDataService, private router: Router, public snackBar: MdSnackBar,
+    private route: ActivatedRoute, private userLoggedService: UserLoggedService, public sanitizer: DomSanitizer) {
     this.posts = new Array<Post>();
     this.postsRender = new Array<Post>();
     this.pageSize = 2;
     this.currentPage = 1;
+    this.pageSizeOptions = [5, 10, 15];
+
 
     // this.mdPaginatorIntl.itemsPerPageLabel = 'Artículos por página:';
     // this.mdPaginatorIntl.nextPageLabel = 'Siguiente página';
@@ -45,21 +48,25 @@ export class PostsComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.userLoggedService.logged.subscribe((logged) => {
       this.logged = logged;
     })
     this.updateUserLogged();
 
     this.route.params.subscribe(params => {
-      let id = params['id'];
+      this.idPost = params['id'];
       let tag = params['tag'];
       let category = params['category'];
-      if (id != null)
-        this.getById(id);
+      let destiny = params['destiny'];
+      if (this.idPost != null)
+        this.getById(this.idPost.toString());
       else if (tag != null)
         this.getByTag(tag);
       else if (category != null)
         this.getByCategory(category);
+      else if (destiny != null)
+        this.getByDestiny(destiny);
       else
         this.getAll()
     });
@@ -67,8 +74,9 @@ export class PostsComponent implements OnInit {
     // this.disqus();
   }
 
+  postsToRender(topo?: boolean): void {
+    this.backToTop(topo);
 
-   postsToRender(): void {
     var begin = ((this.currentPage - 1) * this.pageSize);
     var end = begin + this.pageSize;
     this.postsRender = this.posts.slice(begin, end);
@@ -80,17 +88,24 @@ export class PostsComponent implements OnInit {
     this.postsToRender();
   }
 
+  backToTop(topo: boolean) {
+    $('html, body').animate({
+      scrollTop: topo ? 0 : ($('#post_id').position().top - 100)
+    }, 500);
+  }
+
+
   disqus() {
-    (function() { // DON'T EDIT BELOW THIS LINE
-    var d = document, s = d.createElement('script');
-    s.src = 'https://thaistrindade.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', '' +new Date());
-    (d.head || d.body).appendChild(s);
+    (function () { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://thaistrindade.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + new Date());
+      (d.head || d.body).appendChild(s);
     })();
   }
 
-  
-  updateUserLogged(){
+
+  updateUserLogged() {
     let logged = (this.autenticationService.contextoLogado() != null);
     this.userLoggedService.userLogged(logged);
   }
@@ -102,7 +117,7 @@ export class PostsComponent implements OnInit {
   getAll(): void {
     this.postDataService.getAll().subscribe(result => {
       this.posts = <Array<Post>>result.json();
-      this.postsToRender();
+      this.postsToRender(true);
     }, error => {
 
     });
@@ -117,8 +132,17 @@ export class PostsComponent implements OnInit {
     });
   }
 
-  getByCategory(category :string): void {
+  getByCategory(category: string): void {
     this.postDataService.getByCategory(category).subscribe(result => {
+      this.posts = <Array<Post>>result.json().data;
+      this.postsToRender();
+    }, error => {
+
+    });
+  }
+
+  getByDestiny(destiny: string) {
+    this.postDataService.getByContinent(destiny).subscribe(result => {
       this.posts = <Array<Post>>result.json().data;
       this.postsToRender();
     }, error => {

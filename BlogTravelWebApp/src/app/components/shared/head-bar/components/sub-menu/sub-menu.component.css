@@ -5,7 +5,7 @@
 }
 
 md-input-container label {
-    color: red !important;
+    color: #1bbc9b !important;
 }
 
 
@@ -20,9 +20,9 @@ md-input-container.md-input-focused label {
     font: inherit;
     margin: 0;
     padding: 0;
-    background-color: transparent;
+    background-color: transparent !important;
     outline: none;
-    border-bottom-color: rgba(255, 255, 255, 0.82);
+    border-bottom-color: rgba(255, 255, 255, 0.82) !important;
     ;
     border-top: none;
     border-left: none;
@@ -32,26 +32,26 @@ md-input-container.md-input-focused label {
 .txt-input-pesquisa {
     font-size: 16px;
     font-weight: 400;
-    color: #fff;
+    color: #fff !important;
     padding: 2px 0;
 }
 
 ::-webkit-input-placeholder {
-    color: #fff;
+    color: #fff !important;
 }
 
 :-moz-placeholder {
     /* Firefox 18- */
-    color: #fff;
+    color: #fff !important;
 }
 
 ::-moz-placeholder {
     /* Firefox 19+ */
-    color: #fff;
+    color: #fff !important;
 }
 
 :-ms-input-placeholder {
-    color: #fff;
+    color: #fff !important;
 }
 
 .btn-menu-item {
@@ -65,3 +65,33 @@ md-input-container.md-input-focused label {
     line-height: 21px;
     color: #5a5858;
 }
+
+
+
+/* label color */
+.input-field label {
+    color: #fff !important;
+  }
+  /* label focus color */
+  .input-field input[type=text]:focus + label {
+    color: #fff !important;
+  }
+  /* label underline focus color */
+  .input-field input[type=text]:focus {
+    border-bottom: 1px solid #fff !important;
+    box-shadow: 0 1px 0 0 #fff !important;
+  }
+  /* valid color */
+  .input-field input[type=text].valid {
+    border-bottom: 1px solid #fff !important;
+    box-shadow: 0 1px 0 0 #fff !important;
+  }
+  /* invalid color */
+  .input-field input[type=text].invalid {
+    border-bottom: 1px solid #fff !important;
+    box-shadow: 0 1px 0 0 #fff !important;
+  }
+  /* icon prefix focus color */
+  .input-field .prefix.active {
+    color: #fff !important;
+  }

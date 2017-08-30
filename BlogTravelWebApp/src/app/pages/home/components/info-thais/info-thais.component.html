@@ -2,27 +2,31 @@
   <md-card fxFlex.sm="90" fxFlex.md="90" fxFlex.lg="80" fxFlex.xl="80">
     <img md-card-image src="../../../assets/images/people/thais-home.jpg">
     <md-card-content>
-      <div fxLayout="row" fxLayoutAlign="center center">
-          <a href="" class="redes-sociais-thais">
-                <img src="../../assets/images/redes-sociais/snapchat.svg" class="icon-rede-social rede-social-hover-opacity">
-          </a>
-          <a href="" class="redes-sociais-thais">
-                <img src="../../assets/images/redes-sociais/facebook.svg" class="icon-rede-social rede-social-hover-opacity">
-              </a>
-          <a href="" class="redes-sociais-thais">
-                <img src="../../assets/images/redes-sociais/instagram.svg" class="icon-rede-social rede-social-hover-opacity">
-          </a>
-          <a href="" class="redes-sociais-thais">
-                <img src="../../assets/images/redes-sociais/twitter.svg" class="icon-rede-social rede-social-hover-opacity">
-              </a>
-          <a href="" class="redes-sociais-thais">
-                <img src="../../assets/images/redes-sociais/spotify.svg" class="icon-rede-social rede-social-hover-opacity">
-          </a>
-      </div>
+        <span class="txt-aboutme">
+            Futura nutricionista, apaixonada por viajar e com uma queda pelos Estados Unidos. 
+            Aqui eu vou compartilhar de tudo, e espero ajudar de qualquer forma <3
+        </span>
+        <!-- <button md-button>Saiba mais</button> -->
     </md-card-content>
     <md-card-actions>
-      <div fxLayout="row" fxLayoutAlign="center center">
-        <button md-button>Saiba mais</button>
+      <div fxLayout="row" fxLayoutAlign="center center">     
+        <div fxLayout="row" fxLayoutAlign="center center">
+            <a (click)="snapchat()" class="redes-sociais-thais" style="CURSOR: POINTER">
+                  <img src="../../assets/images/redes-sociais/snapchat.svg" class="icon-rede-social rede-social-hover-opacity">
+            </a>
+            <a href="https://www.facebook.com/trindadethaiss/" target="_blank" class="redes-sociais-thais">
+                  <img src="../../assets/images/redes-sociais/facebook.svg" class="icon-rede-social rede-social-hover-opacity">
+                </a>
+            <a href="https://www.instagram.com/trindadethais/" target="_blank" class="redes-sociais-thais">
+                  <img src="../../assets/images/redes-sociais/instagram.svg" class="icon-rede-social rede-social-hover-opacity">
+            </a>
+            <a href="https://twitter.com/trindadethaiss" target="_blank" class="redes-sociais-thais">
+                  <img src="../../assets/images/redes-sociais/twitter.svg" class="icon-rede-social rede-social-hover-opacity">
+                </a>
+            <a (click)="spotify()" class="redes-sociais-thais" style="CURSOR: POINTER">
+                  <img src="../../assets/images/redes-sociais/spotify.svg" class="icon-rede-social rede-social-hover-opacity">
+            </a>
+        </div>
       </div>
     </md-card-actions>
   </md-card>

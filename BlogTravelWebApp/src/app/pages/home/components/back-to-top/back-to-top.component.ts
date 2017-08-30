@@ -4,7 +4,7 @@ import * as $ from 'jquery';
 @Component({
   selector: 'app-back-to-top',
   templateUrl: './back-to-top.component.html',
-  styleUrls: ['./back-to-top.component.css']
+  styleUrls: ['./back-to-top.component.css'],
 })
 export class BackToTopComponent implements OnInit {
 
@@ -18,7 +18,7 @@ export class BackToTopComponent implements OnInit {
 
   showButton(): void {
     $(window).on('scroll', function (e) {
-      if ($(this).scrollTop() > 100)
+      if ($(this).scrollTop() > ($('#post_id').position().top - 100))
         $("#btn-right").css("display", "block");
 
       else
@@ -29,7 +29,7 @@ export class BackToTopComponent implements OnInit {
   backToTop(): void {
     $(document).ready(function () {
         $('html, body').animate({
-          scrollTop: $("#head-bar").offset().top
+          scrollTop: 0
         }, 400);
     });
   }

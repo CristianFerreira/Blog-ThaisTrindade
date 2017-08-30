@@ -11,9 +11,27 @@ exports.get = async(req, res) => {
     }
 };
 
+exports.getInactive = async(req, res) => {
+    try {
+        var data = await repository.getInactive();
+        res.status(200).send(data);
+    } catch (e) {
+        res.status(400).send({message: 'Falha ao buscar as postagens', data: e});
+    }
+};
+
 exports.getByContinent = async(req, res) => {
     try {
         var data = await repository.getByContinent(req.params.continent);
+        res.status(200).send({data});
+    } catch (e) {
+        res.status(400).send({message: 'Falha ao buscar as postagens', data: e});
+    }
+}; 
+
+exports.getAllContinents = async(req, res) => {
+    try {
+        var data = await repository.getAllContinents();
         res.status(200).send({data});
     } catch (e) {
         res.status(400).send({message: 'Falha ao buscar as postagens', data: e});
@@ -39,7 +57,6 @@ exports.getByTag = async(req, res) => {
 };
 
 exports.getAllTags = async(req, res) => {
-    console.log("chegoy")
     try {
         var data = await repository.getAllTags();
         res.status(200).send({data});
@@ -77,7 +94,6 @@ exports.put = async(req, res) => {
 
 exports.delete = async(req, res) => {
     try {
-        console.log(req.params);
         await repository.delete(req.params.id);
         res.status(200).send({message: "Postagem removida com sucesso!"});
     } catch (e) {
