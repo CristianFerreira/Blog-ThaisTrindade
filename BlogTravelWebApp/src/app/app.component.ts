@@ -9,6 +9,7 @@ import { MdDialog, MdDialogRef, MdSnackBar, MdSnackBarConfig } from '@angular/ma
 import { UserLoggedService } from './services/user-logged.service';
 
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -16,7 +17,7 @@ import { UserLoggedService } from './services/user-logged.service';
 })
 export class AppComponent {
   title = 'Blog da thais';
-
+  mobile: boolean;
   //icones adicionados
   constructor(http: Http, iconReg: MdIconRegistry, sanitizer: DomSanitizer, private router: Router, private authorizationService: AuthorizationService,
              private snackBar: MdSnackBar, private userLoggedService: UserLoggedService) {
@@ -33,6 +34,9 @@ export class AppComponent {
     .addSvgIcon('Nutrição', sanitizer.bypassSecurityTrustResourceUrl('../../../assets/icon/categories/Nutricao.svg'))    
     .addSvgIcon('Nutricao', sanitizer.bypassSecurityTrustResourceUrl('../../../assets/icon/categories/Nutricao.svg'))  
     .addSvgIcon('Youtube', sanitizer.bypassSecurityTrustResourceUrl('../../../assets/icon/categories/Youtube.svg')) 
+    .addSvgIcon('twitter_black', sanitizer.bypassSecurityTrustResourceUrl('../../../assets/images/redes-sociais/twitter_black.svg'))    
+    .addSvgIcon('instagram_black', sanitizer.bypassSecurityTrustResourceUrl('../../../assets/images/redes-sociais/instagram_black.svg'))  
+    .addSvgIcon('facebook_black', sanitizer.bypassSecurityTrustResourceUrl('../../../assets/images/redes-sociais/facebook_black.svg')) 
 
     
 
@@ -51,11 +55,26 @@ export class AppComponent {
       });
     }
 
+    this.mobile = $(window).width() > 700 ? false : true; 
+
   }
 
   clearLocalStorage() {
     localStorage.removeItem(AppConfig.auth_token);
     localStorage.removeItem(AppConfig.auth_context);
   }
+
+  check(){
+    $('#menu-mobile').css('display', 'block');
+  }
+
+  blockMenu() {
+    $('#menu-mobile').css('display', 'none');
+  }
+
+  activeMenu(){
+    $('#menu-mobile').css('display', 'block');
+  }
+  
 }
 

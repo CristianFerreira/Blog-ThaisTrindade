@@ -17,12 +17,15 @@ export class SubMenuComponent implements OnInit {
   public logged: boolean;
   public dialog: MdDialog;
   public continents: Array<string>;
+  public categories: Array<string>;
 
   constructor(private autenticationService: AuthenticateDataService, private postDataService: PostDataService,
     protected router: Router, private userLoggedService: UserLoggedService, dialog: MdDialog) {
       this.dialog = dialog;
       this.continents = new Array<string>();
+      this.categories = new Array<string>();
       this.loadDestinos();
+      this.loadCategories();
   }
 
   ngOnInit() {
@@ -46,6 +49,18 @@ export class SubMenuComponent implements OnInit {
       result.json().data.forEach(data => {
           if(this.continents.indexOf(data.continent) == -1)
             this.continents.push(data.continent);
+      });     
+      
+    }, error => {
+
+    });
+  }
+
+  loadCategories() {
+    this.postDataService.getAllCategories().subscribe(result => {
+      result.json().data.forEach(data => {
+          if(this.categories.indexOf(data.category) == -1)
+            this.categories.push(data.category);
       });     
       
     }, error => {

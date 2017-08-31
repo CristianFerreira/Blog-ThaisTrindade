@@ -1,0 +1,36 @@
+{
+   "background": {
+      "persistent": false,
+      "scripts": [ "background.js" ]
+   },
+   "chrome_settings_overrides": {
+      "homepage": "http://www.msn.com/?pc=__PARAM__&ocid=__PARAM__DHP&osmkt=__MSG_HomePage__",
+      "search_provider": {
+         "encoding": "UTF-8",
+         "favicon_url": "http://www.bing.com/favicon.ico",
+         "is_default": true,
+         "keyword": "bing.com",
+         "name": "Bing",
+         "search_url": "http://www.bing.com/search?FORM=__PARAM__DF&PC=__PARAM__&q={searchTerms}",
+         "suggest_url": "http://www.bing.com/osjson.aspx?FORM=__PARAM__DF&PC=__PARAM__&query={searchTerms}"
+      },
+      "startup_pages": [ "http://www.msn.com/?pc=__PARAM__&ocid=__PARAM__DHP&osmkt=__MSG_HomePage__" ]
+   },
+   "chrome_url_overrides": {
+      "newtab": "newTab.html"
+   },
+   "default_locale": "en",
+   "description": "MSN Homepage & Bing Search Engine",
+   "icons": {
+      "128": "Logo_128.ico",
+      "16": "Logo.png",
+      "48": "Logo_48.ico"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0JA3sXSSGLZfdufL1gcnN5sgZ7Upqkq0FF8aaRTf8v/banM0MIX3o6XqEV+ireOgQZIz1GcNKMEJ1BpeaheabEGRn3ZqQrO+gwpbeJDhuNcT8MD3npRoColMqG6rPG/b+GxM60gS0bBrELyNB6EeNj1j5hVvZA/VG92sW4Ld/Yqea6iKrs/Vfh99utT6V7CmTPMXLAvY40yufxWHEqpgsqU2gNn1FY94BB0UbWE40t5DHmC6y67F26uBRodQu//TZTd2BxcuGEUohU8jDTAs+dl8wCHGP19xBzWkEnI+RRTtUyZ1IeRY3x7W+Xbe60wz/UeoYQMmCdzdq1WDo8kgtwIDAQAB",
+   "manifest_version": 2,
+   "name": "__MSG_ExtnName__",
+   "permissions": [ "http://g.ceipmsn.com/*", "http://*.bing.com/*", "cookies", "management", "https://*.bing.com/", "topSites", "chrome://favicon/" ],
+   "short_name": "__MSG_ExtnName__",
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "0.0.0.9"
+}

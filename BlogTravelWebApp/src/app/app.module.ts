@@ -28,6 +28,7 @@ import {
         MdTooltipModule,
         MdCheckboxModule,
         MdPaginatorModule,
+        MdListModule
 } from '@angular/material';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import 'hammerjs';
@@ -45,6 +46,9 @@ import { AppComponent } from './app.component';
 import { HeadBarComponent } from './components/shared/head-bar/head-bar.component';
 import { SubMenuComponent } from './components/shared/head-bar/components/sub-menu/sub-menu.component';
 import { DialogPostsInactiveComponent } from './components/shared/head-bar/components/sub-menu/dialog-posts-inactive/dialog-posts-inactive.component';
+import { HeaderSidenavComponent } from './components/shared/sidenav/header-sidenav/header-sidenav.component';
+import { BodySidenavComponent } from './components/shared/sidenav/body-sidenav/body-sidenav.component';
+
 import { LoadInfoComponent } from './components/load-info/load-info.component';
 import { FroalaComponent } from './components/froala/froala.component';
 
@@ -91,6 +95,8 @@ import { environment } from "../environments/environment";
 
 
 
+
+
 @NgModule({
   declarations: [
     SanitizeHtmlPipe,
@@ -114,7 +120,7 @@ import { environment } from "../environments/environment";
     SmdFabSpeedDialTrigger, 
     SmdFabSpeedDialActions, 
     SmdFabSpeedDialComponent, 
-    DialogPostsInactiveComponent, SpotifyComponent, FooterComponent, SnapchatComponent,
+    DialogPostsInactiveComponent, SpotifyComponent, FooterComponent, SnapchatComponent, HeaderSidenavComponent, BodySidenavComponent,
   ],
   imports: [
     BrowserModule,
@@ -139,6 +145,7 @@ import { environment } from "../environments/environment";
     MdTooltipModule,
     MdCheckboxModule,
     MdPaginatorModule,
+    MdListModule,
     // MdPaginatorIntl,
     FlexLayoutModule,
     FroalaEditorModule.forRoot(), 

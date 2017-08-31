@@ -59,16 +59,11 @@
     <div class="post-mobile" [style.md]="{display: 'none'}" [style.lg]="{display: 'none'}" [style.xl]="{display: 'none'}" [style.xxl]="{display: 'none'}">
       <div fxLayout="column">
         <div fxLayout="row" class="title-mobile">
-          <div fxFlex="10">
-            <button md-fab class="btn-category">
-                <md-icon svgIcon="{{post.category}}"></md-icon>
-            </button>
-          </div>
-          <div fxFlex>
+          <div fxFlex style="padding-left: 5px;">
             <div>
               <a [routerLink]="['/post/categoria', post.category]" class="txt-category-post">{{post.category}}</a>
             </div>
-            <div>
+            <div style="margin-top: 8px">
               <a [routerLink]="['/post', post._id]" class="title-post"> {{post.title}}</a>
             </div>
           </div>

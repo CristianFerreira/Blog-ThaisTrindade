@@ -1,6 +1,7 @@
 .page-footer {
     padding-top: 20px;
     color: #fff;   
+    bottom: 0px;
 }
 
 .container {
@@ -14,6 +15,7 @@
 }
 
 .page-footer .footer-copyright {
+    bottom: 0px;
     overflow: hidden;
     min-height: 50px;
     display: -webkit-box;

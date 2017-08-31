@@ -1,0 +1,2714 @@
+(function(){function g() {
+  return function() {
+  }
+}
+function aa(a) {
+  return function() {
+    return this[a]
+  }
+}
+var l, ba = ba || {}, m = this;
+function ca(a) {
+  a = a.split(".");
+  for(var b = m, c;c = a.shift();) {
+    if(null != b[c]) {
+      b = b[c]
+    }else {
+      return null
+    }
+  }
+  return b
+}
+function da() {
+}
+function n(a) {
+  var b = typeof a;
+  if("object" == b) {
+    if(a) {
+      if(a instanceof Array) {
+        return"array"
+      }
+      if(a instanceof Object) {
+        return b
+      }
+      var c = Object.prototype.toString.call(a);
+      if("[object Window]" == c) {
+        return"object"
+      }
+      if("[object Array]" == c || "number" == typeof a.length && "undefined" != typeof a.splice && "undefined" != typeof a.propertyIsEnumerable && !a.propertyIsEnumerable("splice")) {
+        return"array"
+      }
+      if("[object Function]" == c || "undefined" != typeof a.call && "undefined" != typeof a.propertyIsEnumerable && !a.propertyIsEnumerable("call")) {
+        return"function"
+      }
+    }else {
+      return"null"
+    }
+  }else {
+    if("function" == b && "undefined" == typeof a.call) {
+      return"object"
+    }
+  }
+  return b
+}
+function ea(a) {
+  var b = n(a);
+  return"array" == b || "object" == b && "number" == typeof a.length
+}
+function p(a) {
+  return"string" == typeof a
+}
+var fa = "closure_uid_" + (1E9 * Math.random() >>> 0), ga = 0;
+function ha(a, b, c) {
+  return a.call.apply(a.bind, arguments)
+}
+function ja(a, b, c) {
+  if(!a) {
+    throw Error();
+  }
+  if(2 < arguments.length) {
+    var d = Array.prototype.slice.call(arguments, 2);
+    return function() {
+      var c = Array.prototype.slice.call(arguments);
+      Array.prototype.unshift.apply(c, d);
+      return a.apply(b, c)
+    }
+  }
+  return function() {
+    return a.apply(b, arguments)
+  }
+}
+function q(a, b, c) {
+  q = Function.prototype.bind && -1 != Function.prototype.bind.toString().indexOf("native code") ? ha : ja;
+  return q.apply(null, arguments)
+}
+var ka = Date.now || function() {
+  return+new Date
+};
+function r(a, b) {
+  var c = a.split("."), d = m;
+  c[0] in d || !d.execScript || d.execScript("var " + c[0]);
+  for(var e;c.length && (e = c.shift());) {
+    c.length || void 0 === b ? d = d[e] ? d[e] : d[e] = {} : d[e] = b
+  }
+}
+function s(a, b) {
+  function c() {
+  }
+  c.prototype = b.prototype;
+  a.Pa = b.prototype;
+  a.prototype = new c
+}
+;function la() {
+  for(var a = window.self, b = 0, c = "", d, e;a !== window.top && a.parent;) {
+    try {
+      if(a.parent && a.parent.location && !a.parent.location.href) {
+        throw"HandleSafari";
+      }
+    }catch(f) {
+      if(c = c || a, 2 > b) {
+        b++
+      }else {
+        break
+      }
+    }
+    a = a.parent
+  }
+  c = c || a;
+  e = (e = c.document.referrer.match(/[^?]+/)) ? e[0] : "";
+  e = e.slice(0, 128);
+  d = a = c.location.href;
+  c.self !== window.top && c.location.ancestorOrigins && (a = c.location.ancestorOrigins[c.location.ancestorOrigins.length - 1]);
+  this.Nc = b;
+  this.Oc = c.location.hostname;
+  this.Pc = e;
+  this.Eb = d;
+  this.Fb = a
+}
+la.prototype.Wa = aa("Fb");
+function ma(a) {
+  Error.captureStackTrace ? Error.captureStackTrace(this, ma) : this.stack = Error().stack || "";
+  a && (this.message = String(a))
+}
+s(ma, Error);
+ma.prototype.name = "CustomError";
+var na;
+function oa(a, b) {
+  for(var c = a.split("%s"), d = "", e = Array.prototype.slice.call(arguments, 1);e.length && 1 < c.length;) {
+    d += c.shift() + e.shift()
+  }
+  return d + c.join("%s")
+}
+function pa(a) {
+  return a.replace(/^[\s\xa0]+|[\s\xa0]+$/g, "")
+}
+function qa(a) {
+  if(!ra.test(a)) {
+    return a
+  }
+  -1 != a.indexOf("\x26") && (a = a.replace(sa, "\x26amp;"));
+  -1 != a.indexOf("\x3c") && (a = a.replace(ta, "\x26lt;"));
+  -1 != a.indexOf("\x3e") && (a = a.replace(ua, "\x26gt;"));
+  -1 != a.indexOf('"') && (a = a.replace(va, "\x26quot;"));
+  return a
+}
+var sa = /&/g, ta = /</g, ua = />/g, va = /\"/g, ra = /[&<>\"]/;
+function wa(a, b) {
+  b.unshift(a);
+  ma.call(this, oa.apply(null, b));
+  b.shift();
+  this.Tc = a
+}
+s(wa, ma);
+wa.prototype.name = "AssertionError";
+function xa(a, b) {
+  throw new wa("Failure" + (a ? ": " + a : ""), Array.prototype.slice.call(arguments, 1));
+}
+;var t = Array.prototype, ya = t.indexOf ? function(a, b, c) {
+  return t.indexOf.call(a, b, c)
+} : function(a, b, c) {
+  c = null == c ? 0 : 0 > c ? Math.max(0, a.length + c) : c;
+  if(p(a)) {
+    return p(b) && 1 == b.length ? a.indexOf(b, c) : -1
+  }
+  for(;c < a.length;c++) {
+    if(c in a && a[c] === b) {
+      return c
+    }
+  }
+  return-1
+}, u = t.forEach ? function(a, b, c) {
+  t.forEach.call(a, b, c)
+} : function(a, b, c) {
+  for(var d = a.length, e = p(a) ? a.split("") : a, f = 0;f < d;f++) {
+    f in e && b.call(c, e[f], f, a)
+  }
+}, za = t.filter ? function(a, b, c) {
+  return t.filter.call(a, b, c)
+} : function(a, b, c) {
+  for(var d = a.length, e = [], f = 0, h = p(a) ? a.split("") : a, k = 0;k < d;k++) {
+    if(k in h) {
+      var y = h[k];
+      b.call(c, y, k, a) && (e[f++] = y)
+    }
+  }
+  return e
+};
+function Aa(a) {
+  var b;
+  a: {
+    b = Ba;
+    for(var c = a.length, d = p(a) ? a.split("") : a, e = 0;e < c;e++) {
+      if(e in d && b.call(void 0, d[e], e, a)) {
+        b = e;
+        break a
+      }
+    }
+    b = -1
+  }
+  return 0 > b ? null : p(a) ? a.charAt(b) : a[b]
+}
+function Ca(a, b) {
+  var c = ya(a, b), d;
+  (d = 0 <= c) && t.splice.call(a, c, 1);
+  return d
+}
+function Da(a) {
+  return t.concat.apply(t, arguments)
+}
+function Ea(a) {
+  var b = a.length;
+  if(0 < b) {
+    for(var c = Array(b), d = 0;d < b;d++) {
+      c[d] = a[d]
+    }
+    return c
+  }
+  return[]
+}
+function Fa(a, b) {
+  for(var c = 1;c < arguments.length;c++) {
+    var d = arguments[c], e;
+    if("array" == n(d) || (e = ea(d)) && Object.prototype.hasOwnProperty.call(d, "callee")) {
+      a.push.apply(a, d)
+    }else {
+      if(e) {
+        for(var f = a.length, h = d.length, k = 0;k < h;k++) {
+          a[f + k] = d[k]
+        }
+      }else {
+        a.push(d)
+      }
+    }
+  }
+}
+;var v, Ga, Ha, Ia;
+function Ja() {
+  return m.navigator ? m.navigator.userAgent : null
+}
+Ia = Ha = Ga = v = !1;
+var Ka;
+if(Ka = Ja()) {
+  var La = m.navigator;
+  v = 0 == Ka.lastIndexOf("Opera", 0);
+  Ga = !v && (-1 != Ka.indexOf("MSIE") || -1 != Ka.indexOf("Trident"));
+  Ha = !v && -1 != Ka.indexOf("WebKit");
+  Ia = !v && !Ha && !Ga && "Gecko" == La.product
+}
+var Ma = v, w = Ga, z = Ia, A = Ha, Na = m.navigator, Oa = -1 != (Na && Na.platform || "").indexOf("Mac");
+function Pa() {
+  var a = m.document;
+  return a ? a.documentMode : void 0
+}
+var Qa;
+a: {
+  var Ra = "", Sa;
+  if(Ma && m.opera) {
+    var Ta = m.opera.version, Ra = "function" == typeof Ta ? Ta() : Ta
+  }else {
+    if(z ? Sa = /rv\:([^\);]+)(\)|;)/ : w ? Sa = /\b(?:MSIE|rv)[: ]([^\);]+)(\)|;)/ : A && (Sa = /WebKit\/(\S+)/), Sa) {
+      var Ua = Sa.exec(Ja()), Ra = Ua ? Ua[1] : ""
+    }
+  }
+  if(w) {
+    var Va = Pa();
+    if(Va > parseFloat(Ra)) {
+      Qa = String(Va);
+      break a
+    }
+  }
+  Qa = Ra
+}
+var Wa = {};
+function B(a) {
+  var b;
+  if(!(b = Wa[a])) {
+    b = 0;
+    for(var c = pa(String(Qa)).split("."), d = pa(String(a)).split("."), e = Math.max(c.length, d.length), f = 0;0 == b && f < e;f++) {
+      var h = c[f] || "", k = d[f] || "", y = RegExp("(\\d*)(\\D*)", "g"), ia = RegExp("(\\d*)(\\D*)", "g");
+      do {
+        var x = y.exec(h) || ["", "", ""], F = ia.exec(k) || ["", "", ""];
+        if(0 == x[0].length && 0 == F[0].length) {
+          break
+        }
+        b = ((0 == x[1].length ? 0 : parseInt(x[1], 10)) < (0 == F[1].length ? 0 : parseInt(F[1], 10)) ? -1 : (0 == x[1].length ? 0 : parseInt(x[1], 10)) > (0 == F[1].length ? 0 : parseInt(F[1], 10)) ? 1 : 0) || ((0 == x[2].length) < (0 == F[2].length) ? -1 : (0 == x[2].length) > (0 == F[2].length) ? 1 : 0) || (x[2] < F[2] ? -1 : x[2] > F[2] ? 1 : 0)
+      }while(0 == b)
+    }
+    b = Wa[a] = 0 <= b
+  }
+  return b
+}
+var Xa = m.document, Ya = Xa && w ? Pa() || ("CSS1Compat" == Xa.compatMode ? parseInt(Qa, 10) : 5) : void 0;
+var Za = !z && !w || w && w && 9 <= Ya || z && B("1.9.1"), $a = w && !B("9");
+function ab(a) {
+  var b = [], c = 0, d;
+  for(d in a) {
+    b[c++] = a[d]
+  }
+  return b
+}
+function bb(a) {
+  var b = [], c = 0, d;
+  for(d in a) {
+    b[c++] = d
+  }
+  return b
+}
+var cb = "constructor hasOwnProperty isPrototypeOf propertyIsEnumerable toLocaleString toString valueOf".split(" ");
+function db(a, b) {
+  for(var c, d, e = 1;e < arguments.length;e++) {
+    d = arguments[e];
+    for(c in d) {
+      a[c] = d[c]
+    }
+    for(var f = 0;f < cb.length;f++) {
+      c = cb[f], Object.prototype.hasOwnProperty.call(d, c) && (a[c] = d[c])
+    }
+  }
+}
+;function C(a) {
+  return Za && void 0 != a.children ? a.children : za(a.childNodes, function(a) {
+    return 1 == a.nodeType
+  })
+}
+var eb = {SCRIPT:1, STYLE:1, HEAD:1, IFRAME:1, OBJECT:1}, fb = {IMG:" ", BR:"\n"};
+function gb(a, b, c) {
+  if(!(a.nodeName in eb)) {
+    if(3 == a.nodeType) {
+      c ? b.push(String(a.nodeValue).replace(/(\r\n|\r|\n)/g, "")) : b.push(a.nodeValue)
+    }else {
+      if(a.nodeName in fb) {
+        b.push(fb[a.nodeName])
+      }else {
+        for(a = a.firstChild;a;) {
+          gb(a, b, c), a = a.nextSibling
+        }
+      }
+    }
+  }
+}
+function D(a) {
+  this.T = a || m.document || document
+}
+D.prototype.createElement = function(a) {
+  return this.T.createElement(a)
+};
+D.prototype.appendChild = function(a, b) {
+  a.appendChild(b)
+};
+D.prototype.Va = C;
+D.prototype.c = function(a) {
+  if($a && "innerText" in a) {
+    a = a.innerText.replace(/(\r\n|\r|\n)/g, "\n")
+  }else {
+    var b = [];
+    gb(a, b, !0);
+    a = b.join("")
+  }
+  a = a.replace(/ \xAD /g, " ").replace(/\xAD/g, "");
+  a = a.replace(/\u200B/g, "");
+  $a || (a = a.replace(/ +/g, " "));
+  " " != a && (a = a.replace(/^\s*/, ""));
+  return a
+};
+w && B(8);
+var E = {data:{}};
+E.data.va = {ua:{Yc:!0}, Ab:{mc:!0}, Bb:{mc:!0}, Db:{$c:!0}, vb:{Xc:!0}, xb:{Wc:!0}, Sa:{Zc:!0}};
+E.data.h = function() {
+  throw Error("Do not instantiate directly");
+};
+E.data.h.prototype.Qc = null;
+E.data.h.prototype.toString = aa("content");
+E.Cb = !1;
+E.Vc = function(a, b, c, d) {
+  a.innerHTML = E.Ca(b(c || E.Aa, void 0, d))
+};
+E.Uc = function(a, b, c, d) {
+  d = d || na || (na = new D);
+  a = E.Ca(a(b || E.Aa, void 0, c));
+  E.Ta(a);
+  c = d.T;
+  b = c.createElement("div");
+  w ? (b.innerHTML = "\x3cbr\x3e" + a, b.removeChild(b.firstChild)) : b.innerHTML = a;
+  if(1 == b.childNodes.length) {
+    a = b.removeChild(b.firstChild)
+  }else {
+    for(a = c.createDocumentFragment();b.firstChild;) {
+      a.appendChild(b.firstChild)
+    }
+  }
+  return a
+};
+E.ma = function(a, b) {
+  var c = (na || (na = new D)).createElement("DIV"), d = E.Ca(a(b || E.Aa, void 0, void 0));
+  E.Ta(d);
+  c.innerHTML = d;
+  return 1 == c.childNodes.length && (d = c.firstChild, 1 == d.nodeType) ? d : c
+};
+E.Ca = function(a) {
+  var b;
+  if(b = !E.Cb) {
+    b = typeof a, b = !("object" == b && null != a || "function" == b)
+  }
+  if(b) {
+    return String(a)
+  }
+  if(a instanceof E.data.h) {
+    b = E.data.va;
+    if(a.t === b.ua) {
+      return a.content
+    }
+    if(a.t === b.Sa) {
+      return qa(a.content)
+    }
+  }
+  xa("Soy template output is unsafe for use as HTML: " + a);
+  return"zSoyz"
+};
+E.Ta = function(a) {
+  a.match(E.zb)
+};
+E.zb = /^<(body|caption|col|colgroup|head|html|tr|td|tbody|thead|tfoot)>/i;
+E.Aa = {};
+var G = E.data.va;
+function hb() {
+  E.data.h.call(this)
+}
+s(hb, E.data.h);
+hb.prototype.t = G.ua;
+function ib() {
+  E.data.h.call(this)
+}
+s(ib, E.data.h);
+ib.prototype.t = G.Ab;
+function jb() {
+  E.data.h.call(this)
+}
+s(jb, E.data.h);
+jb.prototype.t = G.Bb;
+function kb() {
+  E.data.h.call(this)
+}
+s(kb, E.data.h);
+kb.prototype.t = G.Db;
+function lb() {
+  E.data.h.call(this)
+}
+s(lb, E.data.h);
+lb.prototype.t = G.vb;
+function mb() {
+  E.data.h.call(this)
+}
+s(mb, E.data.h);
+mb.prototype.t = G.xb;
+function nb(a) {
+  this.content = String(a)
+}
+s(nb, E.data.h);
+nb.prototype.t = G.Sa;
+function H(a) {
+  return a && a.t && a.t === E.data.va.ua ? a.content : String(a).replace(ob, pb)
+}
+var qb = {"\x00":"\x26#0;", '"':"\x26quot;", "\x26":"\x26amp;", "'":"\x26#39;", "\x3c":"\x26lt;", "\x3e":"\x26gt;", "\t":"\x26#9;", "\n":"\x26#10;", "\x0B":"\x26#11;", "\f":"\x26#12;", "\r":"\x26#13;", " ":"\x26#32;", "-":"\x26#45;", "/":"\x26#47;", "\x3d":"\x26#61;", "`":"\x26#96;", "\u0085":"\x26#133;", "\u00a0":"\x26#160;", "\u2028":"\x26#8232;", "\u2029":"\x26#8233;"};
+function pb(a) {
+  return qb[a]
+}
+var ob = /[\x00\x22\x26\x27\x3c\x3e]/g;
+function rb(a) {
+  return'\x3ca href\x3d"' + H(a.Kb) + '" target\x3d"_blank"\x3e\x3cimg src\x3d"' + H(a.creativeUrl) + '" width\x3d"' + H(a.width) + '" height\x3d"' + H(a.height) + '" border\x3d0\x3e\x3c/a\x3e'
+}
+function sb(a) {
+  return'\x3cobject style\x3d"z-index:2" classid\x3d"clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width\x3d"' + H(a.width) + '" height\x3d"' + H(a.height) + '" id\x3d"adaptvCompanionAd" align\x3d"middle"\x3e\x3cparam name\x3d"movie" value\x3d"' + H(a.creativeUrl) + '" /\x3e\x3cparam name\x3d"wmode" value\x3d"transparent" /\x3e\x3cparam name\x3d"allowScriptAccess" value\x3d"always" /\x3e\x3cembed src\x3d"' + H(a.creativeUrl) + '" width\x3d"' + H(a.width) + '" height\x3d"' + H(a.height) + '" name\x3d"player" align\x3d"middle" wmode\x3d"transparent" allowScriptAccess\x3d"always" type\x3d"application/x-shockwave-flash" style\x3d"z-index:2" /\x3e\x3c/object\x3e'
+}
+function tb(a) {
+  return'\x3cimg src\x3d"' + H(a.url) + '" alt\x3d"" width\x3d0 height\x3d0 style\x3d"border:0px none; display: none;" /\x3e'
+}
+;function ub(a) {
+  if("function" == typeof a.u) {
+    return a.u()
+  }
+  if(p(a)) {
+    return a.split("")
+  }
+  if(ea(a)) {
+    for(var b = [], c = a.length, d = 0;d < c;d++) {
+      b.push(a[d])
+    }
+    return b
+  }
+  return ab(a)
+}
+function vb(a, b, c) {
+  if("function" == typeof a.forEach) {
+    a.forEach(b, c)
+  }else {
+    if(ea(a) || p(a)) {
+      u(a, b, c)
+    }else {
+      var d;
+      if("function" == typeof a.J) {
+        d = a.J()
+      }else {
+        if("function" != typeof a.u) {
+          if(ea(a) || p(a)) {
+            d = [];
+            for(var e = a.length, f = 0;f < e;f++) {
+              d.push(f)
+            }
+          }else {
+            d = bb(a)
+          }
+        }else {
+          d = void 0
+        }
+      }
+      for(var e = ub(a), f = e.length, h = 0;h < f;h++) {
+        b.call(c, e[h], d && d[h], a)
+      }
+    }
+  }
+}
+;function wb(a, b) {
+  this.A = {};
+  this.i = [];
+  this.tb = this.f = 0;
+  var c = arguments.length;
+  if(1 < c) {
+    if(c % 2) {
+      throw Error("Uneven number of arguments");
+    }
+    for(var d = 0;d < c;d += 2) {
+      this.set(arguments[d], arguments[d + 1])
+    }
+  }else {
+    if(a) {
+      a instanceof wb ? (c = a.J(), d = a.u()) : (c = bb(a), d = ab(a));
+      for(var e = 0;e < c.length;e++) {
+        this.set(c[e], d[e])
+      }
+    }
+  }
+}
+l = wb.prototype;
+l.u = function() {
+  xb(this);
+  for(var a = [], b = 0;b < this.i.length;b++) {
+    a.push(this.A[this.i[b]])
+  }
+  return a
+};
+l.J = function() {
+  xb(this);
+  return this.i.concat()
+};
+l.s = function(a) {
+  return I(this.A, a)
+};
+l.remove = function(a) {
+  return I(this.A, a) ? (delete this.A[a], this.f--, this.tb++, this.i.length > 2 * this.f && xb(this), !0) : !1
+};
+function xb(a) {
+  if(a.f != a.i.length) {
+    for(var b = 0, c = 0;b < a.i.length;) {
+      var d = a.i[b];
+      I(a.A, d) && (a.i[c++] = d);
+      b++
+    }
+    a.i.length = c
+  }
+  if(a.f != a.i.length) {
+    for(var e = {}, c = b = 0;b < a.i.length;) {
+      d = a.i[b], I(e, d) || (a.i[c++] = d, e[d] = 1), b++
+    }
+    a.i.length = c
+  }
+}
+l.get = function(a, b) {
+  return I(this.A, a) ? this.A[a] : b
+};
+l.set = function(a, b) {
+  I(this.A, a) || (this.f++, this.i.push(a), this.tb++);
+  this.A[a] = b
+};
+l.K = function() {
+  return new wb(this)
+};
+function I(a, b) {
+  return Object.prototype.hasOwnProperty.call(a, b)
+}
+;function yb(a) {
+  return zb(a || arguments.callee.caller, [])
+}
+function zb(a, b) {
+  var c = [];
+  if(0 <= ya(b, a)) {
+    c.push("[...circular reference...]")
+  }else {
+    if(a && 50 > b.length) {
+      c.push(Ab(a) + "(");
+      for(var d = a.arguments, e = 0;e < d.length;e++) {
+        0 < e && c.push(", ");
+        var f;
+        f = d[e];
+        switch(typeof f) {
+          case "object":
+            f = f ? "object" : "null";
+            break;
+          case "string":
+            break;
+          case "number":
+            f = String(f);
+            break;
+          case "boolean":
+            f = f ? "true" : "false";
+            break;
+          case "function":
+            f = (f = Ab(f)) ? f : "[fn]";
+            break;
+          default:
+            f = typeof f
+        }
+        40 < f.length && (f = f.substr(0, 40) + "...");
+        c.push(f)
+      }
+      b.push(a);
+      c.push(")\n");
+      try {
+        c.push(zb(a.caller, b))
+      }catch(h) {
+        c.push("[exception trying to get caller]\n")
+      }
+    }else {
+      a ? c.push("[...long stack...]") : c.push("[end]")
+    }
+  }
+  return c.join("")
+}
+function Ab(a) {
+  if(Bb[a]) {
+    return Bb[a]
+  }
+  a = String(a);
+  if(!Bb[a]) {
+    var b = /function ([^\(]+)/.exec(a);
+    Bb[a] = b ? b[1] : "[Anonymous]"
+  }
+  return Bb[a]
+}
+var Bb = {};
+function Cb() {
+  0 != Db && (this.Rc = Error().stack, Eb[this[fa] || (this[fa] = ++ga)] = this)
+}
+var Db = 0, Eb = {};
+Cb.prototype.Ba = !1;
+Cb.prototype.fa = function() {
+  if(!this.Ba && (this.Ba = !0, this.L(), 0 != Db)) {
+    var a = this[fa] || (this[fa] = ++ga);
+    delete Eb[a]
+  }
+};
+Cb.prototype.L = function() {
+  if(this.eb) {
+    for(;this.eb.length;) {
+      this.eb.shift()()
+    }
+  }
+};
+var Fb = !w || w && 9 <= Ya, Gb = w && !B("9");
+!A || B("528");
+z && B("1.9b") || w && B("8") || Ma && B("9.5") || A && B("528");
+z && !B("8") || w && B("9");
+function Hb(a, b) {
+  this.type = a;
+  this.currentTarget = this.target = b
+}
+l = Hb.prototype;
+l.L = g();
+l.fa = g();
+l.Q = !1;
+l.defaultPrevented = !1;
+l.ob = !0;
+l.preventDefault = function() {
+  this.defaultPrevented = !0;
+  this.ob = !1
+};
+function Ib(a) {
+  Ib[" "](a);
+  return a
+}
+Ib[" "] = da;
+function Jb(a, b) {
+  a && this.init(a, b)
+}
+s(Jb, Hb);
+l = Jb.prototype;
+l.target = null;
+l.relatedTarget = null;
+l.offsetX = 0;
+l.offsetY = 0;
+l.clientX = 0;
+l.clientY = 0;
+l.screenX = 0;
+l.screenY = 0;
+l.button = 0;
+l.keyCode = 0;
+l.charCode = 0;
+l.ctrlKey = !1;
+l.altKey = !1;
+l.shiftKey = !1;
+l.metaKey = !1;
+l.jc = !1;
+l.Ua = null;
+l.init = function(a, b) {
+  var c = this.type = a.type;
+  Hb.call(this, c);
+  this.target = a.target || a.srcElement;
+  this.currentTarget = b;
+  var d = a.relatedTarget;
+  if(d) {
+    if(z) {
+      var e;
+      a: {
+        try {
+          Ib(d.nodeName);
+          e = !0;
+          break a
+        }catch(f) {
+        }
+        e = !1
+      }
+      e || (d = null)
+    }
+  }else {
+    "mouseover" == c ? d = a.fromElement : "mouseout" == c && (d = a.toElement)
+  }
+  this.relatedTarget = d;
+  this.offsetX = A || void 0 !== a.offsetX ? a.offsetX : a.layerX;
+  this.offsetY = A || void 0 !== a.offsetY ? a.offsetY : a.layerY;
+  this.clientX = void 0 !== a.clientX ? a.clientX : a.pageX;
+  this.clientY = void 0 !== a.clientY ? a.clientY : a.pageY;
+  this.screenX = a.screenX || 0;
+  this.screenY = a.screenY || 0;
+  this.button = a.button;
+  this.keyCode = a.keyCode || 0;
+  this.charCode = a.charCode || ("keypress" == c ? a.keyCode : 0);
+  this.ctrlKey = a.ctrlKey;
+  this.altKey = a.altKey;
+  this.shiftKey = a.shiftKey;
+  this.metaKey = a.metaKey;
+  this.jc = Oa ? a.metaKey : a.ctrlKey;
+  this.state = a.state;
+  this.Ua = a;
+  a.defaultPrevented && this.preventDefault();
+  delete this.Q
+};
+l.preventDefault = function() {
+  Jb.Pa.preventDefault.call(this);
+  var a = this.Ua;
+  if(a.preventDefault) {
+    a.preventDefault()
+  }else {
+    if(a.returnValue = !1, Gb) {
+      try {
+        if(a.ctrlKey || 112 <= a.keyCode && 123 >= a.keyCode) {
+          a.keyCode = -1
+        }
+      }catch(b) {
+      }
+    }
+  }
+};
+l.L = g();
+var Kb = "closure_listenable_" + (1E6 * Math.random() | 0);
+function Lb(a) {
+  try {
+    return!(!a || !a[Kb])
+  }catch(b) {
+    return!1
+  }
+}
+var Mb = 0;
+function Nb(a, b, c, d, e) {
+  this.P = a;
+  this.la = null;
+  this.src = b;
+  this.type = c;
+  this.capture = !!d;
+  this.ha = e;
+  this.key = ++Mb;
+  this.W = this.ea = !1
+}
+function Ob(a) {
+  a.W = !0;
+  a.P = null;
+  a.la = null;
+  a.src = null;
+  a.ha = null
+}
+;function Pb(a) {
+  this.src = a;
+  this.j = {};
+  this.ca = 0
+}
+Pb.prototype.add = function(a, b, c, d, e) {
+  var f = this.j[a];
+  f || (f = this.j[a] = [], this.ca++);
+  var h = Qb(f, b, d, e);
+  -1 < h ? (a = f[h], c || (a.ea = !1)) : (a = new Nb(b, this.src, a, !!d, e), a.ea = c, f.push(a));
+  return a
+};
+Pb.prototype.remove = function(a, b, c, d) {
+  if(!(a in this.j)) {
+    return!1
+  }
+  var e = this.j[a];
+  b = Qb(e, b, c, d);
+  return-1 < b ? (Ob(e[b]), t.splice.call(e, b, 1), 0 == e.length && (delete this.j[a], this.ca--), !0) : !1
+};
+function Rb(a, b) {
+  var c = b.type;
+  c in a.j && Ca(a.j[c], b) && (Ob(b), 0 == a.j[c].length && (delete a.j[c], a.ca--))
+}
+Pb.prototype.Ha = function(a, b, c, d) {
+  a = this.j[a];
+  var e = -1;
+  a && (e = Qb(a, b, c, d));
+  return-1 < e ? a[e] : null
+};
+function Qb(a, b, c, d) {
+  for(var e = 0;e < a.length;++e) {
+    var f = a[e];
+    if(!f.W && f.P == b && f.capture == !!c && f.ha == d) {
+      return e
+    }
+  }
+  return-1
+}
+;var Sb = "closure_lm_" + (1E6 * Math.random() | 0), Tb = {}, Ub = 0;
+function Vb(a, b, c, d, e) {
+  if("array" == n(b)) {
+    for(var f = 0;f < b.length;f++) {
+      Vb(a, b[f], c, d, e)
+    }
+  }else {
+    if(c = Wb(c), Lb(a)) {
+      a.I.add(String(b), c, !1, d, e)
+    }else {
+      if(!b) {
+        throw Error("Invalid event type");
+      }
+      var f = !!d, h = Xb(a);
+      h || (a[Sb] = h = new Pb(a));
+      c = h.add(b, c, !1, d, e);
+      c.la || (d = Yb(), c.la = d, d.src = a, d.P = c, a.addEventListener ? a.addEventListener(b, d, f) : a.attachEvent(b in Tb ? Tb[b] : Tb[b] = "on" + b, d), Ub++)
+    }
+  }
+}
+function Yb() {
+  var a = Zb, b = Fb ? function(c) {
+    return a.call(b.src, b.P, c)
+  } : function(c) {
+    c = a.call(b.src, b.P, c);
+    if(!c) {
+      return c
+    }
+  };
+  return b
+}
+function $b(a, b, c, d, e) {
+  if("array" == n(b)) {
+    for(var f = 0;f < b.length;f++) {
+      $b(a, b[f], c, d, e)
+    }
+  }else {
+    c = Wb(c), Lb(a) ? a.I.remove(String(b), c, d, e) : a && (a = Xb(a)) && (b = a.Ha(b, c, !!d, e)) && ac(b)
+  }
+}
+function ac(a) {
+  if("number" != typeof a && a && !a.W) {
+    var b = a.src;
+    if(Lb(b)) {
+      Rb(b.I, a)
+    }else {
+      var c = a.type, d = a.la;
+      b.removeEventListener ? b.removeEventListener(c, d, a.capture) : b.detachEvent && b.detachEvent(c in Tb ? Tb[c] : Tb[c] = "on" + c, d);
+      Ub--;
+      (c = Xb(b)) ? (Rb(c, a), 0 == c.ca && (c.src = null, b[Sb] = null)) : Ob(a)
+    }
+  }
+}
+function bc(a, b, c, d) {
+  var e = 1;
+  if(a = Xb(a)) {
+    if(b = a.j[b]) {
+      for(b = Ea(b), a = 0;a < b.length;a++) {
+        var f = b[a];
+        f && (f.capture == c && !f.W) && (e &= !1 !== cc(f, d))
+      }
+    }
+  }
+  return Boolean(e)
+}
+function cc(a, b) {
+  var c = a.P, d = a.ha || a.src;
+  a.ea && ac(a);
+  return c.call(d, b)
+}
+function Zb(a, b) {
+  if(a.W) {
+    return!0
+  }
+  if(!Fb) {
+    var c = b || ca("window.event"), d = new Jb(c, this), e = !0;
+    if(!(0 > c.keyCode || void 0 != c.returnValue)) {
+      a: {
+        var f = !1;
+        if(0 == c.keyCode) {
+          try {
+            c.keyCode = -1;
+            break a
+          }catch(h) {
+            f = !0
+          }
+        }
+        if(f || void 0 == c.returnValue) {
+          c.returnValue = !0
+        }
+      }
+      c = [];
+      for(f = d.currentTarget;f;f = f.parentNode) {
+        c.push(f)
+      }
+      for(var f = a.type, k = c.length - 1;!d.Q && 0 <= k;k--) {
+        d.currentTarget = c[k], e &= bc(c[k], f, !0, d)
+      }
+      for(k = 0;!d.Q && k < c.length;k++) {
+        d.currentTarget = c[k], e &= bc(c[k], f, !1, d)
+      }
+    }
+    return e
+  }
+  return cc(a, new Jb(b, this))
+}
+function Xb(a) {
+  a = a[Sb];
+  return a instanceof Pb ? a : null
+}
+var dc = "__closure_events_fn_" + (1E9 * Math.random() >>> 0);
+function Wb(a) {
+  return"function" == n(a) ? a : a[dc] || (a[dc] = function(b) {
+    return a.handleEvent(b)
+  })
+}
+;function J() {
+  Cb.call(this);
+  this.I = new Pb(this);
+  this.Gb = this
+}
+s(J, Cb);
+J.prototype[Kb] = !0;
+l = J.prototype;
+l.Ma = null;
+l.addEventListener = function(a, b, c, d) {
+  Vb(this, a, b, c, d)
+};
+l.removeEventListener = function(a, b, c, d) {
+  $b(this, a, b, c, d)
+};
+l.dispatchEvent = function(a) {
+  var b, c = this.Ma;
+  if(c) {
+    for(b = [];c;c = c.Ma) {
+      b.push(c)
+    }
+  }
+  var c = this.Gb, d = a.type || a;
+  if(p(a)) {
+    a = new Hb(a, c)
+  }else {
+    if(a instanceof Hb) {
+      a.target = a.target || c
+    }else {
+      var e = a;
+      a = new Hb(d, c);
+      db(a, e)
+    }
+  }
+  var e = !0, f;
+  if(b) {
+    for(var h = b.length - 1;!a.Q && 0 <= h;h--) {
+      f = a.currentTarget = b[h], e = ec(f, d, !0, a) && e
+    }
+  }
+  a.Q || (f = a.currentTarget = c, e = ec(f, d, !0, a) && e, a.Q || (e = ec(f, d, !1, a) && e));
+  if(b) {
+    for(h = 0;!a.Q && h < b.length;h++) {
+      f = a.currentTarget = b[h], e = ec(f, d, !1, a) && e
+    }
+  }
+  return e
+};
+l.L = function() {
+  J.Pa.L.call(this);
+  if(this.I) {
+    var a = this.I, b = 0, c;
+    for(c in a.j) {
+      for(var d = a.j[c], e = 0;e < d.length;e++) {
+        ++b, Ob(d[e])
+      }
+      delete a.j[c];
+      a.ca--
+    }
+  }
+  this.Ma = null
+};
+function ec(a, b, c, d) {
+  b = a.I.j[String(b)];
+  if(!b) {
+    return!0
+  }
+  b = Ea(b);
+  for(var e = !0, f = 0;f < b.length;++f) {
+    var h = b[f];
+    if(h && !h.W && h.capture == c) {
+      var k = h.P, y = h.ha || h.src;
+      h.ea && Rb(a.I, h);
+      e = !1 !== k.call(y, d) && e
+    }
+  }
+  return e && !1 != d.ob
+}
+l.Ha = function(a, b, c, d) {
+  return this.I.Ha(String(a), b, c, d)
+};
+function fc(a, b, c) {
+  if("function" == n(a)) {
+    c && (a = q(a, c))
+  }else {
+    if(a && "function" == typeof a.handleEvent) {
+      a = q(a.handleEvent, a)
+    }else {
+      throw Error("Invalid listener argument");
+    }
+  }
+  return 2147483647 < b ? -1 : m.setTimeout(a, b || 0)
+}
+;var gc = RegExp("^(?:([^:/?#.]+):)?(?://(?:([^/?#]*)@)?([^/#?]*?)(?::([0-9]+))?(?\x3d[/#?]|$))?([^?#]+)?(?:\\?([^#]*))?(?:#(.*))?$");
+function hc(a) {
+  if(ic) {
+    ic = !1;
+    var b = m.location;
+    if(b) {
+      var c = b.href;
+      if(c && (c = (c = hc(c)[3] || null) && decodeURIComponent(c)) && c != b.hostname) {
+        throw ic = !0, Error();
+      }
+    }
+  }
+  return a.match(gc)
+}
+var ic = A;
+function K(a, b) {
+  var c;
+  if(a instanceof K) {
+    this.q = void 0 !== b ? b : a.q, jc(this, a.B), c = a.R, L(this), this.R = c, kc(this, a.H), lc(this, a.V), c = a.v, L(this), this.v = c, mc(this, a.m.K()), c = a.M, L(this), this.M = c
+  }else {
+    if(a && (c = hc(String(a)))) {
+      this.q = !!b;
+      jc(this, c[1] || "", !0);
+      var d = c[2] || "";
+      L(this);
+      this.R = M(d);
+      kc(this, c[3] || "", !0);
+      lc(this, c[4]);
+      d = c[5] || "";
+      L(this);
+      this.v = M(d);
+      mc(this, c[6] || "", !0);
+      c = c[7] || "";
+      L(this);
+      this.M = M(c)
+    }else {
+      this.q = !!b, this.m = new nc(null, 0, this.q)
+    }
+  }
+}
+l = K.prototype;
+l.B = "";
+l.R = "";
+l.H = "";
+l.V = null;
+l.v = "";
+l.M = "";
+l.Tb = !1;
+l.q = !1;
+l.toString = function() {
+  var a = [], b = this.B;
+  b && a.push(oc(b, pc), ":");
+  if(b = this.H) {
+    a.push("//");
+    var c = this.R;
+    c && a.push(oc(c, pc), "@");
+    a.push(encodeURIComponent(String(b)));
+    b = this.V;
+    null != b && a.push(":", String(b))
+  }
+  if(b = this.v) {
+    this.H && "/" != b.charAt(0) && a.push("/"), a.push(oc(b, "/" == b.charAt(0) ? qc : rc))
+  }
+  (b = this.m.toString()) && a.push("?", b);
+  (b = this.M) && a.push("#", oc(b, sc));
+  return a.join("")
+};
+l.na = function(a) {
+  var b = this.K(), c = !!a.B;
+  c ? jc(b, a.B) : c = !!a.R;
+  if(c) {
+    var d = a.R;
+    L(b);
+    b.R = d
+  }else {
+    c = !!a.H
+  }
+  c ? kc(b, a.H) : c = null != a.V;
+  d = a.v;
+  if(c) {
+    lc(b, a.V)
+  }else {
+    if(c = !!a.v) {
+      if("/" != d.charAt(0)) {
+        if(this.H && !this.v) {
+          d = "/" + d
+        }else {
+          var e = b.v.lastIndexOf("/");
+          -1 != e && (d = b.v.substr(0, e + 1) + d)
+        }
+      }
+      e = d;
+      if(".." == e || "." == e) {
+        d = ""
+      }else {
+        if(-1 != e.indexOf("./") || -1 != e.indexOf("/.")) {
+          for(var d = 0 == e.lastIndexOf("/", 0), e = e.split("/"), f = [], h = 0;h < e.length;) {
+            var k = e[h++];
+            "." == k ? d && h == e.length && f.push("") : ".." == k ? ((1 < f.length || 1 == f.length && "" != f[0]) && f.pop(), d && h == e.length && f.push("")) : (f.push(k), d = !0)
+          }
+          d = f.join("/")
+        }else {
+          d = e
+        }
+      }
+    }
+  }
+  c ? (L(b), b.v = d) : c = "" !== a.m.toString();
+  c ? mc(b, M(a.m.toString())) : c = !!a.M;
+  c && (a = a.M, L(b), b.M = a);
+  return b
+};
+l.K = function() {
+  return new K(this)
+};
+function jc(a, b, c) {
+  L(a);
+  a.B = c ? M(b) : b;
+  a.B && (a.B = a.B.replace(/:$/, ""))
+}
+function kc(a, b, c) {
+  L(a);
+  a.H = c ? M(b) : b;
+  return a
+}
+function lc(a, b) {
+  L(a);
+  if(b) {
+    b = Number(b);
+    if(isNaN(b) || 0 > b) {
+      throw Error("Bad port number " + b);
+    }
+    a.V = b
+  }else {
+    a.V = null
+  }
+}
+function mc(a, b, c) {
+  L(a);
+  b instanceof nc ? (a.m = b, a.m.Na(a.q)) : (c || (b = oc(b, tc)), a.m = new nc(b, 0, a.q))
+}
+function uc(a, b, c) {
+  L(a);
+  a.m.set(b, c)
+}
+function L(a) {
+  if(a.Tb) {
+    throw Error("Tried to modify a read-only Uri");
+  }
+}
+l.Na = function(a) {
+  this.q = a;
+  this.m && this.m.Na(a);
+  return this
+};
+function vc(a) {
+  return a instanceof K ? a.K() : new K(a, void 0)
+}
+function M(a) {
+  return a ? decodeURIComponent(a) : ""
+}
+function oc(a, b) {
+  return p(a) ? encodeURI(a).replace(b, wc) : null
+}
+function wc(a) {
+  a = a.charCodeAt(0);
+  return"%" + (a >> 4 & 15).toString(16) + (a & 15).toString(16)
+}
+var pc = /[#\/\?@]/g, rc = /[\#\?:]/g, qc = /[\#\?]/g, tc = /[\#\?@]/g, sc = /#/g;
+function nc(a, b, c) {
+  this.o = a || null;
+  this.q = !!c
+}
+function N(a) {
+  if(!a.d && (a.d = new wb, a.f = 0, a.o)) {
+    for(var b = a.o.split("\x26"), c = 0;c < b.length;c++) {
+      var d = b[c].indexOf("\x3d"), e = null, f = null;
+      0 <= d ? (e = b[c].substring(0, d), f = b[c].substring(d + 1)) : e = b[c];
+      e = decodeURIComponent(e.replace(/\+/g, " "));
+      e = O(a, e);
+      a.add(e, f ? decodeURIComponent(f.replace(/\+/g, " ")) : "")
+    }
+  }
+}
+l = nc.prototype;
+l.d = null;
+l.f = null;
+l.add = function(a, b) {
+  N(this);
+  this.o = null;
+  a = O(this, a);
+  var c = this.d.get(a);
+  c || this.d.set(a, c = []);
+  c.push(b);
+  this.f++;
+  return this
+};
+l.remove = function(a) {
+  N(this);
+  a = O(this, a);
+  return this.d.s(a) ? (this.o = null, this.f -= this.d.get(a).length, this.d.remove(a)) : !1
+};
+l.s = function(a) {
+  N(this);
+  a = O(this, a);
+  return this.d.s(a)
+};
+l.J = function() {
+  N(this);
+  for(var a = this.d.u(), b = this.d.J(), c = [], d = 0;d < b.length;d++) {
+    for(var e = a[d], f = 0;f < e.length;f++) {
+      c.push(b[d])
+    }
+  }
+  return c
+};
+l.u = function(a) {
+  N(this);
+  var b = [];
+  if(p(a)) {
+    this.s(a) && (b = Da(b, this.d.get(O(this, a))))
+  }else {
+    a = this.d.u();
+    for(var c = 0;c < a.length;c++) {
+      b = Da(b, a[c])
+    }
+  }
+  return b
+};
+l.set = function(a, b) {
+  N(this);
+  this.o = null;
+  a = O(this, a);
+  this.s(a) && (this.f -= this.d.get(a).length);
+  this.d.set(a, [b]);
+  this.f++;
+  return this
+};
+l.get = function(a, b) {
+  var c = a ? this.u(a) : [];
+  return 0 < c.length ? String(c[0]) : b
+};
+l.toString = function() {
+  if(this.o) {
+    return this.o
+  }
+  if(!this.d) {
+    return""
+  }
+  for(var a = [], b = this.d.J(), c = 0;c < b.length;c++) {
+    for(var d = b[c], e = encodeURIComponent(String(d)), d = this.u(d), f = 0;f < d.length;f++) {
+      var h = e;
+      "" !== d[f] && (h += "\x3d" + encodeURIComponent(String(d[f])));
+      a.push(h)
+    }
+  }
+  return this.o = a.join("\x26")
+};
+l.K = function() {
+  var a = new nc;
+  a.o = this.o;
+  this.d && (a.d = this.d.K(), a.f = this.f);
+  return a
+};
+function O(a, b) {
+  var c = String(b);
+  a.q && (c = c.toLowerCase());
+  return c
+}
+l.Na = function(a) {
+  a && !this.q && (N(this), this.o = null, vb(this.d, function(a, c) {
+    var d = c.toLowerCase();
+    c != d && (this.remove(c), this.remove(d), 0 < a.length && (this.o = null, this.d.set(O(this, d), Ea(a)), this.f += a.length))
+  }, this));
+  this.q = a
+};
+var xc = ["adap.tv", "effec.tv", "adaptv.advertising.com"];
+function yc(a) {
+  a = E.ma(tb, {url:a});
+  document.body.appendChild(a)
+}
+function zc() {
+  if("undefined" !== typeof navigator.plugins && "object" === typeof navigator.plugins["Shockwave Flash"] && "undefined" !== typeof navigator.mimeTypes && navigator.mimeTypes["application/x-shockwave-flash"] && navigator.mimeTypes["application/x-shockwave-flash"].enabledPlugin) {
+    return!0
+  }
+  if("undefined" !== typeof window.ActiveXObject) {
+    try {
+      if(new window.ActiveXObject("ShockwaveFlash.ShockwaveFlash")) {
+        return!0
+      }
+    }catch(a) {
+    }
+  }
+  return!1
+}
+function Ac(a) {
+  var b = !1;
+  u(xc, function(c) {
+    0 < vc(a).H.indexOf(c) && (b = !0)
+  });
+  return b
+}
+function Bc(a) {
+  var b = document.createElement("video");
+  return!b.canPlayType || (!a || !a.type) || Ja().toLowerCase().match(/(ipad|iphone|ipod)/g) && "video/mp4" === a.type && (1080 < a.height || 1920 < a.width) ? !1 : "" !== b.canPlayType(a.type)
+}
+;var Cc;
+Cc = (new K((new la).Eb)).B;
+0 !== Cc.indexOf("http") && (Cc = "https");
+var Dc = /{([\w.]*)}|(<([^<>]*)>)|(\[([\w.]*)\])/g;
+function Ec(a, b) {
+  K.call(this, a, b)
+}
+s(Ec, K);
+Ec.prototype.Wa = function() {
+  var a = M(this.m.toString()), a = a.replace(Dc, "");
+  mc(this, a, void 0);
+  return this.toString()
+};
+function P(a, b) {
+  this.errorCode = a;
+  this.errorMessage = b || ""
+}
+;var Fc = new P(9411, "The adTag response is invalid."), Gc = new P(9412, "The video format is not supported."), Hc = new P(9413, "Wrapper limit reached."), Ic = new P(9560, "No more ads or no failover available"), Jc = new P(9412, "The video format is not supported."), Kc = new P(9414, "Quartile events are before Impression event."), Lc = new P(9416, "General VPAID error."), Mc = new P(9417, "Ad slot is required in order to play VPAID Flash"), Nc = new P(9514, "Ad slots are not defined correctly."), 
+Oc = new P(9515, "AdTag URL or the publisherId is not passed in params."), Pc = new P(9522, "Ad Started timeout: startAd call to AdStarted event."), Qc = new P(9525, "Ad Opportunity timeout: initAd call to AdLoaded event for entire opportunity."), Rc = new P(9526, "Ad Loaded timeout: initAd call to AdLoaded event for a single Ad."), Sc = new P(9560, "No more ads or no failover available"), Tc = new P(9570, "Failed to inject Code Dependencies."), Uc = new P(9514, "Ad slots are not defined correctly."), 
+Vc = new P(9515, "AdTag URL or the publisherId is not passed in params."), Wc = new P(9570, "Failed to inject GoogleIMA3 Dependencies."), Xc = new P(9571, "Failed to initialize GoogleIMA3 adManager."), Yc = new P(9401, "Error while resolving the adTag URL."), Zc = new P(9402, "Timeout while resolving the adTag URL."), $c = new P(9430, "VAST schema validation error."), ad = new P(9431, "Empty VAST response."), bd = new P(9432, "No ad found in ad tag response."), cd = new P(9521, "Error while trying to play media files."), 
+dd = new P(9523, "Invalid ad container."), ed = new P(9524, "HTML5 element tag is not supported to play an ad.");
+function fd() {
+  this.$ = !1;
+  this.n = [];
+  this.error = new P(0, "")
+}
+fd.prototype.push = function(a) {
+  this.n.push(a)
+};
+function gd(a, b) {
+  this.depth = b;
+  this.k = new hd;
+  this.k.push(a)
+}
+function id() {
+  this.surveyURL = "";
+  this.beacons = [];
+  this.b = [];
+  this.S = [];
+  this.companionString = "";
+  this.p = {scripts:[], adChromes:[]}
+}
+function jd() {
+  this.qa = "";
+  this.beacons = [];
+  this.b = [];
+  this.S = [];
+  this.p = {scripts:[], adChromes:[]}
+}
+function kd() {
+  this.duration = 0;
+  this.beacons = [];
+  this.clickThrough = "";
+  this.mediaFiles = [];
+  this.adParameters = "";
+  this.hasAdaptvParams = !1;
+  this.skipoffset = ""
+}
+function ld() {
+  this.width = this.height = this.bitrate = 0;
+  this.apiFramework = this.url = this.type = this.delivery = ""
+}
+function md() {
+  var a;
+  a = a || {};
+  this.adListIndex = 0;
+  this.adListSize = 1;
+  this.adParameters = [];
+  this.beacons = a.beacons || [];
+  this.clickThrough = a.clickThrough || "";
+  this.companions = a.companions || [];
+  this.companionString = a.companionString || "";
+  this.data = {AdParameters:""};
+  a && a.adParameters && (this.adParameters = a.adParameters, 0 < a.adParameters.length && (this.data = {AdParameters:a.adParameters[a.adParameters.length - 1]}));
+  this.duration = a.duration || "";
+  this.error = a.error ? new P(a.error.errorCode, a.error.errorMessage) : new P(0, "");
+  this.adChromes = a.adChromes || [];
+  this.isFLV = a.isFLV || !1;
+  this.isVPAID = a.isVPAID || !1;
+  this.hasAdaptvParams = a.hasAdaptvParams || !1;
+  this.mediaFile = null;
+  this.mediaFiles = a.mediaFiles || [];
+  this.scripts = a.scripts || [];
+  this.skipoffset = a.skipoffset || "";
+  this.surveyURL = a.surveyURL || ""
+}
+function hd() {
+  this.stack = []
+}
+hd.prototype.push = function(a) {
+  this.stack.push(a)
+};
+hd.prototype.size = function() {
+  return this.stack.length
+};
+function nd(a, b) {
+  for(var c = [], d = a.stack, e = 0;e < d.length;e++) {
+    d[e] && d[e].beacons.beaconsForEvent[b] && (c = c.concat(d[e].beacons.beaconsForEvent[b])), d[e] && (d[e].b && d[e].b[0] && d[e].b[0].beacons.beaconsForEvent[b]) && (c = c.concat(d[e].b[0].beacons.beaconsForEvent[b]))
+  }
+  return c
+}
+function od(a) {
+  var b = [];
+  u(a.stack, function(a) {
+    if(a.p && a.p.adChromes && a.p.adChromes.length) {
+      for(var d = 0;d < a.p.adChromes.length;d++) {
+        b.push(a.p.adChromes[d])
+      }
+    }
+  });
+  return b
+}
+function pd(a) {
+  for(var b = [], c = 0;c < a.stack.length;c++) {
+    a.stack[c].b && (a.stack[c].b[0] && a.stack[c].b[0].adParameters) && b.push(a.stack[c].b[0].adParameters)
+  }
+  return b
+}
+function qd(a) {
+  var b = [];
+  a = a.stack;
+  for(var c = 0;c < a.length;c++) {
+    a[c].beacons.beacons && (b = b.concat(a[c].beacons.beacons)), a[c].b && (a[c].b[0] && a[c].b[0].beacons.beacons) && (b = b.concat(a[c].b[0].beacons.beacons))
+  }
+  return b
+}
+function rd(a) {
+  var b = [];
+  u(a.stack, function(a) {
+    a.p && (a.p.scripts && a.p.scripts.length) && (b = b.concat(a.p.scripts))
+  });
+  return b
+}
+function sd(a) {
+  return(a = a.stack) && a.length ? a[a.length - 1] : null
+}
+function td() {
+  this.beacons = [];
+  this.beaconsForEvent = {}
+}
+td.prototype.add = function(a, b, c) {
+  var d;
+  a: {
+    d = Q;
+    for(var e in d) {
+      if(d[e] == a) {
+        d = !0;
+        break a
+      }
+    }
+    d = !1
+  }
+  d && (this.beacons.push({beaconType:a, fired:!1, offset:c, url:b}), this.beaconsForEvent[a] = this.beaconsForEvent[a] || [], this.beaconsForEvent[a].push(b))
+};
+var Q = {sa:"attempt", wb:"clickThru", tc:"companionDisplay", uc:"complete", Ra:"creativeView", ta:"error", vc:"firstQuartile", wc:"iab_detection_failed", xc:"iab_detection_started", yc:"iab_viewable", yb:"impression", zc:"loaded", Dc:"midpoint", Ec:"mute", Fc:"pause", Gc:"progress", Hc:"resume", Jc:"start", Kc:"stopped", Ic:"skip", Lc:"thirdQuartile", Mc:"unmute"};
+function ud(a, b) {
+  this.width = a;
+  this.height = b;
+  this.label = a + "x" + b
+}
+function vd() {
+  this.creativeType = this.resourceType = "";
+  this.beacons = this.height = this.width = this.companionSize = null;
+  this.htmlTag = this.creativeUrl = this.clickThrough = "";
+  this.valid = !0
+}
+vd.prototype.normalize = function() {
+  switch(this.resourceType) {
+    case "static":
+    ;
+    case "other":
+      switch(this.creativeType) {
+        case "image/png":
+        ;
+        case "image/jpeg":
+        ;
+        case "image/gif":
+        ;
+        case "png":
+        ;
+        case "jpeg":
+        ;
+        case "gif":
+          this.htmlTag = E.ma(rb, {Kb:this.clickThrough, creativeUrl:this.creativeUrl, width:this.companionSize.width, height:this.companionSize.height}).outerHTML;
+          break;
+        case "swf":
+        ;
+        case "application/x-shockwave-flash":
+          var a = Ja().toLowerCase();
+          if(0 <= a.indexOf("iphone") || 0 <= a.indexOf("ipad") || 0 <= a.indexOf("ipod")) {
+            this.valid = !1;
+            break
+          }
+          if(this.clickThrough) {
+            a = vc(this.creativeUrl);
+            a.m.s("clickTag") || uc(a, "clickTag", this.clickThrough);
+            var b = a.toString();
+            a.m.s("clicktag") || uc(a, "clicktag", this.clickThrough);
+            this.creativeUrl = 2064 > a.toString().length ? a.toString() : b
+          }
+          this.htmlTag = E.ma(sb, {creativeUrl:this.creativeUrl, width:this.companionSize.width, height:this.companionSize.height}).outerHTML
+      }
+      this.resourceType = "html";
+    case "html":
+      a = "";
+      if((b = this.beacons.beaconsForEvent[Q.Ra]) && b.length) {
+        for(var c = 0;c < b.length;c++) {
+          a += E.ma(tb, {url:b[c]}).outerHTML
+        }
+      }
+      this.htmlTag = a + this.htmlTag
+  }
+  this.width = this.companionSize.width;
+  this.height = this.companionSize.height;
+  return this
+};
+function wd(a, b) {
+  this.type = a;
+  this.data = b || {}
+}
+;function R(a, b, c, d, e) {
+  this.reset(a, b, c, d, e)
+}
+R.prototype.nc = 0;
+R.prototype.Fa = null;
+R.prototype.Ea = null;
+var xd = 0;
+R.prototype.reset = function(a, b, c, d, e) {
+  this.nc = "number" == typeof e ? e : xd++;
+  this.rb = d || ka();
+  this.O = a;
+  this.cb = b;
+  this.bb = c;
+  delete this.Fa;
+  delete this.Ea
+};
+R.prototype.Oa = function(a) {
+  this.O = a
+};
+function S(a) {
+  this.Ub = a
+}
+S.prototype.ka = null;
+S.prototype.O = null;
+S.prototype.ya = null;
+S.prototype.U = null;
+function T(a, b) {
+  this.name = a;
+  this.value = b
+}
+T.prototype.toString = aa("name");
+var yd = new T("SHOUT", 1200), zd = new T("SEVERE", 1E3), Ad = new T("WARNING", 900), Bd = new T("INFO", 800), Cd = new T("CONFIG", 700), Dd = new T("FINE", 500), Ed = new T("ALL", 0);
+l = S.prototype;
+l.wa = function(a) {
+  this.U || (this.U = []);
+  this.U.push(a)
+};
+l.mb = function(a) {
+  var b = this.U;
+  return!!b && Ca(b, a)
+};
+l.getParent = aa("ka");
+l.Va = function() {
+  this.ya || (this.ya = {});
+  return this.ya
+};
+l.Oa = function(a) {
+  this.O = a
+};
+function Fd(a) {
+  if(a.O) {
+    return a.O
+  }
+  if(a.ka) {
+    return Fd(a.ka)
+  }
+  xa("Root logger has no level set.");
+  return null
+}
+l.log = function(a, b, c) {
+  if(a.value >= Fd(this).value) {
+    for(a = this.Nb(a, b, c), b = "log:" + a.cb, m.console && (m.console.timeStamp ? m.console.timeStamp(b) : m.console.markTimeline && m.console.markTimeline(b)), m.msWriteProfilerMark && m.msWriteProfilerMark(b), b = this;b;) {
+      c = b;
+      var d = a;
+      if(c.U) {
+        for(var e = 0, f = void 0;f = c.U[e];e++) {
+          f(d)
+        }
+      }
+      b = b.getParent()
+    }
+  }
+};
+l.Nb = function(a, b, c) {
+  var d = new R(a, String(b), this.Ub);
+  if(c) {
+    d.Fa = c;
+    var e;
+    var f = arguments.callee.caller;
+    try {
+      var h;
+      var k = ca("window.location.href");
+      if(p(c)) {
+        h = {message:c, name:"Unknown error", lineNumber:"Not available", fileName:k, stack:"Not available"}
+      }else {
+        var y, ia, x = !1;
+        try {
+          y = c.lineNumber || c.Sc || "Not available"
+        }catch(F) {
+          y = "Not available", x = !0
+        }
+        try {
+          ia = c.fileName || c.filename || c.sourceURL || m.$googDebugFname || k
+        }catch(te) {
+          ia = "Not available", x = !0
+        }
+        h = !x && c.lineNumber && c.fileName && c.stack && c.message && c.name ? c : {message:c.message || "Not available", name:c.name || "UnknownError", lineNumber:y, fileName:ia, stack:c.stack || "Not available"}
+      }
+      e = "Message: " + qa(h.message) + '\nUrl: \x3ca href\x3d"view-source:' + h.fileName + '" target\x3d"_new"\x3e' + h.fileName + "\x3c/a\x3e\nLine: " + h.lineNumber + "\n\nBrowser stack:\n" + qa(h.stack + "-\x3e ") + "[end]\n\nJS stack traversal:\n" + qa(yb(f) + "-\x3e ")
+    }catch(le) {
+      e = "Exception trying to expose exception! You win, we lose. " + le
+    }
+    d.Ea = e
+  }
+  return d
+};
+l.Qa = function(a, b) {
+  this.log(Ad, a, b)
+};
+l.info = function(a, b) {
+  this.log(Bd, a, b)
+};
+l.l = function(a, b) {
+  this.log(Dd, a, b)
+};
+var Gd = {}, Hd = null;
+function Id() {
+  Hd || (Hd = new S(""), Gd[""] = Hd, Hd.Oa(Cd))
+}
+function Jd(a) {
+  Id();
+  var b;
+  if(!(b = Gd[a])) {
+    b = new S(a);
+    var c = a.lastIndexOf("."), d = a.substr(c + 1), c = Jd(a.substr(0, c));
+    c.Va()[d] = b;
+    b.ka = c;
+    Gd[a] = b
+  }
+  return b
+}
+;var U = {F:!0};
+U.Cc = S;
+U.Ac = T;
+U.Bc = R;
+U.Ob = function() {
+  return U.F ? Jd("goog.net.XhrIo") : null
+};
+U.wa = function(a, b) {
+  U.F && a && a.wa(b)
+};
+U.mb = function(a, b) {
+  return U.F && a ? a.mb(b) : !1
+};
+U.log = function(a, b, c, d) {
+  U.F && a && a.log(b, c, d)
+};
+U.error = function(a, b, c) {
+  U.F && a && a.log(zd, b, c)
+};
+U.Qa = function(a, b, c) {
+  U.F && a && a.Qa(b, c)
+};
+U.info = function(a, b, c) {
+  U.F && a && a.info(b, c)
+};
+U.l = function(a, b, c) {
+  U.F && a && a.l(b, c)
+};
+function Kd() {
+}
+Kd.prototype.da = null;
+var Ld;
+function Md() {
+}
+s(Md, Kd);
+Md.prototype.za = function() {
+  var a = Nd(this);
+  return a ? new ActiveXObject(a) : new XMLHttpRequest
+};
+Md.prototype.Ja = function() {
+  var a = {};
+  Nd(this) && (a[0] = !0, a[1] = !0);
+  return a
+};
+function Nd(a) {
+  if(!a.Ya && "undefined" == typeof XMLHttpRequest && "undefined" != typeof ActiveXObject) {
+    for(var b = ["MSXML2.XMLHTTP.6.0", "MSXML2.XMLHTTP.3.0", "MSXML2.XMLHTTP", "Microsoft.XMLHTTP"], c = 0;c < b.length;c++) {
+      var d = b[c];
+      try {
+        return new ActiveXObject(d), a.Ya = d
+      }catch(e) {
+      }
+    }
+    throw Error("Could not create ActiveXObject. ActiveX might be disabled, or MSXML might not be installed");
+  }
+  return a.Ya
+}
+Ld = new Md;
+function Od(a) {
+  J.call(this);
+  this.headers = new wb;
+  this.Z = a || null;
+  this.G = !1;
+  this.ra = this.a = null;
+  this.$a = this.ja = "";
+  this.aa = 0;
+  this.ba = "";
+  this.N = this.Ia = this.ia = this.Da = !1;
+  this.X = 0;
+  this.oa = null;
+  this.nb = Pd;
+  this.pa = this.ub = !1
+}
+s(Od, J);
+var Pd = "";
+Od.prototype.g = U.Ob();
+var Qd = /^https?$/i, Rd = ["POST", "PUT"];
+l = Od.prototype;
+l.send = function(a, b, c, d) {
+  if(this.a) {
+    throw Error("[goog.net.XhrIo] Object is active with another request\x3d" + this.ja + "; newUri\x3d" + a);
+  }
+  b = b ? b.toUpperCase() : "GET";
+  this.ja = a;
+  this.ba = "";
+  this.aa = 0;
+  this.$a = b;
+  this.Da = !1;
+  this.G = !0;
+  this.a = this.Z ? this.Z.za() : Ld.za();
+  this.ra = this.Z ? this.Z.da || (this.Z.da = this.Z.Ja()) : Ld.da || (Ld.da = Ld.Ja());
+  this.a.onreadystatechange = q(this.fb, this);
+  try {
+    U.l(this.g, V(this, "Opening Xhr")), this.Ia = !0, this.a.open(b, a, !0), this.Ia = !1
+  }catch(e) {
+    U.l(this.g, V(this, "Error opening Xhr: " + e.message));
+    Sd(this, e);
+    return
+  }
+  a = c || "";
+  var f = this.headers.K();
+  d && vb(d, function(a, b) {
+    f.set(b, a)
+  });
+  d = Aa(f.J());
+  c = m.FormData && a instanceof m.FormData;
+  !(0 <= ya(Rd, b)) || (d || c) || f.set("Content-Type", "application/x-www-form-urlencoded;charset\x3dutf-8");
+  vb(f, function(a, b) {
+    this.a.setRequestHeader(b, a)
+  }, this);
+  this.nb && (this.a.responseType = this.nb);
+  "withCredentials" in this.a && (this.a.withCredentials = this.ub);
+  try {
+    Td(this), 0 < this.X && (this.pa = w && B(9) && "number" == typeof this.a.timeout && void 0 !== this.a.ontimeout, U.l(this.g, V(this, "Will abort after " + this.X + "ms if incomplete, xhr2 " + this.pa)), this.pa ? (this.a.timeout = this.X, this.a.ontimeout = q(this.sb, this)) : this.oa = fc(this.sb, this.X, this)), U.l(this.g, V(this, "Sending request")), this.ia = !0, this.a.send(a), this.ia = !1
+  }catch(h) {
+    U.l(this.g, V(this, "Send error: " + h.message)), Sd(this, h)
+  }
+};
+function Ba(a) {
+  return"content-type" == a.toLowerCase()
+}
+l.sb = function() {
+  "undefined" != typeof ba && this.a && (this.ba = "Timed out after " + this.X + "ms, aborting", this.aa = 8, U.l(this.g, V(this, this.ba)), this.dispatchEvent("timeout"), this.abort(8))
+};
+function Sd(a, b) {
+  a.G = !1;
+  a.a && (a.N = !0, a.a.abort(), a.N = !1);
+  a.ba = b;
+  a.aa = 5;
+  Ud(a);
+  Vd(a)
+}
+function Ud(a) {
+  a.Da || (a.Da = !0, a.dispatchEvent("complete"), a.dispatchEvent("error"))
+}
+l.abort = function(a) {
+  this.a && this.G && (U.l(this.g, V(this, "Aborting")), this.G = !1, this.N = !0, this.a.abort(), this.N = !1, this.aa = a || 7, this.dispatchEvent("complete"), this.dispatchEvent("abort"), Vd(this))
+};
+l.L = function() {
+  this.a && (this.G && (this.G = !1, this.N = !0, this.a.abort(), this.N = !1), Vd(this, !0));
+  Od.Pa.L.call(this)
+};
+l.fb = function() {
+  this.Ba || (this.Ia || this.ia || this.N ? Wd(this) : this.Vb())
+};
+l.Vb = function() {
+  Wd(this)
+};
+function Wd(a) {
+  if(a.G && "undefined" != typeof ba) {
+    if(a.ra[1] && 4 == Xd(a) && 2 == Yd(a)) {
+      U.l(a.g, V(a, "Local request error detected and ignored"))
+    }else {
+      if(a.ia && 4 == Xd(a)) {
+        fc(a.fb, 0, a)
+      }else {
+        if(a.dispatchEvent("readystatechange"), 4 == Xd(a)) {
+          U.l(a.g, V(a, "Request complete"));
+          a.G = !1;
+          try {
+            var b = Yd(a), c, d;
+            a: {
+              switch(b) {
+                case 200:
+                ;
+                case 201:
+                ;
+                case 202:
+                ;
+                case 204:
+                ;
+                case 206:
+                ;
+                case 304:
+                ;
+                case 1223:
+                  d = !0;
+                  break a;
+                default:
+                  d = !1
+              }
+            }
+            if(!(c = d)) {
+              var e;
+              if(e = 0 === b) {
+                var f = hc(String(a.ja))[1] || null;
+                if(!f && self.location) {
+                  var h = self.location.protocol, f = h.substr(0, h.length - 1)
+                }
+                e = !Qd.test(f ? f.toLowerCase() : "")
+              }
+              c = e
+            }
+            if(c) {
+              a.dispatchEvent("complete"), a.dispatchEvent("success")
+            }else {
+              a.aa = 6;
+              var k;
+              try {
+                k = 2 < Xd(a) ? a.a.statusText : ""
+              }catch(y) {
+                U.l(a.g, "Can not get status: " + y.message), k = ""
+              }
+              a.ba = k + " [" + Yd(a) + "]";
+              Ud(a)
+            }
+          }finally {
+            Vd(a)
+          }
+        }
+      }
+    }
+  }
+}
+function Vd(a, b) {
+  if(a.a) {
+    Td(a);
+    var c = a.a, d = a.ra[0] ? da : null;
+    a.a = null;
+    a.ra = null;
+    b || a.dispatchEvent("ready");
+    try {
+      c.onreadystatechange = d
+    }catch(e) {
+      U.error(a.g, "Problem encountered resetting onreadystatechange: " + e.message)
+    }
+  }
+}
+function Td(a) {
+  a.a && a.pa && (a.a.ontimeout = null);
+  "number" == typeof a.oa && (m.clearTimeout(a.oa), a.oa = null)
+}
+function Xd(a) {
+  return a.a ? a.a.readyState : 0
+}
+function Yd(a) {
+  try {
+    return 2 < Xd(a) ? a.a.status : -1
+  }catch(b) {
+    return U.Qa(a.g, "Can not get status: " + b.message), -1
+  }
+}
+function Zd(a) {
+  try {
+    return a.a ? a.a.responseText : ""
+  }catch(b) {
+    return U.l(a.g, "Can not get responseText: " + b.message), ""
+  }
+}
+function $d(a) {
+  try {
+    return a.a ? a.a.responseXML : null
+  }catch(b) {
+    return U.l(a.g, "Can not get responseXML: " + b.message), null
+  }
+}
+function V(a, b) {
+  return b + " [" + a.$a + " " + a.ja + " " + Yd(a) + "]"
+}
+;function ae() {
+}
+s(ae, Kd);
+ae.prototype.za = function() {
+  var a = new XMLHttpRequest;
+  if("withCredentials" in a) {
+    return a
+  }
+  if("undefined" != typeof XDomainRequest) {
+    return new be
+  }
+  throw Error("Unsupported browser");
+};
+ae.prototype.Ja = function() {
+  return{}
+};
+function be() {
+  this.D = new XDomainRequest;
+  this.readyState = 0;
+  this.responseText = this.onreadystatechange = null;
+  this.status = -1;
+  this.statusText = this.responseXML = null;
+  this.D.onload = q(this.Pb, this);
+  this.D.onerror = q(this.Xa, this);
+  this.D.onprogress = q(this.Qb, this);
+  this.D.ontimeout = q(this.Rb, this)
+}
+l = be.prototype;
+l.open = function(a, b, c) {
+  if(null != c && !c) {
+    throw Error("Only async requests are supported.");
+  }
+  this.D.open(a, b)
+};
+l.send = function(a) {
+  if(a) {
+    if("string" == typeof a) {
+      this.D.send(a)
+    }else {
+      throw Error("Only string data is supported");
+    }
+  }else {
+    this.D.send()
+  }
+};
+l.abort = function() {
+  this.D.abort()
+};
+l.setRequestHeader = g();
+l.Pb = function() {
+  this.status = 200;
+  this.responseText = this.D.responseText;
+  ce(this, 4)
+};
+l.Xa = function() {
+  this.status = 500;
+  this.responseText = null;
+  ce(this, 4)
+};
+l.Rb = function() {
+  this.Xa()
+};
+l.Qb = function() {
+  this.status = 200;
+  ce(this, 1)
+};
+function ce(a, b) {
+  a.readyState = b;
+  if(a.onreadystatechange) {
+    a.onreadystatechange()
+  }
+}
+;function de(a) {
+  this.T = a
+}
+var ee = /\s*;\s*/;
+l = de.prototype;
+l.set = function(a, b, c, d, e, f) {
+  if(/[;=\s]/.test(a)) {
+    throw Error('Invalid cookie name "' + a + '"');
+  }
+  if(/[;\r\n]/.test(b)) {
+    throw Error('Invalid cookie value "' + b + '"');
+  }
+  void 0 !== c || (c = -1);
+  e = e ? ";domain\x3d" + e : "";
+  d = d ? ";path\x3d" + d : "";
+  f = f ? ";secure" : "";
+  c = 0 > c ? "" : 0 == c ? ";expires\x3d" + (new Date(1970, 1, 1)).toUTCString() : ";expires\x3d" + (new Date(ka() + 1E3 * c)).toUTCString();
+  this.T.cookie = a + "\x3d" + b + e + d + c + f
+};
+l.get = function(a, b) {
+  for(var c = a + "\x3d", d = (this.T.cookie || "").split(ee), e = 0, f;f = d[e];e++) {
+    if(0 == f.lastIndexOf(c, 0)) {
+      return f.substr(c.length)
+    }
+    if(f == a) {
+      return""
+    }
+  }
+  return b
+};
+l.remove = function(a, b, c) {
+  var d = this.s(a);
+  this.set(a, "", 0, b, c);
+  return d
+};
+l.J = function() {
+  return fe(this).keys
+};
+l.u = function() {
+  return fe(this).sc
+};
+l.s = function(a) {
+  return void 0 !== this.get(a)
+};
+function fe(a) {
+  a = (a.T.cookie || "").split(ee);
+  for(var b = [], c = [], d, e, f = 0;e = a[f];f++) {
+    d = e.indexOf("\x3d"), -1 == d ? (b.push(""), c.push(e)) : (b.push(e.substring(0, d)), c.push(e.substring(d + 1)))
+  }
+  return{keys:b, sc:c}
+}
+;function ge(a) {
+  if("undefined" != typeof DOMParser) {
+    return(new DOMParser).parseFromString(a, "application/xml")
+  }
+  if("undefined" != typeof ActiveXObject) {
+    var b = new ActiveXObject("MSXML2.DOMDocument");
+    if(b) {
+      b.resolveExternals = !1;
+      b.validateOnParse = !1;
+      try {
+        b.setProperty("ProhibitDTD", !0), b.setProperty("MaxXMLSize", 2048), b.setProperty("MaxElementDepth", 256)
+      }catch(c) {
+      }
+    }
+    b.loadXML(a);
+    return b
+  }
+  throw Error("Your browser does not support loading xml documents");
+}
+;function he(a, b, c) {
+  J.call(this);
+  this.C = pa(a);
+  a = this.C;
+  if(!(0 > a.indexOf("ads.adap.tv"))) {
+    var d = new de(document), e = d.get("migrated");
+    b: {
+      for(var e = String(e), f = 0;2 > f;f++) {
+        var h = "\"'".charAt(f);
+        if(e.charAt(0) == h && e.charAt(e.length - 1) == h) {
+          e = e.substring(1, e.length - 1);
+          break b
+        }
+      }
+    }
+    if(parseInt(e, 10) || !d.s("adaptv_unique_user_cookie")) {
+      a = kc(new K(a), "ads.adaptv.advertising.com").toString()
+    }
+  }
+  this.C = a;
+  this.Lb = b + 1;
+  this.Hb = c;
+  this.e = new fd;
+  this.g = Jd("adaptv.vpaid.Resolver")
+}
+s(he, J);
+he.prototype.na = function() {
+  this.r = new Od(new ae);
+  this.r.X = Math.max(0, this.Hb);
+  this.r.ub = !0;
+  Vb(this.r, ["success", "error", "timeout"], this.Wb, !1, this);
+  if(Ac(this.C)) {
+    var a = vc(this.C);
+    uc(a, "a.hasAppInfo", 2);
+    this.C = a.toString()
+  }
+  this.r.send(this.C)
+};
+he.prototype.Wb = function(a) {
+  switch(a.type) {
+    case "success":
+      a = null;
+      null !== $d(this.r) ? a = $d(this.r) : null !== Zd(this.r) && (a = ge(Zd(this.r)));
+      a = W.hb(a);
+      this.e.$ = this.e.$ || a.$;
+      Fa(this.e.n, a.n);
+      this.r.fa();
+      (a = a.n[0]) && a.length ? this.Lb == this.e.n.length || a[0] instanceof id ? this.dispatchEvent(new wd("done", this.e)) : (a = a[0]) && a.qa ? (this.C = a.qa, this.na()) : (this.e.error = Yc, this.dispatchEvent(new wd("error", this.e))) : (this.e.error = W.error || Yc, this.dispatchEvent(new wd("error", this.e)));
+      break;
+    case "error":
+      this.r.fa();
+      this.e.error = Yc;
+      this.dispatchEvent(new wd("error", this.e));
+      break;
+    case "timeout":
+      this.r.fa(), this.e.error = Zc, this.dispatchEvent(new wd("error", this.e))
+  }
+};
+var W = {hb:function(a) {
+  var b = new fd;
+  a && (b.$ = a.getElementsByTagName("VAST")[0] && "true" === a.getElementsByTagName("VAST")[0].getAttribute("adaptvFailover"), a = W.gc(a), b.push(a));
+  return b
+}, gc:function(a) {
+  if(a) {
+    var b = [], c = a.getElementsByTagName("VAST")[0];
+    a = !1;
+    if(!c) {
+      return W.error = $c, b
+    }
+    c = C(c);
+    if(0 === c.length) {
+      return W.error = ad, b
+    }
+    for(var d = 0;d < c.length;d++) {
+      "Ad" === c[d].nodeName && (a = !0, b.push(W.Yb(c[d])))
+    }
+    a || (W.error = bd);
+    return b
+  }
+}, Yb:function(a) {
+  if(a) {
+    a = C(a);
+    for(var b = 0;b < a.length;b++) {
+      var c = a[b];
+      switch(c.nodeName) {
+        case "InLine":
+          return W.dc(c);
+        case "Wrapper":
+          return W.ic(c)
+      }
+    }
+  }
+}, dc:function(a) {
+  if(a) {
+    var b = new id;
+    b.beacons = new td;
+    a = C(a);
+    for(var c = 0;c < a.length;c++) {
+      var d = a[c];
+      switch(d.nodeName) {
+        case "Survey":
+          b.surveyURL = W.c(d);
+          break;
+        case "Error":
+          b.beacons.add(Q.ta, W.c(d));
+          break;
+        case "Attempt":
+          b.beacons.add(Q.sa, W.c(d));
+          break;
+        case "Impression":
+          W.jb(d, b);
+          break;
+        case "Creatives":
+          W.gb(d, b);
+          break;
+        case "Extensions":
+          W.ib(d, b)
+      }
+    }
+    return b
+  }
+}, ib:function(a, b) {
+  a && u(C(a), function(a) {
+    if("Extension" == a.nodeName) {
+      switch(a.getAttribute("type")) {
+        case "ad_chromes":
+          W.ac(a, b);
+          break;
+        case "adaptv_scripts":
+          W.cc(a, b);
+          break;
+        case "adaptv_iab_viewable_beacons":
+          W.bc(a, b)
+      }
+    }
+  })
+}, ac:function(a, b) {
+  if(a) {
+    var c = C(a)[0];
+    c && u(C(c), function(a) {
+      var c = {};
+      u(C(a), function(a) {
+        c[a.nodeName] = W.c(a)
+      });
+      b.p.adChromes.push({type:a.getAttribute("type"), data:c})
+    })
+  }
+}, cc:function(a, b) {
+  a && u(C(a), function(a) {
+    b.p.scripts.push({src:W.c(a), type:a.getAttribute("resourceType")})
+  })
+}, bc:function(a, b) {
+  a && u(C(a), function(a) {
+    b.beacons.add(a.getAttribute("type"), W.c(a))
+  })
+}, jb:function(a, b) {
+  if(a) {
+    var c = W.c(a);
+    c && b.beacons.add(Q.yb, c)
+  }
+}, gb:function(a, b) {
+  if(a) {
+    b.b = [];
+    for(var c = C(a), d = 0;d < c.length;d++) {
+      var e = c[d];
+      "Creative" == e.nodeName && W.$b(e, b)
+    }
+  }
+}, $b:function(a, b) {
+  if(a) {
+    for(var c = C(a), d = 0;d < c.length;d++) {
+      var e = c[d];
+      switch(e.nodeName) {
+        case "Linear":
+          W.ec(e, b.b);
+          break;
+        case "CompanionAds":
+          var f = b, h;
+          h = e;
+          if("undefined" != typeof XMLSerializer) {
+            h = (new XMLSerializer).serializeToString(h)
+          }else {
+            if(h = h.xml, !h) {
+              throw Error("Your browser does not support serializing XML documents");
+            }
+          }
+          f.companionString = h;
+          if(e = C(e)) {
+            for(b.S = [], f = 0;f < e.length;f++) {
+              "Companion" == e[f].nodeName && W.Zb(e[f], b.S)
+            }
+          }
+      }
+    }
+  }
+}, ec:function(a, b) {
+  if(a) {
+    var c = new kd;
+    c.beacons = new td;
+    c.skipoffset = a.getAttribute("skipoffset");
+    for(var d = C(a), e = 0;e < d.length;e++) {
+      var f = d[e];
+      switch(f.nodeName) {
+        case "Duration":
+          c.duration = W.c(f);
+          break;
+        case "TrackingEvents":
+          W.kb(f, c);
+          break;
+        case "VideoClicks":
+          W.hc(f, c);
+          break;
+        case "MediaFiles":
+          W.fc(f, c);
+          break;
+        case "AdParameters":
+          W.Xb(f, c)
+      }
+    }
+    b.push(c)
+  }
+}, Zb:function(a, b) {
+  if(a) {
+    var c = new vd;
+    c.beacons = new td;
+    c.companionSize = new ud(parseInt(a.getAttribute("width"), 10), parseInt(a.getAttribute("height"), 10));
+    for(var d = C(a), e = 0;e < d.length;e++) {
+      switch(d[e].nodeName) {
+        case "StaticResource":
+          c.resourceType = "static";
+          c.creativeType = d[e].getAttribute("creativeType");
+          c.creativeUrl = W.c(d[e]);
+          break;
+        case "IFrameResource":
+          c.resourceType = "iframe";
+          c.creativeType = "any";
+          c.creativeUrl = W.c(d[e]);
+          break;
+        case "HTMLResource":
+          c.resourceType = "html";
+          c.creativeType = "any";
+          c.htmlTag = W.c(d[e]);
+          break;
+        case "TrackingEvents":
+          W.kb(d[e], c);
+          break;
+        case "CompanionClickThrough":
+          c.clickThrough = W.c(d[e])
+      }
+    }
+    b.push(c)
+  }
+}, kb:function(a, b) {
+  if(a) {
+    for(var c = C(a), d = 0;d < c.length;d++) {
+      var e = c[d];
+      if("Tracking" == e.nodeName) {
+        var f = e.getAttribute("event");
+        if(0 <= ya(ab(Q), f)) {
+          var h = e.getAttribute("offset");
+          b.beacons.add(f, W.c(e), h)
+        }
+      }
+    }
+  }
+}, hc:function(a, b) {
+  if(a) {
+    for(var c = C(a), d = 0;d < c.length;d++) {
+      var e = c[d];
+      switch(e.nodeName) {
+        case "ClickThrough":
+          b.clickThrough = W.c(e);
+          break;
+        case "ClickTracking":
+          b.beacons.add(Q.wb, W.c(e))
+      }
+    }
+  }
+}, fc:function(a, b) {
+  if(a) {
+    b.mediaFiles = [];
+    for(var c = C(a), d = 0;d < c.length;d++) {
+      var e = c[d];
+      if("MediaFile" == e.nodeName) {
+        var f = new ld;
+        f.bitrate = e.getAttribute("bitrate");
+        f.delivery = e.getAttribute("delivery");
+        f.width = e.getAttribute("width");
+        f.height = e.getAttribute("height");
+        f.type = e.getAttribute("type");
+        f.apiFramework = e.getAttribute("apiFramework");
+        (e = W.c(e)) && (f.url = e);
+        b.mediaFiles.push(f)
+      }
+    }
+  }
+}, ic:function(a) {
+  if(a) {
+    var b = new jd;
+    b.beacons = new td;
+    a = C(a);
+    for(var c = 0;c < a.length;c++) {
+      var d = a[c];
+      switch(d.nodeName) {
+        case "VASTAdTagURI":
+          b.qa = W.c(d);
+          break;
+        case "Error":
+          b.beacons.add(Q.ta, W.c(d));
+          break;
+        case "Attempt":
+          b.beacons.add(Q.sa, W.c(d));
+          break;
+        case "Impression":
+          W.jb(d, b);
+          break;
+        case "Creatives":
+          W.gb(d, b);
+          break;
+        case "Extensions":
+          W.ib(d, b)
+      }
+    }
+    return b
+  }
+}, Xb:function(a, b) {
+  b.adParameters = W.c(a);
+  b.hasAdaptvParams = a.id && "adaptv" === a.id.toLowerCase()
+}, c:function(a) {
+  return pa(a.textContent || a.text || "")
+}};
+var X = {};
+X[Fc.errorCode] = 101;
+X[Gc.errorCode] = 403;
+X[Hc.errorCode] = 302;
+X[Ic.errorCode] = 901;
+X[Jc.errorCode] = 403;
+X[Kc.errorCode] = 901;
+X[Lc.errorCode] = 901;
+X[Mc.errorCode] = 900;
+X[Nc.errorCode] = 900;
+X[Oc.errorCode] = 300;
+X[Pc.errorCode] = 901;
+X[Qc.errorCode] = 901;
+X[Rc.errorCode] = 901;
+X[Sc.errorCode] = 901;
+X[Tc.errorCode] = 901;
+X[Uc.errorCode] = 900;
+X[Vc.errorCode] = 300;
+X[Wc.errorCode] = 901;
+X[Xc.errorCode] = 901;
+X[Yc.errorCode] = 100;
+X[Zc.errorCode] = 301;
+X[$c.errorCode] = 101;
+X[ad.errorCode] = 101;
+X[bd.errorCode] = 303;
+X[cd.errorCode] = 405;
+X[dd.errorCode] = 900;
+X[ed.errorCode] = 400;
+function Y() {
+  this.e = [];
+  this.Y = [];
+  this.Ka = !1;
+  this.g = Jd("adaptv.vpaid.AdSource")
+}
+Y.prototype.init = function(a, b, c) {
+  this.C = a;
+  this.xa = c || g();
+  this.La = b;
+  this.w = 0;
+  a = new he(this.C, 0, 1E4);
+  Vb(a, ["done", "error"], function(a) {
+    ie(this, a.data, a.type)
+  }, !1, this);
+  a.na()
+};
+Y.prototype.Sb = function(a, b, c) {
+  this.xa = c || g();
+  this.La = b;
+  this.w = 0;
+  a = W.hb(ge(a));
+  W.error ? Z(this, W.error) : ie(this, a)
+};
+function ie(a, b, c) {
+  if(b && b.n && b.n.length && "error" !== c) {
+    if(a.e = b.n[0], a.Ka = b.$, a.Ka) {
+      for(c = 0;c < a.e.length;c++) {
+        a.Y.push(new gd(a.e[c], a.La))
+      }
+    }else {
+      a.Y.push(new gd(a.e[0], a.La))
+    }
+  }
+  0 === b.error.errorCode ? a.ga() : Z(a, b.error)
+}
+Y.prototype.ga = function() {
+  if(this.w < this.e.length) {
+    var a = this.Y[this.w];
+    if(a && null !== (sd(a.k) instanceof id ? sd(a.k) : null)) {
+      u(nd(a.k, Q.sa), function(a) {
+        yc(a)
+      });
+      var b = je(this, a);
+      0 === b.error.errorCode ? (this.xa(b), this.w++) : Z(this, b.error)
+    }else {
+      a.depth > a.k.size() ? (b = sd(a.k), b = new he(b ? b.qa : "", a.depth, 1E4), Vb(b, ["done", "error"], function(b) {
+        var d = b.data;
+        if("error" === b.type) {
+          Z(this, d.error)
+        }else {
+          for(var e = 0;e < d.n.length;e++) {
+            if(d.n[e] && d.n[e].length) {
+              a.k.push(d.n[e][0])
+            }else {
+              Z(this, Fc);
+              return
+            }
+          }
+          0 === d.error.errorCode ? this.ga() : Z(this, b.data.error)
+        }
+      }, !1, this), b.na()) : Z(this, Hc)
+    }
+  }else {
+    Z(this, Ic)
+  }
+};
+function Z(a, b) {
+  a.g.info(b.errorMessage);
+  a.w < a.Y.length && u(nd(a.Y[a.w].k, Q.ta), function(a) {
+    Ac(a) && (a = new Ec(a), uc(a, "errNo", b.errorCode), uc(a, "errorCode", X[b.errorCode] ? X[b.errorCode] : b.errorCode), a = a.Wa());
+    yc(a)
+  });
+  a.w++;
+  if(a.Ka && a.w < a.Y.length) {
+    a.ga()
+  }else {
+    var c = new md;
+    c.error = b;
+    a.xa(c)
+  }
+}
+function je(a, b) {
+  var c = sd(b.k) instanceof id ? sd(b.k) : null, d = new md, e = c.b && c.b.length ? c.b[0].mediaFiles : [], f = !1, h = null;
+  if(e && e.length) {
+    for(var k = 0;k < e.length;k++) {
+      if("application/x-shockwave-flash" === e[k].type && zc()) {
+        h = e[k], f = !0
+      }else {
+        if(e[k].apiFramework && "vpaid" === e[k].apiFramework.toLowerCase() && ("text/javascript" === e[k].type || "application/x-javascript" === e[k].type || "application/javascript" === e[k].type)) {
+          d.mediaFiles = [e[k]];
+          d.isVPAID = !0;
+          f = !1;
+          break
+        }
+        Bc(e[k]) && d.mediaFiles.push(e[k])
+      }
+    }
+    f && (d.mediaFiles = [h], d.isVPAID = !0)
+  }
+  if(!d.mediaFiles || 0 === d.mediaFiles.length) {
+    for(k = 0;k < e.length;k++) {
+      if("video/x-flv" === e[k].type && zc()) {
+        d.mediaFiles = [e[k]];
+        d.isFLV = !0;
+        break
+      }
+    }
+  }
+  if(!d.mediaFiles.length) {
+    return d.error = Gc, d
+  }
+  d.isVPAID || d.mediaFiles.sort(function(a, b) {
+    return a.bitrate - b.bitrate
+  });
+  d.mediaFile = d.mediaFiles[0];
+  d.adChromes = od(b.k);
+  d.adListIndex = a.w;
+  d.adListSize = a.e.length;
+  d.adParameters = pd(b.k);
+  d.beacons = qd(b.k);
+  d.clickThrough = c.b[0].clickThrough;
+  d.companionString = c.companionString;
+  d.companions = [];
+  d.duration = c.b[0].duration;
+  d.hasAdaptvParams = c.b[0].hasAdaptvParams;
+  d.scripts = rd(b.k);
+  d.skipoffset = c.b[0].skipoffset;
+  d.surveyURL = c.surveyURL;
+  for(k = 0;k < c.S.length;k++) {
+    c.S[k].valid && (e = c.S[k], e.normalize(), e.beacons = e.beacons.beaconsForEvent[Q.Ra], d.companions.push(e))
+  }
+  return d
+}
+;function ke() {
+  this.lb = ka()
+}
+var me = new ke;
+ke.prototype.set = function(a) {
+  this.lb = a
+};
+ke.prototype.reset = function() {
+  this.set(ka())
+};
+ke.prototype.get = aa("lb");
+function ne(a) {
+  this.kc = a || "";
+  this.rc = me
+}
+l = ne.prototype;
+l.Jb = !0;
+l.pb = !0;
+l.pc = !0;
+l.oc = !0;
+l.qb = !1;
+l.qc = !1;
+function $(a) {
+  return 10 > a ? "0" + a : String(a)
+}
+function oe(a, b) {
+  var c = (a.rb - b) / 1E3, d = c.toFixed(3), e = 0;
+  if(1 > c) {
+    e = 2
+  }else {
+    for(;100 > c;) {
+      e++, c *= 10
+    }
+  }
+  for(;0 < e--;) {
+    d = " " + d
+  }
+  return d
+}
+function pe(a) {
+  ne.call(this, a)
+}
+s(pe, ne);
+function qe() {
+  this.lc = q(this.Ib, this);
+  this.Ga = new pe;
+  this.Ga.pb = !1;
+  this.Za = this.Ga.qb = !1;
+  this.ab = "";
+  this.Mb = {}
+}
+qe.prototype.Ib = function(a) {
+  if(!this.Mb[a.bb]) {
+    var b;
+    b = this.Ga;
+    var c = [];
+    c.push(b.kc, " ");
+    if(b.pb) {
+      var d = new Date(a.rb);
+      c.push("[", $(d.getFullYear() - 2E3) + $(d.getMonth() + 1) + $(d.getDate()) + " " + $(d.getHours()) + ":" + $(d.getMinutes()) + ":" + $(d.getSeconds()) + "." + $(Math.floor(d.getMilliseconds() / 10)), "] ")
+    }
+    b.pc && c.push("[", oe(a, b.rc.get()), "s] ");
+    b.oc && c.push("[", a.bb, "] ");
+    b.qc && c.push("[", a.O.name, "] ");
+    c.push(a.cb);
+    b.qb && a.Fa && c.push("\n", a.Ea);
+    b.Jb && c.push("\n");
+    b = c.join("");
+    if(c = re) {
+      switch(a.O) {
+        case yd:
+          se(c, "info", b);
+          break;
+        case zd:
+          se(c, "error", b);
+          break;
+        case Ad:
+          se(c, "warn", b);
+          break;
+        default:
+          se(c, "debug", b)
+      }
+    }else {
+      window.opera ? window.opera.postError(b) : this.ab += b
+    }
+  }
+};
+var re = window.console;
+function se(a, b, c) {
+  if(a[b]) {
+    a[b](c)
+  }else {
+    a.log(c)
+  }
+}
+;r("__adaptv__.debug.configure", function(a, b) {
+  Jd(a).Oa(b || Ed);
+  var c = new qe;
+  !0 != c.Za && (Id(), Hd.wa(c.lc), c.Za = !0)
+});
+r("__adaptv__.debug.log", function(a) {
+  Jd("adaptv.page").info(a)
+});
+r("__adaptv__.vpaid.AdSource", Y);
+r("__adaptv__.vpaid.AdSource.prototype.init", Y.prototype.init);
+r("__adaptv__.vpaid.AdSource.prototype.initXML", Y.prototype.Sb);
+r("__adaptv__.vpaid.AdSource.prototype.getNextAd", Y.prototype.ga);
+})();

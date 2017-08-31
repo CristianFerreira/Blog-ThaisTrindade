@@ -1,8 +1,17 @@
-.body-post {
-    margin-top: 50px;
-    margin-bottom: 20px;
+
+
+@media only screen and (max-width: 700px) {
+    .body-post {
+        margin-bottom: 20px;
+    }
 }
 
+@media only screen and (min-width: 700px) {
+    .body-post {
+        margin-top: 50px;
+        margin-bottom: 20px;
+    }
+}
 
 .img-header {
     background-repeat: no-repeat;

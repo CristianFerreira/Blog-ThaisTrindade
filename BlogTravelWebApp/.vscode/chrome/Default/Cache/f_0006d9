@@ -1,0 +1,185 @@
+var tag_dechan;
+
+var url_blog = document.location.href
+var str_blog = url_blog;
+
+if ((str_blog.indexOf("caras.uol.com.br")) > 0) { 
+    var tag_dechan = "home";
+
+}else if ((str_blog.indexOf("adrianegalisteu")) > 0) { 
+    var tag_dechan = "adrianegalisteu";
+
+}else if ((str_blog.indexOf("alexandretaleb")) > 0) { 
+    var tag_dechan = "alexandretaleb";    
+
+}else if ((str_blog.indexOf("annaglam")) > 0) {
+    var tag_dechan = "annaglam";
+    
+}else if ((str_blog.indexOf("carolmagalhaes")) > 0) {
+    var tag_dechan = "carolmagalhaes";
+    
+}else if ((str_blog.indexOf("chatadegalocha")) > 0) {
+    var tag_dechan = "chatadegalocha";
+    
+}else if ((str_blog.indexOf("cozinhachic")) > 0) {
+    var tag_dechan = "cozinhachic";
+    
+}else if ((str_blog.indexOf("dicas4fun")) > 0) {
+    var tag_dechan = "dicas4fun";
+    
+}else if ((str_blog.indexOf("dicasdaerica")) > 0) {
+    var tag_dechan = "dicasdaerica";
+    
+}else if ((str_blog.indexOf("justlia")) > 0) {
+    var tag_dechan = "justlia";
+    
+}else if ((str_blog.indexOf("lariduarte")) > 0) {
+    var tag_dechan = "lariduarte";
+    
+}else if ((str_blog.indexOf("livingdesign")) > 0) {
+    var tag_dechan = "livingdesign";
+    
+}else if ((str_blog.indexOf("luizazaidan")) > 0) {
+    var tag_dechan = "luizazaidan";
+    
+}else if ((str_blog.indexOf("mrzieg")) > 0) {
+    var tag_dechan = "mrzieg";
+    
+}else if ((str_blog.indexOf("osachados")) > 0) {
+    var tag_dechan = "osachados";
+    
+}else if ((str_blog.indexOf("panelaterapia")) > 0) {
+    var tag_dechan = "panelaterapia";
+    
+}else if ((str_blog.indexOf("sonhosdecrepom")) > 0) {
+    var tag_dechan = "sonhosdecrepom";
+    
+}else if ((str_blog.indexOf("pausaparafeminices")) > 0) {
+    var tag_dechan = "pausaparafeminices";
+    
+}else if ((str_blog.indexOf("niinasecrets")) > 0) {
+    var tag_dechan = "niinasecrets";
+    
+}else if ((str_blog.indexOf("claudiamatarazzo")) > 0) {
+    var tag_dechan = "claudiamatarazzo";
+    
+}else if ((str_blog.indexOf("tacielealcolea")) > 0) {
+    var tag_dechan = "tacielealcolea";
+    
+}else if ((str_blog.indexOf("daniellenoce")) > 0) {
+    var tag_dechan = "daniellenoce";
+    
+}else if ((str_blog.indexOf("joiabergamo")) > 0) {
+    var tag_dechan = "joiabergamo";
+    
+}else if ((str_blog.indexOf("jadeseba")) > 0) {
+    var tag_dechan = "jadeseba";
+    
+}else if ((str_blog.indexOf("julianagoes")) > 0) {
+    var tag_dechan = "julianagoes";
+    
+}else if ((str_blog.indexOf("marianasampaio")) > 0) {
+    var tag_dechan = "marianasampaio";
+    
+}else if ((str_blog.indexOf("laylamonteiro")) > 0) {
+    var tag_dechan = "laylamonteiro";
+    
+}else {
+
+    jQuery(".selo_lux").empty();
+    
+}
+
+var barra ='<style>@font-face{font-family:helveticaneueltstdbdcn;src:url(http://caras.uol.com.br/novoportal/fonts/helveticaneueltstdbdcn.eot);src:url(http://caras.uol.com.br/novoportal/fonts/helveticaneueltstdbdcn.eot?#iefix) format("embedded-opentype"),url(http://caras.uol.com.br/novoportal/fonts/helveticaneueltstdbdcn.woff) format("woff"),url(http://caras.uol.com.br/novoportal/fonts/helveticaneueltstdbdcn.ttf) format("truetype"),url(http://caras.uol.com.br/novoportal/fonts/helveticaneueltstdbdcn.svg#helveticaneueltstdbdcn) format("svg");font-weight:400;font-style:normal}@font-face{font-family:helveticaneuecondensedbold;src:url(http://caras.uol.com.br/novoportal/fonts/helvetica_neue_condensed_bold.eot);src:url(http://caras.uol.com.br/novoportal/fonts/helvetica_neue_condensed_bold.eot?#iefix) format("embedded-opentype"),url(http://caras.uol.com.br/novoportal/fonts/helvetica_neue_condensed_bold.woff) format("woff"),url(http://caras.uol.com.br/novoportal/fonts/helvetica_neue_condensed_bold.ttf) format("truetype"),url(http://caras.uol.com.br/novoportal/fonts/helvetica_neue_condensed_bold.svg#helveticaneuecondensedbold) format("svg");font-weight:400;font-style:normal}@font-face{font-family:afont;src:url(http://caras.uol.com.br/novoportal/fonts/a.eot);src:url(http://caras.uol.com.br/novoportal/fonts/a.eot?#iefix) format("embedded-opentype"),url(http://caras.uol.com.br/novoportal/fonts/a.woff) format("woff"),url(http://caras.uol.com.br/novoportal/fonts/a.ttf) format("truetype"),url(http://caras.uol.com.br/novoportal/fonts/a.svg#helvetica_neue_condensed_bold) format("svg");font-weight:400;font-style:normal}@font-face{font-family:HelveticaNeueLTStd-BdCnn;src:url(http://caras.uol.com.br/novoportal/fonts/HelveticaNeueLTStd-BdCnn.eot);src:url(http://caras.uol.com.br/novoportal/fonts/HelveticaNeueLTStd-BdCnn.eot?#iefix) format("embedded-opentype"),url(http://caras.uol.com.br/novoportal/fonts/HelveticaNeueLTStd-BdCnn.woff) format("woff"),url(http://caras.uol.com.br/novoportal/fonts/HelveticaNeueLTStd-BdCnn.ttf) format("truetype"),url(http://caras.uol.com.br/novoportal/fonts/HelveticaNeueLTStd-BdCnn.svg#HelveticaNeueLTStd-BdCnn) format("svg");font-weight:400;font-style:normal}@font-face{font-family:officinaserif-bookitalicRg;src:url(http://caras.uol.com.br/novoportal/fonts/officinaserifbookitalic-webfont.eot);src:url(http://caras.uol.com.br/novoportal/fonts/officinaserifbookitalic-webfont.eot?#iefix) format("embedded-opentype"),url(http://caras.uol.com.br/novoportal/fonts/officinaserifbookitalic-webfont.woff) format("woff"),url(http://caras.uol.com.br/novoportal/fonts/officinaserifbookitalic-webfont.ttf) format("truetype"),url(http://caras.uol.com.br/novoportal/fonts/officinaserifbookitalic-webfont.svg#officinaserif-bookitalicRg) format("svg");font-weight:400;font-style:normal}.hide{display:none}.left{float:left}.right{float:right}header#header-blogs-caras{margin:0;height:36px;width:100%;position:relative;z-index:9999;background:#fff;box-shadow:0 0 20px #777;-moz-box-shadow:0 0 20px #777;-webkit-box-shadow:0 0 20px #777;-o-box-shadow:0 0 20px #777}header#header-blogs-caras .container-header{width:1200px;margin:0 auto;background:#fff;position:relative}header#header-blogs-caras .logo-blogs-caras{border:0;} header#header-blogs-caras .logo-blogs-caras a{display:block;height:30px;width:90px;position:relative;margin-top:5px;background:url(http://caras.uol.com.br/novoportal/imgs/blogs/logo-caras-blogs.png)}header#header-blogs-caras .navmenu{margin:0;width:auto;height:auto;float:left;position:absolute;top:-4px;left:100px}header#header-blogs-caras .nav-item{width:100%;float:left;*display:inline;zoom:1;list-style:none;background:#fff}header#header-blogs-caras .nav-item:first-child{padding-top:10px;border-radius: 0px;-moz-border-radius: 0px;-webkit-border-radius: 0px;-o-border-radius: 0px}header#header-blogs-caras .nav-item:last-child{padding-bottom:10px;border-radius:0 0 8px 8px;-moz-border-radius:0 0 8px 8px;-webkit-border-radius:0 0 8px 8px;-o-border-radius:0 0 8px 8px}header#header-blogs-caras .nav-item a{text-align:left;display:block;padding:5px 15px;text-transform:none;color:#787777;font-family:HelveticaNeueLTStd-BdCnn;font-size:16px;text-decoration:none}header#header-blogs-caras .nav-item a:hover{color:#777}header#header-blogs-caras .nav-mobile{display:block;cursor:pointer;position:absolute;top:5px;left:0;background:url(http://caras.uol.com.br/novoportal/imgs/blogs/navmenu.png) no-repeat 11px 0;height:40px;width:60px}header#header-blogs-caras .nav-list{display:none}header#header-blogs-caras .nav-list div{min-width: 150px; width: 100%; box-shadow:0 0 10px #CCC;-moz-box-shadow:0 0 10px #CCC;-webkit-box-shadow:0 0 10px #CCC;-o-box-shadow:0 0 10px #CCC;float:left;border-radius:0 0 8px 8px;-moz-border-radius:0 0 8px 8px;-webkit-border-radius:0 0 8px 8px;-o-border-radius:0 0 8px 8px}header#header-blogs-caras .nav-active{display:block;padding:39px 0 0;z-index:9999;background:#fff;width:60px;border-radius:8px 8px 0 0;-moz-border-radius:8px 8px 0 0;-webkit-border-radius:8px 8px 0 0;-o-border-radius:8px 8px 0 0;box-shadow:0 0 10px #CCC;-moz-box-shadow:0 0 10px #CCC;-webkit-box-shadow:0 0 10px #CCC;-o-box-shadow:0 0 10px #CCC}header#header-blogs-caras .nav-mobile-open{background:url(http://caras.uol.com.br/novoportal/imgs/blogs/navmenu.png) no-repeat 11px 0 #fff}header#header-blogs-caras .bar-search form{padding:0;margin:0;border:0;}header#header-blogs-caras .bar-search{width:44px;height:36px;float:left;padding: 0;margin-right:15px}header#header-blogs-caras .bar-search a{background:url(http://caras.uol.com.br/novoportal/imgs/blogs/btn_search.png);display:block;float:left;width:44px;height:34px}header#header-blogs-caras #search{right:0;background:url(http://caras.uol.com.br/novoportal/imgs/blogs/bg_search.png) no-repeat 44px 0;width:260px;height:25px;padding:0;border:0;margin-left:10px;float:left;margin-top:8px;position:relative;top:-36px}header#header-blogs-caras .search_hover{height:36px;z-index:9999}header#header-blogs-caras .search-block{display:block!important;z-index:9999}header#header-blogs-caras #search input{line-height:normal;background:#787777;width:179px;padding:0;border:0;margin:5px 0 0 55px;border:none;color:#fff;font-size:13px;float:left}header#header-blogs-caras #search .submit_search{background:url(http://caras.uol.com.br/novoportal/imgs/blogs/btn_link_search.png) no-repeat;float:right;height:15px;margin:4px 7px 0 0;width:14px}header#header-blogs-caras ul.redes-sociais{list-style:none;width:197px;float:left;padding: 0;margin:0;}header#header-blogs-caras ul.redes-sociais li{float:left}header#header-blogs-caras ul.redes-sociais li a{display:block;width:38px;height:36px;background:url(http://caras.uol.com.br/novoportal/imgs/blogs/sprite-redessociais.png)}header#header-blogs-caras ul.redes-sociais li a.icon-instagram{background-position:0 -1px}header#header-blogs-caras ul.redes-sociais li a.icon-facebook{background-position:-35px -1px}header#header-blogs-caras ul.redes-sociais li a.icon-twitter{background-position:-70px -1px}header#header-blogs-caras ul.redes-sociais li a.icon-gplus{background-position:-110px -1px}header#header-blogs-caras ul.redes-sociais li a.icon-youtube{background-position:-150px -1px}header#header-blogs-caras .btn-assine{float:right;margin-left:40px}header#header-blogs-caras .btn-assine a{position:relative;margin-top:7px;display:block;width:81px;height:22px;background:url(http://caras.uol.com.br/novoportal/imgs/blogs/btn-assine.png) no-repeat}header#header-blogs-caras.v-black{background:#000}header#header-blogs-caras.v-black .logo-blogs-caras a{background:url(http://caras.uol.com.br/novoportal/imgs/blogs/logo-caras-blogs-white.png)}header#header-blogs-caras.v-black .nav-mobile{background:url(http://caras.uol.com.br/novoportal/imgs/blogs/navmenu-white.png) no-repeat 11px 0}header#header-blogs-caras.v-black .nav-mobile-open{background:url(http://caras.uol.com.br/novoportal/imgs/blogs/navmenu.png) no-repeat 11px 0 #fff}header#header-blogs-caras.v-black .bar-search a{background:url(http://caras.uol.com.br/novoportal/imgs/blogs/btn_search-white.png)}header#header-blogs-caras.v-black #search{background:url(http://caras.uol.com.br/novoportal/imgs/blogs/bg_search-white.png) no-repeat 44px 0}header#header-blogs-caras.v-black #search input{background:#fff;color:#787777}header#header-blogs-caras.v-black #search .submit_search{background:url(http://caras.uol.com.br/novoportal/imgs/blogs/btn_link_search.png) no-repeat}header#header-blogs-caras.v-black ul.redes-sociais li a.icon-instagram{background-position:0 -41px}header#header-blogs-caras.v-black ul.redes-sociais li a.icon-facebook{background-position:-35px -41px}header#header-blogs-caras.v-black ul.redes-sociais li a.icon-twitter{background-position:-70px -41px}header#header-blogs-caras.v-black ul.redes-sociais li a.icon-gplus{background-position:-110px -41px}header#header-blogs-caras.v-black ul.redes-sociais li a.icon-youtube{background-position:-150px -41px}header#header-blogs-caras.v-black .btn-assine a{background:url(http://caras.uol.com.br/novoportal/imgs/blogs/btn-assine-white.png) no-repeat}header#header-blogs-caras.v-gray-light{background:#e9e8e8}header#header-blogs-caras.v-gray-dark{background:#cac9c9}header#header-blogs-caras.v-gray-dark .logo-blogs-caras a{background:url(http://caras.uol.com.br/novoportal/imgs/blogs/logo-caras-blogs.png)}header#header-blogs-caras.v-gray-dark .nav-mobile{background:url(http://caras.uol.com.br/novoportal/imgs/blogs/navmenu-black.png) no-repeat 11px 0}header#header-blogs-caras.v-gray-dark .nav-mobile-open{background:url(http://caras.uol.com.br/novoportal/imgs/blogs/navmenu.png) no-repeat 11px 0 #fff}header#header-blogs-caras.v-gray-dark .bar-search a{background:url(http://caras.uol.com.br/novoportal/imgs/blogs/btn_search-black.png)}header#header-blogs-caras.v-gray-dark #search{background:url(http://caras.uol.com.br/novoportal/imgs/blogs/bg_search-white.png) no-repeat 44px 0}header#header-blogs-caras.v-gray-dark #search input{background:#fff;color:#787777}header#header-blogs-caras.v-gray-dark #search .submit_search{background:url(http://caras.uol.com.br/novoportal/imgs/blogs/btn_link_search.png) no-repeat}header#header-blogs-caras.v-gray-dark ul.redes-sociais li a.icon-instagram{background-position:0 -81px}header#header-blogs-caras.v-gray-dark ul.redes-sociais li a.icon-facebook{background-position:-35px -81px}header#header-blogs-caras.v-gray-dark ul.redes-sociais li a.icon-twitter{background-position:-70px -81px}header#header-blogs-caras.v-gray-dark ul.redes-sociais li a.icon-gplus{background-position:-110px -81px}header#header-blogs-caras.v-gray-dark ul.redes-sociais li a.icon-youtube{background-position:-150px -81px}header#header-blogs-caras.v-gray-dark .btn-assine a{background:url(http://caras.uol.com.br/novoportal/imgs/blogs/btn-assine-black.png) no-repeat}.selo_lux{float: right; display: block; position:relative; top:3px;}.selo_lux a{text-decoration: none;}.selo_lux a img{position: relative; top: 3px;} @media only screen and (min-width: 960px) and (max-width: 1200px) {header#header-blogs-caras .container-header{width:auto;}header#header-blogs-caras .logo-blogs-caras{margin-left: 10px;}}@media only screen and (min-width: 768px) and (max-width: 959px) {header#header-blogs-caras .container-header{width:auto;}header#header-blogs-caras .logo-blogs-caras{margin-left: 10px;}}@media only screen and (max-width: 767px) {header#header-blogs-caras .container-header{width:auto;}header#header-blogs-caras .logo-blogs-caras{margin-left: 10px;}header#header-blogs-caras .bar-search, header#header-blogs-caras ul.redes-sociais{display: none;}}@media only screen and (min-width: 480px) and (max-width: 767px) {header#header-blogs-caras .container-header{width:auto;}header#header-blogs-caras .logo-blogs-caras{margin-left: 10px;}.btn-assine{display:none}header#header-blogs-caras ul.redes-sociais{display: block;}}@media only screen and (max-width: 480px){.btn-assine{display:none}}</style>';
+    barra += '<header id="header-blogs-caras" class="hide">';
+    barra +=     '<div class="container-header">';
+    barra +=         '<div class="left">';
+    barra +=             '<div class="logo-blogs-caras">';
+    barra +=                 '<a id="url_logo_blog" href="http://caras.uol.com.br/blogs" target="_blank"></a>';
+    barra +=             '</div>';
+    barra +=             '<nav class="navmenu">';            
+    barra +=                 '<ul class="nav-list">';
+    barra +=                     '<div>';
+    barra +=                         '<li class="nav-item"><a target="_blank" href="http://adrianegalisteu.com.br/">Adriane Galisteu</a></li>';
+    barra +=                         '<li class="nav-item"><a target="_blank" href="http://alexandretaleb.com.br/">Alexandre Taleb</a></li>';
+    barra +=                         '<li class="nav-item"><a target="_blank" href="http://www.annaglam.com.br/">Anna Glam</a></li>';
+    barra +=                         '<li class="nav-item"><a target="_blank" href="http://www.carolmagalhaes.com/">Carol Magalhães</a></li>';
+    barra +=                         '<li class="nav-item"><a target="_blank" href="http://claudiamatarazzo.com.br/">Claudia Matarazzo</a></li>';
+    barra +=                         '<li class="nav-item"><a target="_blank" href="http://cozinhachic.com/">Cozinha Chic</a></li>';
+    barra +=                         '<li class="nav-item"><a target="_blank" href="http://www.dicas4fun.com.br/">Dicas4fun</a></li>';
+    barra +=                         '<li class="nav-item"><a target="_blank" href="http://www.dicasdaerica.com.br/">Dicas da Erica</a></li>';
+    barra +=                         '<li class="nav-item"><a target="_blank" href="http://www.jadeseba.com.br/">Jade Seba</a></li>';
+    barra +=                         '<li class="nav-item"><a target="_blank" href="http://blogjoiabergamo.com.br/">Jóia Bergamo</a></li>';
+    barra +=                         '<li class="nav-item"><a target="_blank" href="http://julianagoes.com.br/">Juliana Goes</a></li>';
+    barra +=                         '<li class="nav-item"><a target="_blank" href="http://www.justlia.com.br/">Just Lia</a></li>';
+    barra +=                         '<li class="nav-item"><a target="_blank" href="http://lariduarte.com/">Lari Duarte</a></li>';
+    barra +=                         '<li class="nav-item"><a target="_blank" href="http://laylamonteiro.com/">Layla Monteiro</a></li>';
+    barra +=                         '<li class="nav-item"><a target="_blank" href="http://www.livingdesign.net.br/">Living Design</a></li>';
+    barra +=                         '<li class="nav-item"><a target="_blank" href="http://www.luizazaidan.com/blog/">Luiza Zaidan</a></li>';
+    barra +=                         '<li class="nav-item"><a target="_blank" href="http://mrzieg.com/">Mr. Zieg</a></li>';
+    barra +=                         '<li class="nav-item"><a target="_blank" href="http://marianasampaio.com.br/">Mariana Sampaio</a></li>';
+    barra +=                         '<li class="nav-item"><a target="_blank" href="http://niinasecrets.com.br/">Niina Secrets</a></li>';
+    barra +=                         '<li class="nav-item"><a target="_blank" href="http://osachados.com.br/">Os Achados</a></li>';
+    barra +=                         '<li class="nav-item"><a target="_blank" href="http://www.panelaterapia.com/">Panelaterapia</a></li>';
+    barra +=                         '<li class="nav-item"><a target="_blank" href="http://www.pausaparafeminices.com/">Pausa para Feminices</a></li>';
+    barra +=                         '<li class="nav-item"><a target="_blank" href="http://www.sonhosdecrepom.com.br/">Sonhos de Crepom</a></li>';
+    barra +=                         '<li class="nav-item"><a target="_blank" href="http://www.tacielealcolea.com/">Taciele Alcolea</a></li>';
+    barra +=                     '</div>';
+    barra +=                 '</ul>';                
+    barra +=             '</nav>';
+    barra +=         '</div>';
+    barra +=         '<div class="right">';
+    barra +=             '<div class="bar-search">';
+    barra +=             '<a target="_blank" href="http://caras.uol.com.br/novoportal/busca.htm"></a>';
+    barra +=                 '<form target="_blank" action="http://caras.uol.com.br/novoportal/busca.htm">';
+    barra +=                     '<fieldset class="hide" id="search">';
+    barra +=                         '<input type="text" name="q" class="input_text">';
+    barra +=                         '<input type="submit" class="submit_search" value="">';
+    barra +=                     '</fieldset>';
+    barra +=                 '</form>';
+    barra +=             '</div>';
+    barra +=             '<ul class="redes-sociais">';
+    barra +=                 '<li>';                    
+    barra +=                     '<a target="_blank" class="icon-instagram" href="http://instagram.com/carasblogs"></a>';
+    barra +=                 '</li>';
+    barra +=                 '<li>';                    
+    barra +=                     '<a target="_blank" class="icon-facebook" href="https://www.facebook.com/carasblogs"></a>';
+    barra +=                 '</li>';
+    barra +=                 '<li>';                    
+    barra +=                     '<a target="_blank" class="icon-twitter" href="http://twitter.com/carasbrasil"></a>';
+    barra +=                 '</li>';
+    barra +=                 '<li>';                    
+    barra +=                     '<a target="_blank" class="icon-gplus" href="http://plus.google.com/+CARASBrasil"></a>';
+    barra +=                 '</li>';
+    barra +=                 '<li>';
+    barra +=                     '<a target="_blank" class="icon-youtube" href="https://www.youtube.com/channel/UCAheMW8UpFIH2QFQfyp6pNg"></a>';
+    barra +=                 '</li>';           
+    barra +=             '</ul>';
+    barra +=             '<div class="selo_lux">';
+    //barra +=                 '<a target="_blank" class="selo-lux" href="http://bs.serving-sys.com/BurstingPipe/adServer.bs?cn=tf&c=20&mc=click&pli=10759400&PluID=0&ord=[timestamp]"><img src="http://caras.uol.com.br/novoportal/imgs/lux_selinho_90x30.jpg"></a>';
+    barra +=                 '<script src="http://www.googletagservices.com/tag/js/gpt.js">googletag.pubads().definePassback("/8804/caras.blogs.' + tag_dechan + '.90x30", [90, 30]).display();</script>';
+    barra +=             '</div>';
+    barra +=             '<div class="btn-assine">';
+    barra +=                 '<a target="_blank" href="http://assineclube.com.br"></a>';
+    barra +=             '</div>';
+    barra +=         '</div>';
+    barra +=     '</div>';           
+    barra += '</header>';
+    barra +='<script type="text/javascript" src="http://caras.uol.com.br/novoportal/parceiros/js/scripts-header-blogs.js" defer="defer"></script>';
+document.write(barra);
+
+
+//Script para trocar link do logo na home de blogs
+jQuery(document).ready(function () {
+    var url = document.location.href // "http://caras.uol.com.br/blogs"
+    var str = url;
+    var n = str.indexOf("caras.uol.com.br");
+
+    if (n > 0) {
+        jQuery("#url_logo_blog").attr('href','http://caras.uol.com.br/');
+    } else{
+        jQuery("#url_logo_blog").attr('href','http://caras.uol.com.br/blogs');
+    };
+}); 
+
+

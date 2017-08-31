@@ -90,7 +90,7 @@ export class PostsComponent implements OnInit {
 
   backToTop(topo: boolean) {
     $('html, body').animate({
-      scrollTop: topo ? 0 : ($('#post_id').position().top - 100)
+      scrollTop: topo ? 0 : ($('#post_id').position().top - 95)
     }, 500);
   }
 

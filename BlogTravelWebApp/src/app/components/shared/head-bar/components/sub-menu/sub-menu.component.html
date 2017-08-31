@@ -7,6 +7,12 @@
         <button md-menu-item class="btn-menu-item" [routerLink]="['/post/destino/', continent]">{{continent}}</button>
       </span>
     </md-menu>
+    <button *ngIf="categories.length > 0" md-button [mdMenuTriggerFor]="category" class="sub-menu" fxFlex.md="18" fxFlex.lg="14" fxFlex.xl="12">Categorias</button>
+    <md-menu #category="mdMenu">
+      <span *ngFor="let category of categories">
+        <button md-menu-item class="btn-menu-item" [routerLink]="['/post/categoria/', category]">{{category}}</button>
+      </span>
+    </md-menu>
     <button md-button class="sub-menu" fxFlex.md="17" fxFlex.lg="13" fxFlex.xl="11">Contato</button>
     <button *ngIf="logged" md-button md-button [mdMenuTriggerFor]="postagem" class="sub-menu" fxFlex.md="18" fxFlex.lg="14" fxFlex.xl="12">Postagem</button>
     <md-menu #postagem="mdMenu">

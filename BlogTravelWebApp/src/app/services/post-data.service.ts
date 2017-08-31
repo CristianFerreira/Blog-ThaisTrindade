@@ -36,6 +36,10 @@ export class PostDataService extends HttpServiceBaseService{
         return this.get(AppConfig.serviceUrls().post.getByCategory + "/" + category);
     }
 
+    getAllCategories(): Observable<Response> {
+        return this.get(AppConfig.serviceUrls().post.getAllCategories);
+    }
+
     getAll(): Observable<Response> {
          return this.get(AppConfig.serviceUrls().post.getAll);
     }

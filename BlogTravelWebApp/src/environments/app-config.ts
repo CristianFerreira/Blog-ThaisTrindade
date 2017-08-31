@@ -38,6 +38,7 @@ export const AppConfig = {
                 getByTag: AppConfig.serviceInfo().rootServiceRoute + "api/post/tag",
                 getAllTags: AppConfig.serviceInfo().rootServiceRoute + "api/post/tags/getAll/",
                 getByCategory: AppConfig.serviceInfo().rootServiceRoute + "api/post/categoria",
+                getAllCategories: AppConfig.serviceInfo().rootServiceRoute + "api/post/categories/getAll/",
                 getAllContinents: AppConfig.serviceInfo().rootServiceRoute +  "api/post/continents/getAll/",
                 getByContinent: AppConfig.serviceInfo().rootServiceRoute +  "api/post/continent",
                 delete: AppConfig.serviceInfo().rootServiceRoute + "api/post",

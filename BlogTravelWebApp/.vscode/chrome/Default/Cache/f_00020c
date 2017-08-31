@@ -1,0 +1,5007 @@
+(function(){function f() {
+  return function() {
+  }
+}
+function aa(a) {
+  return function(b) {
+    this[a] = b
+  }
+}
+function k(a) {
+  return function() {
+    return this[a]
+  }
+}
+function ba(a) {
+  return function() {
+    return a
+  }
+}
+var l, m = this;
+function fa(a) {
+  a = a.split(".");
+  for(var b = m, c;c = a.shift();) {
+    if(null != b[c]) {
+      b = b[c]
+    }else {
+      return null
+    }
+  }
+  return b
+}
+function ga(a) {
+  var b = typeof a;
+  if("object" == b) {
+    if(a) {
+      if(a instanceof Array) {
+        return"array"
+      }
+      if(a instanceof Object) {
+        return b
+      }
+      var c = Object.prototype.toString.call(a);
+      if("[object Window]" == c) {
+        return"object"
+      }
+      if("[object Array]" == c || "number" == typeof a.length && "undefined" != typeof a.splice && "undefined" != typeof a.propertyIsEnumerable && !a.propertyIsEnumerable("splice")) {
+        return"array"
+      }
+      if("[object Function]" == c || "undefined" != typeof a.call && "undefined" != typeof a.propertyIsEnumerable && !a.propertyIsEnumerable("call")) {
+        return"function"
+      }
+    }else {
+      return"null"
+    }
+  }else {
+    if("function" == b && "undefined" == typeof a.call) {
+      return"object"
+    }
+  }
+  return b
+}
+function ha(a) {
+  return"array" == ga(a)
+}
+function ia(a) {
+  var b = ga(a);
+  return"array" == b || "object" == b && "number" == typeof a.length
+}
+function n(a) {
+  return"string" == typeof a
+}
+function ja(a) {
+  var b = typeof a;
+  return"object" == b && null != a || "function" == b
+}
+var ka = "closure_uid_" + (1E9 * Math.random() >>> 0), la = 0;
+function ma(a, b, c) {
+  return a.call.apply(a.bind, arguments)
+}
+function na(a, b, c) {
+  if(!a) {
+    throw Error();
+  }
+  if(2 < arguments.length) {
+    var d = Array.prototype.slice.call(arguments, 2);
+    return function() {
+      var c = Array.prototype.slice.call(arguments);
+      Array.prototype.unshift.apply(c, d);
+      return a.apply(b, c)
+    }
+  }
+  return function() {
+    return a.apply(b, arguments)
+  }
+}
+function p(a, b, c) {
+  p = Function.prototype.bind && -1 != Function.prototype.bind.toString().indexOf("native code") ? ma : na;
+  return p.apply(null, arguments)
+}
+function oa(a, b) {
+  var c = Array.prototype.slice.call(arguments, 1);
+  return function() {
+    var b = c.slice();
+    b.push.apply(b, arguments);
+    return a.apply(this, b)
+  }
+}
+var pa = Date.now || function() {
+  return+new Date
+}, qa = null;
+function ra(a) {
+  var b = {}, c;
+  for(c in b) {
+    var d = ("" + b[c]).replace(/\$/g, "$$$$");
+    a = a.replace(RegExp("\\{\\$" + c + "\\}", "gi"), d)
+  }
+  return a
+}
+function r(a, b) {
+  var c = a.split("."), d = m;
+  c[0] in d || !d.execScript || d.execScript("var " + c[0]);
+  for(var e;c.length && (e = c.shift());) {
+    c.length || void 0 === b ? d = d[e] ? d[e] : d[e] = {} : d[e] = b
+  }
+}
+function s(a, b) {
+  function c() {
+  }
+  c.prototype = b.prototype;
+  a.e = b.prototype;
+  a.prototype = new c
+}
+;function sa() {
+  for(var a = window.self, b = 0, c = "", d, e;a !== window.top && a.parent;) {
+    try {
+      if(a.parent && a.parent.location && !a.parent.location.href) {
+        throw"HandleSafari";
+      }
+    }catch(g) {
+      if(c = c || a, 2 > b) {
+        b++
+      }else {
+        break
+      }
+    }
+    a = a.parent
+  }
+  c = c || a;
+  e = (e = c.document.referrer.match(/[^?]+/)) ? e[0] : "";
+  e = e.slice(0, 128);
+  d = a = c.location.href;
+  c.self !== window.top && c.location.ancestorOrigins && (a = c.location.ancestorOrigins[c.location.ancestorOrigins.length - 1]);
+  this.ge = b;
+  this.Of = c.location.hostname;
+  this.Pf = e;
+  this.Nf = d;
+  this.Qf = a
+}
+sa.prototype.ib = k("Qf");
+function ta(a) {
+  Error.captureStackTrace ? Error.captureStackTrace(this, ta) : this.stack = Error().stack || "";
+  a && (this.message = String(a))
+}
+s(ta, Error);
+ta.prototype.name = "CustomError";
+var va;
+function wa(a, b) {
+  for(var c = a.split("%s"), d = "", e = Array.prototype.slice.call(arguments, 1);e.length && 1 < c.length;) {
+    d += c.shift() + e.shift()
+  }
+  return d + c.join("%s")
+}
+function xa(a) {
+  return a.replace(/^[\s\xa0]+|[\s\xa0]+$/g, "")
+}
+function ya(a) {
+  if(!za.test(a)) {
+    return a
+  }
+  -1 != a.indexOf("\x26") && (a = a.replace(Aa, "\x26amp;"));
+  -1 != a.indexOf("\x3c") && (a = a.replace(Ba, "\x26lt;"));
+  -1 != a.indexOf("\x3e") && (a = a.replace(Ca, "\x26gt;"));
+  -1 != a.indexOf('"') && (a = a.replace(Da, "\x26quot;"));
+  return a
+}
+var Aa = /&/g, Ba = /</g, Ca = />/g, Da = /\"/g, za = /[&<>\"]/;
+function Ea(a, b) {
+  for(var c = 0, d = xa(String(a)).split("."), e = xa(String(b)).split("."), g = Math.max(d.length, e.length), h = 0;0 == c && h < g;h++) {
+    var q = d[h] || "", H = e[h] || "", ua = RegExp("(\\d*)(\\D*)", "g"), ca = RegExp("(\\d*)(\\D*)", "g");
+    do {
+      var da = ua.exec(q) || ["", "", ""], ea = ca.exec(H) || ["", "", ""];
+      if(0 == da[0].length && 0 == ea[0].length) {
+        break
+      }
+      c = ((0 == da[1].length ? 0 : parseInt(da[1], 10)) < (0 == ea[1].length ? 0 : parseInt(ea[1], 10)) ? -1 : (0 == da[1].length ? 0 : parseInt(da[1], 10)) > (0 == ea[1].length ? 0 : parseInt(ea[1], 10)) ? 1 : 0) || ((0 == da[2].length) < (0 == ea[2].length) ? -1 : (0 == da[2].length) > (0 == ea[2].length) ? 1 : 0) || (da[2] < ea[2] ? -1 : da[2] > ea[2] ? 1 : 0)
+    }while(0 == c)
+  }
+  return c
+}
+function Fa(a) {
+  return String(a).replace(/\-([a-z])/g, function(a, c) {
+    return c.toUpperCase()
+  })
+}
+function Ga(a) {
+  var b = n(void 0) ? "undefined".replace(/([-()\[\]{}+?*.$\^|,:#<!\\])/g, "\\$1").replace(/\x08/g, "\\x08") : "\\s";
+  return a.replace(RegExp("(^" + (b ? "|[" + b + "]+" : "") + ")([a-z])", "g"), function(a, b, e) {
+    return b + e.toUpperCase()
+  })
+}
+;function Ha(a, b) {
+  b.unshift(a);
+  ta.call(this, wa.apply(null, b));
+  b.shift();
+  this.Cj = a
+}
+s(Ha, ta);
+Ha.prototype.name = "AssertionError";
+function Ia(a, b) {
+  throw new Ha("Failure" + (a ? ": " + a : ""), Array.prototype.slice.call(arguments, 1));
+}
+;var t = Array.prototype, Ja = t.indexOf ? function(a, b, c) {
+  return t.indexOf.call(a, b, c)
+} : function(a, b, c) {
+  c = null == c ? 0 : 0 > c ? Math.max(0, a.length + c) : c;
+  if(n(a)) {
+    return n(b) && 1 == b.length ? a.indexOf(b, c) : -1
+  }
+  for(;c < a.length;c++) {
+    if(c in a && a[c] === b) {
+      return c
+    }
+  }
+  return-1
+}, u = t.forEach ? function(a, b, c) {
+  t.forEach.call(a, b, c)
+} : function(a, b, c) {
+  for(var d = a.length, e = n(a) ? a.split("") : a, g = 0;g < d;g++) {
+    g in e && b.call(c, e[g], g, a)
+  }
+}, Ka = t.filter ? function(a, b, c) {
+  return t.filter.call(a, b, c)
+} : function(a, b, c) {
+  for(var d = a.length, e = [], g = 0, h = n(a) ? a.split("") : a, q = 0;q < d;q++) {
+    if(q in h) {
+      var H = h[q];
+      b.call(c, H, q, a) && (e[g++] = H)
+    }
+  }
+  return e
+}, La = t.some ? function(a, b, c) {
+  return t.some.call(a, b, c)
+} : function(a, b, c) {
+  for(var d = a.length, e = n(a) ? a.split("") : a, g = 0;g < d;g++) {
+    if(g in e && b.call(c, e[g], g, a)) {
+      return!0
+    }
+  }
+  return!1
+};
+function Ma(a) {
+  var b = Na;
+  a: {
+    for(var c = b.length, d = n(b) ? b.split("") : b, e = 0;e < c;e++) {
+      if(e in d && a.call(void 0, d[e], e, b)) {
+        break a
+      }
+    }
+  }
+}
+function Oa(a, b) {
+  var c = Ja(a, b), d;
+  (d = 0 <= c) && t.splice.call(a, c, 1);
+  return d
+}
+function Pa(a) {
+  return t.concat.apply(t, arguments)
+}
+function Qa(a) {
+  var b = a.length;
+  if(0 < b) {
+    for(var c = Array(b), d = 0;d < b;d++) {
+      c[d] = a[d]
+    }
+    return c
+  }
+  return[]
+}
+function Ra(a, b, c) {
+  return 2 >= arguments.length ? t.slice.call(a, b) : t.slice.call(a, b, c)
+}
+;var Sa, Ta, Ua, Va, Wa;
+function Xa() {
+  return m.navigator ? m.navigator.userAgent : null
+}
+function Ya() {
+  return m.navigator
+}
+Va = Ua = Ta = Sa = !1;
+var Za;
+if(Za = Xa()) {
+  var $a = Ya();
+  Sa = 0 == Za.lastIndexOf("Opera", 0);
+  Ta = !Sa && (-1 != Za.indexOf("MSIE") || -1 != Za.indexOf("Trident"));
+  Ua = !Sa && -1 != Za.indexOf("WebKit");
+  Va = !Sa && !Ua && !Ta && "Gecko" == $a.product
+}
+var ab = Sa, v = Ta, bb = Va, w = Ua, cb = Ya();
+Wa = -1 != (cb && cb.platform || "").indexOf("Mac");
+var db = !!Ya() && -1 != (Ya().appVersion || "").indexOf("X11");
+function eb() {
+  var a = m.document;
+  return a ? a.documentMode : void 0
+}
+var fb;
+a: {
+  var gb = "", hb;
+  if(ab && m.opera) {
+    var ib = m.opera.version, gb = "function" == typeof ib ? ib() : ib
+  }else {
+    if(bb ? hb = /rv\:([^\);]+)(\)|;)/ : v ? hb = /\b(?:MSIE|rv)[: ]([^\);]+)(\)|;)/ : w && (hb = /WebKit\/(\S+)/), hb) {
+      var jb = hb.exec(Xa()), gb = jb ? jb[1] : ""
+    }
+  }
+  if(v) {
+    var kb = eb();
+    if(kb > parseFloat(gb)) {
+      fb = String(kb);
+      break a
+    }
+  }
+  fb = gb
+}
+var lb = {};
+function x(a) {
+  return lb[a] || (lb[a] = 0 <= Ea(fb, a))
+}
+var mb = m.document, nb = mb && v ? eb() || ("CSS1Compat" == mb.compatMode ? parseInt(fb, 10) : 5) : void 0;
+var ob = !v || v && 9 <= nb, pb = !bb && !v || v && v && 9 <= nb || bb && x("1.9.1"), qb = v && !x("9");
+function rb(a, b) {
+  var c;
+  c = a.className;
+  c = n(c) && c.match(/\S+/g) || [];
+  for(var d = Ra(arguments, 1), e = c.length + d.length, g = c, h = 0;h < d.length;h++) {
+    0 <= Ja(g, d[h]) || g.push(d[h])
+  }
+  a.className = c.join(" ");
+  return c.length == e
+}
+;function sb(a, b) {
+  this.x = void 0 !== a ? a : 0;
+  this.y = void 0 !== b ? b : 0
+}
+l = sb.prototype;
+l.pa = function() {
+  return new sb(this.x, this.y)
+};
+l.toString = function() {
+  return"(" + this.x + ", " + this.y + ")"
+};
+l.ceil = function() {
+  this.x = Math.ceil(this.x);
+  this.y = Math.ceil(this.y);
+  return this
+};
+l.floor = function() {
+  this.x = Math.floor(this.x);
+  this.y = Math.floor(this.y);
+  return this
+};
+l.round = function() {
+  this.x = Math.round(this.x);
+  this.y = Math.round(this.y);
+  return this
+};
+function tb(a, b) {
+  this.width = a;
+  this.height = b
+}
+l = tb.prototype;
+l.pa = function() {
+  return new tb(this.width, this.height)
+};
+l.toString = function() {
+  return"(" + this.width + " x " + this.height + ")"
+};
+l.ceil = function() {
+  this.width = Math.ceil(this.width);
+  this.height = Math.ceil(this.height);
+  return this
+};
+l.floor = function() {
+  this.width = Math.floor(this.width);
+  this.height = Math.floor(this.height);
+  return this
+};
+l.round = function() {
+  this.width = Math.round(this.width);
+  this.height = Math.round(this.height);
+  return this
+};
+function ub(a, b, c) {
+  for(var d in a) {
+    b.call(c, a[d], d, a)
+  }
+}
+function vb(a) {
+  var b = [], c = 0, d;
+  for(d in a) {
+    b[c++] = a[d]
+  }
+  return b
+}
+function wb(a) {
+  var b = [], c = 0, d;
+  for(d in a) {
+    b[c++] = d
+  }
+  return b
+}
+var xb = "constructor hasOwnProperty isPrototypeOf propertyIsEnumerable toLocaleString toString valueOf".split(" ");
+function yb(a, b) {
+  for(var c, d, e = 1;e < arguments.length;e++) {
+    d = arguments[e];
+    for(c in d) {
+      a[c] = d[c]
+    }
+    for(var g = 0;g < xb.length;g++) {
+      c = xb[g], Object.prototype.hasOwnProperty.call(d, c) && (a[c] = d[c])
+    }
+  }
+}
+;function zb(a) {
+  return a ? new Ab(Bb(a)) : va || (va = new Ab)
+}
+function Cb(a, b, c) {
+  var d = document;
+  c = c || d;
+  a = a && "*" != a ? a.toUpperCase() : "";
+  if(c.querySelectorAll && c.querySelector && (a || b)) {
+    return c.querySelectorAll(a + (b ? "." + b : ""))
+  }
+  if(b && c.getElementsByClassName) {
+    c = c.getElementsByClassName(b);
+    if(a) {
+      for(var d = {}, e = 0, g = 0, h;h = c[g];g++) {
+        a == h.nodeName && (d[e++] = h)
+      }
+      d.length = e;
+      return d
+    }
+    return c
+  }
+  c = c.getElementsByTagName(a || "*");
+  if(b) {
+    d = {};
+    for(g = e = 0;h = c[g];g++) {
+      a = h.className, "function" == typeof a.split && 0 <= Ja(a.split(/\s+/), b) && (d[e++] = h)
+    }
+    d.length = e;
+    return d
+  }
+  return c
+}
+function Db(a, b) {
+  ub(b, function(b, d) {
+    "style" == d ? a.style.cssText = b : "class" == d ? a.className = b : "for" == d ? a.htmlFor = b : d in Eb ? a.setAttribute(Eb[d], b) : 0 == d.lastIndexOf("aria-", 0) || 0 == d.lastIndexOf("data-", 0) ? a.setAttribute(d, b) : a[d] = b
+  })
+}
+var Eb = {cellpadding:"cellPadding", cellspacing:"cellSpacing", colspan:"colSpan", frameborder:"frameBorder", height:"height", maxlength:"maxLength", role:"role", rowspan:"rowSpan", type:"type", usemap:"useMap", valign:"vAlign", width:"width"};
+function Fb(a) {
+  a = a.document;
+  a = "CSS1Compat" == a.compatMode ? a.documentElement : a.body;
+  return new tb(a.clientWidth, a.clientHeight)
+}
+function Gb(a) {
+  return a ? a.parentWindow || a.defaultView : window
+}
+function Hb(a, b, c) {
+  return Ib(document, arguments)
+}
+function Ib(a, b) {
+  var c = b[0], d = b[1];
+  if(!ob && d && (d.name || d.type)) {
+    c = ["\x3c", c];
+    d.name && c.push(' name\x3d"', ya(d.name), '"');
+    if(d.type) {
+      c.push(' type\x3d"', ya(d.type), '"');
+      var e = {};
+      yb(e, d);
+      delete e.type;
+      d = e
+    }
+    c.push("\x3e");
+    c = c.join("")
+  }
+  c = a.createElement(c);
+  d && (n(d) ? c.className = d : ha(d) ? rb.apply(null, [c].concat(d)) : Db(c, d));
+  2 < b.length && Jb(a, c, b, 2);
+  return c
+}
+function Jb(a, b, c, d) {
+  function e(c) {
+    c && b.appendChild(n(c) ? a.createTextNode(c) : c)
+  }
+  for(;d < c.length;d++) {
+    var g = c[d];
+    !ia(g) || ja(g) && 0 < g.nodeType ? e(g) : u(Kb(g) ? Qa(g) : g, e)
+  }
+}
+function Lb(a, b) {
+  var c = a.createElement("div");
+  v ? (c.innerHTML = "\x3cbr\x3e" + b, c.removeChild(c.firstChild)) : c.innerHTML = b;
+  if(1 == c.childNodes.length) {
+    return c.removeChild(c.firstChild)
+  }
+  for(var d = a.createDocumentFragment();c.firstChild;) {
+    d.appendChild(c.firstChild)
+  }
+  return d
+}
+function Mb(a, b) {
+  a.appendChild(b)
+}
+function Nb(a, b) {
+  Jb(Bb(a), a, arguments, 1)
+}
+function Ob(a, b) {
+  a.insertBefore(b, a.childNodes[0] || null)
+}
+function y(a) {
+  return a && a.parentNode ? a.parentNode.removeChild(a) : null
+}
+function Pb(a) {
+  return pb && void 0 != a.children ? a.children : Ka(a.childNodes, function(a) {
+    return 1 == a.nodeType
+  })
+}
+function Bb(a) {
+  return 9 == a.nodeType ? a : a.ownerDocument || a.document
+}
+function Qb(a, b) {
+  if("textContent" in a) {
+    a.textContent = b
+  }else {
+    if(3 == a.nodeType) {
+      a.data = b
+    }else {
+      if(a.firstChild && 3 == a.firstChild.nodeType) {
+        for(;a.lastChild != a.firstChild;) {
+          a.removeChild(a.lastChild)
+        }
+        a.firstChild.data = b
+      }else {
+        for(var c;c = a.firstChild;) {
+          a.removeChild(c)
+        }
+        a.appendChild(Bb(a).createTextNode(String(b)))
+      }
+    }
+  }
+}
+var Rb = {SCRIPT:1, STYLE:1, HEAD:1, IFRAME:1, OBJECT:1}, Sb = {IMG:" ", BR:"\n"};
+function Tb(a) {
+  if(qb && "innerText" in a) {
+    a = a.innerText.replace(/(\r\n|\r|\n)/g, "\n")
+  }else {
+    var b = [];
+    Ub(a, b, !0);
+    a = b.join("")
+  }
+  a = a.replace(/ \xAD /g, " ").replace(/\xAD/g, "");
+  a = a.replace(/\u200B/g, "");
+  qb || (a = a.replace(/ +/g, " "));
+  " " != a && (a = a.replace(/^\s*/, ""));
+  return a
+}
+function Ub(a, b, c) {
+  if(!(a.nodeName in Rb)) {
+    if(3 == a.nodeType) {
+      c ? b.push(String(a.nodeValue).replace(/(\r\n|\r|\n)/g, "")) : b.push(a.nodeValue)
+    }else {
+      if(a.nodeName in Sb) {
+        b.push(Sb[a.nodeName])
+      }else {
+        for(a = a.firstChild;a;) {
+          Ub(a, b, c), a = a.nextSibling
+        }
+      }
+    }
+  }
+}
+function Kb(a) {
+  if(a && "number" == typeof a.length) {
+    if(ja(a)) {
+      return"function" == typeof a.item || "string" == typeof a.item
+    }
+    if("function" == ga(a)) {
+      return"function" == typeof a.item
+    }
+  }
+  return!1
+}
+function Ab(a) {
+  this.G = a || m.document || document
+}
+l = Ab.prototype;
+l.m = zb;
+function Vb(a) {
+  return a.G
+}
+l.h = function(a) {
+  return n(a) ? this.G.getElementById(a) : a
+};
+l.r = function(a, b, c) {
+  return Ib(this.G, arguments)
+};
+l.createElement = function(a) {
+  return this.G.createElement(a)
+};
+l.createTextNode = function(a) {
+  return this.G.createTextNode(String(a))
+};
+function Wb(a) {
+  return a.G.parentWindow || a.G.defaultView
+}
+function Xb(a) {
+  var b = a.G;
+  a = w || "CSS1Compat" != b.compatMode ? b.body || b.documentElement : b.documentElement;
+  b = b.parentWindow || b.defaultView;
+  return v && x("10") && b.pageYOffset != a.scrollTop ? new sb(a.scrollLeft, a.scrollTop) : new sb(b.pageXOffset || a.scrollLeft, b.pageYOffset || a.scrollTop)
+}
+l.appendChild = Mb;
+l.removeNode = y;
+l.Ae = Pb;
+l.contains = function(a, b) {
+  if(a.contains && 1 == b.nodeType) {
+    return a == b || a.contains(b)
+  }
+  if("undefined" != typeof a.compareDocumentPosition) {
+    return a == b || Boolean(a.compareDocumentPosition(b) & 16)
+  }
+  for(;b && a != b;) {
+    b = b.parentNode
+  }
+  return b == a
+};
+v && x(8);
+var z = {data:{}};
+z.data.Rc = {Pc:{Hj:!0}, Cf:{Tg:!0}, Df:{Tg:!0}, Lf:{Jj:!0}, pf:{Gj:!0}, uf:{Fj:!0}, ee:{Ij:!0}};
+z.data.J = function() {
+  throw Error("Do not instantiate directly");
+};
+z.data.J.prototype.vj = null;
+z.data.J.prototype.toString = k("content");
+z.Gf = !1;
+z.Ej = function(a, b, c, d) {
+  a.innerHTML = z.ld(b(c || z.kd, void 0, d))
+};
+z.Dj = function(a, b, c, d) {
+  d = d || zb();
+  a = z.ld(a(b || z.kd, void 0, c));
+  z.le(a);
+  return Lb(d.G, a)
+};
+z.aa = function(a, b) {
+  var c = zb().createElement("DIV"), d = z.ld(a(b || z.kd, void 0, void 0));
+  z.le(d);
+  c.innerHTML = d;
+  return 1 == c.childNodes.length && (d = c.firstChild, 1 == d.nodeType) ? d : c
+};
+z.ld = function(a) {
+  if(!z.Gf && !ja(a)) {
+    return String(a)
+  }
+  if(a instanceof z.data.J) {
+    var b = z.data.Rc;
+    if(a.ga === b.Pc) {
+      return a.content
+    }
+    if(a.ga === b.ee) {
+      return ya(a.content)
+    }
+  }
+  Ia("Soy template output is unsafe for use as HTML: " + a);
+  return"zSoyz"
+};
+z.le = function(a) {
+  a.match(z.Bf)
+};
+z.Bf = /^<(body|caption|col|colgroup|head|html|tr|td|tbody|thead|tfoot)>/i;
+z.kd = {};
+var Yb = z.data.Rc;
+function Zb() {
+  z.data.J.call(this)
+}
+s(Zb, z.data.J);
+Zb.prototype.ga = Yb.Pc;
+function $b() {
+  z.data.J.call(this)
+}
+s($b, z.data.J);
+$b.prototype.ga = Yb.Cf;
+function ac() {
+  z.data.J.call(this)
+}
+s(ac, z.data.J);
+ac.prototype.ga = Yb.Df;
+function bc() {
+  z.data.J.call(this)
+}
+s(bc, z.data.J);
+bc.prototype.ga = Yb.Lf;
+function cc() {
+  z.data.J.call(this)
+}
+s(cc, z.data.J);
+cc.prototype.ga = Yb.pf;
+function dc() {
+  z.data.J.call(this)
+}
+s(dc, z.data.J);
+dc.prototype.ga = Yb.uf;
+function ec(a) {
+  this.content = String(a)
+}
+s(ec, z.data.J);
+ec.prototype.ga = Yb.ee;
+function A(a) {
+  return a && a.ga && a.ga === z.data.Rc.Pc ? a.content : String(a).replace(fc, gc)
+}
+var hc = {"\x00":"\x26#0;", '"':"\x26quot;", "\x26":"\x26amp;", "'":"\x26#39;", "\x3c":"\x26lt;", "\x3e":"\x26gt;", "\t":"\x26#9;", "\n":"\x26#10;", "\x0B":"\x26#11;", "\f":"\x26#12;", "\r":"\x26#13;", " ":"\x26#32;", "-":"\x26#45;", "/":"\x26#47;", "\x3d":"\x26#61;", "`":"\x26#96;", "\u0085":"\x26#133;", "\u00a0":"\x26#160;", "\u2028":"\x26#8232;", "\u2029":"\x26#8233;"};
+function gc(a) {
+  return hc[a]
+}
+var fc = /[\x00\x22\x26\x27\x3c\x3e]/g;
+function ic(a) {
+  return'\x3cimg src\x3d"' + A(a.url) + '" alt\x3d"" width\x3d0 height\x3d0 style\x3d"border:0px none; display: none;" /\x3e'
+}
+function jc(a) {
+  return'\x3cvideo id\x3d"adaptv-video" width\x3d"' + A(a.width) + '" height\x3d"' + A(a.height) + '" controls\x3e\x3c/video\x3e'
+}
+function kc() {
+  return'\x3cdiv id\x3d"adaptv-companion" style\x3d"height:60px; width:300px; z-index:9999; left: 50%; margin-left: -150px; position: fixed; display:none;"\x3e\x3c/div\x3e'
+}
+function lc(a) {
+  return"\x3cscript type\x3d\"text/javascript\"\x3ebk_allow_multiple_calls\x3dtrue; bk_use_multiple_iframes\x3dtrue; bk_send_statid_payload\x3dtrue; bk_addPageCtx('id', '" + A(a.Uf) + "'); bk_doJSTag(15885, 0);\x3c/script\x3e"
+}
+function mc(a) {
+  return'\x3ciframe id\x3d"ADAPTV_HTML5_IFRAME" frameborder\x3d"0" marginheight\x3d"0" marginwidth\x3d"0" scrolling\x3d"no" height\x3d"' + A(a.height) + '" width\x3d"' + A(a.width) + '" style\x3d"allowtransparency: true; border: 0; frameborder: 0; top: 0; left: 0; hspace: 0; vpsace: 0; overflow: hidden; position: absolute;"\x3e\x3c/iframe\x3e'
+}
+function nc() {
+  return'\x3cdiv id\x3d"ADAPTV_HTML5_IFRAME_BODY" style\x3d"position: relative; width: 100%; height: 100%;"\x3e\x3c/div\x3e'
+}
+function oc(a) {
+  return'\x3cvideo id\x3d"ADAPTV_HTML5_MOBILEWEB_VIDEO" height\x3d"' + A(a.height) + '" width\x3d"' + A(a.width) + '" src\x3d"' + A(a.url) + '"' + (a.control ? A(a.control) : "") + 'style\x3d"position: absolute; top: 0; left: 0; background: #000;"\x3eHTML5 video is not supported!\x3c/video\x3e'
+}
+function pc(a) {
+  return'\x3cdiv style\x3d"position: absolute; width: 100%; height: 100%; z-index: ' + A(a.zIndex) + "; " + (a.hidden ? " display: none;" : "") + '"\x3e\x3cdiv style\x3d"position: absolute; top: 45%; left: 45%; background-color: rgba(224, 224, 224, 0.9); -webkit-border-radius: 100%; -moz-border-radius: 100%; border-radius: 100%; width: 100px; height: 100px; cursor: pointer;"\x3e\x3cdiv style\x3d"position:relative; top: 30px; left: 37%; width: 0; height: 0; border-top: 20px solid transparent; border-bottom: 20px solid transparent; border-left: 35px solid rgba(64, 64, 64, 0.8);"\x3e\x3c/div\x3e\x3c/div\x3e\x3c/div\x3e'
+}
+function qc(a) {
+  return'\x3cdiv style\x3d" background-color:   rgba(0, 0, 0, 0.8); border:             1px solid rgba(100, 100, 100, 0.8); border-radius:      1px; color:              rgba(255, 255, 255, 1.0); font-family:        Helvetica, sans-serif; font-size:          ' + A(a.fontSize) + "px; padding:            5px 0; position:           absolute; right:              0; text-align:         center; top:                75%; width:              20%; z-index:            " + A(a.zIndex) + '; "\x3eSkip ad\x3c/div\x3e'
+}
+function rc(a) {
+  return'\x3cdiv style\x3d" background-color:   rgba(0, 0, 0, 0.8); border:             1px solid rgba(0, 0, 0, 0.8); border-radius:      1px; color:              rgba(255, 255, 255, 1.0); font-family:        Helvetica, sans-serif; font-size:          ' + A(a.fontSize) + "px; padding:            5px 0; position:           absolute; right:              0; text-align:         center; top:                75%; width:              20%; z-index:            " + A(a.zIndex) + '; "\x3e\x3c/div\x3e'
+}
+function sc(a) {
+  return'\x3cdiv style\x3d"display: none; position: absolute; bottom: 0; right: 1%; background-image: url(' + A(a.qg) + "); width: 20px; height: 20px; z-index: " + A(a.zIndex) + '; overflow: hidden; cursor: pointer;"\x3e\x3c/div\x3e'
+}
+function tc(a) {
+  return'\x3cdiv style\x3d"display: none; position: absolute; top: 0px; left: 0px; background-color: rgba(0, 0, 0, 0.6); font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: #fff; width: 100%; z-index: ' + A(a.zIndex) + '; padding: 4px 8px; box-sizing: border-box; height: 22px;"\x3e\x3c/div\x3e'
+}
+function uc() {
+  return'\x3cdiv style\x3d"position: absolute; width: 100%; height: 100%"\x3e\x3c/div\x3e'
+}
+;function vc(a) {
+  if("function" == typeof a.W) {
+    return a.W()
+  }
+  if(n(a)) {
+    return a.split("")
+  }
+  if(ia(a)) {
+    for(var b = [], c = a.length, d = 0;d < c;d++) {
+      b.push(a[d])
+    }
+    return b
+  }
+  return vb(a)
+}
+function wc(a, b, c) {
+  if("function" == typeof a.forEach) {
+    a.forEach(b, c)
+  }else {
+    if(ia(a) || n(a)) {
+      u(a, b, c)
+    }else {
+      var d;
+      if("function" == typeof a.ta) {
+        d = a.ta()
+      }else {
+        if("function" != typeof a.W) {
+          if(ia(a) || n(a)) {
+            d = [];
+            for(var e = a.length, g = 0;g < e;g++) {
+              d.push(g)
+            }
+          }else {
+            d = wb(a)
+          }
+        }else {
+          d = void 0
+        }
+      }
+      for(var e = vc(a), g = e.length, h = 0;h < g;h++) {
+        b.call(c, e[h], d && d[h], a)
+      }
+    }
+  }
+}
+;function xc(a, b) {
+  this.ua = {};
+  this.p = [];
+  this.kf = this.F = 0;
+  var c = arguments.length;
+  if(1 < c) {
+    if(c % 2) {
+      throw Error("Uneven number of arguments");
+    }
+    for(var d = 0;d < c;d += 2) {
+      this.set(arguments[d], arguments[d + 1])
+    }
+  }else {
+    if(a) {
+      a instanceof xc ? (c = a.ta(), d = a.W()) : (c = wb(a), d = vb(a));
+      for(var e = 0;e < c.length;e++) {
+        this.set(c[e], d[e])
+      }
+    }
+  }
+}
+l = xc.prototype;
+l.W = function() {
+  yc(this);
+  for(var a = [], b = 0;b < this.p.length;b++) {
+    a.push(this.ua[this.p[b]])
+  }
+  return a
+};
+l.ta = function() {
+  yc(this);
+  return this.p.concat()
+};
+l.Ab = function(a) {
+  return zc(this.ua, a)
+};
+l.remove = function(a) {
+  return zc(this.ua, a) ? (delete this.ua[a], this.F--, this.kf++, this.p.length > 2 * this.F && yc(this), !0) : !1
+};
+function yc(a) {
+  if(a.F != a.p.length) {
+    for(var b = 0, c = 0;b < a.p.length;) {
+      var d = a.p[b];
+      zc(a.ua, d) && (a.p[c++] = d);
+      b++
+    }
+    a.p.length = c
+  }
+  if(a.F != a.p.length) {
+    for(var e = {}, c = b = 0;b < a.p.length;) {
+      d = a.p[b], zc(e, d) || (a.p[c++] = d, e[d] = 1), b++
+    }
+    a.p.length = c
+  }
+}
+l.get = function(a, b) {
+  return zc(this.ua, a) ? this.ua[a] : b
+};
+l.set = function(a, b) {
+  zc(this.ua, a) || (this.F++, this.p.push(a), this.kf++);
+  this.ua[a] = b
+};
+l.pa = function() {
+  return new xc(this)
+};
+function zc(a, b) {
+  return Object.prototype.hasOwnProperty.call(a, b)
+}
+;function Ac(a) {
+  return Bc(a || arguments.callee.caller, [])
+}
+function Bc(a, b) {
+  var c = [];
+  if(0 <= Ja(b, a)) {
+    c.push("[...circular reference...]")
+  }else {
+    if(a && 50 > b.length) {
+      c.push(Cc(a) + "(");
+      for(var d = a.arguments, e = 0;e < d.length;e++) {
+        0 < e && c.push(", ");
+        var g;
+        g = d[e];
+        switch(typeof g) {
+          case "object":
+            g = g ? "object" : "null";
+            break;
+          case "string":
+            break;
+          case "number":
+            g = String(g);
+            break;
+          case "boolean":
+            g = g ? "true" : "false";
+            break;
+          case "function":
+            g = (g = Cc(g)) ? g : "[fn]";
+            break;
+          default:
+            g = typeof g
+        }
+        40 < g.length && (g = g.substr(0, 40) + "...");
+        c.push(g)
+      }
+      b.push(a);
+      c.push(")\n");
+      try {
+        c.push(Bc(a.caller, b))
+      }catch(h) {
+        c.push("[exception trying to get caller]\n")
+      }
+    }else {
+      a ? c.push("[...long stack...]") : c.push("[end]")
+    }
+  }
+  return c.join("")
+}
+function Cc(a) {
+  if(Dc[a]) {
+    return Dc[a]
+  }
+  a = String(a);
+  if(!Dc[a]) {
+    var b = /function ([^\(]+)/.exec(a);
+    Dc[a] = b ? b[1] : "[Anonymous]"
+  }
+  return Dc[a]
+}
+var Dc = {};
+function B() {
+  0 != Ec && (this.xj = Error().stack, Fc[this[ka] || (this[ka] = ++la)] = this)
+}
+var Ec = 0, Fc = {};
+B.prototype.qa = !1;
+B.prototype.a = function() {
+  if(!this.qa && (this.qa = !0, this.n(), 0 != Ec)) {
+    var a = this[ka] || (this[ka] = ++la);
+    delete Fc[a]
+  }
+};
+B.prototype.n = function() {
+  if(this.Mb) {
+    for(;this.Mb.length;) {
+      this.Mb.shift()()
+    }
+  }
+};
+function Gc(a) {
+  a && "function" == typeof a.a && a.a()
+}
+;var Hc = !v || v && 9 <= nb, Ic = !v || v && 9 <= nb, Jc = v && !x("9");
+!w || x("528");
+bb && x("1.9b") || v && x("8") || ab && x("9.5") || w && x("528");
+bb && !x("8") || v && x("9");
+function C(a, b) {
+  this.type = a;
+  this.currentTarget = this.target = b
+}
+l = C.prototype;
+l.n = f();
+l.a = f();
+l.Ia = !1;
+l.defaultPrevented = !1;
+l.af = !0;
+l.stopPropagation = function() {
+  this.Ia = !0
+};
+l.preventDefault = function() {
+  this.defaultPrevented = !0;
+  this.af = !1
+};
+function Kc(a) {
+  a.stopPropagation()
+}
+function Lc(a) {
+  a.preventDefault()
+}
+;function Mc(a) {
+  return w ? "webkit" + a : ab ? "o" + a.toLowerCase() : a.toLowerCase()
+}
+var Nc = {$d:"click", zh:"dblclick", hi:"mousedown", ni:"mouseup", mi:"mouseover", li:"mouseout", ki:"mousemove", ii:"mouseenter", ji:"mouseleave", bj:"selectstart", Sh:"keypress", Rh:"keydown", Th:"keyup", ph:"blur", Kh:"focus", Ah:"deactivate", Lh:v ? "focusin" : "DOMFocusIn", Mh:v ? "focusout" : "DOMFocusOut", qh:"change", aj:"select", jj:"submit", Qh:"input", Wi:"propertychange", Hh:"dragstart", Ch:"drag", Eh:"dragenter", Gh:"dragover", Fh:"dragleave", Ih:"drop", Dh:"dragend", Kf:"touchstart", 
+nj:"touchmove", mj:"touchend", lj:"touchcancel", oh:"beforeunload", vh:"consolemessage", wh:"contextmenu", Bh:"DOMContentLoaded", Wb:"error", Ph:"help", Uh:"load", bi:"losecapture", Hi:"orientationchange", Xi:"readystatechange", Yi:"resize", $i:"scroll", pj:"unload", Oh:"hashchange", Ii:"pagehide", Ji:"pageshow", Ui:"popstate", xh:"copy", Ki:"paste", yh:"cut", lh:"beforecopy", mh:"beforecut", nh:"beforepaste", Gi:"online", Fi:"offline", gi:"message", uh:"connect", kh:Mc("AnimationStart"), ih:Mc("AnimationEnd"), 
+jh:Mc("AnimationIteration"), oj:Mc("TransitionEnd"), Ni:"pointerdown", Ti:"pointerup", Mi:"pointercancel", Qi:"pointermove", Si:"pointerover", Ri:"pointerout", Oi:"pointerenter", Pi:"pointerleave", Nh:"gotpointercapture", ci:"lostpointercapture", oi:"MSGestureChange", pi:"MSGestureEnd", qi:"MSGestureHold", ri:"MSGestureStart", si:"MSGestureTap", ti:"MSGotPointerCapture", ui:"MSInertiaStart", vi:"MSLostPointerCapture", wi:"MSPointerCancel", xi:"MSPointerDown", yi:"MSPointerEnter", zi:"MSPointerHover", 
+Ai:"MSPointerLeave", Bi:"MSPointerMove", Ci:"MSPointerOut", Di:"MSPointerOver", Ei:"MSPointerUp", kj:"textinput", sh:"compositionstart", th:"compositionupdate", rh:"compositionend", Jh:"exit", Vh:"loadabort", Wh:"loadcommit", Zh:"loadredirect", $h:"loadstart", ai:"loadstop", Zi:"responsive", cj:"sizechanged", qj:"unresponsive", rj:"visibilitychange"};
+function Oc(a) {
+  Oc[" "](a);
+  return a
+}
+Oc[" "] = f();
+function Pc(a, b) {
+  a && this.init(a, b)
+}
+s(Pc, C);
+var Qc = [1, 4, 2];
+l = Pc.prototype;
+l.target = null;
+l.relatedTarget = null;
+l.offsetX = 0;
+l.offsetY = 0;
+l.clientX = 0;
+l.clientY = 0;
+l.screenX = 0;
+l.screenY = 0;
+l.button = 0;
+l.keyCode = 0;
+l.charCode = 0;
+l.ctrlKey = !1;
+l.altKey = !1;
+l.shiftKey = !1;
+l.metaKey = !1;
+l.Ng = !1;
+l.ha = null;
+l.init = function(a, b) {
+  var c = this.type = a.type;
+  C.call(this, c);
+  this.target = a.target || a.srcElement;
+  this.currentTarget = b;
+  var d = a.relatedTarget;
+  if(d) {
+    if(bb) {
+      var e;
+      a: {
+        try {
+          Oc(d.nodeName);
+          e = !0;
+          break a
+        }catch(g) {
+        }
+        e = !1
+      }
+      e || (d = null)
+    }
+  }else {
+    "mouseover" == c ? d = a.fromElement : "mouseout" == c && (d = a.toElement)
+  }
+  this.relatedTarget = d;
+  this.offsetX = w || void 0 !== a.offsetX ? a.offsetX : a.layerX;
+  this.offsetY = w || void 0 !== a.offsetY ? a.offsetY : a.layerY;
+  this.clientX = void 0 !== a.clientX ? a.clientX : a.pageX;
+  this.clientY = void 0 !== a.clientY ? a.clientY : a.pageY;
+  this.screenX = a.screenX || 0;
+  this.screenY = a.screenY || 0;
+  this.button = a.button;
+  this.keyCode = a.keyCode || 0;
+  this.charCode = a.charCode || ("keypress" == c ? a.keyCode : 0);
+  this.ctrlKey = a.ctrlKey;
+  this.altKey = a.altKey;
+  this.shiftKey = a.shiftKey;
+  this.metaKey = a.metaKey;
+  this.Ng = Wa ? a.metaKey : a.ctrlKey;
+  this.state = a.state;
+  this.ha = a;
+  a.defaultPrevented && this.preventDefault();
+  delete this.Ia
+};
+l.stopPropagation = function() {
+  Pc.e.stopPropagation.call(this);
+  this.ha.stopPropagation ? this.ha.stopPropagation() : this.ha.cancelBubble = !0
+};
+l.preventDefault = function() {
+  Pc.e.preventDefault.call(this);
+  var a = this.ha;
+  if(a.preventDefault) {
+    a.preventDefault()
+  }else {
+    if(a.returnValue = !1, Jc) {
+      try {
+        if(a.ctrlKey || 112 <= a.keyCode && 123 >= a.keyCode) {
+          a.keyCode = -1
+        }
+      }catch(b) {
+      }
+    }
+  }
+};
+l.n = f();
+var Rc = "closure_listenable_" + (1E6 * Math.random() | 0);
+function Sc(a) {
+  try {
+    return!(!a || !a[Rc])
+  }catch(b) {
+    return!1
+  }
+}
+var Tc = 0;
+function Uc(a, b, c, d, e) {
+  this.Wa = a;
+  this.Gc = null;
+  this.src = b;
+  this.type = c;
+  this.capture = !!d;
+  this.tc = e;
+  this.key = ++Tc;
+  this.ob = this.dc = !1
+}
+function Vc(a) {
+  a.ob = !0;
+  a.Wa = null;
+  a.Gc = null;
+  a.src = null;
+  a.tc = null
+}
+;function Wc(a) {
+  this.src = a;
+  this.H = {};
+  this.Sb = 0
+}
+Wc.prototype.add = function(a, b, c, d, e) {
+  var g = this.H[a];
+  g || (g = this.H[a] = [], this.Sb++);
+  var h = Xc(g, b, d, e);
+  -1 < h ? (a = g[h], c || (a.dc = !1)) : (a = new Uc(b, this.src, a, !!d, e), a.dc = c, g.push(a));
+  return a
+};
+Wc.prototype.remove = function(a, b, c, d) {
+  if(!(a in this.H)) {
+    return!1
+  }
+  var e = this.H[a];
+  b = Xc(e, b, c, d);
+  return-1 < b ? (Vc(e[b]), t.splice.call(e, b, 1), 0 == e.length && (delete this.H[a], this.Sb--), !0) : !1
+};
+function Yc(a, b) {
+  var c = b.type;
+  if(!(c in a.H)) {
+    return!1
+  }
+  var d = Oa(a.H[c], b);
+  d && (Vc(b), 0 == a.H[c].length && (delete a.H[c], a.Sb--));
+  return d
+}
+Wc.prototype.Xa = function(a) {
+  var b = 0, c;
+  for(c in this.H) {
+    if(!a || c == a) {
+      for(var d = this.H[c], e = 0;e < d.length;e++) {
+        ++b, Vc(d[e])
+      }
+      delete this.H[c];
+      this.Sb--
+    }
+  }
+  return b
+};
+Wc.prototype.Jb = function(a, b, c, d) {
+  a = this.H[a];
+  var e = -1;
+  a && (e = Xc(a, b, c, d));
+  return-1 < e ? a[e] : null
+};
+function Xc(a, b, c, d) {
+  for(var e = 0;e < a.length;++e) {
+    var g = a[e];
+    if(!g.ob && g.Wa == b && g.capture == !!c && g.tc == d) {
+      return e
+    }
+  }
+  return-1
+}
+;var Zc = "closure_lm_" + (1E6 * Math.random() | 0), $c = {}, ad = 0;
+function D(a, b, c, d, e) {
+  if(ha(b)) {
+    for(var g = 0;g < b.length;g++) {
+      D(a, b[g], c, d, e)
+    }
+    return null
+  }
+  c = bd(c);
+  return Sc(a) ? a.A(b, c, d, e) : cd(a, b, c, !1, d, e)
+}
+function cd(a, b, c, d, e, g) {
+  if(!b) {
+    throw Error("Invalid event type");
+  }
+  var h = !!e, q = dd(a);
+  q || (a[Zc] = q = new Wc(a));
+  c = q.add(b, c, d, e, g);
+  if(c.Gc) {
+    return c
+  }
+  d = ed();
+  c.Gc = d;
+  d.src = a;
+  d.Wa = c;
+  a.addEventListener ? a.addEventListener(b, d, h) : a.attachEvent(b in $c ? $c[b] : $c[b] = "on" + b, d);
+  ad++;
+  return c
+}
+function ed() {
+  var a = fd, b = Ic ? function(c) {
+    return a.call(b.src, b.Wa, c)
+  } : function(c) {
+    c = a.call(b.src, b.Wa, c);
+    if(!c) {
+      return c
+    }
+  };
+  return b
+}
+function gd(a, b, c, d, e) {
+  if(ha(b)) {
+    for(var g = 0;g < b.length;g++) {
+      gd(a, b[g], c, d, e)
+    }
+    return null
+  }
+  c = bd(c);
+  return Sc(a) ? a.Ed(b, c, d, e) : cd(a, b, c, !0, d, e)
+}
+function E(a, b, c, d, e) {
+  if(ha(b)) {
+    for(var g = 0;g < b.length;g++) {
+      E(a, b[g], c, d, e)
+    }
+  }else {
+    c = bd(c), Sc(a) ? a.Tb(b, c, d, e) : a && (a = dd(a)) && (b = a.Jb(b, c, !!d, e)) && hd(b)
+  }
+}
+function hd(a) {
+  if("number" == typeof a || !a || a.ob) {
+    return!1
+  }
+  var b = a.src;
+  if(Sc(b)) {
+    return Yc(b.da, a)
+  }
+  var c = a.type, d = a.Gc;
+  b.removeEventListener ? b.removeEventListener(c, d, a.capture) : b.detachEvent && b.detachEvent(c in $c ? $c[c] : $c[c] = "on" + c, d);
+  ad--;
+  (c = dd(b)) ? (Yc(c, a), 0 == c.Sb && (c.src = null, b[Zc] = null)) : Vc(a);
+  return!0
+}
+function id(a, b) {
+  if(a) {
+    if(Sc(a)) {
+      a.da && a.da.Xa(b)
+    }else {
+      var c = dd(a);
+      if(c) {
+        var d = 0, e;
+        for(e in c.H) {
+          if(!b || e == b) {
+            for(var g = Qa(c.H[e]), h = 0;h < g.length;++h) {
+              hd(g[h]) && ++d
+            }
+          }
+        }
+      }
+    }
+  }
+}
+function jd(a, b, c, d) {
+  var e = 1;
+  if(a = dd(a)) {
+    if(b = a.H[b]) {
+      for(b = Qa(b), a = 0;a < b.length;a++) {
+        var g = b[a];
+        g && (g.capture == c && !g.ob) && (e &= !1 !== kd(g, d))
+      }
+    }
+  }
+  return Boolean(e)
+}
+function kd(a, b) {
+  var c = a.Wa, d = a.tc || a.src;
+  a.dc && hd(a);
+  return c.call(d, b)
+}
+function fd(a, b) {
+  if(a.ob) {
+    return!0
+  }
+  if(!Ic) {
+    var c = b || fa("window.event"), d = new Pc(c, this), e = !0;
+    if(!(0 > c.keyCode || void 0 != c.returnValue)) {
+      a: {
+        var g = !1;
+        if(0 == c.keyCode) {
+          try {
+            c.keyCode = -1;
+            break a
+          }catch(h) {
+            g = !0
+          }
+        }
+        if(g || void 0 == c.returnValue) {
+          c.returnValue = !0
+        }
+      }
+      c = [];
+      for(g = d.currentTarget;g;g = g.parentNode) {
+        c.push(g)
+      }
+      for(var g = a.type, q = c.length - 1;!d.Ia && 0 <= q;q--) {
+        d.currentTarget = c[q], e &= jd(c[q], g, !0, d)
+      }
+      for(q = 0;!d.Ia && q < c.length;q++) {
+        d.currentTarget = c[q], e &= jd(c[q], g, !1, d)
+      }
+    }
+    return e
+  }
+  return kd(a, new Pc(b, this))
+}
+function dd(a) {
+  a = a[Zc];
+  return a instanceof Wc ? a : null
+}
+var ld = "__closure_events_fn_" + (1E9 * Math.random() >>> 0);
+function bd(a) {
+  return"function" == ga(a) ? a : a[ld] || (a[ld] = function(b) {
+    return a.handleEvent(b)
+  })
+}
+;function F() {
+  B.call(this);
+  this.da = new Wc(this);
+  this.Rf = this
+}
+s(F, B);
+F.prototype[Rc] = !0;
+l = F.prototype;
+l.Cc = null;
+l.Pd = aa("Cc");
+l.addEventListener = function(a, b, c, d) {
+  D(this, a, b, c, d)
+};
+l.removeEventListener = function(a, b, c, d) {
+  E(this, a, b, c, d)
+};
+l.dispatchEvent = function(a) {
+  var b, c = this.Cc;
+  if(c) {
+    for(b = [];c;c = c.Cc) {
+      b.push(c)
+    }
+  }
+  var c = this.Rf, d = a.type || a;
+  if(n(a)) {
+    a = new C(a, c)
+  }else {
+    if(a instanceof C) {
+      a.target = a.target || c
+    }else {
+      var e = a;
+      a = new C(d, c);
+      yb(a, e)
+    }
+  }
+  var e = !0, g;
+  if(b) {
+    for(var h = b.length - 1;!a.Ia && 0 <= h;h--) {
+      g = a.currentTarget = b[h], e = md(g, d, !0, a) && e
+    }
+  }
+  a.Ia || (g = a.currentTarget = c, e = md(g, d, !0, a) && e, a.Ia || (e = md(g, d, !1, a) && e));
+  if(b) {
+    for(h = 0;!a.Ia && h < b.length;h++) {
+      g = a.currentTarget = b[h], e = md(g, d, !1, a) && e
+    }
+  }
+  return e
+};
+l.n = function() {
+  F.e.n.call(this);
+  this.da && this.da.Xa(void 0);
+  this.Cc = null
+};
+l.A = function(a, b, c, d) {
+  return this.da.add(String(a), b, !1, c, d)
+};
+l.Ed = function(a, b, c, d) {
+  return this.da.add(String(a), b, !0, c, d)
+};
+l.Tb = function(a, b, c, d) {
+  return this.da.remove(String(a), b, c, d)
+};
+function md(a, b, c, d) {
+  b = a.da.H[String(b)];
+  if(!b) {
+    return!0
+  }
+  b = Qa(b);
+  for(var e = !0, g = 0;g < b.length;++g) {
+    var h = b[g];
+    if(h && !h.ob && h.capture == c) {
+      var q = h.Wa, H = h.tc || h.src;
+      h.dc && Yc(a.da, h);
+      e = !1 !== q.call(H, d) && e
+    }
+  }
+  return e && !1 != d.af
+}
+l.Jb = function(a, b, c, d) {
+  return this.da.Jb(String(a), b, c, d)
+};
+function G(a, b) {
+  F.call(this);
+  this.vc = a || 1;
+  this.rb = b || m;
+  this.bd = p(this.gh, this);
+  this.Dd = pa()
+}
+s(G, F);
+l = G.prototype;
+l.enabled = !1;
+l.c = null;
+l.gh = function() {
+  if(this.enabled) {
+    var a = pa() - this.Dd;
+    0 < a && a < 0.8 * this.vc ? this.c = this.rb.setTimeout(this.bd, this.vc - a) : (this.c && (this.rb.clearTimeout(this.c), this.c = null), this.dispatchEvent(I), this.enabled && (this.c = this.rb.setTimeout(this.bd, this.vc), this.Dd = pa()))
+  }
+};
+l.start = function() {
+  this.enabled = !0;
+  this.c || (this.c = this.rb.setTimeout(this.bd, this.vc), this.Dd = pa())
+};
+l.stop = function() {
+  this.enabled = !1;
+  this.c && (this.rb.clearTimeout(this.c), this.c = null)
+};
+l.n = function() {
+  G.e.n.call(this);
+  this.stop();
+  delete this.rb
+};
+var I = "tick";
+function J(a, b, c) {
+  if("function" == ga(a)) {
+    c && (a = p(a, c))
+  }else {
+    if(a && "function" == typeof a.handleEvent) {
+      a = p(a.handleEvent, a)
+    }else {
+      throw Error("Invalid listener argument");
+    }
+  }
+  return 2147483647 < b ? -1 : m.setTimeout(a, b || 0)
+}
+function K(a) {
+  m.clearTimeout(a)
+}
+;var nd = RegExp("^(?:([^:/?#.]+):)?(?://(?:([^/?#]*)@)?([^/#?]*?)(?::([0-9]+))?(?\x3d[/#?]|$))?([^?#]+)?(?:\\?([^#]*))?(?:#(.*))?$");
+function od(a) {
+  if(pd) {
+    pd = !1;
+    var b = m.location;
+    if(b) {
+      var c = b.href;
+      if(c && (c = (c = od(c)[3] || null) && decodeURIComponent(c)) && c != b.hostname) {
+        throw pd = !0, Error();
+      }
+    }
+  }
+  return a.match(nd)
+}
+var pd = w;
+function qd(a, b) {
+  var c;
+  if(a instanceof qd) {
+    this.X = void 0 !== b ? b : a.X, rd(this, a.Ya), c = a.Oc, L(this), this.Oc = c, c = a.Qa, L(this), this.Qa = c, sd(this, a.Ec), c = a.Dc, L(this), this.Dc = c, td(this, a.u.pa()), c = a.qc, L(this), this.qc = c
+  }else {
+    if(a && (c = od(String(a)))) {
+      this.X = !!b;
+      rd(this, c[1] || "", !0);
+      var d = c[2] || "";
+      L(this);
+      this.Oc = ud(d);
+      d = c[3] || "";
+      L(this);
+      this.Qa = ud(d);
+      sd(this, c[4]);
+      d = c[5] || "";
+      L(this);
+      this.Dc = ud(d);
+      td(this, c[6] || "", !0);
+      c = c[7] || "";
+      L(this);
+      this.qc = ud(c)
+    }else {
+      this.X = !!b, this.u = new vd(null, 0, this.X)
+    }
+  }
+}
+l = qd.prototype;
+l.Ya = "";
+l.Oc = "";
+l.Qa = "";
+l.Ec = null;
+l.Dc = "";
+l.qc = "";
+l.sg = !1;
+l.X = !1;
+l.toString = function() {
+  var a = [], b = this.Ya;
+  b && a.push(wd(b, xd), ":");
+  if(b = this.Qa) {
+    a.push("//");
+    var c = this.Oc;
+    c && a.push(wd(c, xd), "@");
+    a.push(encodeURIComponent(String(b)));
+    b = this.Ec;
+    null != b && a.push(":", String(b))
+  }
+  if(b = this.Dc) {
+    this.Qa && "/" != b.charAt(0) && a.push("/"), a.push(wd(b, "/" == b.charAt(0) ? yd : zd))
+  }
+  (b = this.u.toString()) && a.push("?", b);
+  (b = this.qc) && a.push("#", wd(b, Ad));
+  return a.join("")
+};
+l.pa = function() {
+  return new qd(this)
+};
+function rd(a, b, c) {
+  L(a);
+  a.Ya = c ? ud(b) : b;
+  a.Ya && (a.Ya = a.Ya.replace(/:$/, ""))
+}
+function sd(a, b) {
+  L(a);
+  if(b) {
+    b = Number(b);
+    if(isNaN(b) || 0 > b) {
+      throw Error("Bad port number " + b);
+    }
+    a.Ec = b
+  }else {
+    a.Ec = null
+  }
+}
+function td(a, b, c) {
+  L(a);
+  b instanceof vd ? (a.u = b, a.u.Nd(a.X)) : (c || (b = wd(b, Bd)), a.u = new vd(b, 0, a.X))
+}
+function M(a, b, c) {
+  L(a);
+  a.u.set(b, c);
+  return a
+}
+function L(a) {
+  if(a.sg) {
+    throw Error("Tried to modify a read-only Uri");
+  }
+}
+l.Nd = function(a) {
+  this.X = a;
+  this.u && this.u.Nd(a);
+  return this
+};
+function Cd(a) {
+  return a instanceof qd ? a.pa() : new qd(a, void 0)
+}
+function ud(a) {
+  return a ? decodeURIComponent(a) : ""
+}
+function wd(a, b) {
+  return n(a) ? encodeURI(a).replace(b, Dd) : null
+}
+function Dd(a) {
+  a = a.charCodeAt(0);
+  return"%" + (a >> 4 & 15).toString(16) + (a & 15).toString(16)
+}
+var xd = /[#\/\?@]/g, zd = /[\#\?:]/g, yd = /[\#\?]/g, Bd = /[\#\?@]/g, Ad = /#/g;
+function vd(a, b, c) {
+  this.V = a || null;
+  this.X = !!c
+}
+function Ed(a) {
+  if(!a.o && (a.o = new xc, a.F = 0, a.V)) {
+    for(var b = a.V.split("\x26"), c = 0;c < b.length;c++) {
+      var d = b[c].indexOf("\x3d"), e = null, g = null;
+      0 <= d ? (e = b[c].substring(0, d), g = b[c].substring(d + 1)) : e = b[c];
+      e = decodeURIComponent(e.replace(/\+/g, " "));
+      e = Fd(a, e);
+      a.add(e, g ? decodeURIComponent(g.replace(/\+/g, " ")) : "")
+    }
+  }
+}
+l = vd.prototype;
+l.o = null;
+l.F = null;
+l.add = function(a, b) {
+  Ed(this);
+  this.V = null;
+  a = Fd(this, a);
+  var c = this.o.get(a);
+  c || this.o.set(a, c = []);
+  c.push(b);
+  this.F++;
+  return this
+};
+l.remove = function(a) {
+  Ed(this);
+  a = Fd(this, a);
+  return this.o.Ab(a) ? (this.V = null, this.F -= this.o.get(a).length, this.o.remove(a)) : !1
+};
+l.Ab = function(a) {
+  Ed(this);
+  a = Fd(this, a);
+  return this.o.Ab(a)
+};
+l.ta = function() {
+  Ed(this);
+  for(var a = this.o.W(), b = this.o.ta(), c = [], d = 0;d < b.length;d++) {
+    for(var e = a[d], g = 0;g < e.length;g++) {
+      c.push(b[d])
+    }
+  }
+  return c
+};
+l.W = function(a) {
+  Ed(this);
+  var b = [];
+  if(n(a)) {
+    this.Ab(a) && (b = Pa(b, this.o.get(Fd(this, a))))
+  }else {
+    a = this.o.W();
+    for(var c = 0;c < a.length;c++) {
+      b = Pa(b, a[c])
+    }
+  }
+  return b
+};
+l.set = function(a, b) {
+  Ed(this);
+  this.V = null;
+  a = Fd(this, a);
+  this.Ab(a) && (this.F -= this.o.get(a).length);
+  this.o.set(a, [b]);
+  this.F++;
+  return this
+};
+l.get = function(a, b) {
+  var c = a ? this.W(a) : [];
+  return 0 < c.length ? String(c[0]) : b
+};
+l.toString = function() {
+  if(this.V) {
+    return this.V
+  }
+  if(!this.o) {
+    return""
+  }
+  for(var a = [], b = this.o.ta(), c = 0;c < b.length;c++) {
+    for(var d = b[c], e = encodeURIComponent(String(d)), d = this.W(d), g = 0;g < d.length;g++) {
+      var h = e;
+      "" !== d[g] && (h += "\x3d" + encodeURIComponent(String(d[g])));
+      a.push(h)
+    }
+  }
+  return this.V = a.join("\x26")
+};
+l.pa = function() {
+  var a = new vd;
+  a.V = this.V;
+  this.o && (a.o = this.o.pa(), a.F = this.F);
+  return a
+};
+function Fd(a, b) {
+  var c = String(b);
+  a.X && (c = c.toLowerCase());
+  return c
+}
+l.Nd = function(a) {
+  a && !this.X && (Ed(this), this.V = null, wc(this.o, function(a, c) {
+    var d = c.toLowerCase();
+    c != d && (this.remove(c), this.remove(d), 0 < a.length && (this.V = null, this.o.set(Fd(this, d), Qa(a)), this.F += a.length))
+  }, this));
+  this.X = a
+};
+l.extend = function(a) {
+  for(var b = 0;b < arguments.length;b++) {
+    wc(arguments[b], function(a, b) {
+      this.add(b, a)
+    }, this)
+  }
+};
+var Gd = ["adap.tv", "effec.tv", "adaptv.advertising.com"], Na = ["adaptv", "tearsheet"];
+function Hd(a, b, c) {
+  this.Td = a;
+  this.Pa = b;
+  this.rg = c;
+  this.xd = this.Fe = !1;
+  this.fc = [];
+  this.error = !1;
+  this.window = window
+}
+s(Hd, B);
+Hd.prototype.Ha = function(a) {
+  this.fc.push(a || f());
+  if(!this.xd) {
+    if(this.xd = !0, this.c = new G(20), this.Za = J(function() {
+      this.lb();
+      this.error = !0;
+      Id(this)
+    }, 2E3, this), D(this.c, I, function() {
+      this.window && this.window[this.Pa] && (this.lb(), Id(this))
+    }, !1, this), this.Fe) {
+      this.lb(), Id(this)
+    }else {
+      if(this.rg) {
+        a = Hb("iframe", {id:"adaptv-script-" + this.Pa, height:0, width:0, scrolling:"no"});
+        a.style.display = "none";
+        document.body.appendChild(a);
+        this.window = a.contentWindow;
+        try {
+          this.window.document.write('\x3cscript src\x3d"' + this.Td + '"\x3e\x3c/script\x3e'), this.window.document.close()
+        }catch(b) {
+          Mb(this.window.document.body, Hb("script", {type:"text/javascript", src:this.Td}))
+        }
+      }else {
+        this.window && this.window[this.Pa] || (Mb(Cb("head", void 0, void 0)[0], Hb("script", {type:"text/javascript", src:this.Td})), this.window = window)
+      }
+      this.Fe = !0;
+      this.c.start()
+    }
+  }
+};
+Hd.prototype.lb = function() {
+  try {
+    this.c && (this.c.stop(), this.c.a(), this.c = null), this.Za && K(this.Za), this.Za = null
+  }catch(a) {
+  }
+};
+function Id(a) {
+  for(var b = 0;b < a.fc.length;b++) {
+    a.fc[b](a)
+  }
+  a.fc = [];
+  a.xd = !1
+}
+function Jd() {
+  return!!Xa().toLowerCase().match(/(ipod|iphone|ipad)/) || -1 < Xa().toLowerCase().indexOf("android")
+}
+function Kd() {
+  return Xa().toLowerCase().match(/(ipad|iphone|ipod)/g) ? !0 : !1
+}
+function Ld() {
+  return Xa().toLowerCase().match(/(iphone|ipod)/g) ? !0 : !1
+}
+function Md(a) {
+  a = z.aa(ic, {url:a});
+  document.body.appendChild(a)
+}
+function Nd(a) {
+  var b = Cb("head", void 0, void 0)[0];
+  a = Hb("script", {type:"text/javascript", src:a});
+  b.appendChild(a)
+}
+function Od() {
+  if("undefined" !== typeof navigator.plugins && "object" === typeof navigator.plugins["Shockwave Flash"] && "undefined" !== typeof navigator.mimeTypes && navigator.mimeTypes["application/x-shockwave-flash"] && navigator.mimeTypes["application/x-shockwave-flash"].enabledPlugin) {
+    return!0
+  }
+  if("undefined" !== typeof window.ActiveXObject) {
+    try {
+      if(new window.ActiveXObject("ShockwaveFlash.ShockwaveFlash")) {
+        return!0
+      }
+    }catch(a) {
+    }
+  }
+  return!1
+}
+function Pd(a) {
+  var b = !1;
+  u(Gd, function(c) {
+    0 < Cd(a).Qa.indexOf(c) && (b = !0)
+  });
+  return b
+}
+function Qd() {
+  var a = new sa, a = (new qd(a.Nf)).Ya;
+  0 !== a.indexOf("http") && (a = "https");
+  return a
+}
+function Rd(a, b) {
+  if(a && b) {
+    var c = b.u;
+    u(c.ta(), function(b) {
+      Ma(function(e) {
+        if(0 === b.indexOf(e)) {
+          var g = c.W(b);
+          g.length && M(a, b.slice(e.length), g[g.length - 1])
+        }
+      })
+    })
+  }
+}
+;var Sd = new Hd(Qd() + "://redir.adap.tv/redir/javascript/adaptvInfo.js", "adaptvInfo", !1), Td = ["adap.tv", "effec.tv", "adaptv.advertising.com"];
+function Ud(a, b) {
+  this.g = a;
+  this.pe = b;
+  this.ec = "__adaptv__viewabilityInfo" + b;
+  this.Ka = 0;
+  this.$b = {active:-1, domId:-1, framerate:-1, geometric:-1, viewable:-1, viewableOpportunity:-1, viewablePercent:-1}
+}
+Ud.prototype.lf = function(a) {
+  a = a || {};
+  this.Ka && K(this.Ka);
+  this.Ka = 0;
+  delete this.g[this.ec];
+  for(var b in this.$b) {
+    a.hasOwnProperty(b) && null !== a[b] && (this.$b[b] = a[b])
+  }
+  this.xe(this.$b)
+};
+Ud.prototype.rc = function(a) {
+  this.xe = a;
+  Sd.Ha(p(function(b) {
+    b.error ? a(this.$b) : (this.Ka = this.Ka || J(function() {
+      this.Ka && K(this.Ka);
+      this.Ka = 0;
+      this.lf()
+    }, 3E3, this), this.g[this.ec] = p(this.lf, this), window.adaptvInfo.getInfo(this.g, this.pe, this.ec, ""))
+  }, this))
+};
+Ud.prototype.a = function() {
+  this.xe = null;
+  delete this.g[this.ec];
+  window.adaptvInfo.removePlacement(this.pe)
+};
+var Vd = {vf:"ended", Mf:"volumechange", Ff:"playing", Li:"play", Qc:"pause", $d:"click", Wb:"error", ij:"stalled", Xh:"loadeddata", Yh:"loadedmetadata", Kf:"touchstart"}, Wd = {AdLoaded:"AdLoaded", AdStarted:"AdStarted", AdStopped:"AdStopped", AdImpression:"AdImpression", AdLinearChange:"AdLinearChange", AdLog:"AdLog", AdCompanionDisplay:"AdCompanionDisplay", AdVideoStart:"AdVideoStart", AdVideoFirstQuartile:"AdVideoFirstQuartile", AdVideoMidpoint:"AdVideoMidpoint", AdVideoThirdQuartile:"AdVideoThirdQuartile", 
+AdVideoComplete:"AdVideoComplete", AdVolumeChange:"AdVolumeChange", AdClickThru:"AdClickThru", AdPaused:"AdPaused", AdPlaying:"AdPlaying", AdSkippableStateChange:"AdSkippableStateChange", AdSkipped:"AdSkipped", AdError:"AdError"}, Xd = {Mf:"volumechange", be:"mute", fe:"unmute", ae:"loaded", Ff:"playing", ce:"resume", Qc:"pause", $d:"click", vf:"ended", de:"stopped", Wb:"error"};
+function Yd(a, b) {
+  this.type = a;
+  this.data = b || {}
+}
+;function Zd(a, b, c) {
+  F.call(this);
+  this.Ub = new Ud(a, b);
+  this.Ue = c;
+  this.Hb = this.lc = this.jc = !1;
+  this.Xd = 0;
+  this.Vb = this.sd = this.td = this.Tc = -1
+}
+s(Zd, F);
+l = Zd.prototype;
+l.rc = function(a) {
+  this.Ub && this.Ub.rc(a)
+};
+l.init = function() {
+  this.c = new G(200);
+  this.c.start();
+  D(this.c, I, this.Nb, !1, this);
+  this.Nb();
+  D(this.Ue, ["AdStopped", "AdSkipped", "AdImpression", "AdVideoComplete"], this.t, !1, this)
+};
+l.t = function(a) {
+  switch(a.type) {
+    case "AdStopped":
+      this.a();
+      break;
+    case "AdImpression":
+      this.jc = !0;
+      this.Za = J(function() {
+        this.lc || this.Hb || (this.Hb = !0, this.dispatchEvent("IABDetectionFailed"))
+      }, 2E3, this);
+      break;
+    case "AdVideoComplete":
+    ;
+    case "AdSkipped":
+      !this.jc || (this.lc || this.Hb) || (this.Hb = !0, this.dispatchEvent("IABDetectionFailed")), this.a()
+  }
+};
+l.Nb = function() {
+  this.rc(p(function(a) {
+    null === a ? (this.Vb = this.td = this.sd = this.Tc = -1, this.lb()) : (this.Tc = a.active, this.sd = a.framerate, this.td = a.geometric, this.Vb = a.viewable, this.jc && !this.Hb && (-1 === this.Vb || this.lc || (this.dispatchEvent("IABDetectionStarted"), this.lc = !0), 1 === this.Vb ? (this.Xd++, 2E3 <= 200 * this.Xd && (this.dispatchEvent("IABViewable"), this.jc = !1)) : this.Xd = 0))
+  }, this))
+};
+l.lb = function() {
+  this.c && (this.c.stop(), this.c.a(), this.c = null);
+  this.Za && K(this.Za);
+  this.Za = null
+};
+l.a = function() {
+  E(this.Ue, ["AdStopped", "AdSkipped", "AdImpression", "AdVideoComplete"], this.t, !1, this);
+  this.Ub && this.Ub.a();
+  this.Ub = null;
+  this.lb()
+};
+var $d = /{([\w.]*)}|(<([^<>]*)>)|(\[([\w.]*)\])/g;
+function ae(a, b) {
+  qd.call(this, a, b)
+}
+s(ae, qd);
+ae.prototype.ib = function() {
+  var a = ud(this.u.toString()), a = a.replace($d, "");
+  td(this, a, void 0);
+  return this.toString()
+};
+function be(a) {
+  return La(Td, function(a) {
+    return 0 <= this.Qa.indexOf(a)
+  }, a)
+}
+function ce(a, b) {
+  if(b) {
+    var c = ud(a.u.toString());
+    u(ud(a.u.toString()).match($d) || [], function(a) {
+      null != b[a.slice(1, -1)] && (c = c.replace(a, b[a.slice(1, -1)]))
+    });
+    td(a, c, void 0)
+  }
+}
+;function de(a) {
+  a = a || {};
+  this.adListIndex = 0;
+  this.adListSize = 1;
+  this.adParameters = [];
+  this.beacons = a.beacons || [];
+  this.clickThrough = a.clickThrough || "";
+  this.companions = a.companions || [];
+  this.companionString = a.companionString || "";
+  this.data = {AdParameters:""};
+  a && a.adParameters && (this.adParameters = a.adParameters, 0 < a.adParameters.length && (this.data = {AdParameters:a.adParameters[a.adParameters.length - 1]}));
+  this.duration = a.duration || "";
+  this.error = a.error ? new N(a.error.errorCode, a.error.errorMessage) : new N(0, "");
+  this.adChromes = a.adChromes || [];
+  this.isFLV = a.isFLV || !1;
+  this.isVPAID = a.isVPAID || !1;
+  this.hasAdaptvParams = a.hasAdaptvParams || !1;
+  this.mediaFile = null;
+  this.mediaFiles = a.mediaFiles || [];
+  this.scripts = a.scripts || [];
+  this.skipoffset = a.skipoffset || "";
+  this.surveyURL = a.surveyURL || ""
+}
+var O = {of:"attempt", qf:"clickThru", rf:"companionDisplay", sf:"complete", tf:"creativeView", Wb:"error", wf:"firstQuartile", xf:"iab_detection_failed", yf:"iab_detection_started", zf:"iab_viewable", Af:"impression", ae:"loaded", Ef:"midpoint", be:"mute", Qc:"pause", Vi:"progress", ce:"resume", If:"start", de:"stopped", Hf:"skip", Jf:"thirdQuartile", fe:"unmute"};
+function ee(a) {
+  this.Sc = a
+}
+function fe(a, b) {
+  var c;
+  if(-1 < a.Sc.indexOf("%")) {
+    c = b * parseInt(a.Sc.split("%")[0], 10) / 100
+  }else {
+    c = a.Sc.split(":");
+    for(var d = 0, e = 0;e < c.length;e++) {
+      d += 1E3 * parseFloat(c[e]) * Math.pow(60, 2 - e)
+    }
+    c = d
+  }
+  return c
+}
+;function N(a, b) {
+  this.errorCode = a;
+  this.errorMessage = b || ""
+}
+;var ge = new N(9412, "The video format is not supported."), he = new N(9413, "Wrapper limit reached."), ie = new N(9560, "No more ads or no failover available"), je = new N(9412, "The video format is not supported."), ke = new N(9414, "Quartile events are before Impression event."), le = new N(9416, "General VPAID error."), me = new N(9417, "Ad slot is required in order to play VPAID Flash"), ne = new N(9514, "Ad slots are not defined correctly."), oe = new N(9515, "AdTag URL or the publisherId is not passed in params."), 
+pe = new N(9522, "Ad Started timeout: startAd call to AdStarted event."), qe = new N(9525, "Ad Opportunity timeout: initAd call to AdLoaded event for entire opportunity."), re = new N(9526, "Ad Loaded timeout: initAd call to AdLoaded event for a single Ad."), se = new N(9560, "No more ads or no failover available"), te = new N(9570, "Failed to inject Code Dependencies."), ue = new N(9514, "Ad slots are not defined correctly."), ve = new N(9515, "AdTag URL or the publisherId is not passed in params."), 
+we = new N(9570, "Failed to inject GoogleIMA3 Dependencies."), xe = new N(9571, "Failed to initialize GoogleIMA3 adManager."), ye = new N(9401, "Error while resolving the adTag URL."), ze = new N(9402, "Timeout while resolving the adTag URL."), Ae = new N(9430, "VAST schema validation error."), Be = new N(9431, "Empty VAST response."), Ce = new N(9432, "No ad found in ad tag response."), De = new N(9521, "Error while trying to play media files."), Ee = new N(9523, "Invalid ad container."), Fe = new N(9524, 
+"HTML5 element tag is not supported to play an ad.");
+var P = {};
+P[(new N(9411, "The adTag response is invalid.")).errorCode] = 101;
+P[ge.errorCode] = 403;
+P[he.errorCode] = 302;
+P[ie.errorCode] = 901;
+P[je.errorCode] = 403;
+P[ke.errorCode] = 901;
+P[le.errorCode] = 901;
+P[me.errorCode] = 900;
+P[ne.errorCode] = 900;
+P[oe.errorCode] = 300;
+P[pe.errorCode] = 901;
+P[qe.errorCode] = 901;
+P[re.errorCode] = 901;
+P[se.errorCode] = 901;
+P[te.errorCode] = 901;
+P[ue.errorCode] = 900;
+P[ve.errorCode] = 300;
+P[we.errorCode] = 901;
+P[xe.errorCode] = 901;
+P[ye.errorCode] = 100;
+P[ze.errorCode] = 301;
+P[Ae.errorCode] = 101;
+P[Be.errorCode] = 101;
+P[Ce.errorCode] = 303;
+P[De.errorCode] = 405;
+P[Ee.errorCode] = 900;
+P[Fe.errorCode] = 400;
+function Ge(a, b, c, d, e) {
+  this.reset(a, b, c, d, e)
+}
+Ge.prototype.Vg = 0;
+Ge.prototype.od = null;
+Ge.prototype.nd = null;
+var He = 0;
+Ge.prototype.reset = function(a, b, c, d, e) {
+  this.Vg = "number" == typeof e ? e : He++;
+  this.jf = d || pa();
+  this.Va = a;
+  this.yc = b;
+  this.Le = c;
+  delete this.od;
+  delete this.nd
+};
+Ge.prototype.Od = aa("Va");
+function Ie(a) {
+  this.Dg = a
+}
+Ie.prototype.$ = null;
+Ie.prototype.Va = null;
+Ie.prototype.Ba = null;
+Ie.prototype.kb = null;
+function Je(a, b) {
+  this.name = a;
+  this.value = b
+}
+Je.prototype.toString = k("name");
+var Ke = new Je("SHOUT", 1200), Le = new Je("SEVERE", 1E3), Me = new Je("WARNING", 900), Ne = new Je("INFO", 800), Oe = new Je("CONFIG", 700), Pe = new Je("FINE", 500), Qe = new Je("ALL", 0);
+l = Ie.prototype;
+l.Xc = function(a) {
+  this.kb || (this.kb = []);
+  this.kb.push(a)
+};
+l.Ze = function(a) {
+  var b = this.kb;
+  return!!b && Oa(b, a)
+};
+l.getParent = k("$");
+l.Ae = function() {
+  this.Ba || (this.Ba = {});
+  return this.Ba
+};
+l.Od = aa("Va");
+function Re(a) {
+  if(a.Va) {
+    return a.Va
+  }
+  if(a.$) {
+    return Re(a.$)
+  }
+  Ia("Root logger has no level set.");
+  return null
+}
+l.log = function(a, b, c) {
+  if(a.value >= Re(this).value) {
+    for(a = this.mg(a, b, c), b = "log:" + a.yc, m.console && (m.console.timeStamp ? m.console.timeStamp(b) : m.console.markTimeline && m.console.markTimeline(b)), m.msWriteProfilerMark && m.msWriteProfilerMark(b), b = this;b;) {
+      c = b;
+      var d = a;
+      if(c.kb) {
+        for(var e = 0, g = void 0;g = c.kb[e];e++) {
+          g(d)
+        }
+      }
+      b = b.getParent()
+    }
+  }
+};
+l.mg = function(a, b, c) {
+  var d = new Ge(a, String(b), this.Dg);
+  if(c) {
+    d.od = c;
+    var e;
+    var g = arguments.callee.caller;
+    try {
+      var h;
+      var q = fa("window.location.href");
+      if(n(c)) {
+        h = {message:c, name:"Unknown error", lineNumber:"Not available", fileName:q, stack:"Not available"}
+      }else {
+        var H, ua, ca = !1;
+        try {
+          H = c.lineNumber || c.Bj || "Not available"
+        }catch(da) {
+          H = "Not available", ca = !0
+        }
+        try {
+          ua = c.fileName || c.filename || c.sourceURL || m.$googDebugFname || q
+        }catch(ea) {
+          ua = "Not available", ca = !0
+        }
+        h = !ca && c.lineNumber && c.fileName && c.stack && c.message && c.name ? c : {message:c.message || "Not available", name:c.name || "UnknownError", lineNumber:H, fileName:ua, stack:c.stack || "Not available"}
+      }
+      e = "Message: " + ya(h.message) + '\nUrl: \x3ca href\x3d"view-source:' + h.fileName + '" target\x3d"_new"\x3e' + h.fileName + "\x3c/a\x3e\nLine: " + h.lineNumber + "\n\nBrowser stack:\n" + ya(h.stack + "-\x3e ") + "[end]\n\nJS stack traversal:\n" + ya(Ac(g) + "-\x3e ")
+    }catch($g) {
+      e = "Exception trying to expose exception! You win, we lose. " + $g
+    }
+    d.nd = e
+  }
+  return d
+};
+l.Yd = function(a, b) {
+  this.log(Me, a, b)
+};
+l.info = function(a, b) {
+  this.log(Ne, a, b)
+};
+l.ve = function(a, b) {
+  this.log(Pe, a, b)
+};
+var Se = {}, Te = null;
+function Ue() {
+  Te || (Te = new Ie(""), Se[""] = Te, Te.Od(Oe))
+}
+function Q(a) {
+  Ue();
+  var b;
+  if(!(b = Se[a])) {
+    b = new Ie(a);
+    var c = a.lastIndexOf("."), d = a.substr(c + 1), c = Q(a.substr(0, c));
+    c.Ae()[d] = b;
+    b.$ = c;
+    Se[a] = b
+  }
+  return b
+}
+;var R = {};
+R.IABDetectionFailed = O.xf;
+R.IABDetectionStarted = O.yf;
+R.IABViewable = O.zf;
+R.AdImpression = O.Af;
+R.AdCompanionDisplay = O.rf;
+R.AdLoaded = O.ae;
+R.AdVideoStart = O.If;
+R.AdVideoFirstQuartile = O.wf;
+R.AdVideoMidpoint = O.Ef;
+R.AdVideoThirdQuartile = O.Jf;
+R.AdVideoComplete = O.sf;
+R.AdPaused = O.Qc;
+R.AdPlaying = O.ce;
+R.AdClickThru = O.qf;
+R.AdSkipped = O.Hf;
+R.AdStopped = O.de;
+R.attempt = O.of;
+R.error = O.Wb;
+R.mute = O.be;
+R.unmute = O.fe;
+R.creativeView = O.tf;
+function Ve(a, b) {
+  B.call(this);
+  this.ja = Q("adaptv.vpaid.BeaconPlugin");
+  this.$c = p(a.fg, a);
+  this.bg = b || function() {
+    return{}
+  };
+  this.Fc = [];
+  D(a, wb(R), function(b) {
+    if("AdVideoStart" === b.type) {
+      var d = fe(new ee(a.b.duration));
+      this.Fc = Ka(this.$c().beacons, function(a) {
+        return"progress" === a.beaconType ? (a.Hd = fe(new ee(a.offset), d), !isNaN(a.Hd) && a.Hd <= d) : !1
+      });
+      var e = new G(200);
+      e.start();
+      D(e, I, function() {
+        0 >= a.getAdRemainingTime() ? (e.stop(), e.a(), e = null) : We(this, Ka(this.Fc, function(b) {
+          return b.Hd <= d - 1E3 * a.getAdRemainingTime()
+        }, this))
+      }, !1, this)
+    }
+    "AdVideoComplete" === b.type && We(this, this.Fc);
+    Xe(this, b.type, b.data)
+  }, !1, this)
+}
+s(Ve, B);
+function We(a, b, c) {
+  a = a.bg();
+  for(var d = 0;d < b.length;d++) {
+    if(!b[d].fired) {
+      var e = b[d].url, g = new ae(e);
+      if(be(g)) {
+        c && c.errorCode && (M(g, "errNo", c.errorCode), M(g, "errorCode", P[c.errorCode] ? P[c.errorCode] : c.errorCode));
+        var h = g.u.get("rUrl");
+        h && (e = g, L(e), e.u.remove("rUrl"));
+        M(g, "adNumber", a.adNumber);
+        M(g, "linearAdResTime", a.linearAdResTime);
+        M(g, "pubInitCall", a.pubInitCall);
+        M(g, "pubStartCall", a.pubStartCall);
+        ce(g, a);
+        e = g.ib();
+        h && (e += "\x26rUrl\x3d" + encodeURIComponent(h))
+      }
+      Md(e);
+      b[d].fired = !0
+    }
+  }
+}
+function Xe(a, b, c) {
+  var d = a.$c();
+  d && (d = Ka(d.beacons, function(a) {
+    return a.beaconType === R[b]
+  }, a), We(a, d, c))
+}
+Ve.prototype.n = function() {
+  this.Fc = this.$c = null;
+  Ve.e.n.call(this)
+};
+function Ye() {
+  F.call(this);
+  this.ja = Q("adaptv.vpaid.MoatChrome")
+}
+s(Ye, F);
+Ye.prototype.init = function(a, b, c) {
+  c && c.orgId && c.adId && c.pageUrl && c.params && c.buyerId ? (c.marketplaceId = c.marketplaceId || 0, c.campaignId = c.campaignId || 0, window.adaptvInfo.initMoatTracking(a, b, {level1:c.orgId, level2:c.campaignId, level3:c.adId, level4:c.marketplaceId, slicer1:c.pageUrl, zMoatParams:c.params, zMoatBuyer:c.buyerId}, "aolonevpaid2jsint182393990683")) : this.ja.info("Missing moat Ad tracking information in ad response under moat adChrome tag")
+};
+function Ze(a, b) {
+  this.width = a;
+  this.height = b;
+  this.label = a + "x" + b
+}
+var $e = {hj:new Ze(728, 90), ej:new Ze(300, 250), fj:new Ze(300, 60), dj:new Ze(300, 100), gj:new Ze(468, 60)};
+function af(a) {
+  this.ic = [];
+  a ? u(a, function(a) {
+    this.ic.push(new bf({id:a.id, width:a.width, height:a.height}))
+  }, this) : ub($e, function(a) {
+    this.ic.push(new bf({id:"adaptvCompanion" + a.label, width:a.width, height:a.height}))
+  }, this)
+}
+af.prototype.wd = function(a) {
+  for(var b = 0;b < this.ic.length;b++) {
+    var c = this.ic[b];
+    if(c.width == a.companionSize.width && c.height == a.companionSize.height) {
+      c.Ha(a);
+      break
+    }
+  }
+};
+function bf(a) {
+  this.uc = a.id;
+  this.g = a.element;
+  this.width = a.width;
+  this.height = a.height
+}
+bf.prototype.Ha = function(a) {
+  a.resourceType = a.resourceType || "html";
+  Sd.Ha(p(function(b) {
+    b.error || (new window.__adaptv__.adPlayer.AdCompanionDiv(this.g || this.uc, {replaceChildren:!0})).insertCompanion(a)
+  }, this))
+};
+function cf(a) {
+  a = String(a);
+  if(/^\s*$/.test(a) ? 0 : /^[\],:{}\s\u2028\u2029]*$/.test(a.replace(/\\["\\\/bfnrtu]/g, "@").replace(/"[^"\\\n\r\u2028\u2029\x00-\x08\x0a-\x1f]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g, "]").replace(/(?:^|:|,)(?:[\s\u2028\u2029]*\[)+/g, ""))) {
+    try {
+      return eval("(" + a + ")")
+    }catch(b) {
+    }
+  }
+  throw Error("Invalid JSON string: " + a);
+}
+function df(a) {
+  return eval("(" + a + ")")
+}
+function ef(a) {
+  var b = [];
+  ff(new gf, a, b);
+  return b.join("")
+}
+function gf() {
+  this.Hc = void 0
+}
+function ff(a, b, c) {
+  switch(typeof b) {
+    case "string":
+      hf(b, c);
+      break;
+    case "number":
+      c.push(isFinite(b) && !isNaN(b) ? b : "null");
+      break;
+    case "boolean":
+      c.push(b);
+      break;
+    case "undefined":
+      c.push("null");
+      break;
+    case "object":
+      if(null == b) {
+        c.push("null");
+        break
+      }
+      if(ha(b)) {
+        var d = b.length;
+        c.push("[");
+        for(var e = "", g = 0;g < d;g++) {
+          c.push(e), e = b[g], ff(a, a.Hc ? a.Hc.call(b, String(g), e) : e, c), e = ","
+        }
+        c.push("]");
+        break
+      }
+      c.push("{");
+      d = "";
+      for(g in b) {
+        Object.prototype.hasOwnProperty.call(b, g) && (e = b[g], "function" != typeof e && (c.push(d), hf(g, c), c.push(":"), ff(a, a.Hc ? a.Hc.call(b, g, e) : e, c), d = ","))
+      }
+      c.push("}");
+      break;
+    case "function":
+      break;
+    default:
+      throw Error("Unknown type: " + typeof b);
+  }
+}
+var jf = {'"':'\\"', "\\":"\\\\", "/":"\\/", "\b":"\\b", "\f":"\\f", "\n":"\\n", "\r":"\\r", "\t":"\\t", "\x0B":"\\u000b"}, kf = /\uffff/.test("\uffff") ? /[\\\"\x00-\x1f\x7f-\uffff]/g : /[\\\"\x00-\x1f\x7f-\xff]/g;
+function hf(a, b) {
+  b.push('"', a.replace(kf, function(a) {
+    if(a in jf) {
+      return jf[a]
+    }
+    var b = a.charCodeAt(0), e = "\\u";
+    16 > b ? e += "000" : 256 > b ? e += "00" : 4096 > b && (e += "0");
+    return jf[a] = e + b.toString(16)
+  }), '"')
+}
+;var S = {za:!0};
+S.fi = Ie;
+S.di = Je;
+S.ei = Ge;
+S.Be = function(a) {
+  return S.za ? Q(a) : null
+};
+S.Xc = function(a, b) {
+  S.za && a && a.Xc(b)
+};
+S.Ze = function(a, b) {
+  return S.za && a ? a.Ze(b) : !1
+};
+S.log = function(a, b, c, d) {
+  S.za && a && a.log(b, c, d)
+};
+S.error = function(a, b, c) {
+  S.za && a && a.log(Le, b, c)
+};
+S.Yd = function(a, b, c) {
+  S.za && a && a.Yd(b, c)
+};
+S.info = function(a, b, c) {
+  S.za && a && a.info(b, c)
+};
+S.ve = function(a, b, c) {
+  S.za && a && a.ve(b, c)
+};
+S.Be("goog.net.XhrIo");
+function lf(a) {
+  this.ba = a.slot || a.videoSlot
+}
+function mf() {
+  var a = Hb("iframe", {src:Qd() + "://redir.adap.tv/redir/mobile/mobile-ad-source.html", id:"some-id", height:0, width:0, scrolling:"no"});
+  a.style.display = "none";
+  document.body.appendChild(a);
+  return a
+}
+function nf(a, b) {
+  var c = Hb("iframe", {src:"javascript:void(0)", name:"__bkframe", height:0, width:0, Aj:0});
+  c.style.display = "none";
+  a.ba.appendChild(c);
+  (new Hd(Qd() + "://tags.bkrtx.com/js/bk-coretag.js", "bk_addPageCtx", !1)).Ha(p(function(a) {
+    if(!a.error && (a = z.aa(lc, {Uf:b}).innerHTML)) {
+      if(m.execScript) {
+        m.execScript(a, "JavaScript")
+      }else {
+        if(m.eval) {
+          if(null == qa && (m.eval("var _et_ \x3d 1;"), "undefined" != typeof m._et_ ? (delete m._et_, qa = !0) : qa = !1), qa) {
+            m.eval(a)
+          }else {
+            var c = m.document, g = c.createElement("script");
+            g.type = "text/javascript";
+            g.defer = !1;
+            g.appendChild(c.createTextNode(a));
+            c.body.appendChild(g);
+            c.body.removeChild(g)
+          }
+        }else {
+          throw Error("goog.globalEval not available");
+        }
+      }
+    }
+  }, a))
+}
+lf.prototype.a = function() {
+  this.ba = null
+};
+function of(a, b, c, d) {
+  this.Fb = a;
+  this.pc = b;
+  this.Ga = c;
+  this.pb = d
+}
+of.prototype.sa = k("Ga");
+of.prototype.subscribe = function() {
+  u(this.pc, function(a) {
+    D(this.Fb, a, this.Ga, !1, this.pb)
+  }, this);
+  return this
+};
+of.prototype.unsubscribe = function() {
+  u(this.pc, function(a) {
+    E(this.Fb, a, this.Ga, !1, this.pb)
+  }, this);
+  return this
+};
+of.prototype.a = function() {
+  this.pb = this.Ga = this.pc = this.Fb = null;
+  return this
+};
+function pf(a) {
+  this.Q = Q("adaptv.events.EventManager");
+  this.xg = a;
+  this.Aa = [];
+  this.qa = !1;
+  this.pb = a;
+  this.md = !1
+}
+pf.prototype.A = function(a, b, c, d) {
+  if(null == a || null == b || null == c) {
+    this.Q.info("Error listening to object - one or more arguments are missing"), this.md = !0
+  }
+  this.qa && (this.Q.info("Error: EventManager has already been disposed."), this.md = !0);
+  this.md || this.Aa.push((new of(a, b, c, d || this.pb)).subscribe())
+};
+pf.prototype.Tb = function(a) {
+  this.qa ? this.Q.info("Error: EventManager has already been disposed.") : this.Aa = Ka(this.Aa, function(b) {
+    return a && b.Fb !== a ? !0 : (b.unsubscribe().a(), !1)
+  })
+};
+function qf(a, b, c, d) {
+  a.qa ? a.Q.info("Error: EventManager has already been disposed.") : a.Aa = Ka(a.Aa, function(a) {
+    var g;
+    if(g = a.Fb === b) {
+      if(g = a.sa() === d) {
+        a: {
+          if(g = a.pc, ia(g) && ia(c) && g.length == c.length) {
+            for(var h = g.length, q = 0;q < h;q++) {
+              if(g[q] !== c[q]) {
+                g = !1;
+                break a
+              }
+            }
+            g = !0
+          }else {
+            g = !1
+          }
+        }
+      }
+    }
+    return g ? (a.unsubscribe().a(), !1) : !0
+  })
+}
+pf.prototype.a = function() {
+  if(!this.qa) {
+    for(var a = 0;a < this.Aa.length;a++) {
+      this.Aa[a].unsubscribe().a()
+    }
+    this.pb = this.Aa = this.xg = null;
+    this.qa = !0
+  }
+};
+function rf(a, b) {
+  return(b || window).__adaptv__.jsproxy[a]
+}
+;function sf(a) {
+  C.call(this, a)
+}
+s(sf, C);
+function tf(a, b, c, d) {
+  this.top = a;
+  this.right = b;
+  this.bottom = c;
+  this.left = d
+}
+l = tf.prototype;
+l.pa = function() {
+  return new tf(this.top, this.right, this.bottom, this.left)
+};
+l.toString = function() {
+  return"(" + this.top + "t, " + this.right + "r, " + this.bottom + "b, " + this.left + "l)"
+};
+l.contains = function(a) {
+  return this && a ? a instanceof tf ? a.left >= this.left && a.right <= this.right && a.top >= this.top && a.bottom <= this.bottom : a.x >= this.left && a.x <= this.right && a.y >= this.top && a.y <= this.bottom : !1
+};
+l.ceil = function() {
+  this.top = Math.ceil(this.top);
+  this.right = Math.ceil(this.right);
+  this.bottom = Math.ceil(this.bottom);
+  this.left = Math.ceil(this.left);
+  return this
+};
+l.floor = function() {
+  this.top = Math.floor(this.top);
+  this.right = Math.floor(this.right);
+  this.bottom = Math.floor(this.bottom);
+  this.left = Math.floor(this.left);
+  return this
+};
+l.round = function() {
+  this.top = Math.round(this.top);
+  this.right = Math.round(this.right);
+  this.bottom = Math.round(this.bottom);
+  this.left = Math.round(this.left);
+  return this
+};
+function uf(a, b, c, d) {
+  this.left = a;
+  this.top = b;
+  this.width = c;
+  this.height = d
+}
+l = uf.prototype;
+l.pa = function() {
+  return new uf(this.left, this.top, this.width, this.height)
+};
+l.toString = function() {
+  return"(" + this.left + ", " + this.top + " - " + this.width + "w x " + this.height + "h)"
+};
+l.contains = function(a) {
+  return a instanceof uf ? this.left <= a.left && this.left + this.width >= a.left + a.width && this.top <= a.top && this.top + this.height >= a.top + a.height : a.x >= this.left && a.x <= this.left + this.width && a.y >= this.top && a.y <= this.top + this.height
+};
+l.ceil = function() {
+  this.left = Math.ceil(this.left);
+  this.top = Math.ceil(this.top);
+  this.width = Math.ceil(this.width);
+  this.height = Math.ceil(this.height);
+  return this
+};
+l.floor = function() {
+  this.left = Math.floor(this.left);
+  this.top = Math.floor(this.top);
+  this.width = Math.floor(this.width);
+  this.height = Math.floor(this.height);
+  return this
+};
+l.round = function() {
+  this.left = Math.round(this.left);
+  this.top = Math.round(this.top);
+  this.width = Math.round(this.width);
+  this.height = Math.round(this.height);
+  return this
+};
+function vf(a, b, c) {
+  n(b) ? wf(a, c, b) : ub(b, oa(wf, a))
+}
+function wf(a, b, c) {
+  (c = xf(a, c)) && (a.style[c] = b)
+}
+function xf(a, b) {
+  var c = Fa(b);
+  if(void 0 === a.style[c]) {
+    var d = (w ? "Webkit" : bb ? "Moz" : v ? "ms" : ab ? "O" : null) + Ga(b);
+    if(void 0 !== a.style[d]) {
+      return d
+    }
+  }
+  return c
+}
+function yf(a, b) {
+  var c = Bb(a);
+  return c.defaultView && c.defaultView.getComputedStyle && (c = c.defaultView.getComputedStyle(a, null)) ? c[b] || c.getPropertyValue(b) || "" : ""
+}
+function zf(a, b) {
+  return yf(a, b) || (a.currentStyle ? a.currentStyle[b] : null) || a.style && a.style[b]
+}
+function Af(a, b, c) {
+  var d, e = bb && (Wa || db) && x("1.9");
+  b instanceof sb ? (d = b.x, b = b.y) : (d = b, b = c);
+  a.style.left = Bf(d, e);
+  a.style.top = Bf(b, e)
+}
+function Cf(a, b, c) {
+  if(b instanceof tb) {
+    c = b.height, b = b.width
+  }else {
+    if(void 0 == c) {
+      throw Error("missing height argument");
+    }
+  }
+  a.style.width = Bf(b, !0);
+  a.style.height = Bf(c, !0)
+}
+function Bf(a, b) {
+  "number" == typeof a && (a = (b ? Math.round(a) : a) + "px");
+  return a
+}
+function Df(a) {
+  var b = Ef;
+  if("none" != zf(a, "display")) {
+    return b(a)
+  }
+  var c = a.style, d = c.display, e = c.visibility, g = c.position;
+  c.visibility = "hidden";
+  c.position = "absolute";
+  c.display = "inline";
+  a = b(a);
+  c.display = d;
+  c.position = g;
+  c.visibility = e;
+  return a
+}
+function Ef(a) {
+  var b = a.offsetWidth, c = a.offsetHeight, d = w && !b && !c;
+  if((void 0 === b || d) && a.getBoundingClientRect) {
+    var e;
+    a: {
+      try {
+        e = a.getBoundingClientRect()
+      }catch(g) {
+        e = {left:0, top:0, right:0, bottom:0};
+        break a
+      }
+      v && a.ownerDocument.body && (a = a.ownerDocument, e.left -= a.documentElement.clientLeft + a.body.clientLeft, e.top -= a.documentElement.clientTop + a.body.clientTop)
+    }
+    return new tb(e.right - e.left, e.bottom - e.top)
+  }
+  return new tb(b, c)
+}
+function Ff(a, b) {
+  var c = a.style;
+  "opacity" in c ? c.opacity = b : "MozOpacity" in c ? c.MozOpacity = b : "filter" in c && (c.filter = "" === b ? "" : "alpha(opacity\x3d" + 100 * b + ")")
+}
+function T(a, b) {
+  a.style.display = b ? "" : "none"
+}
+var Gf = {thin:2, medium:4, thick:6};
+function Hf(a, b) {
+  if("none" == (a.currentStyle ? a.currentStyle[b + "Style"] : null)) {
+    return 0
+  }
+  var c = a.currentStyle ? a.currentStyle[b + "Width"] : null, d;
+  if(c in Gf) {
+    d = Gf[c]
+  }else {
+    if(/^\d+px?$/.test(c)) {
+      d = parseInt(c, 10)
+    }else {
+      d = a.style.left;
+      var e = a.runtimeStyle.left;
+      a.runtimeStyle.left = a.currentStyle.left;
+      a.style.left = c;
+      c = a.style.pixelLeft;
+      a.style.left = d;
+      a.runtimeStyle.left = e;
+      d = c
+    }
+  }
+  return d
+}
+function If(a) {
+  if(v && !(v && 9 <= nb)) {
+    var b = Hf(a, "borderLeft"), c = Hf(a, "borderRight"), d = Hf(a, "borderTop");
+    a = Hf(a, "borderBottom");
+    return new tf(d, c, a, b)
+  }
+  b = yf(a, "borderLeftWidth");
+  c = yf(a, "borderRightWidth");
+  d = yf(a, "borderTopWidth");
+  a = yf(a, "borderBottomWidth");
+  return new tf(parseFloat(d), parseFloat(c), parseFloat(a), parseFloat(b))
+}
+;function Jf(a) {
+  B.call(this);
+  this.Ga = a;
+  this.p = {}
+}
+s(Jf, B);
+var Kf = [];
+l = Jf.prototype;
+l.A = function(a, b, c, d, e) {
+  ha(b) || (Kf[0] = b, b = Kf);
+  for(var g = 0;g < b.length;g++) {
+    var h = D(a, b[g], c || this.handleEvent, d || !1, e || this.Ga || this);
+    if(!h) {
+      break
+    }
+    this.p[h.key] = h
+  }
+  return this
+};
+l.Ed = function(a, b, c, d, e) {
+  a: {
+    if(ha(b)) {
+      for(var g = 0;g < b.length;g++) {
+        this.Ed(a, b[g], c, d, e)
+      }
+    }else {
+      a = gd(a, b, c || this.handleEvent, d, e || this.Ga || this);
+      if(!a) {
+        a = this;
+        break a
+      }
+      this.p[a.key] = a
+    }
+    a = this
+  }
+  return a
+};
+l.Tb = function(a, b, c, d, e) {
+  if(ha(b)) {
+    for(var g = 0;g < b.length;g++) {
+      this.Tb(a, b[g], c, d, e)
+    }
+  }else {
+    c = c || this.handleEvent, e = e || this.Ga || this, c = bd(c), d = !!d, b = Sc(a) ? a.Jb(b, c, d, e) : a ? (a = dd(a)) ? a.Jb(b, c, d, e) : null : null, b && (hd(b), delete this.p[b.key])
+  }
+  return this
+};
+l.Xa = function() {
+  ub(this.p, hd);
+  this.p = {}
+};
+l.n = function() {
+  Jf.e.n.call(this);
+  this.Xa()
+};
+l.handleEvent = function() {
+  throw Error("EventHandler.handleEvent not implemented");
+};
+function Lf() {
+}
+Lf.lg = function() {
+  return Lf.Ge ? Lf.Ge : Lf.Ge = new Lf
+};
+Lf.prototype.Eg = 0;
+Lf.prototype.Ce = function() {
+  return":" + (this.Eg++).toString(36)
+};
+function Mf(a) {
+  F.call(this);
+  this.Da = a || zb();
+  this.Ic = Nf
+}
+s(Mf, F);
+Mf.prototype.og = Lf.lg();
+var Nf = null;
+l = Mf.prototype;
+l.uc = null;
+l.Y = !1;
+l.g = null;
+l.Ic = null;
+l.zg = null;
+l.$ = null;
+l.Ba = null;
+l.gc = null;
+l.nf = !1;
+function Of(a) {
+  return a.uc || (a.uc = a.og.Ce())
+}
+l.h = k("g");
+l.sa = function() {
+  return this.jb || (this.jb = new Jf(this))
+};
+l.getParent = k("$");
+l.Pd = function(a) {
+  if(this.$ && this.$ != a) {
+    throw Error("Method not supported");
+  }
+  Mf.e.Pd.call(this, a)
+};
+l.m = k("Da");
+l.r = function() {
+  this.g = this.Da.createElement("div")
+};
+l.la = function(a) {
+  if(this.Y) {
+    throw Error("Component already rendered");
+  }
+  this.g || this.r();
+  a ? a.insertBefore(this.g, null) : this.Da.G.body.appendChild(this.g);
+  this.$ && !this.$.Y || this.ra()
+};
+l.eb = function(a) {
+  if(this.Y) {
+    throw Error("Component already rendered");
+  }
+  if(a && this.qe(a)) {
+    this.nf = !0;
+    var b = Bb(a);
+    this.Da && this.Da.G == b || (this.Da = zb(a));
+    this.Eb(a);
+    this.ra()
+  }else {
+    throw Error("Invalid element to decorate");
+  }
+};
+l.qe = ba(!0);
+l.Eb = aa("g");
+l.ra = function() {
+  this.Y = !0;
+  Pf(this, function(a) {
+    !a.Y && a.h() && a.ra()
+  })
+};
+l.Sa = function() {
+  Pf(this, function(a) {
+    a.Y && a.Sa()
+  });
+  this.jb && this.jb.Xa();
+  this.Y = !1
+};
+l.n = function() {
+  this.Y && this.Sa();
+  this.jb && (this.jb.a(), delete this.jb);
+  Pf(this, function(a) {
+    a.a()
+  });
+  !this.nf && this.g && y(this.g);
+  this.$ = this.zg = this.g = this.gc = this.Ba = null;
+  Mf.e.n.call(this)
+};
+function Pf(a, b) {
+  a.Ba && u(a.Ba, b, void 0)
+}
+l.removeChild = function(a, b) {
+  if(a) {
+    var c = n(a) ? a : Of(a), d;
+    this.gc && c ? (d = this.gc, d = (c in d ? d[c] : void 0) || null) : d = null;
+    a = d;
+    if(c && a) {
+      d = this.gc;
+      c in d && delete d[c];
+      Oa(this.Ba, a);
+      b && (a.Sa(), a.g && y(a.g));
+      c = a;
+      if(null == c) {
+        throw Error("Unable to set parent component");
+      }
+      c.$ = null;
+      Mf.e.Pd.call(c, null)
+    }
+  }
+  if(!a) {
+    throw Error("Child is not in parent component");
+  }
+  return a
+};
+var Qf = !1, Rf = "";
+function Sf(a) {
+  a = a.match(/[\d]+/g);
+  if(!a) {
+    return""
+  }
+  a.length = 3;
+  return a.join(".")
+}
+if(navigator.plugins && navigator.plugins.length) {
+  var Tf = navigator.plugins["Shockwave Flash"];
+  Tf && (Qf = !0, Tf.description && (Rf = Sf(Tf.description)));
+  navigator.plugins["Shockwave Flash 2.0"] && (Qf = !0, Rf = "2.0.0.11")
+}else {
+  if(navigator.mimeTypes && navigator.mimeTypes.length) {
+    var Uf = navigator.mimeTypes["application/x-shockwave-flash"];
+    (Qf = Uf && Uf.enabledPlugin) && (Rf = Sf(Uf.enabledPlugin.description))
+  }else {
+    try {
+      var Vf = new ActiveXObject("ShockwaveFlash.ShockwaveFlash.7"), Qf = !0, Rf = Sf(Vf.GetVariable("$version"))
+    }catch(Wf) {
+      try {
+        Vf = new ActiveXObject("ShockwaveFlash.ShockwaveFlash.6"), Qf = !0, Rf = "6.0.21"
+      }catch(Xf) {
+        try {
+          Vf = new ActiveXObject("ShockwaveFlash.ShockwaveFlash"), Qf = !0, Rf = Sf(Vf.GetVariable("$version"))
+        }catch(Yf) {
+        }
+      }
+    }
+  }
+}
+var Zf = Rf;
+function $f(a, b) {
+  Mf.call(this, b);
+  this.we = a;
+  this.O = new Jf(this);
+  this.hb = new xc
+}
+s($f, Mf);
+l = $f.prototype;
+l.ja = S.Be("goog.ui.media.FlashObject");
+l.Zd = "window";
+l.me = "#000000";
+l.Yc = "sameDomain";
+function ag(a, b, c) {
+  a.q = n(b) ? b : Math.round(b) + "px";
+  a.s = n(c) ? c : Math.round(c) + "px";
+  a.h() && Cf(bg(a), a.q, a.s)
+}
+l.ra = function() {
+  $f.e.ra.call(this);
+  this.h().innerHTML = this.ze();
+  this.q && this.s && ag(this, this.q, this.s);
+  this.O.A(this.h(), vb(Nc), Kc)
+};
+l.r = function() {
+  if(null != this.Kd && !(0 <= Ea(Zf, this.Kd))) {
+    throw S.Yd(this.ja, "Required flash version not found:" + this.Kd), Error("Method not supported");
+  }
+  var a = this.m().createElement("div");
+  a.className = "goog-ui-media-flash";
+  this.g = a
+};
+l.ze = function() {
+  for(var a = v ? '\x3cobject classid\x3d"clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" id\x3d"%s" name\x3d"%s" class\x3d"%s"\x3e\x3cparam name\x3d"movie" value\x3d"%s"/\x3e\x3cparam name\x3d"quality" value\x3d"high"/\x3e\x3cparam name\x3d"FlashVars" value\x3d"%s"/\x3e\x3cparam name\x3d"bgcolor" value\x3d"%s"/\x3e\x3cparam name\x3d"AllowScriptAccess" value\x3d"%s"/\x3e\x3cparam name\x3d"allowFullScreen" value\x3d"true"/\x3e\x3cparam name\x3d"SeamlessTabbing" value\x3d"false"/\x3e%s\x3c/object\x3e' : 
+  '\x3cembed quality\x3d"high" id\x3d"%s" name\x3d"%s" class\x3d"%s" src\x3d"%s" FlashVars\x3d"%s" bgcolor\x3d"%s" AllowScriptAccess\x3d"%s" allowFullScreen\x3d"true" SeamlessTabbing\x3d"false" type\x3d"application/x-shockwave-flash" pluginspage\x3d"http://www.macromedia.com/go/getflashplayer" %s\x3e\x3c/embed\x3e', b = v ? '\x3cparam name\x3d"wmode" value\x3d"%s"/\x3e' : "wmode\x3d%s", b = wa(b, this.Zd), c = this.hb.ta(), d = this.hb.W(), e = [], g = 0;g < c.length;g++) {
+    e.push(encodeURIComponent(String(c[g])) + "\x3d" + encodeURIComponent(String(d[g])))
+  }
+  return wa(a, Of(this), Of(this), "goog-ui-media-flash-object", ya(this.we), ya(e.join("\x26")), this.me, this.Yc, b)
+};
+function bg(a) {
+  return a.h() ? a.h().firstChild : null
+}
+l.n = function() {
+  $f.e.n.call(this);
+  this.hb = null;
+  this.O.a();
+  this.O = null
+};
+l.Ad = function() {
+  return this.Y && this.h() ? bg(this).readyState && 4 == bg(this).readyState || bg(this).PercentLoaded && 100 == bg(this).PercentLoaded() ? !0 : !1 : !1
+};
+Lf.prototype.Ce = function(a) {
+  "number" != typeof window[a] && (window[a] = 0);
+  return function() {
+    return":" + (window[a]++).toString(36)
+  }
+}("__adaptv__last_unique_id__");
+function cg(a, b, c) {
+  this.Pa = b;
+  this.Ob = window;
+  $f.call(this, a, c)
+}
+s(cg, $f);
+cg.prototype.la = function(a) {
+  cg.e.la.call(this, a);
+  a && (this.Ob = Gb(Bb(a)));
+  this.c = new G(50);
+  this.c.start();
+  D(this.c, I, function() {
+    !this.Ad() || null == (this.Ob || window).__adaptv__.jsproxy || this.Pa && !rf(Of(this), this.Ob)[this.Pa] || (this.c.stop(), this.c.a(), this.c = null, this.dispatchEvent(new sf("ready")))
+  }, !1, this)
+};
+cg.prototype.ze = function() {
+  for(var a = !v || v && 11 <= nb ? '\x3cembed quality\x3d"high" id\x3d"%s" name\x3d"%s" class\x3d"%s" src\x3d"%s" FlashVars\x3d"%s" bgcolor\x3d"%s" AllowScriptAccess\x3d"%s" allowFullScreen\x3d"true" SeamlessTabbing\x3d"false" type\x3d"application/x-shockwave-flash" pluginspage\x3d"http://www.macromedia.com/go/getflashplayer" %s\x3e\x3c/embed\x3e' : '\x3cobject classid\x3d"clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" id\x3d"%s" name\x3d"%s" class\x3d"%s"\x3e\x3cparam name\x3d"movie" value\x3d"%s"/\x3e\x3cparam name\x3d"quality" value\x3d"high"/\x3e\x3cparam name\x3d"FlashVars" value\x3d"%s"/\x3e\x3cparam name\x3d"bgcolor" value\x3d"%s"/\x3e\x3cparam name\x3d"AllowScriptAccess" value\x3d"%s"/\x3e\x3cparam name\x3d"allowFullScreen" value\x3d"true"/\x3e\x3cparam name\x3d"SeamlessTabbing" value\x3d"false"/\x3e%s\x3c/object\x3e', 
+  b = !v || v && 11 <= nb ? "wmode\x3d%s" : '\x3cparam name\x3d"wmode" value\x3d"%s"/\x3e', b = wa(b, this.Zd), c = this.hb.ta(), d = this.hb.W(), e = [], g = 0;g < c.length;g++) {
+    e.push(encodeURIComponent(String(c[g])) + "\x3d" + encodeURIComponent(String(d[g])))
+  }
+  a = wa(a, Of(this), Of(this), "goog-ui-media-flash-object", ya(this.we), ya(e.join("\x26")), this.me, this.Yc, b);
+  "EMBED" === Lb(document, a).nodeName && (b = document.createElement("embed"), b.innerHTML = a, a = Pb(b)[0], vf(a, "display", "inline"), a = a.outerHTML);
+  return a
+};
+cg.prototype.Ad = function() {
+  var a = !1;
+  try {
+    a = cg.e.Ad.call(this)
+  }catch(b) {
+  }
+  return a || "PercentLoaded" in bg(this) && 100 == bg(this).PercentLoaded()
+};
+cg.prototype.a = function() {
+  this.c && this.c.stop();
+  this.c && this.c.a();
+  this.Ob = this.Pa = this.c = null;
+  var a = bg(this);
+  a && (id(a), y(a));
+  cg.e.a.call(this)
+};
+function U(a) {
+  F.call(this);
+  this.Q = Q("adaptv.vpaid.FlashLoader");
+  this.ia = new pf(this);
+  this.Kc = a
+}
+s(U, F);
+U.prototype.initAd = function(a, b, c, d, e, g) {
+  var h = Qd() + ":" + this.Je;
+  this.T = new cg(h, this.Cd);
+  this.T.hb.set("js", "1");
+  ag(this.T, a, b);
+  this.T.Zd = "opaque";
+  this.T.Kd = "9.0.124";
+  this.T.Yc = "always";
+  this.T.la(n(this.Kc) ? document.getElementById(this.Kc) : this.Kc);
+  this.ia.A(this.T, ["ready"], function() {
+    this.j = rf(Of(this.T), this.T.Ob)[this.Cd];
+    this.Fa = bg(this.T);
+    this.Fa.addEventListener ? (this.Fa.addEventListener("mouseover", p(this.mouseover, this), !1), this.Fa.addEventListener("mouseout", p(this.mouseout, this), !1)) : (this.Fa.attachEvent("mouseover", p(this.mouseover, this)), this.Fa.attachEvent("mouseout", p(this.mouseout, this)));
+    this.Fa.style.width = a + "px";
+    this.Fa.style.height = b + "px";
+    ub(Wd, function(a) {
+      this.j.__on(a, this.t, this)
+    }, this);
+    this.j.initAd(a, b, c, d, e, g)
+  })
+};
+U.prototype.collapseAd = function() {
+  this.j && this.j.collapseAd()
+};
+U.prototype.expandAd = function() {
+  this.j && this.j.expandAd()
+};
+U.prototype.startAd = function() {
+  this.j && this.j.startAd()
+};
+U.prototype.stopAd = function() {
+  this.j && this.j.stopAd()
+};
+U.prototype.pauseAd = function() {
+  this.j && this.j.pauseAd()
+};
+U.prototype.resizeAd = function(a, b, c) {
+  this.j && this.j.resizeAd(a, b, c)
+};
+U.prototype.resumeAd = function() {
+  this.j && this.j.resumeAd()
+};
+U.prototype.skipAd = function() {
+  this.j && this.j.skipAd()
+};
+U.prototype.subscribe = f();
+U.prototype.unsubscribe = f();
+U.prototype.getAdCompanions = function() {
+  throw Error("NotImplemented");
+};
+U.prototype.getAdExpanded = function() {
+  return this.j ? this.j.__get_adExpanded() : !1
+};
+U.prototype.getAdVolume = function() {
+  return this.j ? this.j.__get_adVolume() : -2
+};
+U.prototype.setAdVolume = function(a) {
+  this.j && this.j.__set_adVolume(a)
+};
+U.prototype.getAdDuration = function() {
+  return this.j ? this.j.__get_adDuration() : -2
+};
+U.prototype.getAdRemainingTime = function() {
+  return this.j ? this.j.__get_adRemainingTime() : -2
+};
+U.prototype.t = function(a) {
+  this.Q.info(a.type);
+  switch(a.type) {
+    case "AdError":
+      this.dispatchEvent(new Yd("AdError", new N(a.data.errNo, a.data.message)));
+      this.a();
+      break;
+    case "AdSkipped":
+      this.dispatchEvent(a);
+      this.a();
+      break;
+    case "AdStopped":
+      this.dispatchEvent(a);
+      this.a();
+      break;
+    default:
+      this.dispatchEvent(a)
+  }
+};
+U.prototype.mouseover = function() {
+  this.dispatchEvent("mouseover")
+};
+U.prototype.mouseout = function() {
+  this.dispatchEvent("mouseout")
+};
+U.prototype.a = function() {
+  this.ia && this.ia.a();
+  this.Fa = this.ia = null;
+  this.T && this.T.a();
+  this.Kc = this.j = this.T = null;
+  U.e.a.call(this)
+};
+function dg(a) {
+  U.call(this, a);
+  this.Q = Q("adaptv.vpaid.FlashVPAIDLoader");
+  this.Cd = "vpaidloader";
+  this.Je = "//redir.adap.tv/redir/client/VPAIDLoader.swf"
+}
+s(dg, U);
+dg.prototype.initAd = function(a, b, c, d, e, g) {
+  dg.e.initAd.call(this, a, b, "-1", d, e, g)
+};
+dg.prototype.getAdCompanions = function() {
+  return this.j ? this.j.__get_adCompanions() : ""
+};
+function eg(a) {
+  U.call(this, a);
+  this.Q = Q("adaptv.vpaid.FLVLoader");
+  this.Cd = "flvplayer";
+  this.Je = "//redir.adap.tv/redir/client/FLVPlayer.swf"
+}
+s(eg, U);
+eg.prototype.initAd = function(a, b, c, d, e, g) {
+  this.b = g.ad;
+  g = fe(new ee(this.b.duration));
+  g = isNaN(g) ? 0 : g / 1E3;
+  var h = {};
+  h.videoUrl = this.b.mediaFiles[0].url;
+  h.videoDuration = g;
+  eg.e.initAd.call(this, a, b, c, d, e, h)
+};
+eg.prototype.t = function(a) {
+  switch(a.type) {
+    case "AdStarted":
+      this.Ja = !0;
+      this.dispatchEvent(a);
+      break;
+    case "AdStopped":
+      this.qb = !0;
+      this.dispatchEvent(a);
+      this.a();
+      break;
+    case "AdPaused":
+      this.Te = !0;
+      this.dispatchEvent(a);
+      break;
+    case "AdPlaying":
+      this.Te = !1;
+      var b = ["AdVideoFirstQuartile", "AdVideoMidpoint", "AdVideoThirdQuartile"], c = 1, d = new G(500);
+      d.start();
+      D(d, I, function() {
+        var a = this.getAdDuration(), g = this.getAdRemainingTime(), g = a - g;
+        a && a > g ? 4 * (g / a) > c && (this.dispatchEvent(b[c - 1]), c++) : (d.stop(), d.a(), d = null)
+      }, !1, this);
+      this.dispatchEvent(a);
+      break;
+    case "AdClickThru":
+      this.Te ? this.resumeAd() : this.Ja && (!this.qb && this.b.clickThrough) && (this.pauseAd(), this.dispatchEvent(a), window.open(this.b.clickThrough, "_blank"));
+      break;
+    default:
+      this.dispatchEvent(a)
+  }
+};
+eg.prototype.a = function() {
+  this.b = null;
+  eg.e.a.call(this)
+};
+function fg(a) {
+  this.P = a.Ta;
+  this.l = a.xa;
+  this.Bb = a.ag || "";
+  this.C = a.zIndex;
+  this.init()
+}
+s(fg, F);
+fg.prototype.init = function() {
+  this.bb = z.aa(tc, {zIndex:this.C});
+  this.P.appendChild(this.bb);
+  this.c = new G(300);
+  D(this.l, ["AdVideoStart", "AdVideoComplete"], this.Z, !1, this);
+  D(this.c, I, this.Nb, !1, this)
+};
+fg.prototype.Z = function(a) {
+  switch(a.type) {
+    case "AdVideoStart":
+      vf(this.bb, {display:"block"});
+      this.c && this.c.start();
+      break;
+    case "AdVideoComplete":
+      this.a()
+  }
+};
+fg.prototype.Nb = function() {
+  this.Cb = this.l.getAdRemainingTime && Math.round(this.l.getAdRemainingTime());
+  if(this.bb) {
+    var a = this.bb, b;
+    if(isNaN(this.Cb) || 0 > this.Cb) {
+      this.c && this.c.stop(), b = "This ad will conclude shortly"
+    }else {
+      if("Ad will end in __SECONDS__ seconds" === this.Bb) {
+        b = Math.floor(this.Cb / 60);
+        var c = Math.floor(this.Cb % 60);
+        b = "\x3cb\x3eAD\x3c/b\x3e | " + ((10 > b ? "0" : "") + b + ":" + (10 > c ? "0" : "") + c)
+      }else {
+        b = this.Bb.replace("__SECONDS__", this.Cb.toString())
+      }
+    }
+    Db(a, {innerHTML:b})
+  }
+};
+fg.prototype.a = function() {
+  E(this.l, ["AdVideoStart", "AdVideoComplete"], this.Z, !1, this);
+  E(this.c, I, this.Nb, !1, this);
+  y(this.bb);
+  this.bb = null;
+  this.c && this.c.stop();
+  this.c && this.c.a();
+  this.c = null;
+  fg.e.a.call(this)
+};
+function gg(a) {
+  this.P = a.Ta;
+  this.l = a.xa;
+  this.C = a.zIndex;
+  this.init()
+}
+s(gg, F);
+gg.prototype.init = function() {
+  this.ma = z.aa(sc, {qg:Qd() + "://redir.adap.tv/redir/assets/mute_20x20.png", zIndex:this.C});
+  this.P.appendChild(this.ma);
+  D(this.l, ["AdStarted", "AdVolumeChange", "AdStopped"], this.Z, !1, this);
+  D(this.ma, ["click"], this.Z, !1, this)
+};
+gg.prototype.Z = function(a) {
+  switch(a.type) {
+    case "click":
+      this.l.setAdVolume(0 == this.jd ? this.Rg || 1 : 0);
+      break;
+    case "AdStarted":
+    ;
+    case "AdVolumeChange":
+      this.Rg = this.jd || null;
+      this.jd = this.l.getAdVolume();
+      vf(this.ma, {display:"block", "background-position":0 == this.jd ? "left" : "right"});
+      break;
+    case "AdStopped":
+      this.a()
+  }
+};
+gg.prototype.a = function() {
+  E(this.l, ["AdStarted", "AdVolumeChange", "AdStopped"], this.Z, !1, this);
+  E(this.ma, ["click"], this.Z, !1, this);
+  y(this.ma);
+  this.ma = null;
+  gg.e.a.call(this)
+};
+function hg(a) {
+  this.P = a.Ta;
+  this.l = a.xa;
+  this.dh = a.bh;
+  this.C = a.zIndex;
+  this.init()
+}
+s(hg, F);
+hg.prototype.init = function() {
+  this.ka = z.aa(pc, {hidden:this.dh, zIndex:this.C});
+  Ob(this.P, this.ka);
+  D(this.l, ["AdStarted", "AdPaused", "AdPlaying", "AdStopped"], this.Z, !1, this);
+  D(this.ka, ["click"], this.Z, !1, this)
+};
+hg.prototype.Z = function(a) {
+  switch(a.type) {
+    case "click":
+      this.l.Lc ? this.l.resumeAd() : this.l.startAd();
+      break;
+    case "AdStarted":
+    ;
+    case "AdPlaying":
+      this.ka.style.display = "none";
+      break;
+    case "AdPaused":
+      this.ka.style.display = "block";
+      break;
+    case "AdStopped":
+      this.a()
+  }
+};
+hg.prototype.a = function() {
+  E(this.l, ["AdStarted", "AdPaused", "AdPlaying", "AdStopped"], this.Z, !1, this);
+  E(this.ka, ["click"], this.Z, !1, this);
+  y(this.ka);
+  hg.e.a.call(this)
+};
+var ig = ["click", "mouseout", "mouseover"], jg = ["AdPaused", "AdPlaying", "AdSkippableStateChange", "AdStopped", "AdVideoStart"];
+function kg(a) {
+  this.je = !1;
+  this.s = a.height;
+  this.P = a.Ta;
+  this.yc = a.Bg || "SKIP in __SECONDS__s";
+  this.l = a.xa;
+  this.q = a.width;
+  this.C = a.zIndex;
+  this.init()
+}
+s(kg, F);
+l = kg.prototype;
+l.a = function() {
+  E(this.wa, ig, this.Pe, !1, this);
+  E(this.l, jg, this.t, !1, this);
+  y(this.Rb);
+  y(this.wa);
+  this.wa = null;
+  this.c.n();
+  this.c = null;
+  kg.e.a.call(this)
+};
+l.init = function() {
+  this.wa = z.aa(qc, {fontSize:Math.floor(Math.min(this.s / 30, this.q / 45)), zIndex:this.C});
+  this.Rb = z.aa(rc, {fontSize:Math.floor(Math.min(this.s / 30, this.q / 45)), zIndex:this.C});
+  this.c = new G(200);
+  this.P.appendChild(this.Rb);
+  D(this.c, I, this.hf, !1, this);
+  D(this.l, jg, this.t, !1, this)
+};
+l.Pe = function(a) {
+  switch(a.type) {
+    case "click":
+      this.l.skipAd();
+      break;
+    case "mouseout":
+      vf(this.wa, "border", "1px solid rgba(100, 100, 100, 0.8)");
+      vf(this.wa, "background-color", "rgba(0, 0, 0, 0.8)");
+      break;
+    case "mouseover":
+      vf(this.wa, "border", "1px solid rgba(227, 227, 227, 0.9)"), vf(this.wa, "background-color", "rgba(0, 0, 0, 0.9)")
+  }
+};
+l.t = function(a) {
+  switch(a.type) {
+    case "AdPaused":
+      this.je = !1;
+      break;
+    case "AdPlaying":
+      this.je = !0;
+      break;
+    case "AdSkippableStateChange":
+      this.l.wb && (E(this.c, I, this.hf, !1, this), this.c.n(), y(this.Rb), this.Rb = null, this.P.appendChild(this.wa), D(this.wa, ig, this.Pe, !1, this));
+      break;
+    case "AdStopped":
+      this.a();
+      break;
+    case "AdVideoStart":
+      this.c.start()
+  }
+};
+l.hf = function() {
+  var a = lg(this.l) / 1E3 - (this.l.getAdDuration() - this.l.getAdRemainingTime());
+  0 >= a ? this.c.stop() : Qb(this.Rb, this.yc.replace("__SECONDS__", Math.ceil(a).toString()))
+};
+function mg(a) {
+  this.s = a.height;
+  this.Se = a.parentNode;
+  this.l = a.xa;
+  this.q = a.width;
+  a = a.pluginProps || {};
+  this.Bb = a.countdownText || "";
+  this.Cg = a.muteButtonEnabled || !1;
+  this.Yg = !1 !== a.showPlayButtonOnPause;
+  this.ah = a.skipAdEnabled || !1;
+  this.C = 0
+}
+mg.prototype.init = function() {
+  if(!Ld()) {
+    var a = Pb(this.Se);
+    u(a, function(a) {
+      var c = a.style[Fa("zIndex")];
+      a = "undefined" !== typeof c ? c : a.style[xf(a, "zIndex")] || "";
+      this.C = a > this.C ? a : this.C
+    });
+    this.C += 1;
+    this.$a = z.aa(uc);
+    Ob(this.Se, this.$a);
+    this.ah && (this.Qd = new kg({height:this.s, Ta:this.$a, Bg:"", xa:this.l, width:this.q, zIndex:this.C}));
+    this.Cg && (this.ma = new gg({height:this.s, Ta:this.$a, xa:this.l, width:this.q, zIndex:this.C}));
+    this.Bb && (this.wj = new fg({ag:this.Bb, height:this.s, Ta:this.$a, xa:this.l, width:this.q, zIndex:this.C}));
+    if(this.Yg || Jd()) {
+      this.ka = new hg({Ta:this.$a, bh:!Jd(), xa:this.l, zIndex:this.C})
+    }
+  }
+};
+mg.prototype.a = function() {
+  this.Qd && this.Qd.a();
+  this.Qd = null;
+  this.ma && this.ma.a();
+  this.ma = null;
+  this.re && this.re.a();
+  this.re = null;
+  this.ka && this.ka.a();
+  this.ka = null;
+  y(this.$a)
+};
+function ng(a, b) {
+  this.height = b || window.innerHeight;
+  this.width = a || window.innerWidth;
+  this.muted = !1
+}
+function og(a, b, c, d) {
+  F.call(this);
+  this.ja = Q("adaptv.vpaid.VideoControl");
+  c.videoSlot && c.slot || (window.console && window.console.log("Warning: This ADAPTV integration is deprecated and no longer supported.  Please update the integration."), this.Gg = !0);
+  this.ba = c.slot;
+  this.I = c.videoSlot;
+  this.$f = new af(c.companionSlots);
+  this.dd = c.clickSlot;
+  this.Sd = !1;
+  this.Md = c.videoSlot && (Kd() || !c.slot);
+  this.fa = new ng(a, b);
+  this.Bd = !1;
+  a = Xa().toLowerCase();
+  Kd() ? (this.se = "IOS", this.Bd = !0) : Xa().toLowerCase().match(/(android)/g) ? (this.Bd = !0, this.se = "android", this.Wf = 0 <= Ea(a.substr(a.indexOf("android"), 13).split(" ")[1], "4.1.0")) : this.se = "web";
+  this.qb = this.Ja = this.Fd = this.fd = !1;
+  this.l = d;
+  this.Vd = {};
+  pg(this);
+  this.tg = this.Md && this.I && (!this.I.tagName || "video" !== this.I.tagName.toLowerCase())
+}
+s(og, F);
+function qg(a, b) {
+  document.createElement("video").play ? (a.xc = b.mediaFiles, a.Db = 0, a.ed = b.clickThrough, a.Pg = b.Og, a.Md ? (a.i = a.I, a.P = a.ba, Db(a.i, {preload:"auto", loop:!1, src:a.xc[a.Db].url}), a.i.hasAttribute && a.i.hasAttribute("controls") && a.i.removeAttribute("controls"), rg(a)) : (a.ba && a.ba.nodeName && "div" === a.ba.nodeName.toLowerCase() || a.dispatchEvent(new Yd("error", Ee)), a.U = z.aa(mc, {width:a.fa.width, height:a.fa.height}), "static" === yf(a.ba, "position") && vf(a.ba, {position:"relative"}), 
+  a.ba.appendChild(a.U), J(function() {
+    this.P = z.aa(nc);
+    null == (this.U.contentDocument || this.U.contentWindow.document).body && (this.U.contentDocument || this.U.contentWindow.document).write("\x3cbody\x3e\x3c/body\x3e");
+    (this.U.contentDocument || this.U.contentWindow.document).body.appendChild(this.P);
+    this.i = z.aa(oc, {width:this.fa.width, height:this.fa.height, url:this.xc[this.Db].url});
+    this.P.appendChild(this.i);
+    D(this.i, ["mouseover", "mouseout"], this.Kg, !1, this);
+    rg(this)
+  }, 0, a))) : a.dispatchEvent(new Yd("error", Fe))
+}
+function rg(a) {
+  a.Gg || (a.hc = new mg({height:a.fa.height, parentNode:a.P, xa:a.l, width:a.fa.width, pluginProps:a.Pg}), a.hc.init());
+  a.dd && D(a.dd, "click", function() {
+    this.pause();
+    this.dispatchEvent("click");
+    this.ed && this.Ja && window.open(this.ed, "_blank")
+  }, !1, a);
+  a.Bd && (a.i.muted = !0, a.muted = !0);
+  a.Gb = {};
+  ub(Vd, function(a) {
+    this.Gb[a.toString()] = p(this.Hg, this);
+    !Kd() || "click" !== a.toString() && "touchstart" !== a.toString() ? D(this.i, a, this.Gb[a.toString()], !1, this) : D(this.P, a, this.Gb[a.toString()], !1, this)
+  }, a);
+  a.tg && (a.Fd = !0, a.dispatchEvent("loaded"))
+}
+l = og.prototype;
+l.Hg = function(a) {
+  this.ja.info("VideoControl received event " + a.type);
+  switch(a.type) {
+    case "stalled":
+      if(this.Wf) {
+        break
+      }
+    ;
+    case "error":
+      if(this.Ja) {
+        break
+      }else {
+        this.Db++, this.Db < this.xc.length ? (Db(this.i, {src:this.xc[this.Db].url}), this.i.play()) : this.dispatchEvent(new Yd("error", De))
+      }
+      break;
+    case "ended":
+      this.dispatchEvent("ended");
+      this.stop();
+      break;
+    case "volumechange":
+      this.dispatchEvent("volumechange");
+      this.i.muted ? (this.dispatchEvent("mute"), this.fa.muted = !0) : this.fa.muted && (this.dispatchEvent("unmute"), this.fa.muted = !1);
+      break;
+    case "play":
+    ;
+    case "playing":
+      this.Ja ? this.dispatchEvent("resume") : (this.Ja = !0, this.dispatchEvent("playing"), Ld() && setTimeout(p(function() {
+        this.i.play()
+      }, this), 500));
+      break;
+    case "pause":
+      this.Ja && !this.qb && this.dispatchEvent("pause");
+      break;
+    case "touchstart":
+      sg(this);
+      this.Sd = !0;
+      break;
+    case "click":
+      this.Sd || sg(this);
+      this.Sd = !1;
+      break;
+    case "loadeddata":
+    ;
+    case "loadedmetadata":
+      this.Fd || (this.Fd = !0, this.dispatchEvent("loaded"))
+  }
+};
+function sg(a) {
+  a.i.paused ? a.resume() : !a.Ja || (a.qb || a.dd) || (a.pause(), window.open(a.ed, "_blank"), a.dispatchEvent("click"))
+}
+l.Kg = function(a) {
+  this.dispatchEvent(a)
+};
+l.volume = function() {
+  if(this.i) {
+    return this.i.volume
+  }
+};
+l.setVolume = function(a) {
+  this.i && (this.i.volume = a)
+};
+l.elapsedTime = function() {
+  if(this.i) {
+    return this.i.currentTime
+  }
+};
+og.prototype.duration = function() {
+  return this.i ? this.i.duration : -2
+};
+og.prototype.resizeAd = function(a, b) {
+  this.fa.width = a;
+  this.fa.height = b;
+  this.i.height = b;
+  this.i.width = a;
+  this.U && (this.U.height = b);
+  this.U && (this.U.width = a)
+};
+og.prototype.pause = function() {
+  this.i && this.i.pause()
+};
+og.prototype.resume = function() {
+  Xa().toLowerCase().match(/(android)/g) && !this.fd && (this.I.play(), this.I.pause(), this.fd = !0);
+  this.i && this.i.play()
+};
+og.prototype.stop = function() {
+  if(!this.qb) {
+    this.qb = !0;
+    this.Md || (y(this.i), y(this.U), this.ba.removeAttribute("style"), this.U = this.i = null);
+    try {
+      this.I.removeAttribute("id"), this.I.removeAttribute("preload"), this.I.removeAttribute("loop"), this.I.removeAttribute("src"), Db(this.I, this.Vd)
+    }catch(a) {
+    }
+    this.setVolume(1);
+    this.i && this.Gb && ub(Vd, function(a) {
+      this.i.removeEventListener(a, this.Gb[a.toString()], !0)
+    }, this);
+    this.hc && this.hc.a();
+    this.hc = null;
+    this.dispatchEvent("stopped");
+    this.fd || this.I && this.I.load();
+    this.I && this.I.play()
+  }
+};
+function pg(a) {
+  ub(a.I.attributes, function(a) {
+    this.Vd[a.name] = a.value
+  }, a);
+  a.Vd.innerHTML = a.I.innerHTML
+}
+og.prototype.wd = function(a) {
+  this.$f.wd(a)
+};
+og.prototype.mouseover = function() {
+  this.dispatchEvent("mouseover")
+};
+og.prototype.mouseout = function() {
+  this.dispatchEvent("mouseout")
+};
+function V() {
+  F.call(this);
+  this.wb = !1;
+  this.Oa = 1;
+  this.dg = !1;
+  this.ug = !0;
+  this.ia = new pf(this);
+  (new qd((new sa).ib())).u.get("adaptvLog") && tg()
+}
+s(V, F);
+V.prototype.ig = k("ug");
+V.prototype.kg = k("q");
+V.prototype.gg = k("s");
+V.prototype.getAdExpanded = k("dg");
+V.prototype.jg = k("wb");
+V.prototype.getAdRemainingTime = k("sj");
+V.prototype.getAdDuration = ba(-2);
+V.prototype.getAdVolume = k("Oa");
+V.prototype.getAdCompanions = ba("");
+V.prototype.hg = ba(!1);
+V.prototype.setAdVolume = function(a) {
+  this.Oa != a && (0 > a ? a = 0 : 1 < a && (a = 1), this.Oa = a)
+};
+V.prototype.handshakeVersion = ba("2.0");
+V.prototype.initAd = function(a, b, c, d, e, g) {
+  this.q = a;
+  this.s = b;
+  a = c;
+  a = "string" === typeof a ? a.toLowerCase() : "";
+  this.Wd = "thumbnail" === a || "fullscreen" === a ? a : "normal";
+  d = parseInt(d, 10);
+  this.bc = !isNaN(d) && 0 < d ? d : -1;
+  this.Ca = e && e.AdParameters && "string" === typeof e.AdParameters ? ug(e.AdParameters) : e;
+  this.w = g;
+  document.body || document.close()
+};
+function ug(a) {
+  if(!a || "string" !== typeof a) {
+    return{}
+  }
+  var b = {}, c = {};
+  a = xa(a).split("\x26");
+  u(a, function(a) {
+    a = a.split("\x3d");
+    if("cd" === a[0]) {
+      a = decodeURIComponent(a[1].replace(/\+/g, " "));
+      a = a.slice(1, -1);
+      a = a.split(",");
+      for(var e = 0;e < a.length;e++) {
+        0 <= a[e].indexOf("dataOverride") && a.splice(e, 1)
+      }
+      c = cf("{" + a.join() + "}")
+    }else {
+      "adXML" === a[0] ? b.xml = decodeURIComponent(a[1].replace(/\+/g, " ")) : b[a[0].replace("pp.", "")] = decodeURIComponent(a[1])
+    }
+  });
+  yb(c, b);
+  return c
+}
+V.prototype.resizeAd = function(a, b) {
+  this.q = a;
+  this.s = b
+};
+V.prototype.startAd = f();
+V.prototype.stopAd = f();
+V.prototype.pauseAd = f();
+V.prototype.resumeAd = f();
+V.prototype.expandAd = f();
+V.prototype.collapseAd = f();
+V.prototype.skipAd = f();
+V.prototype.subscribe = function(a, b, c) {
+  var d;
+  "function" === typeof a ? (d = a, a = b) : d = b;
+  this.ia.A(this, [a], d, c)
+};
+V.prototype.unsubscribe = function(a, b) {
+  var c, d;
+  "function" === typeof a ? (c = a, d = b) : (c = b, d = a);
+  qf(this.ia, this, [d], c)
+};
+V.prototype.ud = f();
+V.prototype.a = function() {
+  this.ia && this.ia.a();
+  this.ia = null;
+  id(this)
+};
+var vg = [se.errorCode, ne.errorCode, qe.errorCode];
+function W() {
+  V.call(this);
+  this.Q = Q("adaptv.vpaid.VASTPlayer");
+  this.ub = [];
+  this.Rd = this.Lc = this.ke = this.Xb = this.he = !1;
+  this.k = {Vc:0, hd:0, gd:0, Kb:0, zd:0, Ie:0, Pb:0, Xe:0, We:0};
+  this.oe = new Ve(this, p(this.ne, this))
+}
+s(W, V);
+function X(a, b) {
+  b.errorCode !== se.errorCode && a.dispatchEvent(new Yd("error", {errorCode:b.errorCode, errorMessage:b.errorMessage}));
+  a.Q.info(b.errorMessage);
+  0 <= Ja(vg, b.errorCode) || a.ke ? (a.dispatchEvent(new Yd("AdError", {errorCode:b.errorCode, errorMessage:b.errorMessage, message:b.errorMessage})), a.stopAd()) : (K(a.vb), K(a.Yb), a.Xb = !1, a.Lc = !1, a.Jc())
+}
+W.prototype.Bc = function(a) {
+  this.Q.info("VASTPlayer receives event " + a.type);
+  switch(a.type) {
+    case "playing":
+      this.dispatchEvent("AdStarted");
+      this.dispatchEvent("AdVideoStart");
+      this.dispatchEvent("AdPlaying");
+      this.dispatchEvent("AdImpression");
+      this.dispatchEvent("creativeView");
+      K(this.Yb);
+      this.setAdVolume(this.Oa);
+      wg(this);
+      for(a = 0;a < this.ub.length;a++) {
+        this.ub[a] && this.ub[a].valid && this.f.wd(this.ub[a])
+      }
+      var b = ["AdVideoFirstQuartile", "AdVideoMidpoint", "AdVideoThirdQuartile"], c = 1, d = new G(500);
+      D(d, I, function() {
+        this.f && this.f.duration() && this.f.duration() > this.f.elapsedTime() ? (4 * (this.f.elapsedTime() / this.f.duration()) > c && (this.dispatchEvent(b[c - 1]), c++), this.f.elapsedTime() >= lg(this) / 1E3 && !this.wb && (this.wb = !0, this.dispatchEvent("AdSkippableStateChange"))) : (d.stop(), d.a(), d = null)
+      }, !1, this);
+      d.start();
+      break;
+    case "pause":
+      this.dispatchEvent("AdPaused");
+      break;
+    case "resume":
+      this.dispatchEvent("AdPlaying");
+      break;
+    case "click":
+      try {
+        this.dispatchEvent(new Yd("AdClickThru", {playerHandles:!1}))
+      }catch(e) {
+        window.console.warn("the player which loads us does not handle AdClickThru event correctly")
+      }
+      break;
+    case "volumechange":
+      this.dispatchEvent("AdVolumeChange");
+      break;
+    case "ended":
+      this.dispatchEvent("AdVideoComplete");
+      break;
+    case "stopped":
+      J(function() {
+        id(this.f);
+        this.dispatchEvent("AdStopped");
+        this.reset()
+      }, 200, this);
+      break;
+    case "error":
+      X(this, a.data);
+      break;
+    case "loaded":
+      this.k.Vc = (new Date).getTime();
+      this.k.hd = (new Date).getTime() - this.k.gd;
+      this.Xb = !0;
+      K(this.vb);
+      this.dispatchEvent("AdLoaded");
+      this.Rd && this.startAd();
+      break;
+    default:
+      this.dispatchEvent(a)
+  }
+};
+W.prototype.reset = function() {
+  J(function() {
+    this.d && (this.b.isVPAID || this.b.isFLV) || (this.f && this.f.a(), this.oe && this.oe.a(), this.a())
+  }, 200, this)
+};
+W.prototype.ud = function() {
+  return new W
+};
+W.prototype.fg = k("b");
+W.prototype.getAdCompanions = function() {
+  var a = this.b.companionString;
+  !a && (this.d && this.b.isVPAID) && (a = this.d.getAdCompanions && "function" == typeof this.d.getAdCompanions ? this.d.getAdCompanions() : "");
+  return a
+};
+W.prototype.getAdDuration = function() {
+  return this.d && (this.b.isVPAID || this.b.isFLV) ? this.d.getAdDuration && "function" == typeof this.d.getAdDuration ? this.d.getAdDuration() : -2 : this.f ? this.f.duration() : -2
+};
+W.prototype.getAdVolume = function() {
+  return this.d && (this.b.isVPAID || this.b.isFLV) ? this.d.getAdVolume() : this.f && this.f.volume()
+};
+W.prototype.setAdVolume = function(a) {
+  W.e.setAdVolume.call(this, a);
+  this.d && (this.b.isVPAID || this.b.isFLV) ? this.d.setAdVolume(this.Oa) : this.f && this.f.setVolume(this.Oa)
+};
+W.prototype.getAdRemainingTime = function() {
+  return this.d && (this.b.isVPAID || this.b.isFLV) ? this.d.getAdRemainingTime() : this.f ? this.f.duration() - this.f.elapsedTime() : -2
+};
+function lg(a) {
+  void 0 === a.df && (a.df = fe(new ee(a.b.skipoffset), fe(new ee(a.b.duration))));
+  return a.df
+}
+l = W.prototype;
+l.initAd = function(a, b, c, d, e, g) {
+  W.e.initAd.call(this, a, b, c, d, e, g);
+  this.yd = parseInt(Math.random().toString().substr(2, 16), 10);
+  this.k.Kb = (new Date).getTime();
+  g.slot || g.videoSlot ? (this.nc = new lf(g), this.tj = 1E3 * parseInt(g.adTagTimeout, 10) || 1E4, this.Tf = 1E3 * parseInt(g.videoTimeout, 10) || 7E3, this.Uc = parseInt(this.Ca.adLoadedTimeout, 10) || 1E3 * parseInt(g.adLoadedTimeout, 10) || 15E3, this.zb = parseInt(this.Ca.breakLoadedTimeout, 10) || this.zb, this.yg = parseInt(this.Ca.maxWrapperLevels, 10) || parseInt(g.maxWrapperLevels, 10) || 5, this.Ee()) : X(this, ne)
+};
+l.Ee = function() {
+  this.Ua = mf();
+  this.Ca.xml ? this.Ua.onload = p(function() {
+    return xg(this, "xml")
+  }, this) : (this.Zb = this.Ca.adTagUrl) ? this.Ua.onload = p(function() {
+    return xg(this, "adTag")
+  }, this) : X(this, oe)
+};
+function xg(a, b) {
+  window.addEventListener ? window.addEventListener("message", p(a.Oe, a), !1) : window.attachEvent("onmessage", p(a.Oe, a));
+  var c = {instanceId:a.yd, maxWrapperLevels:a.yg};
+  "xml" === b ? (c.type = "initXML", c.xml = a.Ca.xml) : (c.type = "init", c.adTagUrl = a.Zb);
+  a.k.Sf = (new Date).getTime();
+  a.Ua.contentWindow.postMessage(ef(c), "*")
+}
+l.Oe = function(a) {
+  this.k.Ie = (new Date).getTime() - this.k.Sf;
+  if(-1 < a.origin.indexOf("adap.tv")) {
+    try {
+      var b = df(a.data), c = b.ad;
+      this.yd === b.instanceId && (this.b = new de(c), "" !== this.b.skipoffset && isNaN(lg(this)) && this.Q.info("Invalid duration or skipoffset"), this.load())
+    }catch(d) {
+    }
+  }
+};
+l.load = function() {
+  yg(this);
+  this.f = new og(this.q, this.s, this.w, this);
+  if(0 === this.b.error.errorCode) {
+    this.k.gd = (new Date).getTime();
+    var a = this.b.mediaFiles;
+    Od() || (a = zg(a));
+    if(a && a.length) {
+      var b = ug(this.b.adParameters[0]);
+      b && !0 === b.startMuted && this.setAdVolume(0);
+      Ag(this);
+      if("video/x-flv" === this.b.mediaFiles[0].type) {
+        this.w.slot ? (this.d = new eg(this.w.slot), this.d.name = "FLASH_FLV_LOADER", D(this.d, vb(Wd), p(this.t, this)), D(this.d, ["mouseover", "mouseout"], p(this.t, this)), this.k.Pb = (new Date).getTime() - this.k.Kb, this.d.initAd(this.q, this.s, this.Wd, 500, this.b.data && this.b.data.AdParameters, {ad:this.b})) : X(this, me)
+      }else {
+        if(this.b.isVPAID && "application/x-shockwave-flash" === this.b.mediaFiles[0].type) {
+          if(this.w.slot) {
+            this.d = new dg(this.w.slot);
+            this.d.name = "FLASH_VPAID_LOADER";
+            D(this.d, vb(Wd), p(this.t, this));
+            D(this.d, ["mouseover", "mouseout"], p(this.t, this));
+            var c = {vpaidUrl:a[0].url};
+            this.b.hasAdaptvParams && (c.videoProperties = {}, c.pluginProperties = b);
+            this.k.Pb = (new Date).getTime() - this.k.Kb;
+            this.d.initAd(this.q, this.s, this.Wd, 500, this.b.data && this.b.data.AdParameters, c)
+          }else {
+            X(this, me)
+          }
+        }else {
+          this.b.isVPAID ? (new Hd(a[0].url, "getVPAIDAd", !0)).Ha(p(function(b) {
+            b.error ? X(this, te) : (this.d = b.window.getVPAIDAd(), this.d.name = "getVPAIDAd", u(vb(Wd), function(a) {
+              this.d.subscribe(p(this.t, this, {type:a}), a)
+            }, this), -1 === a[0].url.indexOf("//redir.adap.tv/redir/javascript/google_ima3.js") && (this.b.data && this.b.data.AdParameters && 0 === this.b.data.AdParameters.indexOf("cd\x3d")) && (this.b.data.AdParameters = decodeURIComponent(this.b.data.AdParameters.substring(3))), this.k.Pb = (new Date).getTime() - this.k.Kb, this.d.initAd(this.q, this.s, this.Wd, this.bc, this.b.data, this.w))
+          }, this)) : (0 < this.bc && a.sort(p(function(a, b) {
+            return Math.abs(this.bc - a.bitrate) - Math.abs(this.bc - b.bitrate)
+          }, this)), this.k.Pb = (new Date).getTime() - this.k.Kb, D(this.f, vb(Xd), this.Bc, !1, this), D(this.f, ["mouseover", "mouseout"], p(this.Bc, this)), qg(this.f, {clickThrough:this.b.clickThrough, mediaFiles:this.b.mediaFiles, Og:b}), this.ub = this.b.companions)
+        }
+      }
+    }else {
+      X(this, je)
+    }
+  }else {
+    0 <= Ja(vg, this.b.error.errorCode) ? X(this, this.b.error) : this.Jc()
+  }
+};
+function zg(a) {
+  var b = [];
+  if(!a || 0 === a.length) {
+    return b
+  }
+  for(var c = 0;c < a.length;c++) {
+    a[c].type && ("video/x-flv" !== a[c].type && "application/x-shockwave-flash" !== a[c].type) && b.push(a[c])
+  }
+  return b
+}
+function Ag(a) {
+  K(a.vb);
+  a.Uc && 0 < a.Uc && (a.vb = J(function() {
+    X(this, re)
+  }, a.Uc, a))
+}
+l.ne = function() {
+  return{playerRev:"a765a65"}
+};
+l.Jc = function() {
+  this.Ua.contentWindow.postMessage(ef({type:"next"}), "*")
+};
+function yg(a) {
+  a.f && (id(a.f), a.f.a(), a.f = null)
+}
+l.t = function(a) {
+  this.Q.info("AdPlayer received event " + a.type + " from " + (this.d ? this.d.name : "unknown"));
+  switch(a.type) {
+    case "AdError":
+      X(this, new N(le.errorCode, le.errorMessage + " " + (a.data ? a.data.errorMessage : "")));
+      break;
+    case "AdLoaded":
+      this.k.Vc = (new Date).getTime();
+      this.k.hd = (new Date).getTime() - this.k.gd;
+      this.Xb = !0;
+      K(this.vb);
+      this.Rd && this.startAd();
+      this.dispatchEvent(a);
+      break;
+    case "AdImpression":
+      this.he = !0;
+      wg(this);
+      this.dispatchEvent(a);
+      break;
+    case "AdStarted":
+      this.ke = !0;
+      K(this.Yb);
+      this.setAdVolume(this.Oa);
+      this.dispatchEvent(a);
+      break;
+    case "AdStopped":
+      this.f && this.f.stop();
+      this.dispatchEvent(a);
+      break;
+    case "AdVideoFirstQuartile":
+    ;
+    case "AdVideoMidpoint":
+    ;
+    case "AdVideoThirdQuartile":
+    ;
+    case "AdVideoComplete":
+      if(!1 === this.he) {
+        X(this, ke);
+        break
+      }
+      this.dispatchEvent(a);
+      break;
+    default:
+      this.dispatchEvent(a)
+  }
+};
+function wg(a) {
+  a.b.scripts && u(a.b.scripts, function(a) {
+    if("url" === a.type) {
+      (new Hd(a.src)).Ha()
+    }else {
+      a = a.src;
+      var c = Hb("script", {type:"text/javascript"});
+      c.appendChild(document.createTextNode(a));
+      Cb("head", void 0, void 0)[0].appendChild(c)
+    }
+  })
+}
+W.prototype.resizeAd = function(a, b, c) {
+  W.e.resizeAd.call(this, a, b, c);
+  this.d && (this.b.isVPAID || this.b.isFLV) ? this.d.resizeAd(a, b, c) : this.f && !this.d && this.f.resizeAd(a, b, c)
+};
+W.prototype.startAd = function() {
+  if(!this.Xb) {
+    this.Rd = !0
+  }else {
+    if(!this.Lc) {
+      this.k.Xe = (new Date).getTime() - this.k.Vc;
+      this.Lc = !0;
+      var a = this.b.surveyURL;
+      a && 0 <= a.indexOf(".js") && Nd(a);
+      this.Yb = J(function() {
+        X(this, pe)
+      }, this.Tf, this);
+      this.d && (this.b.isVPAID || this.b.isFLV) ? this.d.startAd() : this.resumeAd()
+    }
+  }
+};
+W.prototype.pauseAd = function() {
+  this.d && (this.b.isVPAID || this.b.isFLV) ? this.d.pauseAd() : this.f && this.f.pause()
+};
+W.prototype.resumeAd = function() {
+  this.d && (this.b.isVPAID || this.b.isFLV) ? this.d.resumeAd() : this.f && this.f.resume()
+};
+W.prototype.skipAd = function() {
+  this.wb && (this.d && this.d.skipAd ? (this.d.skipAd(), this.d = null) : (this.dispatchEvent("AdSkipped"), this.f && this.f.stop(), this.reset()))
+};
+W.prototype.stopAd = function() {
+  this.d && (this.b.isVPAID || this.b.isFLV) ? ("function" === typeof this.d.stopAd && this.d.stopAd(), u(vb(Wd), function(a) {
+    this.d.unsubscribe && this.d.unsubscribe(p(this.t, this, {type:a}), a)
+  }, this), this.d = null) : (this.f && this.f.stop(), this.reset())
+};
+W.prototype.a = function() {
+  K(this.vb);
+  K(this.Yb);
+  this.nc && this.nc.a();
+  this.nc = null;
+  yg(this);
+  W.e.a.call(this)
+};
+function Y() {
+  W.call(this);
+  this.Q = Q("adaptv.vpaid.VPAIDClient");
+  this.ie = 1;
+  this.mf = this.Jd = -1;
+  this.k.zd = (new Date).getTime()
+}
+s(Y, W);
+l = Y.prototype;
+l.Bc = function(a) {
+  switch(a.type) {
+    case "playing":
+      Bg(this);
+      break;
+    case "loaded":
+      K(this.cc)
+  }
+  Y.e.Bc.call(this, a)
+};
+l.ud = function() {
+  return new Y
+};
+l.initAd = function(a, b, c, d, e, g) {
+  this.k.We = (new Date).getTime() - this.k.zd;
+  this.zb = 1E3 * parseInt(g.breakLoadedTimeout, 10) || 3E4;
+  Y.e.initAd.call(this, a, b, c, d, e, g)
+};
+l.Ee = function() {
+  if(this.w.slot) {
+    this.w.slot.style.width = Bf(this.q, !0);
+    this.w.slot.style.height = Bf(this.s, !0);
+    if(this.w.slot.offsetWidth && this.w.slot.offsetHeight && this.q && this.s) {
+      var a = Math.min(this.q, this.w.slot.offsetWidth);
+      this.Jd = 350 > a ? 1 : 500 > a ? 2 : 3
+    }
+    try {
+      window.parent.document.querySelector("[id*\x3d_googima]").style.visibility = "visible"
+    }catch(b) {
+    }
+    this.L = new Zd(this.w.slot, this.yd, this);
+    D(this.L, ["IABViewable", "IABDetectionFailed", "IABDetectionStarted"], this.Qe, !1, this);
+    this.L.rc(p(this.Re, this))
+  }else {
+    this.Re()
+  }
+};
+l.Re = function(a) {
+  a = a || {};
+  this.mf = "number" === typeof a.viewableOpportunity ? a.viewableOpportunity : -1;
+  this.Ua = mf();
+  this.va = new sa;
+  this.zb = this.zb || 3E4;
+  K(this.cc);
+  this.cc = J(function() {
+    X(this, qe)
+  }, this.zb, this);
+  if(this.Ca.xml) {
+    this.Ua.onload = p(function() {
+      return xg(this, "xml")
+    }, this)
+  }else {
+    var b = Cd(this.Ca.adTagUrl);
+    if(Pd(b.toString())) {
+      b.u.get("cb") || M(b, "cb", Math.floor(100 * Math.random()));
+      b.u.get("width") || M(b, "width", this.w.slot && this.w.slot.offsetWidth || this.q || -1);
+      b.u.get("height") || M(b, "height", this.w.slot && this.w.slot.offsetHeight || this.s || -1);
+      Od() ? M(b, "a.flashonpage", "1") : M(b, "a.flashonpage", "0");
+      M(M(M(M(M(M(M(b, "a.sdk", "adaptv"), "a.sdkType", "js"), "a.hasAppInfo", 2), "a.d.pageUrl", this.va.ib()), "referrerUrl", this.va.Pf), "depth", this.va.ge), "p.vw.psize", this.Jd);
+      for(var c in a) {
+        M(b, "p.vw." + c, a[c])
+      }
+      this.va && Rd(b, Cd(this.va.ib()))
+    }
+    (this.Zb = b.toString()) ? this.Ua.onload = p(function() {
+      return xg(this, "adTag")
+    }, this) : X(this, oe)
+  }
+};
+l.load = function() {
+  !this.Yf && (this.b.adaptvUUID && this.b.adaptvUUID.length) && (nf(this.nc, this.b.adaptvUUID), this.Yf = !0);
+  if(0 === this.b.error.errorCode) {
+    this.L && this.L.init();
+    for(var a = this.b.adChromes, b = 0;b < a.length;b++) {
+      if("MoatChrome" === a[b].type) {
+        window.adaptvInfo ? Cg(this, a[b]) : Sd.Ha(p(function(c) {
+          c.error || Cg(this, a[b])
+        }, this));
+        break
+      }
+    }
+  }
+  Y.e.load.call(this)
+};
+function Cg(a, b) {
+  (new Ye).init(a, a.w.slot, b.data)
+}
+l.ne = function() {
+  return{"a.active":this.L ? this.L.Tc : -1, "a.framerate":this.L ? this.L.sd : -1, "a.geometric":this.L ? this.L.td : -1, "a.psize":this.Jd, "a.viewable":this.L ? this.L.Vb : -1, "a.viewableOpportunity":this.mf, adapDetD:this.va ? this.va.Of : "", adSpotTime:Dg((new Date).getTime() - this.k.zd), adNumber:this.ie, creativeLoadTime:Dg(this.k.hd), linearAdResTime:Dg(this.k.Ie), playerRev:"a765a65", playerInitTime:Dg(this.k.Pb), pubInitCall:Dg(this.k.We), pubStartCall:Dg(this.k.Xe)}
+};
+function Dg(a) {
+  return 65535 < a || 0 > a ? 0 : a
+}
+l.t = function(a) {
+  switch(a.type) {
+    case "AdLoaded":
+      K(this.cc);
+      break;
+    case "AdImpression":
+      Bg(this)
+  }
+  Y.e.t.call(this, a)
+};
+l.Qe = function(a) {
+  this.dispatchEvent(a)
+};
+function Bg(a) {
+  a = M(M(M(M(M(Cd(Qd() + "://log.adaptv.advertising.com/log?event\x3dclientstats"), "playerRev", "a765a65"), "pageUrl", a.va.ib()), "sdkType", "js"), "depth", a.va.ge), "eov", Math.floor(1E6 * Math.random()));
+  Md(a.toString())
+}
+l.Jc = function() {
+  this.ie++;
+  Y.e.Jc.call(this)
+};
+l.a = function() {
+  this.L && (E(this.L, ["IABViewable", "IABDetectionFailed", "IABDetectionStarted"], this.Qe, !1, this), this.L.a(), this.L = null);
+  K(this.cc);
+  Y.e.a.call(this)
+};
+var Eg;
+function Fg(a, b, c) {
+  ia(c) && (c = c.join(" "));
+  var d = "aria-" + b;
+  "" === c || void 0 == c ? (Eg || (Eg = {atomic:!1, autocomplete:"none", dropeffect:"none", haspopup:!1, live:"off", multiline:!1, multiselectable:!1, orientation:"vertical", readonly:!1, relevant:"additions text", required:!1, sort:"none", busy:!1, disabled:!1, hidden:!1, invalid:"false"}), c = Eg, b in c ? a.setAttribute(d, c[b]) : a.removeAttribute(d)) : a.setAttribute(d, c)
+}
+;var Gg = !!m.DOMTokenList, Hg = Gg ? function(a) {
+  return a.classList
+} : function(a) {
+  a = a.className;
+  return n(a) && a.match(/\S+/g) || []
+}, Ig = Gg ? function(a, b) {
+  return a.classList.contains(b)
+} : function(a, b) {
+  var c = Hg(a);
+  return 0 <= Ja(c, b)
+}, Jg = Gg ? function(a, b) {
+  a.classList.add(b)
+} : function(a, b) {
+  Ig(a, b) || (a.className += 0 < a.className.length ? " " + b : b)
+}, Kg = Gg ? function(a, b) {
+  u(b, function(b) {
+    Jg(a, b)
+  })
+} : function(a, b) {
+  var c = {};
+  u(Hg(a), function(a) {
+    c[a] = !0
+  });
+  u(b, function(a) {
+    c[a] = !0
+  });
+  a.className = "";
+  for(var d in c) {
+    a.className += 0 < a.className.length ? " " + d : d
+  }
+}, Lg = Gg ? function(a, b) {
+  a.classList.remove(b)
+} : function(a, b) {
+  Ig(a, b) && (a.className = Ka(Hg(a), function(a) {
+    return a != b
+  }).join(" "))
+}, Mg = Gg ? function(a, b) {
+  u(b, function(b) {
+    Lg(a, b)
+  })
+} : function(a, b) {
+  a.className = Ka(Hg(a), function(a) {
+    return!(0 <= Ja(b, a))
+  }).join(" ")
+};
+function Ng(a, b, c) {
+  F.call(this);
+  this.target = a;
+  this.handle = b || a;
+  this.wc = c || new uf(NaN, NaN, NaN, NaN);
+  this.G = Bb(a);
+  this.O = new Jf(this);
+  a = oa(Gc, this.O);
+  this.Mb || (this.Mb = []);
+  this.Mb.push(p(a, void 0));
+  D(this.handle, ["touchstart", "mousedown"], this.ef, !1, this)
+}
+s(Ng, F);
+var Og = v || bb && x("1.9.3");
+l = Ng.prototype;
+l.clientX = 0;
+l.clientY = 0;
+l.screenX = 0;
+l.screenY = 0;
+l.ff = 0;
+l.gf = 0;
+l.fb = 0;
+l.gb = 0;
+l.ue = !0;
+l.Ra = !1;
+l.De = 0;
+l.Ag = 0;
+l.pg = !1;
+l.Ud = !1;
+l.sa = k("O");
+l.n = function() {
+  Ng.e.n.call(this);
+  E(this.handle, ["touchstart", "mousedown"], this.ef, !1, this);
+  this.O.Xa();
+  Og && this.G.releaseCapture();
+  this.handle = this.target = null
+};
+function Pg(a) {
+  void 0 === a.Ic && (a.Ic = "rtl" == zf(a.target, "direction"));
+  return a.Ic
+}
+l.ef = function(a) {
+  var b = "mousedown" == a.type;
+  if(!this.ue || this.Ra || b && (!(Hc ? 0 == a.ha.button : "click" == a.type || a.ha.button & Qc[0]) || w && Wa && a.ctrlKey)) {
+    this.dispatchEvent("earlycancel")
+  }else {
+    Qg(a);
+    if(0 == this.De) {
+      if(this.dispatchEvent(new Rg("start", this, a.clientX, a.clientY, a))) {
+        this.Ra = !0, a.preventDefault()
+      }else {
+        return
+      }
+    }else {
+      a.preventDefault()
+    }
+    var b = this.G, c = b.documentElement, d = !Og;
+    this.O.A(b, ["touchmove", "mousemove"], this.ng, d);
+    this.O.A(b, ["touchend", "mouseup"], this.oc, d);
+    Og ? (c.setCapture(!1), this.O.A(c, "losecapture", this.oc)) : this.O.A(Gb(b), "blur", this.oc);
+    v && this.pg && this.O.A(b, "dragstart", Lc);
+    this.Ug && this.O.A(this.Ug, "scroll", this.Lg, d);
+    this.clientX = this.ff = a.clientX;
+    this.clientY = this.gf = a.clientY;
+    this.screenX = a.screenX;
+    this.screenY = a.screenY;
+    this.Ud ? (a = this.target, b = a.offsetLeft, c = a.offsetParent, c || "fixed" != zf(a, "position") || (c = Bb(a).documentElement), c ? (bb ? (d = If(c), b += d.left) : v && 8 <= nb && (d = If(c), b -= d.left), a = "rtl" == zf(c, "direction") ? c.clientWidth - (b + a.offsetWidth) : b) : a = b) : a = this.target.offsetLeft;
+    this.fb = a;
+    this.gb = this.target.offsetTop;
+    this.Id = Xb(zb(this.G));
+    this.Ag = pa()
+  }
+};
+l.oc = function(a, b) {
+  this.O.Xa();
+  Og && this.G.releaseCapture();
+  if(this.Ra) {
+    Qg(a);
+    this.Ra = !1;
+    var c = Sg(this, this.fb), d = Tg(this, this.gb);
+    this.dispatchEvent(new Rg("end", this, a.clientX, a.clientY, a, c, d, b || "touchcancel" == a.type))
+  }else {
+    this.dispatchEvent("earlycancel")
+  }
+};
+function Qg(a) {
+  var b = a.type;
+  "touchstart" == b || "touchmove" == b ? a.init(a.ha.targetTouches[0], a.currentTarget) : "touchend" != b && "touchcancel" != b || a.init(a.ha.changedTouches[0], a.currentTarget)
+}
+l.ng = function(a) {
+  if(this.ue) {
+    Qg(a);
+    var b = (this.Ud && Pg(this) ? -1 : 1) * (a.clientX - this.clientX), c = a.clientY - this.clientY;
+    this.clientX = a.clientX;
+    this.clientY = a.clientY;
+    this.screenX = a.screenX;
+    this.screenY = a.screenY;
+    if(!this.Ra) {
+      var d = this.ff - this.clientX, e = this.gf - this.clientY;
+      if(d * d + e * e > this.De) {
+        if(this.dispatchEvent(new Rg("start", this, a.clientX, a.clientY, a))) {
+          this.Ra = !0
+        }else {
+          this.qa || this.oc(a);
+          return
+        }
+      }
+    }
+    c = Ug(this, b, c);
+    b = c.x;
+    c = c.y;
+    this.Ra && this.dispatchEvent(new Rg("beforedrag", this, a.clientX, a.clientY, a, b, c)) && (Vg(this, a, b, c), a.preventDefault())
+  }
+};
+function Ug(a, b, c) {
+  var d = Xb(zb(a.G));
+  b += d.x - a.Id.x;
+  c += d.y - a.Id.y;
+  a.Id = d;
+  a.fb += b;
+  a.gb += c;
+  b = Sg(a, a.fb);
+  a = Tg(a, a.gb);
+  return new sb(b, a)
+}
+l.Lg = function(a) {
+  var b = Ug(this, 0, 0);
+  a.clientX = this.clientX;
+  a.clientY = this.clientY;
+  Vg(this, a, b.x, b.y)
+};
+function Vg(a, b, c, d) {
+  a.Ud && Pg(a) ? a.target.style.right = c + "px" : a.target.style.left = c + "px";
+  a.target.style.top = d + "px";
+  a.dispatchEvent(new Rg("drag", a, b.clientX, b.clientY, b, c, d))
+}
+function Sg(a, b) {
+  var c = a.wc, d = isNaN(c.left) ? null : c.left, c = isNaN(c.width) ? 0 : c.width;
+  return Math.min(null != d ? d + c : Infinity, Math.max(null != d ? d : -Infinity, b))
+}
+function Tg(a, b) {
+  var c = a.wc, d = isNaN(c.top) ? null : c.top, c = isNaN(c.height) ? 0 : c.height;
+  return Math.min(null != d ? d + c : Infinity, Math.max(null != d ? d : -Infinity, b))
+}
+function Rg(a, b, c, d, e, g, h, q) {
+  C.call(this, a);
+  this.clientX = c;
+  this.clientY = d;
+  this.uj = e;
+  this.left = void 0 !== g ? g : b.fb;
+  this.top = void 0 !== h ? h : b.gb;
+  this.zj = b;
+  this.yj = !!q
+}
+s(Rg, C);
+function Wg(a) {
+  F.call(this);
+  this.g = a;
+  a = v ? "focusout" : "blur";
+  this.vg = D(this.g, v ? "focusin" : "focus", this, !v);
+  this.wg = D(this.g, a, this, !v)
+}
+s(Wg, F);
+Wg.prototype.handleEvent = function(a) {
+  var b = new Pc(a.ha);
+  b.type = "focusin" == a.type || "focus" == a.type ? "focusin" : "focusout";
+  this.dispatchEvent(b)
+};
+Wg.prototype.n = function() {
+  Wg.e.n.call(this);
+  hd(this.vg);
+  hd(this.wg);
+  delete this.g
+};
+function Xg(a, b) {
+  Mf.call(this, b);
+  this.hh = !!a;
+  this.Lb = null
+}
+s(Xg, Mf);
+l = Xg.prototype;
+l.qd = null;
+l.tb = !1;
+l.S = null;
+l.K = null;
+l.ea = null;
+l.Zc = !1;
+l.Ib = ba("goog-modalpopup");
+l.sc = k("S");
+l.r = function() {
+  Xg.e.r.call(this);
+  var a = this.h(), b = xa(this.Ib()).split(" ");
+  Kg(a, b);
+  a.tabIndex = 0;
+  T(a, !1);
+  Yg(this);
+  Zg(this)
+};
+function Yg(a) {
+  if(a.hh && !a.K) {
+    var b;
+    b = a.m().r("iframe", {frameborder:0, style:"border:0;vertical-align:bottom;", src:'javascript:""'});
+    a.K = b;
+    a.K.className = a.Ib() + "-bg";
+    T(a.K, !1);
+    Ff(a.K, 0)
+  }
+  a.S || (a.S = a.m().r("div", a.Ib() + "-bg"), T(a.S, !1))
+}
+function Zg(a) {
+  a.ea || (a.ea = a.m().createElement("span"), T(a.ea, !1), a.ea.tabIndex = 0, a.ea.style.position = "absolute")
+}
+l.$e = function() {
+  this.Zc = !1
+};
+l.qe = function(a) {
+  return!!a && "DIV" == a.tagName
+};
+l.Eb = function(a) {
+  Xg.e.Eb.call(this, a);
+  a = xa(this.Ib()).split(" ");
+  Kg(this.h(), a);
+  Yg(this);
+  Zg(this);
+  T(this.h(), !1)
+};
+l.ra = function() {
+  if(this.K) {
+    var a = this.h();
+    a.parentNode && a.parentNode.insertBefore(this.K, a)
+  }
+  a = this.h();
+  a.parentNode && a.parentNode.insertBefore(this.S, a);
+  Xg.e.ra.call(this);
+  a = this.h();
+  a.parentNode && a.parentNode.insertBefore(this.ea, a.nextSibling);
+  this.qd = new Wg(Vb(this.m()));
+  this.sa().A(this.qd, "focusin", this.Jg);
+  ah(this, !1)
+};
+l.Sa = function() {
+  this.tb && this.R(!1);
+  Gc(this.qd);
+  Xg.e.Sa.call(this);
+  y(this.K);
+  y(this.S);
+  y(this.ea)
+};
+l.R = function(a) {
+  if(a != this.tb) {
+    if(this.nb && this.nb.stop(), this.yb && this.yb.stop(), this.mb && this.mb.stop(), this.xb && this.xb.stop(), this.Y && ah(this, a), a) {
+      if(this.dispatchEvent("beforeshow")) {
+        try {
+          this.Lb = Vb(this.m()).activeElement
+        }catch(b) {
+        }
+        this.Ld();
+        this.Qb();
+        this.sa().A(Wb(this.m()), "resize", this.Ld);
+        bh(this, !0);
+        this.focus();
+        this.tb = !0;
+        this.nb && this.yb ? (gd(this.nb, "end", this.Ac, !1, this), this.yb.play(), this.nb.play()) : this.Ac()
+      }
+    }else {
+      if(this.dispatchEvent("beforehide")) {
+        this.sa().Tb(Wb(this.m()), "resize", this.Ld);
+        this.tb = !1;
+        this.mb && this.xb ? (gd(this.mb, "end", this.zc, !1, this), this.xb.play(), this.mb.play()) : this.zc();
+        try {
+          var c = Vb(this.m()).body, d = Vb(this.m()).activeElement || c;
+          this.Lb && (d == c && this.Lb != c) && this.Lb.focus()
+        }catch(e) {
+        }
+        this.Lb = null
+      }
+    }
+  }
+};
+function ah(a, b) {
+  for(var c = Vb(a.m()).body.firstChild;c;c = c.nextSibling) {
+    if(1 == c.nodeType) {
+      var d = c;
+      b ? Fg(d, "hidden", b) : d.removeAttribute("aria-hidden")
+    }
+  }
+  c = a.g;
+  (d = !b) ? Fg(c, "hidden", d) : c.removeAttribute("aria-hidden")
+}
+function bh(a, b) {
+  a.K && T(a.K, b);
+  a.S && T(a.S, b);
+  T(a.h(), b);
+  T(a.ea, b)
+}
+l.Ac = function() {
+  this.dispatchEvent("show")
+};
+l.zc = function() {
+  bh(this, !1);
+  this.dispatchEvent("hide")
+};
+l.focus = function() {
+  this.ye()
+};
+l.Ld = function() {
+  this.K && T(this.K, !1);
+  this.S && T(this.S, !1);
+  var a = Vb(this.m()), b = Fb(Gb(a) || window || window), c = Math.max(b.width, Math.max(a.body.scrollWidth, a.documentElement.scrollWidth)), a = Math.max(b.height, Math.max(a.body.scrollHeight, a.documentElement.scrollHeight));
+  this.K && (T(this.K, !0), Cf(this.K, c, a));
+  this.S && (T(this.S, !0), Cf(this.S, c, a))
+};
+l.Qb = function() {
+  var a = Vb(this.m()), b = Gb(a) || window;
+  if("fixed" == zf(this.h(), "position")) {
+    var c = a = 0
+  }else {
+    c = Xb(this.m()), a = c.x, c = c.y
+  }
+  var d = Df(this.h()), b = Fb(b || window), a = Math.max(a + b.width / 2 - d.width / 2, 0), c = Math.max(c + b.height / 2 - d.height / 2, 0);
+  Af(this.h(), a, c);
+  Af(this.ea, a, c)
+};
+l.Jg = function(a) {
+  this.Zc ? this.$e() : a.target == this.ea && J(this.ye, 0, this)
+};
+l.ye = function() {
+  try {
+    v && Vb(this.m()).body.focus(), this.h().focus()
+  }catch(a) {
+  }
+};
+l.n = function() {
+  Gc(this.nb);
+  this.nb = null;
+  Gc(this.mb);
+  this.mb = null;
+  Gc(this.yb);
+  this.yb = null;
+  Gc(this.xb);
+  this.xb = null;
+  Xg.e.n.call(this)
+};
+function Z(a, b, c) {
+  Xg.call(this, b, c);
+  this.M = a || "modal-dialog";
+  this.D = $($(new ch, dh, !0), eh, !1, !0)
+}
+s(Z, Xg);
+l = Z.prototype;
+l.cg = !0;
+l.vd = !0;
+l.Me = !0;
+l.te = !0;
+l.ac = 0.5;
+l.Nc = "";
+l.ab = "";
+l.Ea = null;
+l.mc = !1;
+l.B = null;
+l.oa = null;
+l.Mc = null;
+l.na = null;
+l.ca = null;
+l.v = null;
+l.Ve = "dialog";
+l.Ib = k("M");
+function fh(a, b) {
+  a.Nc = b;
+  a.oa && Qb(a.oa, b)
+}
+function gh(a, b) {
+  a.ab = b;
+  a.ca && (a.ca.innerHTML = b)
+}
+function hh(a) {
+  a.h() || a.la();
+  return a.na
+}
+l.sc = function() {
+  this.h() || this.la();
+  return Z.e.sc.call(this)
+};
+function ih(a, b) {
+  a.ac = b;
+  if(a.h()) {
+    var c = a.sc();
+    c && Ff(c, a.ac)
+  }
+}
+function jh(a) {
+  a.te = !1;
+  kh(a, !1)
+}
+function kh(a, b) {
+  var c = xa(a.M + "-title-draggable").split(" ");
+  a.h() && (b ? Kg(a.B, c) : Mg(a.B, c));
+  b && !a.Ea ? (a.Ea = new Ng(a.h(), a.B), Kg(a.B, c), D(a.Ea, "start", a.Wg, !1, a)) : !b && a.Ea && (a.Ea.a(), a.Ea = null)
+}
+l.r = function() {
+  Z.e.r.call(this);
+  var a = this.h(), b = this.m();
+  this.B = b.r("div", {className:this.M + "-title", id:Of(this)}, this.oa = b.r("span", this.M + "-title-text", this.Nc), this.na = b.r("span", this.M + "-title-close"));
+  Nb(a, this.B, this.ca = b.r("div", this.M + "-content"), this.v = b.r("div", this.M + "-buttons"));
+  this.Mc = this.B.id;
+  (b = this.Ve) ? a.setAttribute("role", b) : a.removeAttribute("role");
+  Fg(a, "labelledby", this.Mc || "");
+  this.ab && (this.ca.innerHTML = this.ab);
+  T(this.na, this.vd);
+  this.D && (a = this.D, a.g = this.v, a.la());
+  T(this.v, !!this.D);
+  ih(this, this.ac)
+};
+l.Eb = function(a) {
+  Z.e.Eb.call(this, a);
+  a = this.h();
+  var b = this.M + "-content";
+  (this.ca = Cb(null, b, a)[0]) ? this.ab = this.ca.innerHTML : (this.ca = this.m().r("div", b), this.ab && (this.ca.innerHTML = this.ab), a.appendChild(this.ca));
+  var b = this.M + "-title", c = this.M + "-title-text", d = this.M + "-title-close";
+  (this.B = Cb(null, b, a)[0]) ? (this.oa = Cb(null, c, this.B)[0], this.na = Cb(null, d, this.B)[0], this.B.id || (this.B.id = Of(this))) : (this.B = this.m().r("div", {className:b, id:Of(this)}), a.insertBefore(this.B, this.ca));
+  this.Mc = this.B.id;
+  this.oa ? this.Nc = Tb(this.oa) : (this.oa = this.m().r("span", c, this.Nc), this.B.appendChild(this.oa));
+  Fg(a, "labelledby", this.Mc || "");
+  this.na || (this.na = this.m().r("span", d), this.B.appendChild(this.na));
+  T(this.na, this.vd);
+  b = this.M + "-buttons";
+  (this.v = Cb(null, b, a)[0]) ? (this.D = new ch(this.m()), this.D.eb(this.v)) : (this.v = this.m().r("div", b), a.appendChild(this.v), this.D && (a = this.D, a.g = this.v, a.la()), T(this.v, !!this.D));
+  ih(this, this.ac)
+};
+l.ra = function() {
+  Z.e.ra.call(this);
+  this.sa().A(this.h(), "keydown", this.Ne).A(this.h(), "keypress", this.Ne);
+  this.sa().A(this.v, "click", this.Ig);
+  kh(this, this.te);
+  this.sa().A(this.na, "click", this.Mg);
+  var a = this.h(), b = this.Ve;
+  b ? a.setAttribute("role", b) : a.removeAttribute("role");
+  "" !== this.oa.id && Fg(a, "labelledby", this.oa.id);
+  this.Me || (this.Me = !1, this.Y && (a = this.m(), b = this.sc(), a.removeNode(this.K), a.removeNode(b)))
+};
+l.Sa = function() {
+  this.tb && this.R(!1);
+  kh(this, !1);
+  Z.e.Sa.call(this)
+};
+l.R = function(a) {
+  a != this.tb && (this.Y || this.la(), Z.e.R.call(this, a))
+};
+l.Ac = function() {
+  Z.e.Ac.call(this);
+  this.dispatchEvent(lh)
+};
+l.zc = function() {
+  Z.e.zc.call(this);
+  this.dispatchEvent(mh);
+  this.mc && this.a()
+};
+l.focus = function() {
+  Z.e.focus.call(this);
+  if(this.D) {
+    var a = this.D.kc;
+    if(a) {
+      for(var b = Vb(this.m()), c = this.v.getElementsByTagName("button"), d = 0, e;e = c[d];d++) {
+        if(e.name == a && !e.disabled) {
+          try {
+            if(w || ab) {
+              var g = b.createElement("input");
+              g.style.cssText = "position:fixed;width:0;height:0;left:0;top:0;";
+              this.h().appendChild(g);
+              g.focus();
+              this.h().removeChild(g)
+            }
+            e.focus()
+          }catch(h) {
+          }
+          break
+        }
+      }
+    }
+  }
+};
+l.Wg = function() {
+  var a = Vb(this.m()), b = Fb(Gb(a) || window || window), c = Math.max(a.body.scrollWidth, b.width), a = Math.max(a.body.scrollHeight, b.height), d = Df(this.h());
+  "fixed" == zf(this.h(), "position") ? (b = new uf(0, 0, Math.max(0, b.width - d.width), Math.max(0, b.height - d.height)), this.Ea.wc = b || new uf(NaN, NaN, NaN, NaN)) : this.Ea.wc = new uf(0, 0, c - d.width, a - d.height) || new uf(NaN, NaN, NaN, NaN)
+};
+l.Mg = function() {
+  if(this.vd) {
+    var a = this.D, b = a && a.cd;
+    b ? (a = a.get(b), this.dispatchEvent(new nh(b, a)) && this.R(!1)) : this.R(!1)
+  }
+};
+l.n = function() {
+  this.v = this.na = null;
+  Z.e.n.call(this)
+};
+function oh(a) {
+  a.D = null;
+  if(a.v) {
+    if(a.D) {
+      var b = a.D;
+      b.g = a.v;
+      b.la()
+    }else {
+      a.v.innerHTML = ""
+    }
+    T(a.v, !!a.D)
+  }
+}
+l.Ig = function(a) {
+  a: {
+    for(a = a.target;null != a && a != this.v;) {
+      if("BUTTON" == a.tagName) {
+        break a
+      }
+      a = a.parentNode
+    }
+    a = null
+  }
+  if(a && !a.disabled) {
+    a = a.name;
+    var b = this.D.get(a);
+    this.dispatchEvent(new nh(a, b)) && this.R(!1)
+  }
+};
+l.Ne = function(a) {
+  var b = !1, c = !1, d = this.D, e = a.target;
+  if("keydown" == a.type) {
+    if(this.cg && 27 == a.keyCode) {
+      var g = d && d.cd, e = "SELECT" == e.tagName && !e.disabled;
+      g && !e ? (c = !0, b = d.get(g), b = this.dispatchEvent(new nh(g, b))) : e || (b = !0)
+    }else {
+      if(9 == a.keyCode && a.shiftKey && e == this.h()) {
+        this.Zc = !0;
+        try {
+          this.ea.focus()
+        }catch(h) {
+        }
+        J(this.$e, 0, this)
+      }
+    }
+  }else {
+    if(13 == a.keyCode) {
+      if("BUTTON" == e.tagName && !e.disabled) {
+        g = e.name
+      }else {
+        if(d) {
+          var q = d.kc, H;
+          if(H = q) {
+            a: {
+              H = d.g.getElementsByTagName("BUTTON");
+              for(var ua = 0, ca;ca = H[ua];ua++) {
+                if(ca.name == q || ca.id == q) {
+                  H = ca;
+                  break a
+                }
+              }
+              H = null
+            }
+          }
+          e = ("TEXTAREA" == e.tagName || "SELECT" == e.tagName || "A" == e.tagName) && !e.disabled;
+          !H || (H.disabled || e) || (g = q)
+        }
+      }
+      g && d && (c = !0, b = this.dispatchEvent(new nh(g, String(d.get(g)))))
+    }
+  }
+  if(b || c) {
+    a.stopPropagation(), a.preventDefault()
+  }
+  b && this.R(!1)
+};
+function nh(a, b) {
+  this.type = ph;
+  this.key = a;
+  this.caption = b
+}
+s(nh, C);
+var ph = "dialogselect", mh = "afterhide", lh = "aftershow";
+function ch(a) {
+  this.Da = a || zb();
+  xc.call(this)
+}
+s(ch, xc);
+l = ch.prototype;
+l.M = "goog-buttonset";
+l.kc = null;
+l.g = null;
+l.cd = null;
+l.set = function(a, b, c, d) {
+  xc.prototype.set.call(this, a, b);
+  c && (this.kc = a);
+  d && (this.cd = a);
+  return this
+};
+function $(a, b, c, d) {
+  return a.set(b.key, b.caption, c, d)
+}
+l.la = function() {
+  if(this.g) {
+    this.g.innerHTML = "";
+    var a = zb(this.g);
+    wc(this, function(b, c) {
+      var d = a.r("button", {name:c}, b);
+      c == this.kc && (d.className = this.M + "-default");
+      this.g.appendChild(d)
+    }, this)
+  }
+};
+l.eb = function(a) {
+  if(a && 1 == a.nodeType) {
+    this.g = a;
+    a = this.g.getElementsByTagName("button");
+    for(var b = 0, c, d, e;c = a[b];b++) {
+      if(d = c.name || c.id, e = Tb(c) || c.value, d) {
+        var g = 0 == b;
+        this.set(d, e, g, c.name == qh);
+        g && Jg(c, this.M + "-default")
+      }
+    }
+  }
+};
+l.h = k("g");
+l.m = k("Da");
+var qh = "cancel", rh = ra("OK"), sh = ra("Cancel"), th = ra("Yes"), uh = ra("No"), vh = ra("Save"), wh = ra("Continue"), dh = {key:"ok", caption:rh}, eh = {key:qh, caption:sh}, xh = {key:"yes", caption:th}, yh = {key:"no", caption:uh}, zh = {key:"save", caption:vh}, Ah = {key:"continue", caption:wh};
+"undefined" != typeof document && ($(new ch, dh, !0, !0), $($(new ch, dh, !0), eh, !1, !0), $($(new ch, xh, !0), yh, !1, !0), $($($(new ch, xh), yh, !0), eh, !1, !0), $($($(new ch, Ah), zh), eh, !0, !0));
+function Bh(a) {
+  this.Na = Gb();
+  this.Ma = a.width;
+  this.La = a.height;
+  this.Wc = a.adTagUrl;
+  this.Gd = a.message || "Your content will be resumed after this message";
+  this.ja = Q("adaptv.vpaid.InterstitialAd")
+}
+s(Bh, B);
+Bh.prototype.eb = function(a, b) {
+  D(a, "click", function(c) {
+    this.fh = b || a.getAttribute("href");
+    c.preventDefault();
+    Ch(this)
+  }, !1, this)
+};
+function Dh(a) {
+  var b = a.Ma / (a.Na.innerWidth - 30), c = a.La / (a.Na.innerHeight - 30);
+  if(1 < b || 1 < c) {
+    b = b > c ? b : c, a.Ma /= b, a.La /= b, Db(a.sb, {width:a.Ma, height:a.La})
+  }
+}
+function Ch(a) {
+  a.N = new Z("adaptv-interstitial", !0);
+  gh(a.N, jc({height:a.La, width:a.Ma, message:a.Gd}));
+  oh(a.N);
+  jh(a.N);
+  a.N.mc = !1;
+  fh(a.N, a.Gd);
+  a.N.R(!0);
+  a.sb = n("adaptv-video") ? document.getElementById("adaptv-video") : "adaptv-video";
+  a.ya = new Y;
+  D(a.ya, ["AdLoaded", "AdVideoStart", "AdError", "AdStopped"], a.t, !1, a);
+  D(a.Na, ["resize", "scroll"], function() {
+    Dh(this);
+    this.N.Qb()
+  }, !1, a);
+  a.sb.addEventListener("webkitendfullscreen", p(function() {
+    this.ya.stopAd()
+  }, a), !0);
+  D(hh(a.N), "click", function() {
+    this.ya.stopAd()
+  }, !0, a);
+  a.initAd();
+  Dh(a);
+  a.sb.play();
+  a.N.R(!1)
+}
+Bh.prototype.initAd = function() {
+  this.ya.initAd(this.Ma, this.La, -1, -1, {adTagUrl:this.Wc}, {maxWrapperLevels:5, videoSlot:this.sb})
+};
+Bh.prototype.t = function(a) {
+  this.ja.info("InterstitialAd on " + a.type + ".");
+  switch(a.type) {
+    case "AdLoaded":
+      this.ya.startAd();
+      break;
+    case "AdVideoStart":
+      this.N.R(!0);
+      this.N.mc = !0;
+      this.sb.play();
+      break;
+    case "AdError":
+      this.ya.stopAd();
+      break;
+    case "AdStopped":
+      this.N.R(!1), this.Na.location = this.fh
+  }
+};
+function Eh(a) {
+  this.Ma = a.width;
+  this.La = a.height;
+  this.Wc = a.adTagUrl;
+  this.Gd = a.message || "Your content will be resumed after this message";
+  this.Fg = a.bannerOffset || 30;
+  this.Na = Gb();
+  this.Zf = document.body;
+  this.ja = Q("adaptv.vpaid.AutoBannerAd")
+}
+s(Eh, Bh);
+Eh.prototype.eb = function() {
+  Ch(this)
+};
+Eh.prototype.initAd = function() {
+  this.pd = z.aa(kc);
+  Ob(this.Zf, this.pd);
+  this.ya.initAd(this.Ma, this.La, -1, -1, {adTagUrl:this.Wc}, {maxWrapperLevels:5, videoSlot:this.sb, companionSlots:[{id:"adaptv-companion", width:300, height:60}]})
+};
+Eh.prototype.t = function(a) {
+  this.ja.info("AutoBannerAd on " + a.type + ".");
+  switch(a.type) {
+    case "AdLoaded":
+      this.ya.startAd();
+      break;
+    case "AdVideoStart":
+      this.N.R(!0);
+      this.N.mc = !0;
+      break;
+    case "AdError":
+      this.ya.stopAd();
+      break;
+    case "AdStopped":
+      this.N.R(!1), T(this.pd, !0), this.Qb(), D(this.Na, "resize", function() {
+        this.Qb()
+      }, !0, this), id(this.Na, "scroll")
+  }
+};
+Eh.prototype.Qb = function() {
+  this.pd.style.top = this.Na.innerHeight - this.Fg - 60 + "px"
+};
+function Fh() {
+  this.Ye = pa()
+}
+var Gh = new Fh;
+Fh.prototype.set = aa("Ye");
+Fh.prototype.reset = function() {
+  this.set(pa())
+};
+Fh.prototype.get = k("Ye");
+function Hh(a) {
+  this.Qg = a || "";
+  this.eh = Gh
+}
+l = Hh.prototype;
+l.Xf = !0;
+l.bf = !0;
+l.Zg = !0;
+l.Xg = !0;
+l.cf = !1;
+l.$g = !1;
+function Ih(a) {
+  return 10 > a ? "0" + a : String(a)
+}
+function Jh(a, b) {
+  var c = (a.jf - b) / 1E3, d = c.toFixed(3), e = 0;
+  if(1 > c) {
+    e = 2
+  }else {
+    for(;100 > c;) {
+      e++, c *= 10
+    }
+  }
+  for(;0 < e--;) {
+    d = " " + d
+  }
+  return d
+}
+function Kh(a) {
+  Hh.call(this, a)
+}
+s(Kh, Hh);
+function Lh() {
+  this.Sg = p(this.Vf, this);
+  this.rd = new Kh;
+  this.rd.bf = !1;
+  this.He = this.rd.cf = !1;
+  this.Ke = "";
+  this.eg = {}
+}
+function tg() {
+  var a = new Lh;
+  !0 != a.He && (Ue(), Te.Xc(a.Sg), a.He = !0)
+}
+Lh.prototype.Vf = function(a) {
+  if(!this.eg[a.Le]) {
+    var b;
+    b = this.rd;
+    var c = [];
+    c.push(b.Qg, " ");
+    if(b.bf) {
+      var d = new Date(a.jf);
+      c.push("[", Ih(d.getFullYear() - 2E3) + Ih(d.getMonth() + 1) + Ih(d.getDate()) + " " + Ih(d.getHours()) + ":" + Ih(d.getMinutes()) + ":" + Ih(d.getSeconds()) + "." + Ih(Math.floor(d.getMilliseconds() / 10)), "] ")
+    }
+    b.Zg && c.push("[", Jh(a, b.eh.get()), "s] ");
+    b.Xg && c.push("[", a.Le, "] ");
+    b.$g && c.push("[", a.Va.name, "] ");
+    c.push(a.yc);
+    b.cf && a.od && c.push("\n", a.nd);
+    b.Xf && c.push("\n");
+    b = c.join("");
+    if(c = Mh) {
+      switch(a.Va) {
+        case Ke:
+          Nh(c, "info", b);
+          break;
+        case Le:
+          Nh(c, "error", b);
+          break;
+        case Me:
+          Nh(c, "warn", b);
+          break;
+        default:
+          Nh(c, "debug", b)
+      }
+    }else {
+      window.opera ? window.opera.postError(b) : this.Ke += b
+    }
+  }
+};
+var Mh = window.console;
+function Nh(a, b, c) {
+  if(a[b]) {
+    a[b](c)
+  }else {
+    a.log(c)
+  }
+}
+;r("__adaptv__.debug.configure", function(a, b) {
+  Q(a).Od(b || Qe);
+  tg()
+});
+r("__adaptv__.debug.log", function(a) {
+  Q("adaptv.page").info(a)
+});
+r("__adaptv__.vpaid.VPAIDEvent", Wd);
+r("__adaptv__.vpaid.constructAdTag", function(a, b, c) {
+  var d = null;
+  if(a && a.length) {
+    var d = Cd(a), e;
+    for(e in c) {
+      b["ctx." + e] = c[e]
+    }
+    b.pet = b.pet || "preroll";
+    b.creativeType = b.creativeType || "vast_video";
+    b.cb = b.cb || Math.floor(100 * Math.random());
+    b["a.sdk"] = "adaptv";
+    b["a.sdkType"] = "js";
+    b["a.vpaid"] = 0;
+    d.u.extend(b)
+  }
+  return d ? d.toString() : d
+});
+r("__adaptv__.vpaid.VPAIDAd", Y);
+r("__adaptv__.vpaid.VPAIDAd.prototype.handshakeVersion", Y.prototype.handshakeVersion);
+r("__adaptv__.vpaid.VPAIDAd.prototype.subscribe", Y.prototype.subscribe);
+r("__adaptv__.vpaid.VPAIDAd.prototype.unsubscribe", Y.prototype.unsubscribe);
+r("__adaptv__.vpaid.VPAIDAd.prototype.initAd", Y.prototype.initAd);
+r("__adaptv__.vpaid.VPAIDAd.prototype.startAd", Y.prototype.startAd);
+r("__adaptv__.vpaid.VPAIDAd.prototype.pauseAd", Y.prototype.pauseAd);
+r("__adaptv__.vpaid.VPAIDAd.prototype.resumeAd", Y.prototype.resumeAd);
+r("__adaptv__.vpaid.VPAIDAd.prototype.skipAd", Y.prototype.skipAd);
+r("__adaptv__.vpaid.VPAIDAd.prototype.stopAd", Y.prototype.stopAd);
+r("__adaptv__.vpaid.VPAIDAd.prototype.resizeAd", Y.prototype.resizeAd);
+r("__adaptv__.vpaid.VPAIDAd.prototype.expandAd", Y.prototype.expandAd);
+r("__adaptv__.vpaid.VPAIDAd.prototype.collapseAd", Y.prototype.collapseAd);
+r("__adaptv__.vpaid.VPAIDAd.prototype.getAdLinear", Y.prototype.ig);
+r("__adaptv__.vpaid.VPAIDAd.prototype.getAdWidth", Y.prototype.kg);
+r("__adaptv__.vpaid.VPAIDAd.prototype.getAdHeight", Y.prototype.gg);
+r("__adaptv__.vpaid.VPAIDAd.prototype.getAdExpanded", Y.prototype.getAdExpanded);
+r("__adaptv__.vpaid.VPAIDAd.prototype.getAdSkippableState", Y.prototype.jg);
+r("__adaptv__.vpaid.VPAIDAd.prototype.getAdRemainingTime", Y.prototype.getAdRemainingTime);
+r("__adaptv__.vpaid.VPAIDAd.prototype.getAdDuration", Y.prototype.getAdDuration);
+r("__adaptv__.vpaid.VPAIDAd.prototype.getAdCompanions", Y.prototype.getAdCompanions);
+r("__adaptv__.vpaid.VPAIDAd.prototype.getAdIcons", Y.prototype.hg);
+r("__adaptv__.vpaid.VPAIDAd.prototype.getAdVolume", Y.prototype.getAdVolume);
+r("__adaptv__.vpaid.VPAIDAd.prototype.setAdVolume", Y.prototype.setAdVolume);
+r("getVPAIDAd", Y.prototype.ud);
+r("__adaptv__.vpaid.InterstitialAd", Bh);
+r("__adaptv__.vpaid.InterstitialAd.prototype.decorate", Bh.prototype.eb);
+window.adaptv_autobanner_adTagUrl && (new Eh({width:window.adaptv_autobanner_width || 600, height:window.adaptv_autobanner_height || 450, adTagUrl:window.adaptv_autobanner_adTagUrl, bannerOffset:window.adaptv_autobanner_offset, message:window.adaptv_autobanner_message})).eb();
+})();

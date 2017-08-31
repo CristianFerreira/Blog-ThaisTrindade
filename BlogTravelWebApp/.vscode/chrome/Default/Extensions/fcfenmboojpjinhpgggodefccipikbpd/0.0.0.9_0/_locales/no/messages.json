@@ -1,0 +1,10 @@
+{
+	"ExtnName":{
+		"message": "MSN Homepage & Bing Search Engine",
+		"Description": "Extension name"
+	},
+	"HomePage":{
+		"message": "nb-no",
+		"Description": "Homepage"
+	}
+}

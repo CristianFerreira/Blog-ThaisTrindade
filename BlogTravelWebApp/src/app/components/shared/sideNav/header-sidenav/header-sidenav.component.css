@@ -1,0 +1,48 @@
+.user-view {
+    position: relative;
+    padding: 32px 32px 0;
+    margin-bottom: 8px;
+}
+
+.background 
+{
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.img {  
+    width: auto;
+    height: auto;
+    max-height: 100%;
+}
+
+.circle {
+    display: block;
+    border: 0;
+    border-radius: 50%;
+    width: 64px;
+    height: 64px;
+}
+
+.name{
+    display: block;
+    color: #fff;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 24px;
+    margin-top: 10px;
+}
+
+.email {
+    display: block;
+    color: #fff;
+    padding-bottom: 16px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+}

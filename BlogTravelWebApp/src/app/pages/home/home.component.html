@@ -4,11 +4,11 @@
 <div fxLayout="row" style="margin-top: 50px;" [style.xs]="{display: 'none'}" [style.sm]="{display: 'none'}">
   <img src="../../../assets/images/banner.jpg" class="img-header"/>
 </div>
-<div fxLayout="row" fxLayout.xs="column" class="body-post">
+<div fxLayout="row" fxLayout.xs="column" class="body-post" style="flex-shrink: 0">
   <div fxFlex.md="5" fxFlex.lg="10" fxFlex.xl="20" fxLayoutAlign="center start" [style.xs]="{display: 'none'}" [style.sm]="{display: 'none'}">
     <div fxLayout="column"></div>
   </div>
-  <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="60" fxFlex.lg="60" fxFlex.xl="45" fxLayoutAlign="center start">
+  <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="60" fxFlex.lg="60" fxFlex.xl="45" fxLayoutAlign="center start" style="flex-shrink: 0">
     <div fxLayout="column">
       <app-posts></app-posts>
     </div>

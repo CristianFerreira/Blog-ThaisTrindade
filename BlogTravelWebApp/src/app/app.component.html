@@ -1,13 +1,66 @@
-
-<!-- <app-head-bar [style.xs]="{display: 'none'}" [style.sm]="{display: 'none'}"></app-head-bar> 
-
-<app-sidenav-menu [style.md]="{display: 'none'}" [style.lg]="{display: 'none'}" [style.xl]="{display: 'none'}"></app-sidenav-menu>
-
-<app-post-web-page [style.xs]="{display: 'none'}" [style.sm]="{display: 'none'}"></app-post-web-page> -->
-
-<!-- <app-login-page></app-login-page>  -->
-
-
-<router-outlet></router-outlet>
-
-
+<div fxLayout="row" [style.md]="{display: 'none'}" [style.md]="{display: 'none'}" [style.lg]="{display: 'none'}" [style.xl]="{display: 'none'}">
+    <div fxLayout="row" class="nav-bar-mobile">
+        <md-toolbar id="menu-mobile" style="background: #1bbc9b;position: fixed; width: 100%  !important;">
+            <button md-icon-button (click)="sidenav.toggle(); blockMenu()">
+            <md-icon style="color: #fff;">menu</md-icon>
+        </button>
+        </md-toolbar>
+    </div>
+    <md-sidenav-container (backdropClick)="check()" style="position: fixed; flex-shrink: 0" fxFlex>
+        <md-sidenav #sidenav fxFlex>
+            <app-header-sidenav></app-header-sidenav>
+            <md-nav-list>
+                <a md-list-item [routerLink]="['/']" (click)="sidenav.toggle(); activeMenu()">
+                    <md-icon>home</md-icon>&nbsp;&nbsp; Home
+                </a>
+            </md-nav-list>
+            <md-nav-list>
+                <button md-list-item md-button [mdMenuTriggerFor]="categoria" [routerLink]="['/']" style="font-size: 16px;">
+                Categorias &nbsp;&nbsp; <md-icon>&#xE313;</md-icon>
+            </button>
+                <md-menu #categoria="mdMenu">
+                    <button md-menu-item class="btn-menu-item" (click)="sidenav.toggle(); activeMenu()">Categoria 1</button>
+                    <button md-menu-item class="btn-menu-item" (click)="sidenav.toggle(); activeMenu()">Categoria 2</button>
+                </md-menu>
+            </md-nav-list>
+            <!-- <md-nav-list>
+                <button *ngIf="logged" md-button [mdMenuTriggerFor]="postagem" class="sub-menu">Postagem</button>
+                <md-menu #postagem="mdMenu">
+                    <button md-menu-item class="btn-menu-item">Nova Postagem</button>
+                    <button md-menu-item class="btn-menu-item">Postagens inativas</button>
+                </md-menu>
+            </md-nav-list> -->
+            <!-- <md-nav-list>
+            <button *ngIf="continents.length > 0" md-button [mdMenuTriggerFor]="destinos">
+                Destinos &nbsp;&nbsp; <md-icon>&#xE313;</md-icon>
+            </button>
+            <md-menu #destinos="mdMenu">
+                <span *ngFor="let continent of continents">
+                    <button md-menu-item class="btn-menu-item" [routerLink]="['/post/destino/', continent]">{{continent}}</button>
+                </span>
+            </md-menu>
+        </md-nav-list> -->
+            <md-divider></md-divider>
+            <md-list>
+                <h3 md-subheader>Redes sociais</h3>
+                <md-nav-list style="padding-top: 0px;">
+                    <a md-list-item href="https://www.instagram.com/trindadethais/" target="_blank">
+                        <md-icon svgIcon="instagram_black" style="font-size: 22px;height: 22px; width: 22px;"></md-icon> &nbsp;&nbsp; Instagram
+                    </a>
+                    <a md-list-item href="https://www.facebook.com/trindadethaiss/" target="_blank">
+                        <md-icon svgIcon="facebook_black" style="font-size: 22px;height: 22px; width: 22px;"></md-icon> &nbsp;&nbsp; Facebook
+                    </a>
+                    <a md-list-item href="https://twitter.com/trindadethaiss" target="_blank">
+                        <md-icon svgIcon="twitter_black" style="font-size: 22px;height: 22px; width: 22px;"></md-icon> &nbsp;&nbsp; Twitter
+                    </a>
+                </md-nav-list>
+            </md-list>
+        </md-sidenav>
+        <div style="margin-top: 50px;flex-shrink: 0">
+            <router-outlet></router-outlet>
+        </div>
+    </md-sidenav-container>
+</div>
+<div *ngIf="!mobile">
+    <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,39 @@
+{
+   "checksum": "ba31a35792abc10e36ddcbc3013e728a",
+   "roots": {
+      "bookmark_bar": {
+         "children": [ {
+            "date_added": "13147834996770626",
+            "id": "6",
+            "meta_info": {
+               "last_visited_desktop": "13148429587152578"
+            },
+            "name": "adasd",
+            "type": "url",
+            "url": "http://localhost:4200/#/post-create"
+         } ],
+         "date_added": "13147834249821959",
+         "date_modified": "13147834996770626",
+         "id": "1",
+         "name": "Barra de favoritos",
+         "type": "folder"
+      },
+      "other": {
+         "children": [  ],
+         "date_added": "13147834249821971",
+         "date_modified": "0",
+         "id": "2",
+         "name": "Outros favoritos",
+         "type": "folder"
+      },
+      "synced": {
+         "children": [  ],
+         "date_added": "13147834249821973",
+         "date_modified": "0",
+         "id": "3",
+         "name": "Favoritos de dispositivos móveis",
+         "type": "folder"
+      }
+   },
+   "version": 1
+}

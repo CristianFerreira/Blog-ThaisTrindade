@@ -1,0 +1,212 @@
+.b_searchboxSubmit {
+    height: 45px;
+    width: 45px;
+    border: 8px solid #0c8484;
+    background: #0c8484 url(/s/a/hpc18.png) no-repeat;
+    background-position: -169px -63px;
+    overflow: hidden;
+    vertical-align: top;
+    margin: -1px;
+}
+
+.hp_sw_logo {
+    float: left;
+    text-indent: -20em;
+    _padding-right: 8px;
+    _height: 50px;
+}
+
+.hpcLogoWhite {
+    background: transparent url(bing_yt.png) no-repeat;
+    overflow: hidden;
+    background-position: 0 0;
+    margin: -7px 10px 0 0;
+    width: 150px;
+    height: 52px;
+}
+
+#sbox.sw_sform {
+    position: relative;
+    top: 20%;
+    left: auto;
+    transform: translateY(-80%);
+    width: 1028px;
+    margin: auto;
+    z-index: 8;
+}
+.sw_sform {
+    position: absolute;
+    top: 20%;
+    left: 8%;
+    width: 1028px;
+    _width: 690px;
+    margin: 0;
+    z-index: 9;
+}
+body .b_searchboxForm {
+    background-color: #fff;
+    /*border: 1px #e5e5e5 solid;*/
+    _border: 0;
+    padding: 0;
+}
+.b_searchboxForm {
+    position: relative;
+    display: inline-block;
+    _left: 25px;
+    zoom: 1;
+}
+.b_searchboxForm, #id_h .id_button, .id_avatar, .rwds_bep_head, .sw_pref {
+    display: inline-block;
+}
+.b_searchboxForm {
+    font: 18px/normal 'Segoe UI',Arial,Helvetica,Sans-Serif;
+}
+.b_searchboxForm {
+    border: 1px #999 solid;
+}
+#sbox .b_searchbox {
+    width: 632px;
+}
+.b_searchbox {
+    background-color: #fff;
+    margin: 6px 1px 0 9px;
+    width: 487px;
+    border-right: 0;
+    padding-right: 4px;
+    _height: 20px;
+}
+.b_searchbox {
+    width: 490px;
+    margin-top: 2px;
+    margin-right: 0;
+    margin-bottom: 3px;
+    margin-left: 12px;
+    border: 0;
+    padding-top: 0;
+    padding-right: 10px;
+    padding-bottom: 0;
+    padding-left: 0;
+    max-height: 30px;
+    outline: none;
+    -webkit-appearance: none;
+	border-right: 1px solid;
+    border-color: #ccc;
+    box-sizing: content-box;
+    position: relative;
+    height: 40px;
+}
+body .b_searchboxForm .b_searchboxSubmit {
+    height: 45px;
+    width: 45px;
+    border: 8px solid #0c8484;
+    background: #0c8484 url(hpc18.png) no-repeat;
+    background-position: -169px -63px;
+    overflow: hidden;
+    vertical-align: top;
+    margin: -1px;
+}
+.b_searchboxSubmit {
+    text-indent: -99em;
+    position: static;
+    right: 0;
+    top: 0;
+    cursor: pointer;
+}
+
+.cntLight .b_searchboxForm {
+    border: 1px #999 solid;
+}
+
+.cntLight #sbox .b_searchbox {
+    width: 632px;
+}
+body .b_searchbox {
+    background-color: #fff;
+    margin: 6px 1px 0 9px;
+    width: 487px;
+    border-right: 0;
+    padding-right: 4px;
+    _height: 20px;
+}
+.b_searchbox {
+    width: 490px;
+    margin-top: 2px;
+    margin-right: 0;
+    margin-bottom: 3px;
+    margin-left: 12px;
+    border: 0;
+    padding-top: 0;
+    padding-right: 10px;
+    padding-bottom: 0;
+    padding-left: 0;
+    max-height: 30px;
+    outline: none;
+    -webkit-appearance: none;
+    border-right: 1px solid;
+    border-color: #ccc;
+    box-sizing: content-box;
+    position: relative;
+    height: 40px;
+}
+input {
+    font: inherit;
+    font-size: 100%;
+}
+user agent stylesheetinput[type="search" i] {
+    padding: 1px;
+}
+user agent stylesheetinput[type="search" i] {
+    -webkit-appearance: searchfield;
+    box-sizing: border-box;
+}
+user agent stylesheetinput {
+    -webkit-appearance: textfield;
+    background-color: white;
+    border-image-source: initial;
+    border-image-slice: initial;
+    border-image-width: initial;
+    border-image-outset: initial;
+    border-image-repeat: initial;
+    -webkit-rtl-ordering: logical;
+    -webkit-user-select: text;
+    cursor: auto;
+    padding: 1px;
+    border: 2px inset;
+}
+user agent stylesheetinput, textarea, keygen, select, button {
+    text-rendering: auto;
+    color: initial;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    margin: 0em 0em 0em 0em;
+    font: 13.3333px Arial;
+}
+user agent stylesheetinput, textarea, keygen, select, button, meter, progress {
+    -webkit-writing-mode: horizontal-tb;
+}
+
+div.b_searchboxForm
+.b_searchboxForm {
+    position: relative;
+    display: inline-block;
+    _left: 25px;
+    zoom: 1;
+}
+.b_searchboxForm {
+    font: 18px/normal 'Segoe UI',Arial,Helvetica,Sans-Serif;    
+}
+
+html, body{
+    height: 100%;
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
