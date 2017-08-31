@@ -44,6 +44,12 @@ exports.getByCategory = async(category) => {
      return res;
 }
 
+exports.getAllCategory = async() => {
+    const res = await Post.find({active: true, "category":{$ne:null}}, 'category');
+    return res;
+}
+
+
 exports.post = async(post) => {
     var post = new Post(post);
     await post.save();

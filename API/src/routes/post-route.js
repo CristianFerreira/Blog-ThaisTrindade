@@ -14,6 +14,7 @@ router.get('/continent/:continent', postController.getByContinent);
 router.get('/tag/:tag', postController.getByTag);
 router.get('/tags/getAll/', postController.getAllTags);
 router.get('/categoria/:category', postController.getByCategory);
+router.get('/categories/getAll', postController.getAllCategory);
 router.post('/', authService.authorize, postController.post);
 router.put('/', authService.authorize, postController.put);
 router.delete('/:id', authService.authorize, postController.delete);

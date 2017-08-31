@@ -74,6 +74,15 @@ exports.getByCategory = async(req, res) => {
     })
 };
 
+exports.getAllCategory  = async(req, res) => {
+    repository.getAllCategory()
+    .then(data => {
+        res.status(200).send({data});
+    }).catch(e => {
+        res.status(400).send({message: 'Falha ao buscar postagem', data: e});
+    })
+};
+
 exports.post = async(req, res) => {
     try {
         await repository.post(req.body);
