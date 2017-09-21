@@ -51,16 +51,9 @@ import { BodySidenavComponent } from './components/shared/sidenav/body-sidenav/b
 
 import { LoadInfoComponent } from './components/load-info/load-info.component';
 import { FroalaComponent } from './components/froala/froala.component';
-
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 
-
-// Web mobile
-import { SidenavMenuComponent } from './pages/mobile/sidenav-menu/sidenav-menu.component';
-import { SidenavSubMenuComponent } from './pages/mobile/sidenav-menu/components/sidenav-sub-menu/sidenav-sub-menu.component';
-import { PostMobilePageComponent } from './pages/mobile/post-mobile-page/post-mobile-page.component';
-
-// Web
+//Web
 import { HomeComponent } from './pages/home/home.component';
 import { InfoThaisComponent } from './pages/home/components/info-thais/info-thais.component';
 import { InfoCristianComponent } from './pages/home/components/info-cristian/info-cristian.component';
@@ -93,10 +86,6 @@ import { environment } from "../environments/environment";
 
 
 
-
-
-
-
 @NgModule({
   declarations: [
     SanitizeHtmlPipe,
@@ -105,9 +94,6 @@ import { environment } from "../environments/environment";
     SubMenuComponent,
     FroalaComponent,
     LoginPageComponent,
-    SidenavMenuComponent,
-    SidenavSubMenuComponent,
-    PostMobilePageComponent,
     LoadInfoComponent,
     HomeComponent,
     PostComponent,
@@ -120,7 +106,12 @@ import { environment } from "../environments/environment";
     SmdFabSpeedDialTrigger, 
     SmdFabSpeedDialActions, 
     SmdFabSpeedDialComponent, 
-    DialogPostsInactiveComponent, SpotifyComponent, FooterComponent, SnapchatComponent, HeaderSidenavComponent, BodySidenavComponent,
+    DialogPostsInactiveComponent, 
+    SpotifyComponent,
+    FooterComponent, 
+    SnapchatComponent,
+    HeaderSidenavComponent, 
+    BodySidenavComponent
   ],
   imports: [
     BrowserModule,
@@ -164,15 +155,5 @@ import { environment } from "../environments/environment";
 
 
 })
-
-// export function getSpanishPaginatorIntl() {
-//   // const paginatorIntl = new MdPaginatorIntl();
-  
-//   paginatorIntl.itemsPerPageLabel = 'Artículos por página:';
-//   paginatorIntl.nextPageLabel = 'Siguiente página';
-//   paginatorIntl.previousPageLabel = 'Pagina anterior';
-  
-//   return paginatorIntl;
-// }
 
 export class AppModule { }
