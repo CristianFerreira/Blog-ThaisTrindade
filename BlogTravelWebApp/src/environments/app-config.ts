@@ -13,7 +13,7 @@ export const AppConfig = {
         habilitarDepuracaoRequisicoes: false
     },
     serviceDevConfig: {
-        rootServiceRoute: "http://localhost:3000/",
+        rootServiceRoute: "http://localhost:4000/",
         habilitarDepuracaoRequisicoes: true
     },
     serviceInfo: () => {

@@ -11,6 +11,8 @@ var path    = require("path");
 // Connecta no banco
 mongoose.connect(config.connectionString);
 
+
+
 // Carrega os models
 const Post = require('./models/post');
 const Author = require('./models/author');

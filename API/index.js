@@ -4,15 +4,7 @@ const app = require('./src/app');
 const debug = require('debug')('nodestr:server');
 const http = require('http');
 
-// app.use('/dist',express.static('./dist'));
-// app.use('/assets',express.static('./dist/assets'));
-
-// app.get('/', (req, res)=>{
-//     res.sendFile( __dirname +'/dist/index.html');
-// })
-
-
-const port = normalizePort(process.env.PORT || '3000');
+const port = normalizePort(process.env.PORT || '4000');
 app.set('port', port);
 
 const server = http.createServer(app);
