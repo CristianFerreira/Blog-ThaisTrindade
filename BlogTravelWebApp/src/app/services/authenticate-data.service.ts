@@ -7,12 +7,12 @@ import { HttpServiceBaseService } from "../services/http-service-base.service";
 import { Login } from "../models/app/Login";
 import { AppConfig } from "../../environments/app-config";
 import { UserLoggedService } from '../services/user-logged.service';
-import { MdDialog, MdDialogRef, MdSnackBar, MdSnackBarConfig } from '@angular/material';
+import { MatDialog, MatDialogRef, MatSnackBar, MatSnackBarConfig } from '@angular/material';
 
 @Injectable()
 export class AuthenticateDataService extends HttpServiceBaseService {
  
-  constructor(http: Http, router: Router, snackBar: MdSnackBar, dialog: MdDialog, private userLoggedService: UserLoggedService) {
+  constructor(http: Http, router: Router, snackBar: MatSnackBar, dialog: MatDialog, private userLoggedService: UserLoggedService) {
     super(http, router, snackBar, dialog);
   }
 

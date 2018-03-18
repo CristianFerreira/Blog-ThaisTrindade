@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, OnChanges, SimpleChanges } from '@ang
 import { Post } from '../../../../models/api/Post';
 import { PostDataService } from '../../../../services/post-data.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MdSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material';
 import { UserLoggedService } from '../../../../services/user-logged.service';
 import { AuthenticateDataService } from '../../../../services/authenticate-data.service';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
@@ -32,7 +32,7 @@ export class PostsComponent implements OnInit {
 
 
 
-  constructor(private postDataService: PostDataService, private autenticationService: AuthenticateDataService, private router: Router, public snackBar: MdSnackBar,
+  constructor(private postDataService: PostDataService, private autenticationService: AuthenticateDataService, private router: Router, public snackBar: MatSnackBar,
     private route: ActivatedRoute, private userLoggedService: UserLoggedService, public sanitizer: DomSanitizer) {
     this.posts = new Array<Post>();
     this.postsRender = new Array<Post>();

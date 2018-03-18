@@ -4,14 +4,14 @@
     background: rgba(121, 42, 42, 0);
 }
 
-md-input-container label {
+mat-input-container label {
     color: #1bbc9b !important;
 }
 
 
 /* When the input is focused */
 
-md-input-container.md-input-focused label {
+mat-input-container.mat-input-focused label {
     color: white !important;
 }
 

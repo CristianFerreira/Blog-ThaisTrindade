@@ -1,43 +1,43 @@
 <div fxLayout="row" fxFlex="100" style="width: 100%;padding: 12px;">
   <div fxLayout="row" fxLayoutAlign="start center" style="width: 100%;">
-    <button md-button class="sub-menu" fxFlex="6" (click)="home()">Home</button>
-    <button *ngIf="continents.length > 0" md-button [mdMenuTriggerFor]="destinos" class="sub-menu" fxFlex.md="17" fxFlex.lg="13" fxFlex.xl="11">Destinos</button>
-    <md-menu #destinos="mdMenu">
+    <button mat-button class="sub-menu" fxFlex="6" (click)="home()">Home</button>
+    <button *ngIf="continents.length > 0" mat-button [matMenuTriggerFor]="destinos" class="sub-menu" fxFlex.md="17" fxFlex.lg="13" fxFlex.xl="11">Destinos</button>
+    <mat-menu #destinos="matMenu">
       <span *ngFor="let continent of continents">
-        <button md-menu-item class="btn-menu-item" [routerLink]="['/post/destino/', continent]">{{continent}}</button>
+        <button mat-menu-item class="btn-menu-item" [routerLink]="['/post/destino/', continent]">{{continent}}</button>
       </span>
-    </md-menu>
-    <button *ngIf="categories.length > 0" md-button [mdMenuTriggerFor]="category" class="sub-menu" fxFlex.md="18" fxFlex.lg="14" fxFlex.xl="12">Categorias</button>
-    <md-menu #category="mdMenu">
+    </mat-menu>
+    <button *ngIf="categories.length > 0" mat-button [matMenuTriggerFor]="category" class="sub-menu" fxFlex.md="18" fxFlex.lg="14" fxFlex.xl="12">Categorias</button>
+    <mat-menu #category="matMenu">
       <span *ngFor="let category of categories">
-        <button md-menu-item class="btn-menu-item" [routerLink]="['/post/categoria/', category]">{{category}}</button>
+        <button mat-menu-item class="btn-menu-item" [routerLink]="['/post/categoria/', category]">{{category}}</button>
       </span>
-    </md-menu>
-    <button md-button class="sub-menu" fxFlex.md="17" fxFlex.lg="13" fxFlex.xl="11">Contato</button>
-    <button *ngIf="logged" md-button md-button [mdMenuTriggerFor]="postagem" class="sub-menu" fxFlex.md="18" fxFlex.lg="14" fxFlex.xl="12">Postagem</button>
-    <md-menu #postagem="mdMenu">
-        <button md-menu-item class="btn-menu-item" (click)="newPost()">Nova Postagem</button>
-        <button md-menu-item class="btn-menu-item" (click)="openDialogPostsInactive()">Postagens inativas</button>
-    </md-menu>
+    </mat-menu>
+    <button mat-button class="sub-menu" fxFlex.md="17" fxFlex.lg="13" fxFlex.xl="11">Contato</button>
+    <button *ngIf="logged" mat-button [matMenuTriggerFor]="postagem" class="sub-menu" fxFlex.md="18" fxFlex.lg="14" fxFlex.xl="12">Postagem</button>
+    <mat-menu #postagem="matMenu">
+        <button mat-menu-item class="btn-menu-item" (click)="newPost()">Nova Postagem</button>
+        <button mat-menu-item class="btn-menu-item" (click)="openDialogPostsInactive()">Postagens inativas</button>
+    </mat-menu>
   </div>
   <div fxLayout="row" fxLayoutAlign="end center" style="width: 100%;">
     <div style="padding: 25px;" fxLayout="row" fxLayoutAlign="end center">
-      <md-icon style="color: #fff">search</md-icon>&nbsp;&nbsp;
+      <mat-icon style="color: #fff">search</mat-icon>&nbsp;&nbsp;
       <input class="input-pesquisa txt-input-pesquisa" type="text" placeholder="Pesquisar..." /> &nbsp;&nbsp;
-      <button md-icon-button>
-        <md-icon style="color:#fff">close</md-icon>
+      <button mat-icon-button>
+        <mat-icon style="color:#fff">close</mat-icon>
       </button>
     </div>
-    <button *ngIf="logged" md-icon-button [mdMenuTriggerFor]="configAuthor" fxFlex="5" style="right: 5px;">
-        <md-icon style="color: #fff">&#xE5D4;</md-icon>
+    <button *ngIf="logged" mat-icon-button [matMenuTriggerFor]="configAuthor" fxFlex="5" style="right: 5px;">
+        <mat-icon style="color: #fff">&#xE5D4;</mat-icon>
     </button>
-    <md-menu #configAuthor="mdMenu">
-      <button md-menu-item class="btn-menu-item">
-        <md-icon class="icon-menu-item">&#xE899;</md-icon> Alterar minha senha
+    <mat-menu #configAuthor="matMenu">
+      <button mat-menu-item class="btn-menu-item">
+        <mat-icon class="icon-menu-item">&#xE899;</mat-icon> Alterar minha senha
       </button>
-      <button md-menu-item (click)="logout()" class="btn-menu-item">
-        <md-icon class="icon-menu-item">&#xE8AC;</md-icon> Sair
+      <button mat-menu-item (click)="logout()" class="btn-menu-item">
+        <mat-icon class="icon-menu-item">&#xE8AC;</mat-icon> Sair
       </button>
-    </md-menu>
+    </mat-menu>
   </div>
 </div>

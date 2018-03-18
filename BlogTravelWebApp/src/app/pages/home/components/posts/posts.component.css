@@ -153,9 +153,8 @@ a:hover.title-post {
     font-size: 36px;
     height: 36px;
     width: 36px; 
-    padding: 10px !important;
+    margin: -5px;
 }
-
 
 iframe .video-post{
     width: 100% !important;

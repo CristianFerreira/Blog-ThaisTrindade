@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {MdDialog, MdDialogRef} from '@angular/material';
+import {MatDialog, MatDialogRef} from '@angular/material';
 import { PostDataService } from '../../../../../../services/post-data.service';
 import { Post } from '../../../../../../models/api/Post';
 import { Router } from '@angular/router';
@@ -14,7 +14,7 @@ export class DialogPostsInactiveComponent {
 
   public posts: Array<Post>;
 
-  constructor(public dialogRef: MdDialogRef<DialogPostsInactiveComponent>, private postDataService: PostDataService, private router: Router) {
+  constructor(public dialogRef: MatDialogRef<DialogPostsInactiveComponent>, private postDataService: PostDataService, private router: Router) {
     this.getPostsInactive();
    }
 

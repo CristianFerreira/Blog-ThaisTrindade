@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthenticateDataService } from '../../../../../services/authenticate-data.service';
 import { Router } from '@angular/router';
 import { UserLoggedService } from '../../../../../services/user-logged.service';
-import {MdDialog, MdDialogRef} from '@angular/material';
+import {MatDialog, MatDialogRef} from '@angular/material';
 import {DialogPostsInactiveComponent} from './dialog-posts-inactive/dialog-posts-inactive.component'
 import { PostDataService } from '../../../../../services/post-data.service';
 
@@ -15,12 +15,12 @@ import { PostDataService } from '../../../../../services/post-data.service';
 export class SubMenuComponent implements OnInit {
 
   public logged: boolean;
-  public dialog: MdDialog;
+  public dialog: MatDialog;
   public continents: Array<string>;
   public categories: Array<string>;
 
   constructor(private autenticationService: AuthenticateDataService, private postDataService: PostDataService,
-    protected router: Router, private userLoggedService: UserLoggedService, dialog: MdDialog) {
+    protected router: Router, private userLoggedService: UserLoggedService, dialog: MatDialog) {
       this.dialog = dialog;
       this.continents = new Array<string>();
       this.categories = new Array<string>();

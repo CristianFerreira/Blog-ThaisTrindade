@@ -4,14 +4,14 @@
         <div fxLayout="column" fxFlex>
             <div fxLayout="row wrap" fxLayoutAlign="center center" style="padding: 20px;">
                 <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="35" fxFlex.lg="40" fxFlex.xl="40">
-                    <md-input-container fxFlex="95">
-                        <input [(ngModel)]="post.title" mdInput placeholder="Titulo" type="text" formControlName="title">
-                    </md-input-container>
+                    <mat-input-container fxFlex="95">
+                        <input [(ngModel)]="post.title" matInput placeholder="Titulo" type="text" formControlName="title">
+                    </mat-input-container>
                 </div>
                 <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="35" fxFlex.lg="40" fxFlex.xl="40">
-                    <md-input-container fxFlex="95">
-                        <input [(ngModel)]="post.category" mdInput placeholder="Categoria" type="text" formControlName="category">
-                    </md-input-container>
+                    <mat-input-container fxFlex="95">
+                        <input [(ngModel)]="post.category" matInput placeholder="Categoria" type="text" formControlName="category">
+                    </mat-input-container>
                 </div>
                 <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="70" fxFlex.lg="80" fxFlex.xl="80">
                     <tag-input style="margin: 0px 18px 0px 0px;" [(ngModel)]="post.tags" 
@@ -23,33 +23,33 @@
             </div>
             <div fxLayout="row wrap" fxLayoutAlign="center center" style="padding: 25px 25px 10px 20px;">
                 <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="35" fxFlex.lg="40" fxFlex.xl="40">
-                    <md-checkbox [(ngModel)]="post.active" formControlName="active">Ativo</md-checkbox>
+                    <mat-checkbox [(ngModel)]="post.active" formControlName="active">Ativo</mat-checkbox>
                 </div>
                 <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="35" fxFlex.lg="40" fxFlex.xl="40">
-                    <md-checkbox [(ngModel)]="btnConfiguracao" formControlName="btnConfiguracao">Outras configurações</md-checkbox>
+                    <mat-checkbox [(ngModel)]="btnConfiguracao" formControlName="btnConfiguracao">Outras configurações</mat-checkbox>
                 </div>
             </div>
             <span *ngIf="btnConfiguracao">
                 <div fxLayout="row wrap" fxLayoutAlign="center center" style="padding: 20px;">
                     <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="35" fxFlex.lg="40" fxFlex.xl="40">
-                        <md-input-container fxFlex="95">
-                            <input [(ngModel)]="post.continent" mdInput placeholder="Continente" type="text" formControlName="continent">
-                        </md-input-container>
+                        <mat-input-container fxFlex="95">
+                            <input [(ngModel)]="post.continent" matInput placeholder="Continente" type="text" formControlName="continent">
+                        </mat-input-container>
                     </div>
                     <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="35" fxFlex.lg="40" fxFlex.xl="40">
-                        <md-input-container fxFlex="95">
-                            <input [(ngModel)]="post.country" mdInput placeholder="Pais" type="text" formControlName="country">
-                        </md-input-container>
+                        <mat-input-container fxFlex="95">
+                            <input [(ngModel)]="post.country" matInput placeholder="Pais" type="text" formControlName="country">
+                        </mat-input-container>
                     </div>
                     <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="35" fxFlex.lg="40" fxFlex.xl="40">
-                        <md-input-container fxFlex="95">
-                            <input [(ngModel)]="post.state" mdInput placeholder="Estado" type="text" formControlName="state">
-                        </md-input-container>
+                        <mat-input-container fxFlex="95">
+                            <input [(ngModel)]="post.state" matInput placeholder="Estado" type="text" formControlName="state">
+                        </mat-input-container>
                     </div>
                     <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="35" fxFlex.lg="40" fxFlex.xl="40">
-                        <md-input-container fxFlex="95">
-                            <input [(ngModel)]="post.city" mdInput placeholder="Cidade" type="text" formControlName="city">
-                        </md-input-container>
+                        <mat-input-container fxFlex="95">
+                            <input [(ngModel)]="post.city" matInput placeholder="Cidade" type="text" formControlName="city">
+                        </mat-input-container>
                     </div>
                 </div>
             </span>
@@ -59,7 +59,7 @@
         <div fxFlex.xs="60" fxFlex.sm="60" fxFlex.md="70" fxFlex.lg="80" fxFlex.xl="80" [froalaEditor] [(froalaModel)]="post.description" formControlName="description"></div>
     </div>
     <div fxLayout="row wrap" fxLayoutAlign="center center" style="margin-top:50px;">
-        <button (click)="submit()" [disabled]="!form.valid" md-button md-raised-button class="green">
+        <button (click)="submit()" [disabled]="!form.valid" mat-button mat-raised-button class="green">
                   {{!post._id ? 'Adicionar Postagem' : 'Editar Postagem'}}
         </button>
     </div>
@@ -68,25 +68,25 @@
 <div class="btn-right-size btn-right-top">
     <smd-fab-speed-dial [(open)]="open" [direction]="top" [animationMode]="animationMode" [fixed]="fixed">
         <smd-fab-trigger>
-            <button md-fab class="green"><md-icon>settings</md-icon></button>
+            <button mat-fab class="green"><mat-icon>settings</mat-icon></button>
         </smd-fab-trigger>
 
         <smd-fab-actions>
-            <button md-mini-fab class="green" (click)="copyVideo()"
-                    mdTooltip="Copiar estilo para video" mdTooltipPosition="above">
-                <md-icon>&#xE04A;</md-icon>
+            <button mat-mini-fab class="green" (click)="copyVideo()"
+                    matTooltip="Copiar estilo para video" matTooltipPosition="above">
+                <mat-icon>&#xE04A;</mat-icon>
             </button>
-            <button md-mini-fab class="green" (click)="copyImg()"
-                    mdTooltip="Copiar estilo para imagem" mdTooltipPosition="above">
-                <md-icon>&#xE412;</md-icon>
+            <button mat-mini-fab class="green" (click)="copyImg()"
+                    matTooltip="Copiar estilo para imagem" matTooltipPosition="above">
+                <mat-icon>&#xE412;</mat-icon>
             </button>
-            <button md-mini-fab class="green" (click)="removeClassVideo()" 
-                    mdTooltip="Continuar após add video" mdTooltipPosition="above">
-                <md-icon>&#xE04C;</md-icon>
+            <button mat-mini-fab class="green" (click)="removeClassVideo()" 
+                    matTooltip="Continuar após add video" matTooltipPosition="above">
+                <mat-icon>&#xE04C;</mat-icon>
             </button>
-            <button md-mini-fab class="green" (click)="copyPaddingTxt()"
-                    mdTooltip="Copiar estilo para texto centralizado" mdTooltipPosition="above">
-                <md-icon>&#xE165;</md-icon>
+            <button mat-mini-fab class="green" (click)="copyPaddingTxt()"
+                    matTooltip="Copiar estilo para texto centralizado" matTooltipPosition="above">
+                <mat-icon>&#xE165;</mat-icon>
             </button>          
         </smd-fab-actions>
     </smd-fab-speed-dial>

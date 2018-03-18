@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { Http } from '@angular/http'
 import { DomSanitizer } from '@angular/platform-browser';
-import { MdIconRegistry } from '@angular/material';
+import { MatIconRegistry } from '@angular/material';
 import { AuthorizationService } from './services/authorization.service';
 import { AppConfig } from "../environments/app-config";
 import { Router } from '@angular/router';
-import { MdDialog, MdDialogRef, MdSnackBar, MdSnackBarConfig } from '@angular/material';
+import { MatDialog, MatDialogRef, MatSnackBar, MatSnackBarConfig } from '@angular/material';
 import { UserLoggedService } from './services/user-logged.service';
 
 
@@ -13,14 +13,14 @@ import { UserLoggedService } from './services/user-logged.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  viewProviders: [MdIconRegistry]
+  viewProviders: [MatIconRegistry]
 })
 export class AppComponent {
   title = 'Blog da thais';
   mobile: boolean;
   //icones adicionados
-  constructor(http: Http, iconReg: MdIconRegistry, sanitizer: DomSanitizer, private router: Router, private authorizationService: AuthorizationService,
-             private snackBar: MdSnackBar, private userLoggedService: UserLoggedService) {
+  constructor(http: Http, iconReg: MatIconRegistry, sanitizer: DomSanitizer, private router: Router, private authorizationService: AuthorizationService,
+             private snackBar: MatSnackBar, private userLoggedService: UserLoggedService) {
     iconReg.addSvgIcon('Viagem', sanitizer.bypassSecurityTrustResourceUrl('../../../assets/icon/categories/Viagem.svg'))
     .addSvgIcon('Viagens', sanitizer.bypassSecurityTrustResourceUrl('../../../assets/icon/categories/Viagem.svg')) 
     .addSvgIcon('Intercâmbio', sanitizer.bypassSecurityTrustResourceUrl('../../../assets/icon/categories/Intercambio.svg'))

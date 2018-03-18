@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MdDialogRef } from '@angular/material';
+import { MatDialogRef } from '@angular/material';
 
 @Component({
   selector: 'app-load-info',
@@ -8,7 +8,7 @@ import { MdDialogRef } from '@angular/material';
 })
 export class LoadInfoComponent implements OnInit {
 
-  constructor(public dialogRef: MdDialogRef<LoadInfoComponent>) { }
+  constructor(public dialogRef: MatDialogRef<LoadInfoComponent>) { }
 
   ngOnInit() {
   }

@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const config = require('./config');
 const app = express();
 const router = express.Router();
-var path    = require("path");
+var path    = require("path"); 
 
 // Connecta no banco
 mongoose.connect(config.connectionString);

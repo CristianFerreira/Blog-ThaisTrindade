@@ -1,5 +1,5 @@
 import { Component, OnInit, trigger, state, style, transition, animate } from '@angular/core';
-import { MdSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-info-thais',
@@ -21,7 +21,7 @@ import { MdSnackBar } from '@angular/material';
 export class InfoThaisComponent implements OnInit {
 
   flip: string = 'inactive';
-  constructor(public snackBar: MdSnackBar) {}
+  constructor(public snackBar: MatSnackBar) {}
 
   ngOnInit() {
   }

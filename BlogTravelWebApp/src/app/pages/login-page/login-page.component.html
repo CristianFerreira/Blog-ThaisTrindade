@@ -2,49 +2,49 @@
   <div fxLayout="row" fxFlex="100" fxLayoutAlign="center center" class="color-touch" 
         style="background: -webkit-gradient(linear, left top, right top, from(#ffffff), to(rgba(0, 0, 0, 0.13))) no-repeat !important; 
         background: -moz-linear-gradient(top, #ffffff, rgba(0, 0, 0, 0.13));">
-    <md-card fxFlex.gt-sm="40" fxFlex.gt-md="20" fxFlex="100" class="card-login">
-      <md-card-header>
-        <md-card-title>
+    <mat-card fxFlex.gt-sm="40" fxFlex.gt-md="20" fxFlex="100" class="card-login">
+      <mat-card-header>
+        <mat-card-title>
           <h3 class="title-login">Iniciar sessão</h3>
-        </md-card-title>
-      </md-card-header>
-      <md-card-content>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
         <div fxLayout="row wrap" fxLayoutAlign="center center">
-          <md-input-container fxFlex="90">
-            <input mdInput placeholder="Email" type="email" formControlName="email">
-            <md-error *ngIf="form.controls.email.hasError('required')">
+          <mat-input-container fxFlex="90">
+            <input matInput placeholder="Email" type="email" formControlName="email">
+            <mat-error *ngIf="form.controls.email.hasError('required')">
               E-mail é obrigatório
-            </md-error>
-            <md-error *ngIf="form.controls.email.invalid && !form.controls.email.hasError('required')">
+            </mat-error>
+            <mat-error *ngIf="form.controls.email.invalid && !form.controls.email.hasError('required')">
               E-mail inválido
-            </md-error>
-          </md-input-container>
-          <md-input-container fxFlex="90">
-            <input mdInput placeholder="Introduza a palavra-passe" type="password" formControlName="password">
-            <md-error *ngIf="form.controls.password.hasError('required')">
+            </mat-error>
+          </mat-input-container>
+          <mat-input-container fxFlex="90">
+            <input matInput placeholder="Introduza a palavra-passe" type="password" formControlName="password">
+            <mat-error *ngIf="form.controls.password.hasError('required')">
               Palavra-passe é obrigatório
-            </md-error>
-            <md-error *ngIf="form.controls.password.hasError('minlength')">
+            </mat-error>
+            <mat-error *ngIf="form.controls.password.hasError('minlength')">
               Palavra-passe deve obter no minimo 6 caracteres
-            </md-error>
-            <md-error *ngIf="form.controls.password.hasError('maxlength')">
+            </mat-error>
+            <mat-error *ngIf="form.controls.password.hasError('maxlength')">
               Palavra-passe deve obter no maximo 20 caracteres
-            </md-error>
-          </md-input-container>
+            </mat-error>
+          </mat-input-container>
         </div>
         <div fxLayout="row" fxLayoutAlign="start center">
-          <button md-button routerLink="." style="color: #16a086; font-size: 16px;">
+          <button mat-button routerLink="." style="color: #16a086; font-size: 16px;">
             Esqueceu sua senha ?
           </button>
         </div>
-      </md-card-content>
-      <md-card-actions>
+      </mat-card-content>
+      <mat-card-actions>
         <div fxLayout="row" fxLayoutAlign="end center" fxFlex="90">
-          <button (click)="submit()" [disabled]="!form.valid" md-button md-raised-button class="green">
+          <button (click)="submit()" [disabled]="!form.valid" mat-button mat-raised-button class="green">
                   Entrar
           </button>
         </div>
-      </md-card-actions>
-    </md-card>
+      </mat-card-actions>
+    </mat-card>
   </div>
 </form>

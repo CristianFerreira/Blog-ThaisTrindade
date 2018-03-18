@@ -4,12 +4,12 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { HttpServiceBaseService } from "../services/http-service-base.service";
 import { AppConfig } from "../../environments/app-config";
-import { MdDialog, MdDialogRef, MdSnackBar, MdSnackBarConfig } from '@angular/material';
+import { MatDialog, MatDialogRef, MatSnackBar, MatSnackBarConfig } from '@angular/material';
 
 @Injectable()
 export class AuthorizationService extends HttpServiceBaseService implements CanActivate {
 
-    constructor(http: Http, router: Router, snackBar: MdSnackBar, dialog: MdDialog) {
+    constructor(http: Http, router: Router, snackBar: MatSnackBar, dialog: MatDialog) {
         super(http, router, snackBar, dialog);
     }
 

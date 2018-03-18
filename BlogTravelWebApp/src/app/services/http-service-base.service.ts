@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Rx';
 
 import { LoadInfoComponent } from '../components/load-info/load-info.component';
 
-import { MdDialog, MdDialogRef, MdSnackBar, MdSnackBarConfig } from '@angular/material';
+import { MatDialog, MatDialogRef, MatSnackBar, MatSnackBarConfig } from '@angular/material';
 import { AppConfig } from "../../environments/app-config";
 
 @Injectable()
@@ -13,12 +13,12 @@ export abstract class HttpServiceBaseService {
 
     private http: Http;
     protected router: Router;
-    protected snackBar: MdSnackBar;
-    protected dialog: MdDialog;
+    protected snackBar: MatSnackBar;
+    protected dialog: MatDialog;
     protected habilitarDepuracaoRequisicoes: boolean;
-    public static loadInfoDialog: MdDialogRef<LoadInfoComponent>;
+    public static loadInfoDialog: MatDialogRef<LoadInfoComponent>;
 
-    constructor(http: Http, router: Router, snackBar: MdSnackBar, dialog: MdDialog) { 
+    constructor(http: Http, router: Router, snackBar: MatSnackBar, dialog: MatDialog) { 
         this.http = http;
         this.router = router;
         this.snackBar = snackBar;

@@ -1,11 +1,11 @@
 <div id="post_id">
   <div *ngFor="let post of postsRender" class="animated animatedFadeInUp fadeInUp" fxLayout="row">
-    <md-card fxFlex="100" style="margin-bottom: 50px;" [style.xs]="{display: 'none'}" [style.sm]="{display: 'none'}">
+    <mat-card fxFlex="100" style="margin-bottom: 50px;" [style.xs]="{display: 'none'}" [style.sm]="{display: 'none'}">
       <div fxLayout="column">
         <div fxLayout="row">
           <div fxFlex="10">
-            <button md-fab class="btn-category" [routerLink]="['/post/categoria', post.category]">
-              <md-icon svgIcon="{{post.category}}" class="icon-fab-category"></md-icon>
+            <button mat-fab class="btn-category" [routerLink]="['/post/categoria', post.category]">
+              <mat-icon svgIcon="{{post.category}}" class="icon-fab-category"></mat-icon>
             </button>
           </div>
           <div fxFlex>
@@ -25,10 +25,10 @@
           <!-- <social-share><share-button social='facebook'></share-button></social-share> -->
         </div>
       </div>
-      <md-card-content>
+      <mat-card-content>
         <div [innerHTML]="post.description | sanitizeHtml"></div>
-      </md-card-content>
-      <md-card-actions>
+      </mat-card-content>
+      <mat-card-actions>
         <div fxLayout="row" fxLayoutAlign="start center">
           <div fxFlex class="line-col3"></div>
         </div>
@@ -47,15 +47,15 @@
             <div fxLayout="column">
               <div fxLayout="row" fxLayoutAlign="end center">
                 <div fxFlex>
-                  <button *ngIf="logged" md-icon-button aria-label="editar" (click)="pageEditPost(post._id)"><md-icon style="color:#5a5858">&#xE254;</md-icon></button>
-                  <button *ngIf="logged" md-icon-button (click)="openSnackBarDelete(post._id)"><md-icon style="color:#d63150">&#xE92B;</md-icon></button>
+                  <button *ngIf="logged" mat-icon-button aria-label="editar" (click)="pageEditPost(post._id)"><mat-icon style="color:#5a5858">&#xE254;</mat-icon></button>
+                  <button *ngIf="logged" mat-icon-button (click)="openSnackBarDelete(post._id)"><mat-icon style="color:#d63150">&#xE92B;</mat-icon></button>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </md-card-actions>
-    </md-card>
+      </mat-card-actions>
+    </mat-card>
     <div class="post-mobile" [style.md]="{display: 'none'}" [style.lg]="{display: 'none'}" [style.xl]="{display: 'none'}" [style.xxl]="{display: 'none'}">
       <div fxLayout="column">
         <div fxLayout="row" class="title-mobile">
@@ -109,8 +109,8 @@
   </div>
   <div fxLayout="row" *ngIf="posts.length > 0 && idPost == null">
     <div fxFlex fxLayoutAlign="center center">
-      <md-paginator [length]="posts.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="updateTablePosts(pageEvent = $event)">
-      </md-paginator>
+      <mat-paginator [length]="posts.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="updateTablePosts(pageEvent = $event)">
+      </mat-paginator>
     </div>
   </div>
 </div>
