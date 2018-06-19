@@ -1,5 +1,9 @@
 <div id="post_id">
-  <div *ngFor="let post of postsRender" class="animated animatedFadeInUp fadeInUp" fxLayout="row">
+  <div *ngFor="let post of posts | paginate: {
+    itemsPerPage: 1,
+    currentPage: page,
+    totalItems: posts.length }"
+     class="animated animatedFadeInUp fadeInUp" fxLayout="row">
     <mat-card fxFlex="100" style="margin-bottom: 50px;" [style.xs]="{display: 'none'}" [style.sm]="{display: 'none'}">
       <div fxLayout="column">
         <div fxLayout="row">
@@ -99,18 +103,11 @@
         </div>
       </div>
     </div>
-
-    <!-- <div fxLayout="row wrap"> -->
-    <!-- <disqus [identifier]="post._id"></disqus>  -->
-
-    <!-- <div id="disqus_thread"></div>
-    <script id="dsq-count-scr" src="//thaistrindade.disqus.com/count.js" async></script>                          -->
-    <!-- </div> -->
   </div>
   <div fxLayout="row" *ngIf="posts.length > 0 && idPost == null">
     <div fxFlex fxLayoutAlign="center center">
-      <mat-paginator [length]="posts.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="updateTablePosts(pageEvent = $event)">
-      </mat-paginator>
+      <pagination-controls (pageChange)="page = updateTablePosts($event)" autoHide="true" maxSize="9" previousLabel=""
+      nextLabel=""></pagination-controls>
     </div>
   </div>
 </div>

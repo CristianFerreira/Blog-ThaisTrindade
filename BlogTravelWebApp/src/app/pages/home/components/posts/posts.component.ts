@@ -26,6 +26,7 @@ export class PostsComponent implements OnInit {
   public pageSizeOptions: any;
   public idPost: number;
 
+
   // MdPaginator Output
   pageEvent: PageEvent;
 
@@ -74,18 +75,9 @@ export class PostsComponent implements OnInit {
     // this.disqus();
   }
 
-  postsToRender(topo?: boolean): void {
-    this.backToTop(topo);
-
-    var begin = ((this.currentPage - 1) * this.pageSize);
-    var end = begin + this.pageSize;
-    this.postsRender = this.posts.slice(begin, end);
-  }
-
-  updateTablePosts(pageEvent: PageEvent) {
-    this.currentPage = (pageEvent.pageIndex + 1);
-    this.pageSize = pageEvent.pageSize;
-    this.postsToRender();
+  updateTablePosts(pageEvent: any) {
+    this.backToTop(false);
+    return pageEvent;
   }
 
   backToTop(topo: boolean) {
@@ -117,7 +109,7 @@ export class PostsComponent implements OnInit {
   getAll(): void {
     this.postDataService.getAll().subscribe(result => {
       this.posts = <Array<Post>>result.json();
-      this.postsToRender(true);
+      this.backToTop(true);
     }, error => {
 
     });
@@ -126,7 +118,7 @@ export class PostsComponent implements OnInit {
   getByTag(tag: string): void {
     this.postDataService.getByTag(tag).subscribe(result => {
       this.posts = <Array<Post>>result.json().data;
-      this.postsToRender();
+      this.backToTop(true);
     }, error => {
 
     });
@@ -135,7 +127,7 @@ export class PostsComponent implements OnInit {
   getByCategory(category: string): void {
     this.postDataService.getByCategory(category).subscribe(result => {
       this.posts = <Array<Post>>result.json().data;
-      this.postsToRender();
+      this.backToTop(true);
     }, error => {
 
     });
@@ -144,7 +136,7 @@ export class PostsComponent implements OnInit {
   getByDestiny(destiny: string) {
     this.postDataService.getByContinent(destiny).subscribe(result => {
       this.posts = <Array<Post>>result.json().data;
-      this.postsToRender();
+      this.backToTop(true);
     }, error => {
 
     });
@@ -154,7 +146,7 @@ export class PostsComponent implements OnInit {
     this.postDataService.getById(id).subscribe(result => {
       let post = <Post>result.json().data;
       this.posts.push(post);
-      this.postsToRender();
+      this.backToTop(true);
     }, error => {
 
     });

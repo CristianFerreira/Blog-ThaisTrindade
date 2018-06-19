@@ -67,6 +67,8 @@ import { PostsComponent } from './pages/home/components/posts/posts.component';
 
 import { PostComponent } from './pages/post-create/post.component';
 
+import {NgxPaginationModule} from 'ngx-pagination';
+
 
 import { 
   SmdFabSpeedDialTrigger, 
@@ -137,6 +139,7 @@ import { environment } from "../environments/environment";
     MatCheckboxModule,
     MatPaginatorModule,
     MatListModule,
+    NgxPaginationModule,
     // MdPaginatorIntl,
     FlexLayoutModule,
     FroalaEditorModule.forRoot(), 
