@@ -25,10 +25,10 @@ export class PostsComponent implements OnInit {
   public currentPage: number;
   public pageSizeOptions: any;
   public idPost: number;
-
+  
 
   // MdPaginator Output
-  pageEvent: PageEvent;
+  pageEvent: PageEvent; 
 
 
 

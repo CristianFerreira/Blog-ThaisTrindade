@@ -103,6 +103,7 @@
         </div>
       </div>
     </div>
+    
   </div>
   <div fxLayout="row" *ngIf="posts.length > 0 && idPost == null">
     <div fxFlex fxLayoutAlign="center center">
@@ -110,4 +111,5 @@
       nextLabel=""></pagination-controls>
     </div>
   </div>
+  <app-disqus *ngIf="idPost" [id]=idPost></app-disqus>
 </div>

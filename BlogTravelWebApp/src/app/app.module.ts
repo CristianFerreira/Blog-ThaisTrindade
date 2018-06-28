@@ -8,9 +8,6 @@ import { TagInputModule } from 'ngx-chips';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { APP_BASE_HREF } from '@angular/common';
-import { DisqusModule } from 'ngx-disqus';
-
-
 
  // MaterialModule
 import { 
@@ -64,7 +61,7 @@ import { SnapchatComponent } from './pages/home/components/snapchat/snapchat.com
 import { FooterComponent } from './pages/home/components/footer/footer.component';
 import { BackToTopComponent } from './pages/home/components/back-to-top/back-to-top.component';
 import { PostsComponent } from './pages/home/components/posts/posts.component';
-
+import { DisqusComponent } from './pages/home/components/posts/disqus/disqus.component';
 import { PostComponent } from './pages/post-create/post.component';
 
 import {NgxPaginationModule} from 'ngx-pagination';
@@ -85,7 +82,7 @@ import {UserLoggedService} from './services/user-logged.service';
 import { AppConfig } from "../environments/app-config";
 import { environment } from "../environments/environment";
 
-
+import { DisqusModule } from 'ngx-disqus';
 
 
 @NgModule({
@@ -105,6 +102,7 @@ import { environment } from "../environments/environment";
     FacebookComponent,
     BackToTopComponent,
     PostsComponent,
+    DisqusComponent,
     SmdFabSpeedDialTrigger, 
     SmdFabSpeedDialActions, 
     SmdFabSpeedDialComponent, 
@@ -120,8 +118,8 @@ import { environment } from "../environments/environment";
     TagInputModule,
     BrowserAnimationsModule,
     FormsModule,
+    DisqusModule.forRoot('thaistrindadeblog'),
     ReactiveFormsModule,
-    DisqusModule.forRoot('ngx'),
     HttpModule,
     // MaterialModule,
     MatProgressSpinnerModule,
