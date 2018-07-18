@@ -13,7 +13,7 @@ import { PageEvent } from '@angular/material';
 @Component({
   selector: 'app-posts',
   templateUrl: './posts.component.html',
-  styleUrls: ['./posts.component.css'],
+  styleUrls: ['./posts.component.scss'],
   providers: [PostDataService, AuthenticateDataService]
 })
 export class PostsComponent implements OnInit {

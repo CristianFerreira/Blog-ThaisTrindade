@@ -160,3 +160,13 @@ iframe .video-post{
     width: 100% !important;
     height: 440px !important;
 }
+
+/deep/ .ngx-pagination{
+    text-align: center;
+    color: #666;
+  }
+  
+  /deep/ .ngx-pagination .current{
+    background: #1bbc9b !important;
+    border-radius: 5px;
+  }
