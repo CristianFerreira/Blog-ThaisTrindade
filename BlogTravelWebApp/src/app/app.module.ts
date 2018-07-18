@@ -64,6 +64,8 @@ import { SnapchatComponent } from './pages/home/components/snapchat/snapchat.com
 import { FooterComponent } from './pages/home/components/footer/footer.component';
 import { BackToTopComponent } from './pages/home/components/back-to-top/back-to-top.component';
 import { PostsComponent } from './pages/home/components/posts/posts.component';
+import { DisqusComponent } from './pages/home/components/posts/components/disqus/disqus.component';
+
 
 import { PostComponent } from './pages/post-create/post.component';
 
@@ -99,6 +101,7 @@ import { environment } from "../environments/environment";
     LoadInfoComponent,
     HomeComponent,
     PostComponent,
+    DisqusComponent,
     InfoThaisComponent,
     InfoCristianComponent,
     InstagramComponent,
@@ -121,7 +124,7 @@ import { environment } from "../environments/environment";
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    DisqusModule.forRoot('ngx'),
+    DisqusModule.forRoot('thaistrindadeblog'),
     HttpModule,
     // MaterialModule,
     MatProgressSpinnerModule,

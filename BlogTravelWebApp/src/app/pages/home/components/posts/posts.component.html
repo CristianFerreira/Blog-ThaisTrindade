@@ -104,6 +104,7 @@
       </div>
     </div>
   </div>
+  <app-disqus *ngIf="idPost" [idPost]="idPost"></app-disqus> 
   <div fxLayout="row" *ngIf="posts.length > 0 && idPost == null">
     <div fxFlex fxLayoutAlign="center center">
       <pagination-controls (pageChange)="page = updateTablePosts($event)" autoHide="true" maxSize="9" previousLabel=""
