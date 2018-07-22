@@ -25,6 +25,7 @@ export class PostsComponent implements OnInit {
   public currentPage: number;
   public pageSizeOptions: any;
   public idPost: number;
+  public mobile: Boolean;
 
 
   // MdPaginator Output
@@ -72,7 +73,7 @@ export class PostsComponent implements OnInit {
         this.getAll()
     });
 
-    // this.disqus();
+    this.mobile = $(window).width() > 700 ? false : true;
   }
 
   updateTablePosts(pageEvent: any) {
@@ -146,7 +147,7 @@ export class PostsComponent implements OnInit {
     this.postDataService.getById(id).subscribe(result => {
       let post = <Post>result.json().data;
       this.posts.push(post);
-      this.backToTop(true);
+      // this.backToTop(true);
     }, error => {
 
     });

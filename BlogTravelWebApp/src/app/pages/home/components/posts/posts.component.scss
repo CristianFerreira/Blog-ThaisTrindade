@@ -38,7 +38,7 @@
 }
 
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 400px) {
     a.title-post {
         color: #16a086;
         font-size: 1.3em;
@@ -52,9 +52,15 @@
         color: #908f8f;
         text-decoration: none;
     }
+
+    .block-with-text {
+        overflow: hidden;
+        position: relative;
+        max-height: 400px;
+    }
 }
 
-@media only screen and (min-width: 501px), screen and(max-width: 700px) {
+@media only screen and (min-width: 401px) and(max-width: 700px) {
     a.title-post {
         color: #16a086;
         font-size: 1.4em;
@@ -68,9 +74,15 @@
         color: #908f8f;
         text-decoration: none;
     }
+
+    .block-with-text {
+        overflow: hidden;
+        position: relative;
+        max-height: 510px;
+    }
 }
 
-@media only screen and (min-width: 700px) {
+@media only screen and (min-width: 701px) and(max-width: 1400px){
     a.title-post {
         color: #5a5858;
         font-size: 2.5em;
@@ -89,8 +101,40 @@
         background-color: #1bbc9b;
         box-shadow: none;
     }
+    
+    .block-with-text {
+        overflow: hidden;
+        position: relative;
+        max-height: 900px;
+    }
 }
 
+@media only screen and (min-width: 1400px){
+    a.title-post {
+        color: #5a5858;
+        font-size: 2.5em;
+        padding-left: 2px;
+        font-weight: 900;
+        line-height: 39px;
+        text-decoration: none;
+    }
+    a.txt-category-post {
+        font-size: 16px;
+        font-weight: 500;
+        color: #908f8f;
+        text-decoration: none;
+    }
+    .btn-category {
+        background-color: #1bbc9b;
+        box-shadow: none;
+    }
+    
+    .block-with-text {
+        overflow: hidden;
+        position: relative;
+        max-height: 1300px;
+    }
+}
 
 
 a:hover.txt-category-post {
@@ -170,3 +214,13 @@ iframe .video-post{
     background: #1bbc9b !important;
     border-radius: 5px;
   }
+
+
+ 
+.block-with-text:before {
+    position: absolute;
+    right: 0px;
+    bottom: 0;
+    background-color: #ffffff;
+    padding: 0 0px 0 0.25em;
+}

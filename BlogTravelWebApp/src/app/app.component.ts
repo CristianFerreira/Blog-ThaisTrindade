@@ -66,15 +66,18 @@ export class AppComponent {
 
   check(){
     $('#menu-mobile').css('display', 'block');
+    $('#sidenav').css('position', '');
   }
 
   blockMenu() {
     $('#menu-mobile').css('display', 'none');
+    $('#sidenav').css('position', 'fixed');
   }
 
   activeMenu(){
     $('#menu-mobile').css('display', 'block');
   }
+
   
 }
 

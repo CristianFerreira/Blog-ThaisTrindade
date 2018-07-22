@@ -6,7 +6,7 @@
         </button>
         </mat-toolbar>
     </div>
-    <mat-sidenav-container (backdropClick)="check()" style="position: fixed; flex-shrink: 0" fxFlex>
+    <mat-sidenav-container id="sidenav" (backdropClick)="check()" style="flex-shrink: 0; background-color: #ffffff;" fxFlex>
         <mat-sidenav #sidenav fxFlex>
             <app-header-sidenav></app-header-sidenav>
             <mat-nav-list>

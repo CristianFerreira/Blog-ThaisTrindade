@@ -1,1 +1,4 @@
-<disqus *ngIf="idPost" [identifier]="idPost"></disqus>
+<disqus *ngIf="idPost" [identifier]="idPost" (onNewComment)="onReady($event)" (onReady)="onReady($event)" (onPaginate)="onReady($event)"></disqus>
+
+
+

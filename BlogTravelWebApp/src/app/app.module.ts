@@ -65,7 +65,7 @@ import { FooterComponent } from './pages/home/components/footer/footer.component
 import { BackToTopComponent } from './pages/home/components/back-to-top/back-to-top.component';
 import { PostsComponent } from './pages/home/components/posts/posts.component';
 import { DisqusComponent } from './pages/home/components/posts/components/disqus/disqus.component';
-
+import { HideTextComponent } from './pages/home/components/posts/components/hide-text/hide-text.component';
 
 import { PostComponent } from './pages/post-create/post.component';
 
@@ -102,6 +102,7 @@ import { environment } from "../environments/environment";
     HomeComponent,
     PostComponent,
     DisqusComponent,
+    HideTextComponent,
     InfoThaisComponent,
     InfoCristianComponent,
     InstagramComponent,

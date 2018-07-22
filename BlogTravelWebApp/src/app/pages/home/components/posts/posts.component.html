@@ -1,10 +1,9 @@
 <div id="post_id">
   <div *ngFor="let post of posts | paginate: {
-    itemsPerPage: 1,
+    itemsPerPage: 2,
     currentPage: page,
-    totalItems: posts.length }"
-     class="animated animatedFadeInUp fadeInUp" fxLayout="row">
-    <mat-card fxFlex="100" style="margin-bottom: 50px;" [style.xs]="{display: 'none'}" [style.sm]="{display: 'none'}">
+    totalItems: posts.length }" class="animated animatedFadeInUp fadeInUp" fxLayout="row">
+    <mat-card fxFlex="100" style="margin-bottom: 50px;" *ngIf="!mobile" >
       <div fxLayout="column">
         <div fxLayout="row">
           <div fxFlex="10">
@@ -20,17 +19,11 @@
               <a [routerLink]="['/post', post._id]" class="title-post"> {{post.title}}</a>
             </div>
           </div>
-          <!-- <div fxFlex>width="97" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"
-            <div class="fb-share-button" data-href="postURL(post._id)" width="97" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.thaistrindade.com%2F%23%2Fpost%2F5988b328cc111f0d60ccf5ef&amp;src=sdkpreparse">Compartilhar</a></div>
-        
-         
-        </div> -->
-
-          <!-- <social-share><share-button social='facebook'></share-button></social-share> -->
         </div>
       </div>
-      <mat-card-content>
-        <div [innerHTML]="post.description | sanitizeHtml"></div>
+      <mat-card-content *ngIf="post._id">
+        <div id="{{post._id}}" [ngClass]="{'block-with-text': idPost==null}" [innerHTML]="post.description | sanitizeHtml"></div>
+        <app-hide-text [idPost]=idPost [idDiv]="post._id"></app-hide-text>
       </mat-card-content>
       <mat-card-actions>
         <div fxLayout="row" fxLayoutAlign="start center">
@@ -42,8 +35,8 @@
               <span class="txt-mais-posts">Veja mais posts sobre</span>
               <div fxLayout="row" fxLayoutAlign="start center">
                 <span *ngFor="let tag of post.tags">
-                <a class="sobre-posts" [routerLink]="['/post/tags', tag]">#{{tag}}</a>
-              </span>
+                  <a class="sobre-posts" [routerLink]="['/post/tags', tag]">#{{tag}}</a>
+                </span>
               </div>
             </div>
           </div>
@@ -51,8 +44,12 @@
             <div fxLayout="column">
               <div fxLayout="row" fxLayoutAlign="end center">
                 <div fxFlex>
-                  <button *ngIf="logged" mat-icon-button aria-label="editar" (click)="pageEditPost(post._id)"><mat-icon style="color:#5a5858">&#xE254;</mat-icon></button>
-                  <button *ngIf="logged" mat-icon-button (click)="openSnackBarDelete(post._id)"><mat-icon style="color:#d63150">&#xE92B;</mat-icon></button>
+                  <button *ngIf="logged" mat-icon-button aria-label="editar" (click)="pageEditPost(post._id)">
+                    <mat-icon style="color:#5a5858">&#xE254;</mat-icon>
+                  </button>
+                  <button *ngIf="logged" mat-icon-button (click)="openSnackBarDelete(post._id)">
+                    <mat-icon style="color:#d63150">&#xE92B;</mat-icon>
+                  </button>
                 </div>
               </div>
             </div>
@@ -60,7 +57,7 @@
         </div>
       </mat-card-actions>
     </mat-card>
-    <div class="post-mobile" [style.md]="{display: 'none'}" [style.lg]="{display: 'none'}" [style.xl]="{display: 'none'}" [style.xxl]="{display: 'none'}">
+    <div class="post-mobile" *ngIf="mobile">
       <div fxLayout="column">
         <div fxLayout="row" class="title-mobile">
           <div fxFlex style="padding-left: 5px;">
@@ -73,7 +70,8 @@
           </div>
         </div>
       </div>
-      <div [innerHTML]="post.description | sanitizeHtml"></div>
+      <div id="{{post._id}}" [ngClass]="{'block-with-text': idPost==null}" [innerHTML]="post.description | sanitizeHtml"></div>
+      <app-hide-text [idPost]=idPost [idDiv]="post._id"></app-hide-text>
       <div>
         <div fxLayout="row" fxLayoutAlign="start center">
           <div fxFlex class="line-col3"></div>
@@ -84,31 +82,19 @@
               <span class="txt-mais-posts">Veja mais posts sobre</span>
               <div fxLayout="row wrap" fxLayoutAlign="start center">
                 <span *ngFor="let tag of post.tags">
-                    <a class="sobre-posts" [routerLink]="['/post/tags', tag]">#{{tag}}</a>
-                  </span>               
+                  <a class="sobre-posts" [routerLink]="['/post/tags', tag]">#{{tag}}</a>
+                </span>
               </div>
-             
             </div>
           </div>
-          <!-- <div fxLayoutAlign="end center" fxFlex>
-            <div fxLayout="column">
-              <div fxLayout="row" fxLayoutAlign="end center">
-                <div fxFlex>
-                  <button *ngIf="logged" md-icon-button aria-label="editar" (click)="pageEditPost(post._id)"><md-icon style="color:#5a5858">&#xE254;</md-icon></button>
-                  <button *ngIf="logged" md-icon-button (click)="openSnackBarDelete(post._id)"><md-icon style="color:#d63150">&#xE92B;</md-icon></button>
-                </div>
-              </div>
-            </div>
-          </div> -->
         </div>
       </div>
     </div>
   </div>
-  <app-disqus *ngIf="idPost" [idPost]="idPost"></app-disqus> 
+  <app-disqus *ngIf="idPost" [idPost]="idPost"></app-disqus>
   <div fxLayout="row" *ngIf="posts.length > 0 && idPost == null">
     <div fxFlex fxLayoutAlign="center center">
-      <pagination-controls (pageChange)="page = updateTablePosts($event)" autoHide="true" maxSize="9" previousLabel=""
-      nextLabel=""></pagination-controls>
+      <pagination-controls (pageChange)="page = updateTablePosts($event)" autoHide="true" maxSize="9" previousLabel="" nextLabel=""></pagination-controls>
     </div>
   </div>
 </div>

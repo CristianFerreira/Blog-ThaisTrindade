@@ -7,4 +7,8 @@ import { Component, OnInit, Input, Output, OnChanges, SimpleChanges } from '@ang
 })
 export class DisqusComponent {
   @Input() idPost;
+
+  onReady(event){
+      console.log("Evento:" +event);
+  }
 }
