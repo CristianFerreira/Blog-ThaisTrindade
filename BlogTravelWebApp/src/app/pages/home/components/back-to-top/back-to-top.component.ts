@@ -18,7 +18,7 @@ export class BackToTopComponent implements OnInit {
 
   showButton(): void {
     $(window).on('scroll', function (e) {
-      if ($(this).scrollTop() > ($('#post_id').position().top - 100))
+      if ($(this).scrollTop() > ($('#post_id').position().top - 70))
         $("#btn-right").css("display", "block");
 
       else

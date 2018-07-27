@@ -1,5 +1,5 @@
-<div fxLayout="row" fxFlex="100" style="width: 100%;padding: 12px;">
-  <div fxLayout="row" fxLayoutAlign="start center" style="width: 100%;">
+<div fxLayout="row" fxFlex style="width: 100%;padding: 12px;">
+  <div fxLayout="row" fxLayoutAlign="start center" fxFlex.md="60" fxFlex.lg="60" fxFlex.xl="45">
     <button mat-button class="sub-menu" (click)="home()">Home</button>
     <button *ngIf="continents.length > 0" mat-button [matMenuTriggerFor]="destinos" class="sub-menu">Destinos</button>
     <mat-menu #destinos="matMenu">
@@ -20,19 +20,24 @@
       <button mat-menu-item class="btn-menu-item" (click)="openDialogPostsInactive()">Postagens inativas</button>
     </mat-menu>
   </div>
-  <div fxLayout="row" fxLayoutAlign="end center" style="width: 100%;">
-    <div style="padding-right: 2%" fxLayout="row" fxLayoutAlign="initial center">
-      <div *ngIf="search">
-        <button mat-icon-button>
-          <mat-icon class="menu-icon">close</mat-icon>
-        </button>
-          <input [autofocus]="search" class="input-pesquisa txt-input-pesquisa" type="text" placeholder="Pesquisar..." />
+  <div fxFlex.md="35" fxFlex.lg="30" fxFlex.xl="35">
+    <div fxLayout="row" fxLayoutAlign="end center" fxFlex="100">
+      <div *ngIf="search" style="padding-right: 2%" fxFlex="100">
+          <!-- <button mat-icon-button>
+            <mat-icon class="menu-icon">close</mat-icon>
+          </button> -->
+          <!-- <input [autofocus]="search" class="input-pesquisa txt-input-pesquisa" type="text" placeholder="Pesquisar..." />      -->
+          <mat-form-field [floatLabel]="never">
+            <input matInput placeholder="Simple placeholder">
+          </mat-form-field>
       </div>
       <button mat-icon-button (click)="verifySearch()">
         <mat-icon class="menu-icon">search</mat-icon>&nbsp;&nbsp;
       </button>
     </div>
-    <button *ngIf="logged" mat-icon-button [matMenuTriggerFor]="configAuthor" fxFlex="5" style="right: 5px;">
+  </div>
+  <div fxLayout="row" fxLayoutAlign="end center" fxFlex.md="5" fxFlex.lg="10" fxFlex.xl="20">
+    <button *ngIf="logged" mat-icon-button [matMenuTriggerFor]="configAuthor" fxFlex="5" style="right: 10px;">
       <mat-icon class="menu-icon">&#xE5D4;</mat-icon>
     </button>
     <mat-menu #configAuthor="matMenu">

@@ -39,7 +39,6 @@ export class PostComponent {
     this.form = this.fb.group({
       title: ['', Validators.compose([
         Validators.minLength(5),
-        Validators.maxLength(40),
         Validators.required,
       ])],
       description: ['', Validators.compose([

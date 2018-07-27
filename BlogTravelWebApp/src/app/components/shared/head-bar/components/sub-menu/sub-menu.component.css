@@ -30,6 +30,10 @@ mat-input-container.mat-input-focused label {
     border-right: none;
 }
 
+.mat-focused .placeholder {
+    display: none;
+}
+
 .txt-input-pesquisa {
     font-size: 16px;
     font-weight: 400;

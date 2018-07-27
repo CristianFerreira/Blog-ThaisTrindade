@@ -1,0 +1,52 @@
+$mobile: "(max-width: 700px)";
+$tablet: "(min-width: 701px) and (max-width: 1200px)";
+$desktop: "(min-width: 1201px)";
+
+@media #{mobile} {
+    .body-post {
+        margin-bottom: 20px;
+    }
+}
+
+@media #{$tablet} {
+    .body-post {
+        margin-top: 50px;
+        margin-bottom: 20px;
+    }
+
+    .img-header {
+        height: 50vh;
+    }
+
+    .banner {
+        margin-top: -20px;
+    }
+}
+
+@media #{$desktop} {
+    .body-post {
+        margin-top: 50px;
+        margin-bottom: 20px;
+    }
+
+    .img-header {
+        height: 55vh;
+    }
+
+    .banner {
+        margin-top: -15px;
+    }
+}
+
+
+.img-header {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+}
+
+
+
+
+

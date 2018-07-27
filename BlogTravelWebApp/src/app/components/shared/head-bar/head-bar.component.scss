@@ -1,0 +1,25 @@
+$tablet: "(min-width: 768px) and (max-width: 1200px)";
+$desktop: "(min-width: 1201px)";
+
+@media #{$tablet} {
+    .nav-bar {
+        height: 50px;
+    }
+}
+
+@media #{$desktop} {
+    .nav-bar {      
+        height: 60px;  
+    }
+}
+
+
+.nav-bar {
+    z-index: 999;
+    background: rgba(59, 66, 64, 0.51);
+    width: 100%; 
+    position: fixed;
+    overflow: hidden;
+    top: 0;
+}
+

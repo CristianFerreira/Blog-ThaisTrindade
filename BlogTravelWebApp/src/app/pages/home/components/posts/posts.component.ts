@@ -119,7 +119,7 @@ export class PostsComponent implements OnInit {
   getByTag(tag: string): void {
     this.postDataService.getByTag(tag).subscribe(result => {
       this.posts = <Array<Post>>result.json().data;
-      this.backToTop(true);
+      this.backToTop(false);
     }, error => {
 
     });
@@ -128,7 +128,7 @@ export class PostsComponent implements OnInit {
   getByCategory(category: string): void {
     this.postDataService.getByCategory(category).subscribe(result => {
       this.posts = <Array<Post>>result.json().data;
-      this.backToTop(true);
+      this.backToTop(false);
     }, error => {
 
     });
@@ -137,7 +137,7 @@ export class PostsComponent implements OnInit {
   getByDestiny(destiny: string) {
     this.postDataService.getByContinent(destiny).subscribe(result => {
       this.posts = <Array<Post>>result.json().data;
-      this.backToTop(true);
+      this.backToTop(false);
     }, error => {
 
     });
@@ -147,7 +147,7 @@ export class PostsComponent implements OnInit {
     this.postDataService.getById(id).subscribe(result => {
       let post = <Post>result.json().data;
       this.posts.push(post);
-      // this.backToTop(true);
+      this.backToTop(false);
     }, error => {
 
     });
