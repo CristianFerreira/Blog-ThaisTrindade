@@ -1,9 +1,10 @@
 <div id="post_id">
+  <!-- <fb-share href="https://github.com/zyra/ng2-facebook-sdk/"></fb-share> -->
   <div *ngFor="let post of posts | paginate: {
-    itemsPerPage: 2,
+    itemsPerPage: 4,
     currentPage: page,
     totalItems: posts.length }" class="animated animatedFadeInUp fadeInUp" fxLayout="row">
-    <mat-card fxFlex="100" style="margin-bottom: 50px;" *ngIf="!mobile" >
+    <mat-card fxFlex="100" style="margin-bottom: 50px;" *ngIf="!mobile">
       <div fxLayout="column">
         <div fxLayout="row">
           <div fxFlex="10">
@@ -30,7 +31,7 @@
           <div fxFlex class="line-col3"></div>
         </div>
         <div fxLayout="row" style="padding: 4px 20px 4px 20px;">
-          <div fxLayoutAlign="start center" fxFlex>
+          <div fxLayoutAlign="start center" fxFlex="70">
             <div fxLayout="column">
               <span class="txt-mais-posts">Veja mais posts sobre</span>
               <div fxLayout="row" fxLayoutAlign="start center">
@@ -40,17 +41,20 @@
               </div>
             </div>
           </div>
-          <div fxLayoutAlign="end center" fxFlex>
-            <div fxLayout="column">
-              <div fxLayout="row" fxLayoutAlign="end center">
-                <div fxFlex>
-                  <button *ngIf="logged" mat-icon-button aria-label="editar" (click)="pageEditPost(post._id)">
-                    <mat-icon style="color:#5a5858">&#xE254;</mat-icon>
-                  </button>
-                  <button *ngIf="logged" mat-icon-button (click)="openSnackBarDelete(post._id)">
-                    <mat-icon style="color:#d63150">&#xE92B;</mat-icon>
-                  </button>
-                </div>
+          <div fxLayoutAlign="end initial" fxFlex="30">
+            <button-shared [idPost]="post._id"></button-shared>
+          </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="end center">
+          <div fxLayout="column">
+            <div fxLayout="row" fxLayoutAlign="end center">
+              <div fxFlex>
+                <button *ngIf="logged" mat-icon-button aria-label="editar" (click)="pageEditPost(post._id)">
+                  <mat-icon style="color:#5a5858">&#xE254;</mat-icon>
+                </button>
+                <button *ngIf="logged" mat-icon-button (click)="openSnackBarDelete(post._id)">
+                  <mat-icon style="color:#d63150">&#xE92B;</mat-icon>
+                </button>
               </div>
             </div>
           </div>

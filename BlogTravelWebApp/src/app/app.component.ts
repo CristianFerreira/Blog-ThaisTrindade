@@ -36,7 +36,10 @@ export class AppComponent {
     .addSvgIcon('Youtube', sanitizer.bypassSecurityTrustResourceUrl('../../../assets/icon/categories/Youtube.svg')) 
     .addSvgIcon('twitter_black', sanitizer.bypassSecurityTrustResourceUrl('../../../assets/images/redes-sociais/twitter_black.svg'))    
     .addSvgIcon('instagram_black', sanitizer.bypassSecurityTrustResourceUrl('../../../assets/images/redes-sociais/instagram_black.svg'))  
+    .addSvgIcon('facebook_blue', sanitizer.bypassSecurityTrustResourceUrl('../../../assets/images/redes-sociais/facebook_blue.svg')) 
+    .addSvgIcon('twitter_blue', sanitizer.bypassSecurityTrustResourceUrl('../../../assets/images/redes-sociais/twitter_blue.svg')) 
     .addSvgIcon('facebook_black', sanitizer.bypassSecurityTrustResourceUrl('../../../assets/images/redes-sociais/facebook_black.svg')) 
+    .addSvgIcon('whatsapp', sanitizer.bypassSecurityTrustResourceUrl('../../../assets/images/redes-sociais/whatsapp.svg')) 
 
     
 

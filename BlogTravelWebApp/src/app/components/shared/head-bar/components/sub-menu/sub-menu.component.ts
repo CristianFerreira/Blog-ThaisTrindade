@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, OnChanges, SimpleChanges } from '@angular/core';
 import { AuthenticateDataService } from '../../../../../services/authenticate-data.service';
 import { Router } from '@angular/router';
 import { UserLoggedService } from '../../../../../services/user-logged.service';
-import {MatDialog, MatDialogRef} from '@angular/material';
+import {MatDialog, MatDialogRef, MatInput} from '@angular/material';
 import {DialogPostsInactiveComponent} from './dialog-posts-inactive/dialog-posts-inactive.component'
 import { PostDataService } from '../../../../../services/post-data.service';
 
@@ -13,11 +13,15 @@ import { PostDataService } from '../../../../../services/post-data.service';
   providers: [AuthenticateDataService, PostDataService]
 })
 export class SubMenuComponent implements OnInit {
-
+  
   public logged: boolean;
   public dialog: MatDialog;
   public continents: Array<string>;
   public categories: Array<string>;
+  public search: Boolean;
+   @ViewChild("myInput") inputEl: ElementRef;
+
+
 
   constructor(private autenticationService: AuthenticateDataService, private postDataService: PostDataService,
     protected router: Router, private userLoggedService: UserLoggedService, dialog: MatDialog) {
@@ -27,6 +31,11 @@ export class SubMenuComponent implements OnInit {
       this.loadDestinos();
       this.loadCategories();
   }
+
+  focusInput() {
+    this.inputEl.nativeElement.focus()
+  } 
+
 
   ngOnInit() {
     this.userLoggedService.logged.subscribe((logged) => {
@@ -80,5 +89,9 @@ export class SubMenuComponent implements OnInit {
     this.autenticationService.logout();
   }
 
+  verifySearch() :void {
+    this.search = !this.search;
+  }
 
 }
+

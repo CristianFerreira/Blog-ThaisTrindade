@@ -23,6 +23,13 @@ export const AppConfig = {
             return AppConfig.serviceDevConfig; 
         }
     },
+    serviceWebInfo: () => {
+        if(environment.production){
+            return "http://thaistrindade.com/#/"; 
+        }else{
+            return "http://localhost:4200/#/"; 
+        }
+    },
     serviceUrls: () => {
         return {
             Authenticate: {

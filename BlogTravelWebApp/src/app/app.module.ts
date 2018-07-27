@@ -9,7 +9,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { APP_BASE_HREF } from '@angular/common';
 import { DisqusModule } from 'ngx-disqus';
-
+// import { FacebookModule } from 'ngx-facebook';
+// import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
+import {ShareButtonsModule} from 'ngx-sharebuttons';
+import { AutofocusModule } from 'angular-autofocus-fix';
 
 
  // MaterialModule
@@ -66,7 +69,7 @@ import { BackToTopComponent } from './pages/home/components/back-to-top/back-to-
 import { PostsComponent } from './pages/home/components/posts/posts.component';
 import { DisqusComponent } from './pages/home/components/posts/components/disqus/disqus.component';
 import { HideTextComponent } from './pages/home/components/posts/components/hide-text/hide-text.component';
-
+import { ButtonSharedComponent } from './pages/home/components/posts/components/button-shared/button-shared.component';
 import { PostComponent } from './pages/post-create/post.component';
 
 import {NgxPaginationModule} from 'ngx-pagination';
@@ -86,6 +89,8 @@ import {UserLoggedService} from './services/user-logged.service';
 
 import { AppConfig } from "../environments/app-config";
 import { environment } from "../environments/environment";
+
+
 
 
 
@@ -117,7 +122,7 @@ import { environment } from "../environments/environment";
     FooterComponent, 
     SnapchatComponent,
     HeaderSidenavComponent, 
-    BodySidenavComponent
+    BodySidenavComponent, ButtonSharedComponent
   ],
   imports: [
     BrowserModule,
@@ -126,6 +131,9 @@ import { environment } from "../environments/environment";
     FormsModule,
     ReactiveFormsModule,
     DisqusModule.forRoot('thaistrindadeblog'),
+    ShareButtonsModule.forRoot(),
+    // FacebookModule.forRoot(),
+    AutofocusModule,
     HttpModule,
     // MaterialModule,
     MatProgressSpinnerModule,

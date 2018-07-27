@@ -2,6 +2,7 @@
     color: #fff;
     text-transform: uppercase;
     background: rgba(121, 42, 42, 0);
+    font-size: 1.1em;
 }
 
 mat-input-container label {
@@ -94,4 +95,10 @@ mat-input-container.mat-input-focused label {
   /* icon prefix focus color */
   .input-field .prefix.active {
     color: #fff !important;
+  }
+
+
+  .menu-icon {
+      font-size: 28px;
+      color: #ffff;
   }
