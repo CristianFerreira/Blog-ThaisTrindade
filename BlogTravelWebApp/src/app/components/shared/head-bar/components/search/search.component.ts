@@ -3,9 +3,7 @@ import { PostDataService } from '../../../../../services/post-data.service';
 import { SearchService } from '../../../../../services/search.service';
 import { Post } from '../../../../../models/api/post';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { FormControl } from '../../../../../../../node_modules/@angular/forms';
-import { Observable } from '../../../../../../../node_modules/rxjs';
-import { State } from '../../../../../../../node_modules/ngx-chips/dist/modules/core';
+
 
 
 @Component({
@@ -38,9 +36,12 @@ export class SearchComponent implements OnInit {
   }
 
   filter(value: string) :void {
-    if(value){
+    if(value && this.posts.length > 0 && this.tags.length){
       this.filterPosts(value);
       this.filterTags(value);
+    } else if (value == ""){
+      this.filteredPosts = this.posts.slice(0,5);
+      this.filteredTags = this.tags.slice(0,5);
     }
   }
 
@@ -102,6 +103,7 @@ export class SearchComponent implements OnInit {
 
   getSearch(value ?:string) {
     value ? (this.txt_search = value, this.selectedList.emit(value)) : "";
+    this.searchService.search$.next(true);
     this.router.navigate(['.'], { queryParams: {pesquisa: this.txt_search} });
     this.postDataService.getBySearch(this.txt_search).subscribe((result) => {
       this.searchService.search$.next(<Array<Post>>result.json().data);

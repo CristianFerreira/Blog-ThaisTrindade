@@ -10,7 +10,7 @@
   </div>
   <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="60" fxFlex.lg="60" fxFlex.xl="45" fxLayoutAlign="center start" style="flex-shrink: 0">
     <div fxLayout="column">
-      <app-posts></app-posts>
+      <app-posts (showFooter)="footer()"></app-posts>
     </div>
   </div>
   <div fxFlex.md="35" fxFlex.lg="30" fxFlex.xl="35" fxLayoutAlign="center start" [style.xs]="{display: 'none'}" [style.sm]="{display: 'none'}">
@@ -34,4 +34,4 @@
     </div>
   </div>
 </div>
-<app-footer></app-footer>
+<app-footer *ngIf="showFooter"></app-footer>

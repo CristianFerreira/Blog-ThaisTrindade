@@ -1,7 +1,4 @@
-.redes-sociais-thais {
-        padding: 8px;
-        width: 32px !important;
-}
+
 
 .rede-social-hover-opacity:hover {
     opacity: 0.60;
@@ -13,6 +10,11 @@
     .icon-rede-social { 
         width: 32px !important;
     }
+
+    .icon-rede-social-youtube { 
+        width: 30px !important;
+    }
+
 
     .txt-aboutme {
         font-size: 15px;
@@ -26,6 +28,10 @@
         width: 28px !important;
     }
 
+    .icon-rede-social-youtube { 
+        width: 30px !important;
+    }
+
     .txt-aboutme {
         font-size: 13px;
         text-align: center;
@@ -36,6 +42,10 @@
 @media only screen and (max-width: 1000px) {
     .icon-rede-social { 
         width: 24px !important;
+    }
+
+    .icon-rede-social-youtube { 
+        width: 26px !important;
     }
 
     .txt-aboutme {

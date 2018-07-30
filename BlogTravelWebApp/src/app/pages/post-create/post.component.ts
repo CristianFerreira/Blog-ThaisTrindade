@@ -110,10 +110,25 @@ export class PostComponent {
       })
     }
 
+    this.post.description = this.addStyleDescription(this.post.description)
+
     if (!this.post._id)
       this.create();
     else
       this.update();
+  }
+
+  addStyleDescription(description): string {
+    description = this.addStyleTag(description, "<p",">", "style='padding: 0px 10px 0px 10px'");
+    return description;
+  }
+
+  addStyleTag(description: string, tagInitial :string, tagEnd :string,  styleTag: string) :string {
+    while(description.indexOf(tagInitial + tagEnd) > -1){
+      description = description.replace(tagInitial + tagEnd, (tagInitial + " " + styleTag + tagEnd))
+    }
+
+    return description;
   }
 
   create() {
@@ -160,4 +175,10 @@ export class PostComponent {
   }
 
 
+}
+
+class TagStyle {
+  count: number;
+  positionTag: number;
+  positionStyle: number;
 }

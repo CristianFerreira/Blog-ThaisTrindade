@@ -90,11 +90,17 @@ body {
   .video-post { 
     height: 280px !important;
   }
+  .spinner {
+    margin-top: 40vh;
+  }
 } 
 
 @media only screen and (min-width: 600px) and (max-width: 700px){
   .video-post { 
     height: 250px !important;
+  }
+  .spinner {
+    margin-top: 35vh;
   }
 } 
 
@@ -103,17 +109,26 @@ body {
   .video-post { 
     height: 240px !important;
   }
+  .spinner {
+    margin-top: 30vh;
+  }
 } 
 
 @media only screen and (min-width: 400px) and (max-width: 500px){
   iframe.video-post { 
     height: 210px !important;
   }
+  .spinner {
+    margin-top: 25vh;
+  }
 } 
 
 @media only screen and (max-width: 400px) {
   .video-post { 
     height: 200px !important;
+  }
+  .spinner {
+    margin-top: 20vh;
   }
 } 
 
@@ -158,6 +173,3 @@ ul.sidenav {
 } 
 
 
-.spinner {
-  margin-top: 50vh;
-}

@@ -26,17 +26,23 @@ $mobile:  "(max-width: 700px)";
         font-size: 0.8em;
     }
 
-    .search {
-        min-width: 150px;
-        max-width: 500px;
-        width: 100%;
-      }
-      
       .full-width {
         width: 100%;
       }
 
       .icon-search {
         color: #ffff;
+    }
+
+    .category-icon {
+        height: 18px;
+        width: 18px;
+        padding-left: 4px;
+    }
+
+    .home-icon {
+        font-size: 28px;
+        height: 28px;
+        width: 23px;
     }
 }

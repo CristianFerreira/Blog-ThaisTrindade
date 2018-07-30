@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, SimpleChanges } from '@angular/core';
 import { Post } from '../../../../models/api/Post';
 import { PostDataService } from '../../../../services/post-data.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -8,16 +8,22 @@ import { AuthenticateDataService } from '../../../../services/authenticate-data.
 import { SearchService } from '../../../../services/search.service';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { PageEvent } from '@angular/material';
-// import {MdPaginatorIntl} from '@angular/material/typings/paginator/paginator-intl';
+import { trigger, transition, useAnimation } from '@angular/animations';
+import { fadeIn } from 'ng-animate';
 
 
 @Component({
   selector: 'app-posts',
   templateUrl: './posts.component.html',
   styleUrls: ['./posts.component.scss'],
+  animations: [
+    trigger('fadeIn', [transition('* => *', useAnimation(fadeIn))])
+  ],
   // providers: [AuthenticateDataService, UserLoggedService, PostDataService]
 })
 export class PostsComponent implements OnInit {
+  @Output() showFooter = new EventEmitter()
+
   public posts: Array<Post>;
   public postsRender: Array<Post>;
   public logged: boolean;
@@ -27,13 +33,11 @@ export class PostsComponent implements OnInit {
   public pageSizeOptions: any;
   public idPost: number;
   public mobile: Boolean;
-
+  public fadeIn = false;
+  public teste: any;
 
   // MdPaginator Output
   pageEvent: PageEvent;
-
-
-
 
   constructor(private postDataService: PostDataService, private autenticationService: AuthenticateDataService, private router: Router, private activatedRoute: ActivatedRoute, public snackBar: MatSnackBar,
     private route: ActivatedRoute, private userLoggedService: UserLoggedService, public sanitizer: DomSanitizer, private searchService: SearchService) {
@@ -53,7 +57,10 @@ export class PostsComponent implements OnInit {
     })
 
     this.searchService.getSearch().subscribe((posts) => {
-      (posts == "") ? (this.getAll(), this.router.navigateByUrl('/')) : (this.posts = posts);
+      if(posts == true)
+          this.posts = new Array<Post>();
+      else
+          (posts == "") ? (this.getAll(), this.router.navigateByUrl('/')) : (this.posts = posts);
     })
 
 
@@ -121,6 +128,7 @@ export class PostsComponent implements OnInit {
   getAll(): void {
     this.postDataService.getAll().subscribe(result => {
       this.posts = <Array<Post>>result.json();
+      this.showFooter.emit("true");
       this.backToTop(true);
     }, error => {
 
@@ -130,6 +138,7 @@ export class PostsComponent implements OnInit {
   getByTag(tag: string): void {
     this.postDataService.getByTag(tag).subscribe(result => {
       this.posts = <Array<Post>>result.json().data;
+      this.showFooter.emit("true");
       this.backToTop(false);
     }, error => {
 
@@ -139,6 +148,7 @@ export class PostsComponent implements OnInit {
   getByCategory(category: string): void {
     this.postDataService.getByCategory(category).subscribe(result => {
       this.posts = <Array<Post>>result.json().data;
+      this.showFooter.emit("true");
       this.backToTop(false);
     }, error => {
 
@@ -148,6 +158,7 @@ export class PostsComponent implements OnInit {
   getByDestiny(destiny: string) {
     this.postDataService.getByContinent(destiny).subscribe(result => {
       this.posts = <Array<Post>>result.json().data;
+      this.showFooter.emit("true");
       this.backToTop(false);
     }, error => {
 
@@ -158,6 +169,7 @@ export class PostsComponent implements OnInit {
     this.postDataService.getById(id).subscribe(result => {
       let post = <Post>result.json().data;
       this.posts.push(post);
+      this.showFooter.emit("true");
       this.backToTop(false);
     }, error => {
 

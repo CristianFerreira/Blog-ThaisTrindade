@@ -1,7 +1,7 @@
 <button *ngIf="!mobile" mat-icon-button [disabled]="txt_search != ''" (click)="search()">
   <mat-icon class="icon-search">search</mat-icon>&nbsp;&nbsp;
 </button>
-<div *ngIf="showInput" fxFlex="100">
+<div *ngIf="showInput && !mobile" fxFlex="100">
   <mat-form-field class="example-full-width" floatPlaceholder="never">
     <input class="input-search" matInput [matAutocomplete]="auto" [(ngModel)]="txt_search" (ngModelChange)="filter(txt_search)"
       autofocus>
@@ -10,13 +10,13 @@
     </button>
     <mat-placeholder class="placeholder">Pesquise por titulo ou tags...</mat-placeholder>
     <mat-autocomplete #auto="matAutocomplete" (optionSelected)="getSearch()">
-      <mat-optgroup *ngIf="filteredPosts.length > 0" [label]="'Posts'">
+      <mat-optgroup *ngIf="filteredPosts?.length > 0" [label]="'Posts'">
         <mat-option *ngFor="let post of filteredPosts" [value]="post.title">
           <mat-icon svgIcon="{{post.category}}-search" height="22" class="icon-posts"></mat-icon>
           <small>{{ post.title }}</small>
         </mat-option>
       </mat-optgroup>
-      <mat-optgroup *ngIf="filteredTags.length > 0" [label]="'Tags'">
+      <mat-optgroup *ngIf="filteredTags?.length > 0" [label]="'Tags'">
         <mat-option *ngFor="let tag of filteredTags" [value]="tag">
           <mat-icon svgIcon="Hashtag" height="22" class="icon-hashtag"></mat-icon>
           <small>{{ tag }}</small>
@@ -26,19 +26,19 @@
   </mat-form-field>
 </div>
 
-<div *ngIf="(filteredPosts == null && filteredTags == null && mobile)" fxLayoutAlign="center center" fxFlex>
+<div fxLayout="row" fxLayoutAlign="center center" *ngIf="(filteredPosts == null && filteredTags == null && mobile)" fxFlex="100">
   <mat-spinner class="spinner" [diameter]="40" [color]="'warn'"></mat-spinner>
 </div>
 
-<mat-list *ngIf="mobile" class="mat-list-padding">
-  <h3 mat-subheader *ngIf="filteredPosts.length > 0">Posts</h3>
+<mat-list *ngIf="(filteredPosts != null && filteredTags != null && mobile)" class="mat-list-padding" fxFlex="100">
+  <h3 mat-subheader *ngIf="filteredPosts?.length > 0">Posts</h3>
   <mat-list-item *ngFor="let post of filteredPosts" style="height: 60px;" class="list-item" (click)="getSearch(post.title)">
     <mat-icon matListIcon svgIcon="{{post.category}}-search" height="22" class="icon-posts"></mat-icon>
     <h4 mat-line>{{post.title}}</h4>
     <p mat-line> {{post.date | date}} </p>
   </mat-list-item>
   <mat-divider></mat-divider>
-  <h3 mat-subheader *ngIf="filteredTags.length > 0">Tags</h3>
+  <h3 mat-subheader *ngIf="filteredTags?.length > 0">Tags</h3>
   <mat-list-item *ngFor="let tag of filteredTags" style="height: 40px;" class="list-item" (click)="getSearch(tag)">
     <mat-icon matListIcon svgIcon="Hashtag" height="22" class="icon-hashtag"></mat-icon>
     <h4 mat-line>{{ tag }}</h4>

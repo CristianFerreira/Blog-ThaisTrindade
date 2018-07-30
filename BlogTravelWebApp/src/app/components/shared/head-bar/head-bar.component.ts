@@ -8,18 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeadBarComponent {
 
-  constructor() { 
+  constructor() {
     this.changeColorHeadBar();
   }
 
 
   changeColorHeadBar(): void {
     $(window).on('scroll', function (e) {
-      if ($(this).scrollTop() > ($('#post_id').position().top - 70))
-        $(".nav-bar").css("background", "#1bbc9b");
-
-      else
-        $(".nav-bar").css("background", "rgba(59, 66, 64, 0.51)");
+      if ($('#post_id')) {
+        if ($(this).scrollTop() > ($('#post_id').position().top - 70))
+          $(".nav-bar").css("background", "#1bbc9b");
+        else
+          $(".nav-bar").css("background", "rgba(59, 66, 64, 0.51)");
+      }
     })
   }
 

@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, OnChanges, Sim
 import { AuthenticateDataService } from '../../../../../services/authenticate-data.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserLoggedService } from '../../../../../services/user-logged.service';
+import { SearchService } from '../../../../../services/search.service';
 import {MatDialog, MatDialogRef, MatInput, MatSnackBar, MatSnackBarConfig} from '@angular/material';
 import {DialogPostsInactiveComponent} from './dialog-posts-inactive/dialog-posts-inactive.component'
 import { PostDataService } from '../../../../../services/post-data.service';
@@ -26,7 +27,7 @@ export class SubMenuComponent implements OnInit {
 
 
   constructor(private autenticationService: AuthenticateDataService, private postDataService: PostDataService,
-    protected router: Router, private userLoggedService: UserLoggedService, dialog: MatDialog, public snackBar: MatSnackBar) {
+    protected router: Router, private userLoggedService: UserLoggedService, dialog: MatDialog, public snackBar: MatSnackBar, private searchService: SearchService) {
       this.dialog = dialog;
       this.continents = new Array<string>();
       this.categories = new Array<string>();
@@ -77,7 +78,7 @@ export class SubMenuComponent implements OnInit {
   }
 
   home(): void {
-      this.router.navigateByUrl('Posts');
+    this.searchService.search$.next("");
   }
 
   newPost(): void {

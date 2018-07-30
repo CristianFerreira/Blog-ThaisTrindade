@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterContentChecked } from '@angular/core';
 
 
 // import { FacebookModule } from 'ngx-facebook';
@@ -8,15 +8,19 @@ selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
+
+  showFooter: boolean = false;
 
   constructor() {
       
    }
 
-  ngOnInit() {
-   
-  }
+   footer() {
+     this.showFooter = true;
+   }
+
+  
 }
 
 

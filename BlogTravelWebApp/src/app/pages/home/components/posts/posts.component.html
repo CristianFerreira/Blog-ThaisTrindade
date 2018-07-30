@@ -1,13 +1,15 @@
-<div *ngIf="posts?.length == 0" fxLayoutAlign="center center" fxFlex>
-    <mat-spinner class="spinner" [diameter]="40" [color]="'warn'"></mat-spinner>
+<div *ngIf="posts?.length == 0 && !mobile" fxLayoutAlign="center center" fxFlex>
+  <mat-spinner [diameter]="70" [color]="'warn'"></mat-spinner>
 </div>
-
+<div *ngIf="posts?.length == 0 && mobile" fxLayoutAlign="center center" fxFlex>
+  <mat-spinner class="spinner" [diameter]="40" [color]="'warn'"></mat-spinner>
+</div>
 <div id="post_id">
   <div *ngFor="let post of posts | paginate: {
     itemsPerPage: 4,
     currentPage: page,
-    totalItems: posts.length }" class="animated animatedFadeInUp fadeInUp" fxLayout="row">
-    <mat-card fxFlex="100" style="margin-bottom: 50px;" *ngIf="!mobile">
+    totalItems: posts.length }" fxLayout="row">
+    <mat-card fxFlex="100" [@fadeIn]="fadeIn" style="margin-bottom: 50px;" *ngIf="!mobile">
       <div fxLayout="column">
         <div fxLayout="row">
           <div fxFlex="10">
@@ -64,7 +66,7 @@
         </div>
       </mat-card-actions>
     </mat-card>
-    <div class="post-mobile" *ngIf="mobile">
+    <div class="post-mobile" *ngIf="mobile" [@fadeIn]="fadeIn">
       <div fxLayout="column">
         <div fxLayout="row" class="title-mobile">
           <div fxFlex style="padding-left: 5px;">
@@ -83,6 +85,14 @@
         <div fxLayout="row" fxLayoutAlign="start center">
           <div fxFlex class="line-col3"></div>
         </div>
+        <div fxLayout="row" style="margin-top: -10px;">
+            <div fxFlex fxLayoutAlign="center center">
+                <span class="date-post">Postado em {{post.date | date: 'dd'}} de {{post.date | date:'MM'}} de {{post.date | date: 'yyyy'}}</span>
+            </div>
+            <div fxFlex="40">
+              <button-shared [idPost]="post._id"></button-shared>
+            </div>
+        </div>
         <div fxLayout="row" style="padding: 15px 20px 15px;">
           <div fxLayoutAlign="start center" fxFlex>
             <div fxLayout="column">
@@ -95,6 +105,7 @@
             </div>
           </div>
         </div>
+
       </div>
     </div>
   </div>

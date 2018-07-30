@@ -13,19 +13,17 @@
                 </button>
             </div>
         </mat-toolbar>
-        <mat-toolbar *ngIf="showSearch" style="background: #eeee;position: fixed;" fxFlex>
+        <mat-toolbar *ngIf="showSearch" style="background: #eeee;position: fixed;" fxFlex="100">
             <button mat-icon-button (click)="showSearch = !showSearch">
                 <mat-icon [@rotateIn]="rotateIn" style="color: #424242;">arrow_back</mat-icon>
             </button>
-            <div class="search">
-                <mat-form-field floatPlaceholder="never" class="full-width">
-                    <input matInput type="text" [(ngModel)]="txt_search" autofocus style="font-size: 0.8em;" />
-                    <mat-placeholder class="placeholder">Pesquise por titulo ou tags...</mat-placeholder>
-                    <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
-                        <mat-icon>close</mat-icon>
-                    </button>
-                </mat-form-field>
-            </div>
+            <mat-form-field floatPlaceholder="never" class="full-width">
+                <input matInput type="text" [(ngModel)]="txt_search" autofocus style="font-size: 0.8em;" />
+                <button *ngIf="txt_search" mat-button matSuffix mat-icon-button aria-label="Clear" (click)="txt_search=''">
+                    <mat-icon>close</mat-icon>
+                </button>
+                <mat-placeholder class="placeholder">Pesquise por titulo ou tags...</mat-placeholder>
+            </mat-form-field>
         </mat-toolbar>
     </div>
     <mat-sidenav-container id="sidenav" (backdropClick)="check()" style="flex-shrink: 0; background-color: #ffffff;" fxFlex>
@@ -33,41 +31,50 @@
             <app-header-sidenav></app-header-sidenav>
             <mat-nav-list>
                 <a mat-list-item [routerLink]="['/']" (click)="sidenav.toggle(); activeMenu()">
-                    <mat-icon>home</mat-icon>&nbsp;&nbsp; Home
+                    <mat-icon class="home-icon">home</mat-icon>&nbsp;&nbsp; Página inicial
                 </a>
             </mat-nav-list>
             <mat-nav-list>
-                <button mat-list-item mat-button [matMenuTriggerFor]="categoria" [routerLink]="['/']" style="font-size: 16px;">
-                    Categorias &nbsp;&nbsp;
-                    <mat-icon>&#xE313;</mat-icon>
-                </button>
+                <a mat-list-item [matMenuTriggerFor]="categoria">
+                    <mat-icon class="category-icon" svgIcon="category-add-button"></mat-icon>&nbsp;&nbsp; Categorias
+                </a>
                 <mat-menu #categoria="matMenu">
                     <button mat-menu-item class="btn-menu-item" (click)="sidenav.toggle(); activeMenu()">Categoria 1</button>
                     <button mat-menu-item class="btn-menu-item" (click)="sidenav.toggle(); activeMenu()">Categoria 2</button>
                 </mat-menu>
             </mat-nav-list>
-            <mat-divider></mat-divider>
-            <mat-list>
-                <h3 mat-subheader>Redes sociais</h3>
-                <mat-nav-list style="padding-top: 0px;">
-                    <a mat-list-item href="https://www.instagram.com/trindadethais/" target="_blank">
-                        <mat-icon svgIcon="instagram_black" style="font-size: 22px;height: 22px; width: 22px;"></mat-icon> &nbsp;&nbsp; Instagram
-                    </a>
-                    <a mat-list-item href="https://www.facebook.com/trindadethaiss/" target="_blank">
-                        <mat-icon svgIcon="facebook_black" style="font-size: 22px;height: 22px; width: 22px;"></mat-icon> &nbsp;&nbsp; Facebook
-                    </a>
-                    <a mat-list-item href="https://twitter.com/trindadethaiss" target="_blank">
-                        <mat-icon svgIcon="twitter_black" style="font-size: 22px;height: 22px; width: 22px;"></mat-icon> &nbsp;&nbsp; Twitter
-                    </a>
-                </mat-nav-list>
-            </mat-list>
+            <mat-nav-list>
+                <a mat-list-item [matMenuTriggerFor]="destinos">
+                    <mat-icon svgIcon="destinos"></mat-icon>&nbsp;&nbsp; Destinos
+                </a>
+                <mat-menu #destinos="matMenu">
+                    <button mat-menu-item class="btn-menu-item" (click)="sidenav.toggle(); activeMenu()">Destino 1</button>
+                    <button mat-menu-item class="btn-menu-item" (click)="sidenav.toggle(); activeMenu()">Destino 2</button>
+                </mat-menu>
+            </mat-nav-list>
+            <mat-divider style="margin: 20px 0px;"></mat-divider>
+            <h3 mat-subheader style="height: 0px;">Redes sociais</h3>
+            <div style="padding: 0 18px;">
+                <a href="https://www.instagram.com/trindadethais/" target="_blank" fxFlex>
+                    <mat-icon svgIcon="instagram_black" style="font-size: 22px;height: 22px; width: 22px;"></mat-icon>
+                </a>
+                <a href="https://www.facebook.com/trindadethaiss/" target="_blank" fxFlex>
+                    <mat-icon svgIcon="facebook_black" style="font-size: 22px;height: 22px; width: 22px;"></mat-icon>
+                </a>
+                <a href="https://twitter.com/trindadethaiss" target="_blank" fxFlex>
+                    <mat-icon svgIcon="twitter_black" style="font-size: 22px;height: 22px; width: 22px; color: #000;"></mat-icon>
+                </a>
+                <a href="https://www.youtube.com/thaistrindade" target="_blank" fxFlex>
+                    <mat-icon svgIcon="youtube_black" style="font-size: 24px;height: 24px; width: 24px; color: #000;"></mat-icon>
+                </a>
+            </div>
         </mat-sidenav>
         <mat-sidenav-content fxFlex="100">
-            <div *ngIf="!showSearch" style="margin-top: 50px;flex-shrink: 0" fxFlex>
+            <div *ngIf="!showSearch" style="margin-top: 50px;flex-shrink: 0" fxFlex="100">
                 <router-outlet></router-outlet>
             </div>
-            <div *ngIf="showSearch" fxFlex>
-                <app-search (selectedList)="selectedList($event)" [mobile]="true" [txtSearch]="txt_search"></app-search>
+            <div *ngIf="showSearch" fxFlex="100" fxLayout="row">
+                <app-search (selectedList)="selectedList($event)" [mobile]="true" [txtSearch]="txt_search" fxFlex="100"></app-search>
             </div>
         </mat-sidenav-content>
     </mat-sidenav-container>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { Http } from '@angular/http'
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
@@ -29,7 +29,7 @@ export class AppComponent {
   showSearch: boolean;
   //icones adicionados
   constructor(http: Http, iconReg: MatIconRegistry, sanitizer: DomSanitizer, private router: Router, private authorizationService: AuthorizationService,
-             private snackBar: MatSnackBar, private userLoggedService: UserLoggedService) {
+             private snackBar: MatSnackBar, private userLoggedService: UserLoggedService, private changeDetector: ChangeDetectorRef) {
     iconReg.addSvgIcon('Viagem', sanitizer.bypassSecurityTrustResourceUrl('../../../assets/icon/categories/Viagem.svg'))
     .addSvgIcon('Viagens', sanitizer.bypassSecurityTrustResourceUrl('../../../assets/icon/categories/Viagem.svg')) 
     .addSvgIcon('Intercâmbio', sanitizer.bypassSecurityTrustResourceUrl('../../../assets/icon/categories/Intercambio.svg'))
@@ -45,10 +45,13 @@ export class AppComponent {
     .addSvgIcon('Youtube', sanitizer.bypassSecurityTrustResourceUrl('../../../assets/icon/categories/Youtube.svg')) 
     .addSvgIcon('twitter_black', sanitizer.bypassSecurityTrustResourceUrl('../../../assets/images/redes-sociais/twitter_black.svg'))    
     .addSvgIcon('instagram_black', sanitizer.bypassSecurityTrustResourceUrl('../../../assets/images/redes-sociais/instagram_black.svg'))  
+    .addSvgIcon('youtube_black', sanitizer.bypassSecurityTrustResourceUrl('../../../assets/images/redes-sociais/youtube_black.svg'))
     .addSvgIcon('facebook_blue', sanitizer.bypassSecurityTrustResourceUrl('../../../assets/images/redes-sociais/facebook_blue.svg')) 
     .addSvgIcon('twitter_blue', sanitizer.bypassSecurityTrustResourceUrl('../../../assets/images/redes-sociais/twitter_blue.svg')) 
     .addSvgIcon('facebook_black', sanitizer.bypassSecurityTrustResourceUrl('../../../assets/images/redes-sociais/facebook_black.svg')) 
     .addSvgIcon('whatsapp', sanitizer.bypassSecurityTrustResourceUrl('../../../assets/images/redes-sociais/whatsapp.svg'))
+    .addSvgIcon('category-add-button', sanitizer.bypassSecurityTrustResourceUrl('../../../assets/images/category-add-button.svg'))
+    .addSvgIcon('destinos', sanitizer.bypassSecurityTrustResourceUrl('../../../assets/images/destinos.svg'))
 
     .addSvgIcon('Viagem-search', sanitizer.bypassSecurityTrustResourceUrl('../../../assets/icon/search/Viagem.svg'))
     .addSvgIcon('Viagens-search', sanitizer.bypassSecurityTrustResourceUrl('../../../assets/icon/search/Viagem.svg'))
@@ -64,6 +67,8 @@ export class AppComponent {
     .addSvgIcon('Nutricao-search', sanitizer.bypassSecurityTrustResourceUrl('../../../assets/icon/search/Nutricao.svg'))  
     .addSvgIcon('Youtube-search', sanitizer.bypassSecurityTrustResourceUrl('../../../assets/icon/search/Youtube.svg'))
     .addSvgIcon('Hashtag', sanitizer.bypassSecurityTrustResourceUrl('../../../assets/icon/search/Hashtag.svg'))  
+
+    
 
     
 
@@ -84,6 +89,10 @@ export class AppComponent {
 
     this.mobile = $(window).width() > 700 ? false : true; 
 
+  }
+
+  ngAfterViewChecked(){
+    this.changeDetector.detectChanges();
   }
 
   clearLocalStorage() {
