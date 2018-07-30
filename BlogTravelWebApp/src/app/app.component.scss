@@ -1,6 +1,4 @@
 $mobile:  "(max-width: 700px)";
-$tablet: "(min-width: 768px) and (max-width: 1200px)";
-$desktop: "(min-width: 1201px)";
 
 @media #{$mobile} {
     /deep/ .mat-input-underline {
