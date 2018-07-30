@@ -1,5 +1,8 @@
+<div *ngIf="posts?.length == 0" fxLayoutAlign="center center" fxFlex>
+    <mat-spinner class="spinner" [diameter]="40" [color]="'warn'"></mat-spinner>
+</div>
+
 <div id="post_id">
-  <!-- <fb-share href="https://github.com/zyra/ng2-facebook-sdk/"></fb-share> -->
   <div *ngFor="let post of posts | paginate: {
     itemsPerPage: 4,
     currentPage: page,
@@ -95,7 +98,7 @@
       </div>
     </div>
   </div>
-  <app-disqus *ngIf="idPost" [idPost]="idPost"></app-disqus>
+  <app-disqus *ngIf="idPost && posts?.length > 0" [idPost]="idPost"></app-disqus>
   <div fxLayout="row" *ngIf="posts.length > 0 && idPost == null">
     <div fxFlex fxLayoutAlign="center center">
       <pagination-controls (pageChange)="page = updateTablePosts($event)" autoHide="true" maxSize="9" previousLabel="" nextLabel=""></pagination-controls>

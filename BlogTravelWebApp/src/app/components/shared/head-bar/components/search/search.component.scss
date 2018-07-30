@@ -1,0 +1,140 @@
+$tablet: "(min-width: 768px) and (max-width: 1200px)";
+$desktop: "(min-width: 1201px)";
+
+
+@media #{$tablet} {
+    .btn-clear {
+            top: 0.8em;
+    }
+    .icon-search {
+        font-size: 26px;
+        padding-left: 4px;
+    }
+}
+
+@media #{$desktop} {
+    .btn-clear {
+        top: 1em;
+    }
+    .icon-search {
+        font-size: 28px;
+    }
+}
+
+.icon-search {
+    color: #ffff;
+}
+
+.btn-clear {
+    position: absolute;
+    padding-right: 20px;
+    z-index: 1;
+    padding: 0;
+    min-width: 0;
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    line-height: 24px;
+    border-radius: 50%;
+}
+
+
+/deep/ .mat-input-underline {
+    background-color: #fffff8;    /* replace this color with your accent color hex code */
+}
+/deep/ .mat-form-field-placeholder{
+    color: #fffff8;
+}
+
+/deep/ .mat-form-field-underline .mat-form-field-ripple{
+    background-color:#ffff;
+}
+
+.placeholder {
+    color: #ffff;
+}
+
+.input-search {
+    color: #ffff;
+    font-size: 1.1em
+}
+
+.padding-left-40 {
+    padding-left: 40px;
+}
+
+.icon-clear{
+    font-size: 16px;
+    color: #343434;
+}
+
+
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+}
+
+.example-full-width {
+    width: 100%;
+}
+
+.example-option-img {
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+[dir='rtl'] .example-option-img {
+    margin-right: 0;
+    margin-left: 8px;
+}
+
+
+/deep/ .mat-optgroup-label {
+    line-height: 35px;
+    height: 35px;
+}
+/deep/ .mat-option {
+    line-height: 35px;
+    height: 35px;
+}
+
+
+
+/deep/ .mat-autocomplete-panel {
+    top: 2px;
+}
+
+.icon-hashtag {
+    height: 16px;
+    width: 16px;
+    line-height: 16px;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+.icon-posts {
+    height: 22px;
+    width: 22px;
+    line-height: 22px;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+
+.mat-list-padding {
+    padding-top: 54px;
+}
+
+.list-item {
+    font-size: 14px;
+}
+
+/deep/ .mat-list-item-content {
+    height: 60px !important;
+}
+
+
+
+
+

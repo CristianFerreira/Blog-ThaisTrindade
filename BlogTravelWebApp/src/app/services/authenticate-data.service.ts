@@ -1,13 +1,12 @@
 import { Author } from '../models/api/Author';
 import { Injectable } from '@angular/core';
-import { Http, Response, Headers, RequestOptions } from '@angular/http';
-import { Router, CanActivate } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
+import { Http} from '@angular/http';
+import { Router } from '@angular/router';
 import { HttpServiceBaseService } from "../services/http-service-base.service";
 import { Login } from "../models/app/Login";
 import { AppConfig } from "../../environments/app-config";
 import { UserLoggedService } from '../services/user-logged.service';
-import { MatDialog, MatDialogRef, MatSnackBar, MatSnackBarConfig } from '@angular/material';
+import { MatDialog, MatSnackBar, } from '@angular/material';
 
 @Injectable()
 export class AuthenticateDataService extends HttpServiceBaseService {
@@ -39,11 +38,4 @@ export class AuthenticateDataService extends HttpServiceBaseService {
                 });
   }
 
-  public logout(): void{
-      localStorage.removeItem(AppConfig.auth_token);
-      localStorage.removeItem(AppConfig.auth_context);
-      this.userLoggedService.userLogged(false);
-      this.snackBar.open("Volte sempre", "Logout", {duration: 6000});
-      this.router.navigateByUrl(AppConfig.defaultRoute);
-  }
 }

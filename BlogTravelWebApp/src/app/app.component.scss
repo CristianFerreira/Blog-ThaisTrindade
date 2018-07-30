@@ -1,0 +1,44 @@
+$mobile:  "(max-width: 700px)";
+$tablet: "(min-width: 768px) and (max-width: 1200px)";
+$desktop: "(min-width: 1201px)";
+
+@media #{$mobile} {
+    /deep/ .mat-input-underline {
+        background-color: #424242 !important;    /* replace this color with your accent color hex code */
+    }
+    /deep/ .mat-form-field-placeholder{
+        color: #424242 !important;
+    }
+    
+    /deep/ .mat-form-field-underline .mat-form-field-ripple{
+        background-color:#424242 !important;
+    }
+
+    /deep/ .mat-toolbar {
+        min-height: 48px !important;
+        height: 48px !important;
+    }
+
+    /deep/ .mat-toolbar-row {
+        height: 48px !important;
+    }
+
+    .placeholder {
+        color: #424242;
+        font-size: 0.8em;
+    }
+
+    .search {
+        min-width: 150px;
+        max-width: 500px;
+        width: 100%;
+      }
+      
+      .full-width {
+        width: 100%;
+      }
+
+      .icon-search {
+        color: #ffff;
+    }
+}

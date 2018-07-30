@@ -7,17 +7,26 @@ import { AppConfig } from "../environments/app-config";
 import { Router } from '@angular/router';
 import { MatDialog, MatDialogRef, MatSnackBar, MatSnackBarConfig } from '@angular/material';
 import { UserLoggedService } from './services/user-logged.service';
+import { trigger, transition, useAnimation } from '@angular/animations';
+import { rotateIn } from 'ng-animate';
 
 
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  viewProviders: [MatIconRegistry]
+  styleUrls: ['./app.component.scss'],
+  viewProviders: [MatIconRegistry],
+  // providers: [UserLoggedService],
+  animations: [
+    trigger('rotateIn', [transition('* => *', useAnimation(rotateIn))])
+  ],
 })
 export class AppComponent {
+  rotateIn = false;
   title = 'Blog da thais';
   mobile: boolean;
+  showSearch: boolean;
   //icones adicionados
   constructor(http: Http, iconReg: MatIconRegistry, sanitizer: DomSanitizer, private router: Router, private authorizationService: AuthorizationService,
              private snackBar: MatSnackBar, private userLoggedService: UserLoggedService) {
@@ -39,7 +48,22 @@ export class AppComponent {
     .addSvgIcon('facebook_blue', sanitizer.bypassSecurityTrustResourceUrl('../../../assets/images/redes-sociais/facebook_blue.svg')) 
     .addSvgIcon('twitter_blue', sanitizer.bypassSecurityTrustResourceUrl('../../../assets/images/redes-sociais/twitter_blue.svg')) 
     .addSvgIcon('facebook_black', sanitizer.bypassSecurityTrustResourceUrl('../../../assets/images/redes-sociais/facebook_black.svg')) 
-    .addSvgIcon('whatsapp', sanitizer.bypassSecurityTrustResourceUrl('../../../assets/images/redes-sociais/whatsapp.svg')) 
+    .addSvgIcon('whatsapp', sanitizer.bypassSecurityTrustResourceUrl('../../../assets/images/redes-sociais/whatsapp.svg'))
+
+    .addSvgIcon('Viagem-search', sanitizer.bypassSecurityTrustResourceUrl('../../../assets/icon/search/Viagem.svg'))
+    .addSvgIcon('Viagens-search', sanitizer.bypassSecurityTrustResourceUrl('../../../assets/icon/search/Viagem.svg'))
+    .addSvgIcon('Intercâmbio-search', sanitizer.bypassSecurityTrustResourceUrl('../../../assets/icon/search/Intercambio.svg'))
+    .addSvgIcon('Intercambio-search', sanitizer.bypassSecurityTrustResourceUrl('../../../assets/icon/search/Intercambio.svg'))
+    .addSvgIcon('Entretenimento-search', sanitizer.bypassSecurityTrustResourceUrl('../../../assets/icon/search/Entretenimento.svg'))
+    .addSvgIcon('Livros-search', sanitizer.bypassSecurityTrustResourceUrl('../../../assets/icon/search/Livros.svg'))    
+    .addSvgIcon('Livro-search', sanitizer.bypassSecurityTrustResourceUrl('../../../assets/icon/search/Livros.svg'))    
+    .addSvgIcon('Moda-search', sanitizer.bypassSecurityTrustResourceUrl('../../../assets/icon/search/Moda.svg'))    
+    .addSvgIcon('Música-search', sanitizer.bypassSecurityTrustResourceUrl('../../../assets/icon/search/Musica.svg'))    
+    .addSvgIcon('Musica-search', sanitizer.bypassSecurityTrustResourceUrl('../../../assets/icon/search/Musica.svg'))    
+    .addSvgIcon('Nutrição-search', sanitizer.bypassSecurityTrustResourceUrl('../../../assets/icon/search/Nutricao.svg'))    
+    .addSvgIcon('Nutricao-search', sanitizer.bypassSecurityTrustResourceUrl('../../../assets/icon/search/Nutricao.svg'))  
+    .addSvgIcon('Youtube-search', sanitizer.bypassSecurityTrustResourceUrl('../../../assets/icon/search/Youtube.svg'))
+    .addSvgIcon('Hashtag', sanitizer.bypassSecurityTrustResourceUrl('../../../assets/icon/search/Hashtag.svg'))  
 
     
 
@@ -47,12 +71,12 @@ export class AppComponent {
       this.authorizationService.verifyToken(localStorage.getItem(AppConfig.auth_token)).subscribe(result => {
         if (!result){
             this.clearLocalStorage();
-            this.userLoggedService.userLogged(false);
+            this.userLoggedService.logged$.next(false);
         }
 
     }, error => {
         this.clearLocalStorage();
-        this.userLoggedService.userLogged(false);
+        this.userLoggedService.logged$.next(false);
         this.router.navigateByUrl(AppConfig.defaultRoute);
         this.snackBar.open("Seu token expirou!", "", { duration: 6000 });
       });
@@ -79,7 +103,19 @@ export class AppComponent {
 
   activeMenu(){
     $('#menu-mobile').css('display', 'block');
+    $('#sidenav').css('position', '');
   }
+
+  animate(name: 'string') {
+    this[name] = !this[name];
+    this.showSearch = !this.showSearch;
+  }
+
+  selectedList() {
+    this.showSearch = !this.showSearch;
+  }
+
+
 
   
 }

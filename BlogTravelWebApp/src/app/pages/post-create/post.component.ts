@@ -10,8 +10,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',
-  styleUrls: ['./post.component.css'],
-  providers: [AuthenticateDataService, PostDataService]
+  styleUrls: ['./post.component.scss'],
+  // providers: [AuthenticateDataService, PostDataService]
 })
 export class PostComponent {
 
@@ -96,14 +96,7 @@ export class PostComponent {
   getAllTags() {
     this.postService.getAllTags()
       .subscribe(result => {
-        let data = <any>result.json().data.map((t) => {return t.tags});
-        data.forEach(tags => {
-            tags.forEach(tag => {
-                if(this.tags.indexOf(tag) == -1)
-                  this.tags.push(tag);
-            });
-        });
-        console.log(this.tags);
+        this.tags = <any>result.json().data;
       }, error => {
 
       });

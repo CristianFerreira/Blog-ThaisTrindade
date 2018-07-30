@@ -10,6 +10,7 @@ import { AuthorizationService } from './services/authorization.service';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent },
+    { path: 'Posts', component: HomeComponent },
     { path: 'post/:id', component: HomeComponent },
     { path: 'post/tags/:tag', component: HomeComponent },
     { path: 'post/categoria/:category', component: HomeComponent },

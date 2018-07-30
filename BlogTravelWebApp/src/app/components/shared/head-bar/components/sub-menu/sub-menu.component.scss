@@ -1,0 +1,41 @@
+
+$tablet: "(min-width: 701px) and (max-width: 1200px)";
+$desktop: "(min-width: 1201px)";
+
+
+
+
+@media #{$tablet} {
+    .sub-menu {
+        font-size: 1em;
+    }
+    .menu-icon{
+        font-size: 26px;
+    }
+ }
+ 
+ @media #{$desktop} {
+    .sub-menu {
+        font-size: 1.1em;
+    }
+    .menu-icon{
+        font-size: 28px;
+    }
+ }
+
+.sub-menu {
+    color: #fff;
+    text-transform: uppercase;
+    background: rgba(121, 42, 42, 0);
+}
+
+.icon-menu-item {
+    width: 10px;
+    font-size: 18px;
+    line-height: 21px;
+    color: #5a5858;
+}
+
+.menu-icon { 
+    color: #ffff;
+}

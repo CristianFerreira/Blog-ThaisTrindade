@@ -1,16 +1,18 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, OnChanges, SimpleChanges } from '@angular/core';
 import { AuthenticateDataService } from '../../../../../services/authenticate-data.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { UserLoggedService } from '../../../../../services/user-logged.service';
-import {MatDialog, MatDialogRef, MatInput} from '@angular/material';
+import {MatDialog, MatDialogRef, MatInput, MatSnackBar, MatSnackBarConfig} from '@angular/material';
 import {DialogPostsInactiveComponent} from './dialog-posts-inactive/dialog-posts-inactive.component'
 import { PostDataService } from '../../../../../services/post-data.service';
+import { AppConfig } from "../../../../../../environments/app-config";
+
 
 @Component({
   selector: 'app-sub-menu',
   templateUrl: './sub-menu.component.html',
-  styleUrls: ['./sub-menu.component.css'],
-  providers: [AuthenticateDataService, PostDataService]
+  styleUrls: ['./sub-menu.component.scss'],
+  // providers: [AuthenticateDataService, UserLoggedService, PostDataService]
 })
 export class SubMenuComponent implements OnInit {
   
@@ -24,7 +26,7 @@ export class SubMenuComponent implements OnInit {
 
 
   constructor(private autenticationService: AuthenticateDataService, private postDataService: PostDataService,
-    protected router: Router, private userLoggedService: UserLoggedService, dialog: MatDialog) {
+    protected router: Router, private userLoggedService: UserLoggedService, dialog: MatDialog, public snackBar: MatSnackBar) {
       this.dialog = dialog;
       this.continents = new Array<string>();
       this.categories = new Array<string>();
@@ -32,13 +34,10 @@ export class SubMenuComponent implements OnInit {
       this.loadCategories();
   }
 
-  focusInput() {
-    this.inputEl.nativeElement.focus()
-  } 
 
 
   ngOnInit() {
-    this.userLoggedService.logged.subscribe((logged) => {
+    this.userLoggedService.loggedObserver().subscribe((logged) => {
       this.logged = logged;
     })
     this.updateUserLogged();
@@ -50,7 +49,7 @@ export class SubMenuComponent implements OnInit {
 
   updateUserLogged() {
     let logged = (this.autenticationService.contextoLogado() != null);
-    this.userLoggedService.userLogged(logged);
+    this.userLoggedService.logged$.next(logged);
   }
 
   loadDestinos() {
@@ -78,7 +77,7 @@ export class SubMenuComponent implements OnInit {
   }
 
   home(): void {
-    this.router.navigateByUrl('/');
+      this.router.navigateByUrl('Posts');
   }
 
   newPost(): void {
@@ -86,12 +85,16 @@ export class SubMenuComponent implements OnInit {
   }
 
   logout(): void {
-    this.autenticationService.logout();
+    localStorage.removeItem(AppConfig.auth_token);
+    localStorage.removeItem(AppConfig.auth_context);
+    this.userLoggedService.logged$.next(false);
+    this.snackBar.open("Volte sempre", "Logout", {duration: 6000});
+    this.router.navigateByUrl(AppConfig.defaultRoute);
   }
 
-  verifySearch() :void {
-    this.search = !this.search;
-  }
-
+    
 }
+  
+
+
 

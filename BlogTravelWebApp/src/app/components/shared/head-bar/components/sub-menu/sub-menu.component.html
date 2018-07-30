@@ -4,47 +4,36 @@
     <button *ngIf="continents.length > 0" mat-button [matMenuTriggerFor]="destinos" class="sub-menu">Destinos</button>
     <mat-menu #destinos="matMenu">
       <span *ngFor="let continent of continents">
-        <button mat-menu-item class="btn-menu-item" [routerLink]="['/post/destino/', continent]">{{continent}}</button>
+        <button mat-menu-item  [routerLink]="['/post/destino/', continent]">{{continent}}</button>
       </span>
     </mat-menu>
     <button *ngIf="categories.length > 0" mat-button [matMenuTriggerFor]="category" class="sub-menu">Categorias</button>
     <mat-menu #category="matMenu">
       <span *ngFor="let category of categories">
-        <button mat-menu-item class="btn-menu-item" [routerLink]="['/post/categoria/', category]">{{category}}</button>
+        <button mat-menu-item [routerLink]="['/post/categoria/', category]">{{category}}</button>
       </span>
     </mat-menu>
     <button mat-button class="sub-menu">Contato</button>
     <button *ngIf="logged" mat-button [matMenuTriggerFor]="postagem" class="sub-menu">Postagem</button>
     <mat-menu #postagem="matMenu">
-      <button mat-menu-item class="btn-menu-item" (click)="newPost()">Nova Postagem</button>
-      <button mat-menu-item class="btn-menu-item" (click)="openDialogPostsInactive()">Postagens inativas</button>
+      <button mat-menu-item (click)="newPost()">Nova Postagem</button>
+      <button mat-menu-item (click)="openDialogPostsInactive()">Postagens inativas</button>
     </mat-menu>
   </div>
   <div fxFlex.md="35" fxFlex.lg="30" fxFlex.xl="35">
-    <div fxLayout="row" fxLayoutAlign="end center" fxFlex="100">
-      <div *ngIf="search" style="padding-right: 2%" fxFlex="100">
-          <!-- <button mat-icon-button>
-            <mat-icon class="menu-icon">close</mat-icon>
-          </button> -->
-          <!-- <input [autofocus]="search" class="input-pesquisa txt-input-pesquisa" type="text" placeholder="Pesquisar..." />      -->
-          <mat-form-field [floatLabel]="never">
-            <input matInput placeholder="Simple placeholder">
-          </mat-form-field>
-      </div>
-      <button mat-icon-button (click)="verifySearch()">
-        <mat-icon class="menu-icon">search</mat-icon>&nbsp;&nbsp;
-      </button>
+    <div fxLayout="row" fxFlex="100">
+      <app-search [mobile]="false" fxFlex fxLayoutAlign="end center"></app-search>
     </div>
   </div>
   <div fxLayout="row" fxLayoutAlign="end center" fxFlex.md="5" fxFlex.lg="10" fxFlex.xl="20">
-    <button *ngIf="logged" mat-icon-button [matMenuTriggerFor]="configAuthor" fxFlex="5" style="right: 10px;">
+    <button *ngIf="logged" mat-icon-button [matMenuTriggerFor]="configAuthor">
       <mat-icon class="menu-icon">&#xE5D4;</mat-icon>
     </button>
     <mat-menu #configAuthor="matMenu">
-      <button mat-menu-item class="btn-menu-item">
+      <button mat-menu-item>
         <mat-icon class="icon-menu-item">&#xE899;</mat-icon> Alterar minha senha
       </button>
-      <button mat-menu-item (click)="logout()" class="btn-menu-item">
+      <button mat-menu-item (click)="logout()">
         <mat-icon class="icon-menu-item">&#xE8AC;</mat-icon> Sair
       </button>
     </mat-menu>

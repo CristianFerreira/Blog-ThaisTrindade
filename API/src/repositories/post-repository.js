@@ -35,7 +35,7 @@ exports.getByTag = async(tag) => {
 }
 
 exports.getAllTags = async() => {
-     const res = await Post.find({"tags":{$ne:null}},'tags');
+    const res = await Post.distinct("tags", { "active": true, "tags":{$ne:null} });   
      return res;
 }
 
@@ -43,6 +43,17 @@ exports.getByCategory = async(category) => {
      const res = await Post.find({active: true, category: category}).populate('author','name email').sort({date: -1});
      return res;
 }
+
+exports.getBySearch = async(search) => {
+    const posts = await Post.find({active: true, title: search}).populate('author','name email').sort({date: -1});
+    if(posts == ""){
+        return await Post.find({active: true, tags: search}).populate('author','name email').sort({date: -1});
+    }
+    return posts;
+  
+    
+}
+
 
 exports.getAllCategory = async() => {
     const res = await Post.find({active: true, "category":{$ne:null}}, 'category');

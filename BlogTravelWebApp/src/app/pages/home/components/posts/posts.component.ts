@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
 import { UserLoggedService } from '../../../../services/user-logged.service';
 import { AuthenticateDataService } from '../../../../services/authenticate-data.service';
+import { SearchService } from '../../../../services/search.service';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { PageEvent } from '@angular/material';
 // import {MdPaginatorIntl} from '@angular/material/typings/paginator/paginator-intl';
@@ -14,7 +15,7 @@ import { PageEvent } from '@angular/material';
   selector: 'app-posts',
   templateUrl: './posts.component.html',
   styleUrls: ['./posts.component.scss'],
-  providers: [PostDataService, AuthenticateDataService]
+  // providers: [AuthenticateDataService, UserLoggedService, PostDataService]
 })
 export class PostsComponent implements OnInit {
   public posts: Array<Post>;
@@ -34,8 +35,8 @@ export class PostsComponent implements OnInit {
 
 
 
-  constructor(private postDataService: PostDataService, private autenticationService: AuthenticateDataService, private router: Router, public snackBar: MatSnackBar,
-    private route: ActivatedRoute, private userLoggedService: UserLoggedService, public sanitizer: DomSanitizer) {
+  constructor(private postDataService: PostDataService, private autenticationService: AuthenticateDataService, private router: Router, private activatedRoute: ActivatedRoute, public snackBar: MatSnackBar,
+    private route: ActivatedRoute, private userLoggedService: UserLoggedService, public sanitizer: DomSanitizer, private searchService: SearchService) {
     this.posts = new Array<Post>();
     this.postsRender = new Array<Post>();
     this.pageSize = 2;
@@ -43,38 +44,48 @@ export class PostsComponent implements OnInit {
     this.pageSizeOptions = [5, 10, 15];
 
 
-    // this.mdPaginatorIntl.itemsPerPageLabel = 'Artículos por página:';
-    // this.mdPaginatorIntl.nextPageLabel = 'Siguiente página';
-    // this.mdPaginatorIntl.previousPageLabel = 'Pagina anterior';
-
   }
 
   ngOnInit() {
 
-    this.userLoggedService.logged.subscribe((logged) => {
+    this.userLoggedService.loggedObserver().subscribe((logged) => {
       this.logged = logged;
     })
+
+    this.searchService.getSearch().subscribe((posts) => {
+      (posts == "") ? (this.getAll(), this.router.navigateByUrl('/')) : (this.posts = posts);
+    })
+
+
     this.updateUserLogged();
 
-    this.route.params.subscribe(params => {
-      this.idPost = params['id'];
-      let tag = params['tag'];
-      let category = params['category'];
-      let destiny = params['destiny'];
-      if (this.idPost != null)
-        this.getById(this.idPost.toString());
-      else if (tag != null)
-        this.getByTag(tag);
-      else if (category != null)
-        this.getByCategory(category);
-      else if (destiny != null)
-        this.getByDestiny(destiny);
-      else
-        this.getAll()
-    });
+    if (!this.searchUrl()) {
+      this.route.params.subscribe(params => {
+        this.idPost = params['id'];
+        let tag = params['tag'];
+        let category = params['category'];
+        let destiny = params['destiny'];
+        if (this.idPost != null)
+          this.getById(this.idPost.toString());
+        else if (tag != null)
+          this.getByTag(tag);
+        else if (category != null)
+          this.getByCategory(category);
+        else if (destiny != null)
+          this.getByDestiny(destiny);
+        else
+          this.getAll()
+      });
+    }
 
     this.mobile = $(window).width() > 700 ? false : true;
   }
+
+
+  searchUrl(): Boolean {
+    return this.activatedRoute.snapshot.queryParams["pesquisa"] != undefined;
+  }
+
 
   updateTablePosts(pageEvent: any) {
     this.backToTop(false);
@@ -100,7 +111,7 @@ export class PostsComponent implements OnInit {
 
   updateUserLogged() {
     let logged = (this.autenticationService.contextoLogado() != null);
-    this.userLoggedService.userLogged(logged);
+    this.userLoggedService.logged$.next(logged);
   }
 
   postURL(id) {

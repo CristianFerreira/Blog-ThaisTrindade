@@ -74,6 +74,16 @@ exports.getByCategory = async(req, res) => {
     })
 };
 
+exports.getBySearch = async(req, res) => {
+    console.log("CHEGOUUUUU ====>    "+req.params.search)
+    repository.getBySearch(req.params.search)
+    .then(data => {
+        res.status(200).send({data});
+    }).catch(e => {
+        res.status(400).send({message: 'Falha ao buscar pesquisa', data: e});
+    })
+};
+
 exports.getAllCategory  = async(req, res) => {
     repository.getAllCategory()
     .then(data => {

@@ -1,9 +1,31 @@
-<div fxLayout="row" [style.md]="{display: 'none'}" [style.md]="{display: 'none'}" [style.lg]="{display: 'none'}" [style.xl]="{display: 'none'}">
-    <div fxLayout="row" class="nav-bar-mobile">
-        <mat-toolbar id="menu-mobile" style="background: #1bbc9b;position: fixed; width: 100%  !important;">
-            <button mat-icon-button (click)="sidenav.toggle(); blockMenu()">
-            <mat-icon style="color: #fff;">menu</mat-icon>
-        </button>
+<div fxLayout="row" [style.md]="{display: 'none'}" [style.md]="{display: 'none'}" [style.lg]="{display: 'none'}" [style.xl]="{display: 'none'}"
+    fxFlex>
+    <div fxLayout="row" class="nav-bar-mobile" fxFlex>
+        <mat-toolbar *ngIf="!showSearch" id="menu-mobile" style="background: #1bbc9b;position: fixed; width: 100%  !important;" fxFlex>
+            <div fxFlex="30" fxLayoutAlign="initial center">
+                <button mat-icon-button (click)="sidenav.toggle(); blockMenu()">
+                    <mat-icon style="color: #fff;">menu</mat-icon>
+                </button>
+            </div>
+            <div fxFlex fxLayoutAlign="end center">
+                <button mat-icon-button (click)="showSearch = !showSearch">
+                    <mat-icon class="icon-search">search</mat-icon>&nbsp;&nbsp;
+                </button>
+            </div>
+        </mat-toolbar>
+        <mat-toolbar *ngIf="showSearch" style="background: #eeee;position: fixed;" fxFlex>
+            <button mat-icon-button (click)="showSearch = !showSearch">
+                <mat-icon [@rotateIn]="rotateIn" style="color: #424242;">arrow_back</mat-icon>
+            </button>
+            <div class="search">
+                <mat-form-field floatPlaceholder="never" class="full-width">
+                    <input matInput type="text" [(ngModel)]="txt_search" autofocus style="font-size: 0.8em;" />
+                    <mat-placeholder class="placeholder">Pesquise por titulo ou tags...</mat-placeholder>
+                    <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                        <mat-icon>close</mat-icon>
+                    </button>
+                </mat-form-field>
+            </div>
         </mat-toolbar>
     </div>
     <mat-sidenav-container id="sidenav" (backdropClick)="check()" style="flex-shrink: 0; background-color: #ffffff;" fxFlex>
@@ -16,8 +38,9 @@
             </mat-nav-list>
             <mat-nav-list>
                 <button mat-list-item mat-button [matMenuTriggerFor]="categoria" [routerLink]="['/']" style="font-size: 16px;">
-                Categorias &nbsp;&nbsp; <mat-icon>&#xE313;</mat-icon>
-            </button>
+                    Categorias &nbsp;&nbsp;
+                    <mat-icon>&#xE313;</mat-icon>
+                </button>
                 <mat-menu #categoria="matMenu">
                     <button mat-menu-item class="btn-menu-item" (click)="sidenav.toggle(); activeMenu()">Categoria 1</button>
                     <button mat-menu-item class="btn-menu-item" (click)="sidenav.toggle(); activeMenu()">Categoria 2</button>
@@ -39,9 +62,14 @@
                 </mat-nav-list>
             </mat-list>
         </mat-sidenav>
-        <div style="margin-top: 50px;flex-shrink: 0">
-            <router-outlet></router-outlet>
-        </div>
+        <mat-sidenav-content fxFlex="100">
+            <div *ngIf="!showSearch" style="margin-top: 50px;flex-shrink: 0" fxFlex>
+                <router-outlet></router-outlet>
+            </div>
+            <div *ngIf="showSearch" fxFlex>
+                <app-search (selectedList)="selectedList($event)" [mobile]="true" [txtSearch]="txt_search"></app-search>
+            </div>
+        </mat-sidenav-content>
     </mat-sidenav-container>
 </div>
 <div *ngIf="!mobile">

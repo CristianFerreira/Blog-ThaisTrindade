@@ -31,7 +31,8 @@ import {
         MatTooltipModule,
         MatCheckboxModule,
         MatPaginatorModule,
-        MatListModule
+        MatListModule,
+        MatAutocompleteModule
 } from '@angular/material';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import 'hammerjs';
@@ -48,6 +49,8 @@ import { AppComponent } from './app.component';
 // Shared
 import { HeadBarComponent } from './components/shared/head-bar/head-bar.component';
 import { SubMenuComponent } from './components/shared/head-bar/components/sub-menu/sub-menu.component';
+import { SearchComponent } from './components/shared/head-bar/components/search/search.component';
+import { ListSearchComponent } from './components/shared/head-bar/components/list-search/list-search.component';
 import { DialogPostsInactiveComponent } from './components/shared/head-bar/components/sub-menu/dialog-posts-inactive/dialog-posts-inactive.component';
 import { HeaderSidenavComponent } from './components/shared/sidenav/header-sidenav/header-sidenav.component';
 import { BodySidenavComponent } from './components/shared/sidenav/body-sidenav/body-sidenav.component';
@@ -87,8 +90,16 @@ import { SanitizeHtmlPipe } from './pipe/sanitize-html-pipe';
 //userLoggedService
 import {UserLoggedService} from './services/user-logged.service';
 
+import {SearchService } from './services/search.service';
+
+import {AuthenticateDataService} from './services/authenticate-data.service'
+
 import { AppConfig } from "../environments/app-config";
 import { environment } from "../environments/environment";
+
+
+
+
 
 
 
@@ -122,7 +133,7 @@ import { environment } from "../environments/environment";
     FooterComponent, 
     SnapchatComponent,
     HeaderSidenavComponent, 
-    BodySidenavComponent, ButtonSharedComponent
+    BodySidenavComponent, ButtonSharedComponent, SearchComponent, ListSearchComponent
   ],
   imports: [
     BrowserModule,
@@ -152,6 +163,7 @@ import { environment } from "../environments/environment";
     MatPaginatorModule,
     MatListModule,
     NgxPaginationModule,
+    MatAutocompleteModule,
     // MdPaginatorIntl,
     FlexLayoutModule,
     FroalaEditorModule.forRoot(), 
@@ -160,7 +172,7 @@ import { environment } from "../environments/environment";
   ],
   providers: [{ provide: APP_BASE_HREF, useValue: environment.APP_BASE_HREF }, 
               // {provide: MdPaginatorIntl, useValue: getSpanishPaginatorIntl()},
-                AuthorizationService, UserLoggedService, PostDataService],
+              AuthenticateDataService,AuthorizationService, UserLoggedService, PostDataService, SearchService],
 
   //configuração modal
   entryComponents: [LoadInfoComponent, DialogPostsInactiveComponent],
