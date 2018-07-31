@@ -93,6 +93,13 @@ export class PostsComponent implements OnInit {
     return this.activatedRoute.snapshot.queryParams["pesquisa"] != undefined;
   }
 
+  formatDatePost(date :Date) :string{
+    var mydate = new Date(date); 
+    var str = mydate.getDay();
+    var x = mydate.getFullYear();
+    return ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
+    "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"][mydate.getMonth()] ;
+  }
 
   updateTablePosts(pageEvent: any) {
     this.backToTop(false);

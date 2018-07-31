@@ -85,15 +85,19 @@
         <div fxLayout="row" fxLayoutAlign="start center">
           <div fxFlex class="line-col3"></div>
         </div>
-        <div fxLayout="row" style="margin-top: -10px;">
-            <div fxFlex fxLayoutAlign="center center">
-                <span class="date-post">Postado em {{post.date | date: 'dd'}} de {{post.date | date:'MM'}} de {{post.date | date: 'yyyy'}}</span>
-            </div>
-            <div fxFlex="40">
-              <button-shared [idPost]="post._id"></button-shared>
-            </div>
+        <div fxLayout="row" style="margin-top: -10px;" class="post-footer">
+          <div fxFlex fxLayoutAlign="center center">
+            <span class="date-post">Postado em {{post.date | date: 'dd'}}
+              <span> de {{formatDatePost(post.date)}}</span>
+              <span> de {{post.date | date: 'yyyy'}}</span>
+              <span> por {{post.author.name}}</span>
+            </span>     
+          </div>
+          <div fxFlex fxLayoutAlign="end center">
+            <button-shared [idPost]="post._id"></button-shared>
+          </div>
         </div>
-        <div fxLayout="row" style="padding: 15px 20px 15px;">
+        <div fxLayout="row" class="post-footer">
           <div fxLayoutAlign="start center" fxFlex>
             <div fxLayout="column">
               <span class="txt-mais-posts">Veja mais posts sobre</span>
