@@ -9,11 +9,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { APP_BASE_HREF } from '@angular/common';
 import { DisqusModule } from 'ngx-disqus';
-// import { FacebookModule } from 'ngx-facebook';
-// import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
+import { FacebookModule } from 'ngx-facebook'
 import {ShareButtonsModule} from 'ngx-sharebuttons';
 import { AutofocusModule } from 'angular-autofocus-fix';
-
+import { NguCarouselModule } from '@ngu/carousel';
 
  // MaterialModule
 import { 
@@ -66,6 +65,7 @@ import { InfoCristianComponent } from './pages/home/components/info-cristian/inf
 import { InstagramComponent } from './pages/home/components/instagram/instagram.component';
 import { FacebookComponent } from './pages/home/components/facebook/facebook.component';
 import { SpotifyComponent } from './pages/home/components/spotify/spotify.component';
+import { YoutubeComponent } from './pages/home/components/youtube/youtube.component';
 import { SnapchatComponent } from './pages/home/components/snapchat/snapchat.component';
 import { FooterComponent } from './pages/home/components/footer/footer.component';
 import { BackToTopComponent } from './pages/home/components/back-to-top/back-to-top.component';
@@ -133,7 +133,7 @@ import { environment } from "../environments/environment";
     FooterComponent, 
     SnapchatComponent,
     HeaderSidenavComponent, 
-    BodySidenavComponent, ButtonSharedComponent, SearchComponent, ListSearchComponent
+    BodySidenavComponent, ButtonSharedComponent, SearchComponent, ListSearchComponent, YoutubeComponent
   ],
   imports: [
     BrowserModule,
@@ -143,10 +143,11 @@ import { environment } from "../environments/environment";
     ReactiveFormsModule,
     DisqusModule.forRoot('thaistrindadeblog'),
     ShareButtonsModule.forRoot(),
-    // FacebookModule.forRoot(),
+    NguCarouselModule,
+    FacebookModule.forRoot(),
+    FacebookModule,
     AutofocusModule,
     HttpModule,
-    // MaterialModule,
     MatProgressSpinnerModule,
     MatCardModule,
     MatToolbarModule,

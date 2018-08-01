@@ -1,16 +1,23 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:500,700');
 
-.instagram {
+.youtube {
     font-family: 'Montserrat', sans-serif;
     font-size: 1.6em;
     text-align: center;
     text-transform: uppercase;
     color: #fff;
     background-color: #1bbc9b;
-    margin: 1px;
+    margin: 0px;
     border-radius: 2px;
 }
 
-.plugin {
+  .img-carousel {
+    max-height: 100%; 
+    max-width: 100%; width: auto; 
+    height: auto; 
+    border-radius: 4px;
+  }
+
+  .carousel {
     padding: 2px;
   }

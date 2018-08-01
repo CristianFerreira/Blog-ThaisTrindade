@@ -1,42 +1,5 @@
 /* Animation */
 
-@keyframes fadeInUp {
-    from {
-        transform: translate3d(0, 40px, 0)
-    }
-    to {
-        transform: translate3d(0, 0, 0);
-        opacity: 1
-    }
-}
-
-@-webkit-keyframes fadeInUp {
-    from {
-        transform: translate3d(0, 40px, 0)
-    }
-    to {
-        transform: translate3d(0, 0, 0);
-        opacity: 1
-    }
-}
-
-.animated {
-    animation-duration: 1s;
-    animation-fill-mode: both;
-    -webkit-animation-duration: 1s;
-    -webkit-animation-fill-mode: both
-}
-
-.animatedFadeInUp {
-    opacity: 0
-}
-
-.fadeInUp {
-    opacity: 0;
-    animation-name: fadeInUp;
-    -webkit-animation-name: fadeInUp;
-}
-
 
 @media only screen and (max-width: 400px) {
     a.title-post {
@@ -58,6 +21,15 @@
         position: relative;
         max-height: 400px;
     }
+    .post-footer {
+        padding: 0px 10px 20px;
+    }
+    .date-post {
+        font-size: 0.8em;
+        color: #5a5858;
+        margin-top: 15px;
+    }
+    
 }
 
 @media only screen and (min-width: 401px) and(max-width: 700px) {
@@ -80,6 +52,17 @@
         position: relative;
         max-height: 510px;
     }
+
+    .post-footer {
+        padding: 0px 10px 20px;
+    }
+
+    .date-post {
+        font-size: 0.8em;
+        color: #5a5858;
+        margin-top: 15px;
+    }
+    
 }
 
 @media only screen and (min-width: 701px) and(max-width: 1400px){
@@ -107,6 +90,18 @@
         position: relative;
         max-height: 900px;
     }
+
+    .post-footer {
+        padding: 0px 20px 10px;
+    }
+
+    .date-post {
+        font-size: 0.8em;
+        color: #5a5858;
+        padding: 2px;
+        margin-top: 10px;
+        font-size: 1.1em;
+    }
 }
 
 @media only screen and (min-width: 1400px){
@@ -133,6 +128,18 @@
         overflow: hidden;
         position: relative;
         max-height: 1300px;
+    }
+
+    .post-footer {
+        padding: 0px 25px 15px;
+    }
+
+    .date-post {
+        font-size: 0.8em;
+        color: #5a5858;
+        padding: 2px;
+        margin-top: 10px;
+        font-size: 1.1em;
     }
 }
 
@@ -165,7 +172,6 @@ a:hover.txt-category-post {
 .txt-mais-posts {
     font-size: 14px;
     padding: 2px;
-    line-height: 25px;
     color: #5a5858;
     font-weight: 600;
     text-transform: uppercase;
@@ -238,8 +244,8 @@ p.p-post {
     color: #5a5858;
 }
 
-.post-footer {
-    padding: 0px 10px 5px;
-}
+
+
+
 
 
