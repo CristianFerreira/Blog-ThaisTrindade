@@ -8,7 +8,7 @@
       </span>
     </mat-menu>
     <button *ngIf="categories.length > 0" mat-button [matMenuTriggerFor]="category" class="sub-menu">Categorias</button>
-    <mat-menu #category="matMenu">
+    <mat-menu #category="matMenu" class="my-menu">
       <span *ngFor="let category of categories">
         <button mat-menu-item [routerLink]="['/post/categoria/', category]">{{category}}</button>
       </span>

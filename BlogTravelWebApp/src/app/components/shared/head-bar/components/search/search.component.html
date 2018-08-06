@@ -2,8 +2,8 @@
   <mat-icon class="icon-search">search</mat-icon>&nbsp;&nbsp;
 </button>
 <div *ngIf="showInput && !mobile" fxFlex="100">
-  <mat-form-field class="example-full-width" floatPlaceholder="never">
-    <input class="input-search" matInput [matAutocomplete]="auto" [(ngModel)]="txt_search" (ngModelChange)="filter(txt_search)"
+  <mat-form-field class="example-full-width" floatPlaceholder="never" #inputForm>
+    <input class="input-search input-search-mobile" matInput [matAutocomplete]="auto" [(ngModel)]="txt_search" (ngModelChange)="filter(txt_search)"
       autofocus>
     <button mat-button *ngIf="txt_search" matSuffix mat-icon-button aria-label="Clear" (click)="txt_search=''">
       <mat-icon>close</mat-icon>

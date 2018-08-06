@@ -1,14 +1,12 @@
-$mobile:  "(max-width: 700px)";
 
-@media #{$mobile} {
-    /deep/ .mat-input-underline {
+:host/deep/ .mat-input-underline {
         background-color: #424242 !important;    /* replace this color with your accent color hex code */
     }
-    /deep/ .mat-form-field-placeholder{
+    /deep/ .full-width .mat-form-field-placeholder{
         color: #424242 !important;
     }
     
-    /deep/ .mat-form-field-underline .mat-form-field-ripple{
+    /deep/ .full-width .mat-form-field-underline .mat-form-field-ripple{
         background-color:#424242 !important;
     }
 
@@ -45,4 +43,4 @@ $mobile:  "(max-width: 700px)";
         height: 28px;
         width: 23px;
     }
-}
+

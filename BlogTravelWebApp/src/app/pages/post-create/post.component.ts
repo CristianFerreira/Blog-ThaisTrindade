@@ -5,6 +5,7 @@ import { PostDataService } from '../../services/post-data.service';
 import { Author } from '../../models/api/author';
 import { Post } from '../../models/api/post';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CustomValidator } from '../../validators/custom.validator';
 
 
 @Component({
@@ -28,7 +29,7 @@ export class PostComponent {
   public animationMode: string;
 
   constructor(private fb: FormBuilder, private authenticateService: AuthenticateDataService, private postService: PostDataService,
-    private route: ActivatedRoute, private router: Router) {
+    private route: ActivatedRoute, private router: Router,) {
 
     //btn settings
     this.fixed = false;
@@ -68,6 +69,7 @@ export class PostComponent {
       ])],
       tags: [''],
       active: [''],
+      updateDate: [''],
       btnConfiguracao: ['']
     });
     this.post = new Post();
@@ -88,6 +90,7 @@ export class PostComponent {
     this.postService.getById(id)
       .subscribe(result => {
         this.post = <Post>result.json().data;
+        this.post.updateDate = false;
       }, error => {
 
       });
@@ -175,10 +178,4 @@ export class PostComponent {
   }
 
 
-}
-
-class TagStyle {
-  count: number;
-  positionTag: number;
-  positionStyle: number;
 }

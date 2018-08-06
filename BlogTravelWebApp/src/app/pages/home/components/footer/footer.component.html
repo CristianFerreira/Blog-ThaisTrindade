@@ -1,17 +1,49 @@
-<footer class="page-footer" style="background: -webkit-gradient(linear, left top, right top, from(#b6b1a5), to(rgba(0, 0, 0, 0.33))) no-repeat !important;; 
+<footer class="page-footer" style="background: -webkit-gradient(linear, left top, right top, from(rgba(59, 66, 64, 0.51)), to(rgba(0, 0, 0, 0.33))) no-repeat !important;; 
                                    background: -moz-linear-gradient(top, #b6b1a5, rgba(0, 0, 0, 0.33));">
-  <div fxLayout="row" fxLayoutAlign="center center">
-    <div fxFlex="80" style="height: 100px;">
-      <div fxFlex="50" fxLayoutAlign="center center">
+  <div fxLayout="row" fxLayoutAlign="center center" class="footer">
+    <div fxLayout="row" fxFlex="90" fxLayoutAlign="center center" fxHide fxShow.gt-sm>
+      <div fxLayoutAlign="start center" fxFlex="30">
         <div fxLayout="column">
-          <!-- <h5 class="white-text">Footer Content</h5> -->
-          <!-- <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p> -->
+          <span class="txt-title">Tags mais usadas</span>
+          <div fxLayout="row wrap" fxLayoutAlign="start start">
+            <span *ngFor="let tag of tagsMostUsed" fxHide fxShow.gt-sm>
+              <a class="tag-most-used" [routerLink]="['/post/tags', tag._id]">#{{tag._id}}</a>
+            </span>
+            <span *ngFor="let tag of tagsMostUsed?.slice(0,5)" fxHide fxShow.lt-md>
+              <a class="tag-most-used" [routerLink]="['/post/tags', tag._id]">#{{tag._id}}</a>
+            </span>
+          </div>
         </div>
       </div>
-      <div fxFlex="50" fxLayoutAlign="center center">
+      <div fxFlex="20" fxLayoutAlign="start start">
         <div fxLayout="column">
-           
+            <span class="txt-title">Categorias</span>
+          <div fxLayout="row wrap" fxLayoutAlign="start center">
+            <span *ngFor="let category of categories" fxHide fxShow.gt-sm>
+              <a class="link-footer" [routerLink]="['/post/categoria', category]">{{category}}</a>
+            </span>
+          </div>
         </div>
+      </div>
+      <div fxFlex="20" fxLayoutAlign="start center" fxHide fxShow.gt-sm>
+          <div fxLayout="column" *ngIf="continents.length > 0">
+            <span class="txt-title">Destinos</span>
+            <div fxLayout="row wrap" fxLayoutAlign="start center">
+              <span *ngFor="let continent of continents" fxHide fxShow.gt-sm>
+                <a class="link-footer" [routerLink]="['/post/destino', continent]">{{continent}}</a>
+              </span>
+            </div>
+          </div>
+      </div>
+      <div fxFlex="30" fxLayoutAlign="end center" fxHide fxShow.gt-sm>
+          <div fxLayout="column" *ngIf="continents.length > 0">
+            <span class="txt-title">Destinos</span>
+            <div fxLayout="row wrap" fxLayoutAlign="start center">
+              <span *ngFor="let continent of continents" fxHide fxShow.gt-sm>
+                <a class="link-footer" [routerLink]="['/post/destino', continent]">{{continent}}</a>
+              </span>
+            </div>
+          </div>
       </div>
     </div>
   </div>

@@ -35,6 +35,10 @@ export class PostDataService extends HttpServiceBaseService{
         return this.get(AppConfig.serviceUrls().post.getAllTags);
     }
 
+    getTagsMostUsed(): Observable<Response> {
+        return this.get(AppConfig.serviceUrls().post.getTagsMostUsed);
+    }
+
     getByCategory(category: string): Observable<Response> {
         return this.get(AppConfig.serviceUrls().post.getByCategory + "/" + category);
     }
@@ -43,9 +47,13 @@ export class PostDataService extends HttpServiceBaseService{
         return this.get(AppConfig.serviceUrls().post.getAllCategories);
     }
 
-    getAll(): Observable<Response> {
-         return this.get(AppConfig.serviceUrls().post.getAll);
+    getAll(page? :number): Observable<Response> {
+         return this.get(AppConfig.serviceUrls().post.getAll + "/" + page);
     }
+
+    getAllPostsToSearch(): Observable<Response> {
+        return this.get(AppConfig.serviceUrls().post.getAllPostsToSearch);
+   }
 
     getAllContinents(): Observable<Response> {
         return this.get(AppConfig.serviceUrls().post.getAllContinents);

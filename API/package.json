@@ -16,7 +16,7 @@
     "http": "0.0.0",
     "jsonwebtoken": "^7.4.0",
     "md5": "^2.2.1",
-    "mongoose": "^4.11.1"
+    "mongoose": "^4.13.14"
   },
   "devDependencies": {
     "nodemon": "^1.18.3"

@@ -1,5 +1,5 @@
 <app-head-bar [style.xs]="{display: 'none'}" [style.sm]="{display: 'none'}"></app-head-bar>
-<form [formGroup]="form" style="margin-top: 50px;background-color: #362f50c4;" fxFlex="100">
+<form [formGroup]="form" style="margin-top: 50px;" fxFlex="100">
     <div fxLayout="row">
         <div fxLayout="column" fxFlex>
             <div fxLayout="row wrap" fxLayoutAlign="center center" style="padding: 20px;">
@@ -14,18 +14,21 @@
                     </mat-input-container>
                 </div>
                 <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="70" fxFlex.lg="80" fxFlex.xl="80">
-                    <tag-input style="margin: 0px 18px 0px 0px;" [(ngModel)]="post.tags" 
-                               [onlyFromAutocomplete]="false" formControlName="tags" [secondaryPlaceholder]="'Informe as tags'">
+                    <tag-input style="margin: 0px 18px 0px 0px;" [(ngModel)]="post.tags" [onlyFromAutocomplete]="false" formControlName="tags"
+                        [secondaryPlaceholder]="'Informe as tags'">
                         <tag-input-dropdown [showDropdownIfEmpty]="true" [limitItemsTo]="5" [autocompleteItems]="tags">
                         </tag-input-dropdown>
                     </tag-input>
                 </div>
             </div>
             <div fxLayout="row wrap" fxLayoutAlign="center center" style="padding: 25px 25px 10px 20px;">
-                <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="35" fxFlex.lg="40" fxFlex.xl="40">
+                <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="25" fxFlex.lg="25" fxFlex.xl="25">
                     <mat-checkbox [(ngModel)]="post.active" formControlName="active">Ativo</mat-checkbox>
                 </div>
-                <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="35" fxFlex.lg="40" fxFlex.xl="40">
+                <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="25" fxFlex.lg="25" fxFlex.xl="25">
+                    <mat-checkbox [(ngModel)]="post.updateDate" formControlName="updateDate">Atualizar data de postagem</mat-checkbox>
+                </div>
+                <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="25" fxFlex.lg="25" fxFlex.xl="25">
                     <mat-checkbox [(ngModel)]="btnConfiguracao" formControlName="btnConfiguracao">Outras configurações</mat-checkbox>
                 </div>
             </div>
@@ -56,11 +59,12 @@
         </div>
     </div>
     <div fxLayout="row wrap" fxLayoutAlign="center center" style="margin-top:50px;">
-        <div fxFlex.xs="60" fxFlex.sm="60" fxFlex.md="70" fxFlex.lg="80" fxFlex.xl="80" [froalaEditor] [(froalaModel)]="post.description" formControlName="description"></div>
+        <div fxFlex.xs="60" fxFlex.sm="60" fxFlex.md="70" fxFlex.lg="80" fxFlex.xl="80" [froalaEditor] [(froalaModel)]="post.description"
+            formControlName="description"></div>
     </div>
     <div fxLayout="row wrap" fxLayoutAlign="center center" style="margin-top:50px;">
         <button (click)="submit()" [disabled]="!form.valid" mat-button mat-raised-button class="green">
-                  {{!post._id ? 'Adicionar Postagem' : 'Editar Postagem'}}
+            {{!post._id ? 'Adicionar Postagem' : 'Editar Postagem'}}
         </button>
     </div>
 </form>
@@ -68,26 +72,24 @@
 <div class="btn-right-size btn-right-top">
     <smd-fab-speed-dial [(open)]="open" [direction]="top" [animationMode]="animationMode" [fixed]="fixed">
         <smd-fab-trigger>
-            <button mat-fab class="green"><mat-icon>settings</mat-icon></button>
+            <button mat-fab class="green">
+                <mat-icon>settings</mat-icon>
+            </button>
         </smd-fab-trigger>
 
         <smd-fab-actions>
-            <button mat-mini-fab class="green" (click)="copyVideo()"
-                    matTooltip="Copiar estilo para video" matTooltipPosition="above">
+            <button mat-mini-fab class="green" (click)="copyVideo()" matTooltip="Copiar estilo para video" matTooltipPosition="above">
                 <mat-icon>&#xE04A;</mat-icon>
             </button>
-            <button mat-mini-fab class="green" (click)="copyImg()"
-                    matTooltip="Copiar estilo para imagem" matTooltipPosition="above">
+            <button mat-mini-fab class="green" (click)="copyImg()" matTooltip="Copiar estilo para imagem" matTooltipPosition="above">
                 <mat-icon>&#xE412;</mat-icon>
             </button>
-            <button mat-mini-fab class="green" (click)="removeClassVideo()" 
-                    matTooltip="Continuar após add video" matTooltipPosition="above">
+            <button mat-mini-fab class="green" (click)="removeClassVideo()" matTooltip="Continuar após add video" matTooltipPosition="above">
                 <mat-icon>&#xE04C;</mat-icon>
             </button>
-            <button mat-mini-fab class="green" (click)="copyPaddingTxt()"
-                    matTooltip="Copiar estilo para texto centralizado" matTooltipPosition="above">
+            <button mat-mini-fab class="green" (click)="copyPaddingTxt()" matTooltip="Copiar estilo para texto centralizado" matTooltipPosition="above">
                 <mat-icon>&#xE165;</mat-icon>
-            </button>          
+            </button>
         </smd-fab-actions>
     </smd-fab-speed-dial>
 </div>

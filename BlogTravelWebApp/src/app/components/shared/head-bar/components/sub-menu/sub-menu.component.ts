@@ -55,11 +55,8 @@ export class SubMenuComponent implements OnInit {
 
   loadDestinos() {
     this.postDataService.getAllContinents().subscribe(result => {
-      result.json().data.forEach(data => {
-          if(this.continents.indexOf(data.continent) == -1)
-            this.continents.push(data.continent);
-      });     
-      
+      this.continents = result.json().data;       
+    
     }, error => {
 
     });
@@ -67,11 +64,7 @@ export class SubMenuComponent implements OnInit {
 
   loadCategories() {
     this.postDataService.getAllCategories().subscribe(result => {
-      result.json().data.forEach(data => {
-          if(this.categories.indexOf(data.category) == -1)
-            this.categories.push(data.category);
-      });     
-      
+      this.categories = result.json().data;
     }, error => {
 
     });

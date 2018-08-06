@@ -26,7 +26,7 @@ export class SearchComponent implements OnInit {
   public tags :Array<string>;
 
   constructor(private changeDetector: ChangeDetectorRef, private postDataService: PostDataService, private searchService :SearchService, private router: Router, private activatedRoute: ActivatedRoute) {
-    this.getAll();
+    this.getAllPostsToSearch();
     this.getAllTags();
   }
 
@@ -65,11 +65,11 @@ export class SearchComponent implements OnInit {
     this.changeDetector.detectChanges();
   }
 
-  getAll(): void {
-    this.postDataService.getAll().subscribe(result => {
-      this.posts = <Array<Post>>result.json();
+  getAllPostsToSearch(): void {
+    this.postDataService.getAllPostsToSearch().subscribe(result => {
+      this.posts = <Array<Post>>result.json().data;
       this.filteredPosts = Array<Post>();
-      this.filteredPosts = <Array<Post>>result.json().slice(0,5);
+      this.filteredPosts = <Array<Post>>result.json().data.slice(0,5);
     }, error => {
 
     });
