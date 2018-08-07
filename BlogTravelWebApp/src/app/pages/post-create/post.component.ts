@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { AuthenticateDataService } from '../../services/authenticate-data.service';
 import { PostDataService } from '../../services/post-data.service';
-import { Author } from '../../models/api/author';
+import { Author } from '../../models/api/Author';
 import { Post } from '../../models/api/post';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CustomValidator } from '../../validators/custom.validator';

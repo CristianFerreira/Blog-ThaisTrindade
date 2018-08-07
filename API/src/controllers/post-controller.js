@@ -1,6 +1,8 @@
 'use strict';
 
 const repository = require('../repositories/post-repository');
+const repositoryContactEmail = require('../repositories/contact-email-repository');
+const emailService = require('../services/email-service');
 
 exports.get = (req, res) => {
     repository.get(req.params.page)
@@ -117,6 +119,14 @@ exports.getAllCategory = (req, res) => {
 exports.post = async (req, res) => {
     try {
         await repository.post(req.body);
+        repositoryContactEmail.get().then((emails) => {
+            if (emails.length > 0) {
+                emails.forEach((e) => {
+                    emailService.send(e.email,"thaistrindade25@hotmail.com", req.body.title, global.EMAIL_TMPL.replace("{0}", "AAAA"));              
+                })
+            }
+        }).catch((e) => { res.status(400).send({ message: 'Falha ao buscar emails', data: e }); })
+
         res.status(201).send({ message: 'Postagem criada com sucesso!' });
     } catch (e) {
         res.status(400).send({ message: 'Falha ao criar postagem', data: e });
@@ -143,4 +153,6 @@ exports.delete = async (req, res) => {
         res.status(400).send({ message: 'Falha ao remover postagem', data: e });
     }
 };
+
+
 

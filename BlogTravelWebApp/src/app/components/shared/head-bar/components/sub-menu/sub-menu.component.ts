@@ -3,8 +3,9 @@ import { AuthenticateDataService } from '../../../../../services/authenticate-da
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserLoggedService } from '../../../../../services/user-logged.service';
 import { SearchService } from '../../../../../services/search.service';
-import {MatDialog, MatDialogRef, MatInput, MatSnackBar, MatSnackBarConfig} from '@angular/material';
+import {MatDialog, MatSnackBar} from '@angular/material';
 import {DialogPostsInactiveComponent} from './dialog-posts-inactive/dialog-posts-inactive.component'
+import {ContactDialogComponent} from './contact-dialog/contact-dialog.component';
 import { PostDataService } from '../../../../../services/post-data.service';
 import { AppConfig } from "../../../../../../environments/app-config";
 
@@ -46,6 +47,12 @@ export class SubMenuComponent implements OnInit {
 
   openDialogPostsInactive() {
     this.dialog.open(DialogPostsInactiveComponent);
+  }
+
+  openDialogContact() {
+    this.dialog.open(ContactDialogComponent,{
+      panelClass: 'border-left',
+    });
   }
 
   updateUserLogged() {

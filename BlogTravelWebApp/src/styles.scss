@@ -36,12 +36,21 @@
   color: #fff !important;
 }
 
+.border-left .mat-dialog-container {
+  border-left: 8px solid #1bbc9b;
+}
 
 body {
     font-family: 'Roboto',sans-serif;
     font-size: 14px;
     margin: 0;
     padding: 0;   
+}
+
+mat-error {
+  padding: 4px 0px;
+  font-size: 0.9em;
+  color: #f44336;
 }
 
 

@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { NguCarousel } from '../../../../../../node_modules/@ngu/carousel';
+import { NguCarousel } from '@ngu/carousel';
 
 @Component({
   selector: 'app-youtube',

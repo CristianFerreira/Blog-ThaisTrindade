@@ -1,0 +1,12 @@
+<form [formGroup]="form">
+  <mat-input-container fxFlex="90">
+    <input matInput placeholder="Informe seu email" type="email" formControlName="email">
+    <mat-error *ngIf="form.controls.email.hasError('required')">
+      E-mail é obrigatório
+    </mat-error>
+    <mat-error *ngIf="form.controls.email.invalid && !form.controls.email.hasError('required')">
+      E-mail inválido
+    </mat-error>
+  </mat-input-container>
+  <button mat-raised-button color="primary" (click)="save()">Enviar</button>
+</form>

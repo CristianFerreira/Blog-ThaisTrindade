@@ -1,4 +1,5 @@
-import { PostDataService } from './services/post-data.service';
+
+
 //Imports
 import { NgModule } from '@angular/core';
 import { FroalaEditorModule, FroalaViewModule } from 'angular2-froala-wysiwyg';
@@ -51,6 +52,7 @@ import { SubMenuComponent } from './components/shared/head-bar/components/sub-me
 import { SearchComponent } from './components/shared/head-bar/components/search/search.component';
 import { ListSearchComponent } from './components/shared/head-bar/components/list-search/list-search.component';
 import { DialogPostsInactiveComponent } from './components/shared/head-bar/components/sub-menu/dialog-posts-inactive/dialog-posts-inactive.component';
+import { ContactDialogComponent } from './components/shared/head-bar/components/sub-menu/contact-dialog/contact-dialog.component';
 import { HeaderSidenavComponent } from './components/shared/sidenav/header-sidenav/header-sidenav.component';
 import { BodySidenavComponent } from './components/shared/sidenav/body-sidenav/body-sidenav.component';
 
@@ -67,6 +69,7 @@ import { FacebookComponent } from './pages/home/components/facebook/facebook.com
 import { SpotifyComponent } from './pages/home/components/spotify/spotify.component';
 import { YoutubeComponent } from './pages/home/components/youtube/youtube.component';
 import { SnapchatComponent } from './pages/home/components/snapchat/snapchat.component';
+import { ContactEmailComponent } from './pages/home/components/contact-email/contact-email.component';
 import { FooterComponent } from './pages/home/components/footer/footer.component';
 import { BackToTopComponent } from './pages/home/components/back-to-top/back-to-top.component';
 import { PostsComponent } from './pages/home/components/posts/posts.component';
@@ -74,6 +77,7 @@ import { DisqusComponent } from './pages/home/components/posts/components/disqus
 import { HideTextComponent } from './pages/home/components/posts/components/hide-text/hide-text.component';
 import { ButtonSharedComponent } from './pages/home/components/posts/components/button-shared/button-shared.component';
 import { PostComponent } from './pages/post-create/post.component';
+
 
 import {NgxPaginationModule} from 'ngx-pagination';
 
@@ -89,13 +93,17 @@ import { SanitizeHtmlPipe } from './pipe/sanitize-html-pipe';
 
 //userLoggedService
 import {UserLoggedService} from './services/user-logged.service';
-
 import {SearchService } from './services/search.service';
-
 import {AuthenticateDataService} from './services/authenticate-data.service'
+import { PostDataService } from './services/post-data.service';
+import { ContactEmailService } from './services/contact-email.service';
+import { ContactService } from './services/contact-service';
+
 
 import { AppConfig } from "../environments/app-config";
 import { environment } from "../environments/environment";
+
+
 
 
 
@@ -133,7 +141,7 @@ import { environment } from "../environments/environment";
     FooterComponent, 
     SnapchatComponent,
     HeaderSidenavComponent, 
-    BodySidenavComponent, ButtonSharedComponent, SearchComponent, ListSearchComponent, YoutubeComponent
+    BodySidenavComponent, ButtonSharedComponent, SearchComponent, ListSearchComponent, YoutubeComponent, ContactDialogComponent, ContactEmailComponent
   ],
   imports: [
     BrowserModule,
@@ -173,10 +181,10 @@ import { environment } from "../environments/environment";
   ],
   providers: [{ provide: APP_BASE_HREF, useValue: environment.APP_BASE_HREF }, 
               // {provide: MdPaginatorIntl, useValue: getSpanishPaginatorIntl()},
-              AuthenticateDataService,AuthorizationService, UserLoggedService, PostDataService, SearchService],
+              AuthenticateDataService,AuthorizationService, UserLoggedService, PostDataService, SearchService, ContactEmailService, ContactService],
 
   //configuração modal
-  entryComponents: [LoadInfoComponent, DialogPostsInactiveComponent],
+  entryComponents: [LoadInfoComponent, DialogPostsInactiveComponent, ContactDialogComponent],
 
   bootstrap: [AppComponent]
 

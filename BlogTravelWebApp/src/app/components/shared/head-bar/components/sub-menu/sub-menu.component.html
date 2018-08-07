@@ -13,7 +13,7 @@
         <button mat-menu-item [routerLink]="['/post/categoria/', category]">{{category}}</button>
       </span>
     </mat-menu>
-    <button mat-button class="sub-menu">Contato</button>
+    <button mat-button class="sub-menu" (click)="openDialogContact()">Contato</button>
     <button *ngIf="logged" mat-button [matMenuTriggerFor]="postagem" class="sub-menu">Postagem</button>
     <mat-menu #postagem="matMenu">
       <button mat-menu-item (click)="newPost()">Nova Postagem</button>

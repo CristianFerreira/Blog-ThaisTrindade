@@ -1,5 +1,5 @@
 import { Component, OnInit, EventEmitter, Output, SimpleChanges } from '@angular/core';
-import { Post } from '../../../../models/api/Post';
+import { Post } from '../../../../models/api/post';
 import { PostDataService } from '../../../../services/post-data.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';

@@ -1,4 +1,4 @@
-import { environment } from '../environments/environment';
+import { environment } from './environment';
 
 export const AppConfig = {
     appName: "blog-travel",
@@ -52,6 +52,12 @@ export const AppConfig = {
                 getAllContinents: AppConfig.serviceInfo().rootServiceRoute +  "api/post/continents/getAll/",
                 getByContinent: AppConfig.serviceInfo().rootServiceRoute +  "api/post/continent",
                 delete: AppConfig.serviceInfo().rootServiceRoute + "api/post",
+            },
+            contactEmail: {
+                create: AppConfig.serviceInfo().rootServiceRoute + "api/contactEmail",
+            },
+            contact: {
+                send: AppConfig.serviceInfo().rootServiceRoute + "api/contact",
             }
         };
     }
