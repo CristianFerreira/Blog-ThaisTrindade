@@ -14,4 +14,6 @@ export class ContactEmailService extends HttpServiceBaseService{
         return this.delete(AppConfig.serviceUrls().post.delete + "/" + id);
     }
 
+    
+
 }

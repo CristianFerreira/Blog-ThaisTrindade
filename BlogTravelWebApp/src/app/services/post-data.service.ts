@@ -1,10 +1,10 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { Http, Response } from '@angular/http';
-import { HttpServiceBaseService } from '../services/http-service-base.service';
+import { HttpServiceBaseService } from './http-service-base.service';
 import { AppConfig } from "../../environments/app-config";
 import { Post } from "../models/api/post";
-import { Router } from '../../../node_modules/@angular/router';
-import { MatSnackBar, MatDialog } from '../../../node_modules/@angular/material';
+import { Router } from '@angular/router';
+import { MatSnackBar, MatDialog } from '@angular/material';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
