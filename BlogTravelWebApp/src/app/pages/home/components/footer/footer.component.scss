@@ -1,0 +1,111 @@
+$mobile: "(max-width: 700px)";
+$tablet: "(min-width: 701px) and (max-width: 959px)";
+$desktop: "(min-width: 960px)";
+
+@media #{mobile} {
+    .txt-title{
+        font-size: 1.1em;
+    }
+    .footer {
+        padding: 10px 5px 10px 5px;
+    }
+}
+
+@media #{tablet} {
+    .txt-title {
+        font-size: 1.2em;
+    }
+    .footer {
+        padding: 15px 5px 15px 5px;
+    }
+
+}
+
+@media #{desktop} {
+    .txt-title {
+        font-size: 1.3em;
+    }
+    .footer {
+        padding: 20px 5px 20px 5px;
+    }
+}
+
+.txt-title {
+    padding: 5px;
+    color: #ffff;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.page-footer {
+    color: #fff;   
+    bottom: 0px;
+}
+
+.footer {
+    padding: 10px 5px 10px 5px;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 1280px;
+    width: 90%;
+}
+
+.footer-copyright {
+    text-align: end;
+    font-weight: 300;
+}
+
+.page-footer .footer-copyright {
+    bottom: 0px;
+    overflow: hidden;
+    min-height: auto;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 10px 0px;
+    color: rgba(255,255,255,0.8);
+    background-color: rgba(51,51,51,0.08);
+}
+
+
+
+.tag-most-used {
+        font-size: 13px;
+        text-decoration: none;
+        color: #ffffff;
+        line-height: 14px;
+        padding: 4px 8px 4px;
+        -webkit-transition: background 0.3s linear;
+        -moz-transition: background 0.3s linear;
+        -o-transition: background 0.3s linear;
+        transition: background 0.3s linear;
+        display: inline-block;
+        border-radius: 3px;
+        margin: 1px;   
+    
+}
+
+.tag-most-used:hover {
+    opacity: 0.80;
+}
+
+
+.link-footer {
+    font-size: 13px;
+    color: #ffffff;
+    line-height: 14px;
+    padding: 4px 8px 5px 4px;
+    -webkit-transition: background 0.3s linear;
+    -moz-transition: background 0.3s linear;
+    -o-transition: background 0.3s linear;
+    transition: background 0.3s linear;
+    display: inline-block;
+    margin: 1px;   
+}

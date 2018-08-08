@@ -4,10 +4,9 @@ $toolbar-height: 64px;
 
 @include mat-core();
 
-$theme-primary: mat-palette($mat-green, 900, 800, 700);
-$theme-accent: mat-palette($mat-green, 900, 800, 700);
-$theme-warn: mat-palette($mat-grey);
-
+$theme-primary: mat-palette($mat-grey, 700, 400, 100);
+$theme-accent: mat-palette($mat-green, 900);
+$theme-warn: mat-palette($mat-red);
 $theme: mat-light-theme($theme-primary, $theme-accent, $theme-warn);
 
 @include angular-material-theme($theme);

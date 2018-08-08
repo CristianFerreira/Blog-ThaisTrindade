@@ -3,8 +3,9 @@ import { AuthenticateDataService } from '../../../../../services/authenticate-da
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserLoggedService } from '../../../../../services/user-logged.service';
 import { SearchService } from '../../../../../services/search.service';
-import {MatDialog, MatDialogRef, MatInput, MatSnackBar, MatSnackBarConfig} from '@angular/material';
+import {MatDialog, MatSnackBar} from '@angular/material';
 import {DialogPostsInactiveComponent} from './dialog-posts-inactive/dialog-posts-inactive.component'
+import {ContactDialogComponent} from './contact-dialog/contact-dialog.component';
 import { PostDataService } from '../../../../../services/post-data.service';
 import { AppConfig } from "../../../../../../environments/app-config";
 
@@ -48,6 +49,12 @@ export class SubMenuComponent implements OnInit {
     this.dialog.open(DialogPostsInactiveComponent);
   }
 
+  openDialogContact() {
+    this.dialog.open(ContactDialogComponent,{
+      panelClass: 'border-left',
+    });
+  }
+
   updateUserLogged() {
     let logged = (this.autenticationService.contextoLogado() != null);
     this.userLoggedService.logged$.next(logged);
@@ -55,11 +62,8 @@ export class SubMenuComponent implements OnInit {
 
   loadDestinos() {
     this.postDataService.getAllContinents().subscribe(result => {
-      result.json().data.forEach(data => {
-          if(this.continents.indexOf(data.continent) == -1)
-            this.continents.push(data.continent);
-      });     
-      
+      this.continents = result.json().data;       
+    
     }, error => {
 
     });
@@ -67,11 +71,7 @@ export class SubMenuComponent implements OnInit {
 
   loadCategories() {
     this.postDataService.getAllCategories().subscribe(result => {
-      result.json().data.forEach(data => {
-          if(this.categories.indexOf(data.category) == -1)
-            this.categories.push(data.category);
-      });     
-      
+      this.categories = result.json().data;
     }, error => {
 
     });

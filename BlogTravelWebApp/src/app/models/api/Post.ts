@@ -12,6 +12,7 @@ export class Post {
         public city: string;
         public tags: Array<string>;
         public active: Boolean;
+        public updateDate: Boolean;
         
         constructor() {
             this.tags = new Array<string>();

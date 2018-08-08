@@ -18,5 +18,9 @@ export class CustomValidator {
 
         return null;
     }
+
+    static RemoveCharacters(txt :string) {
+        return txt.replace(/[^\w\s]/gi, '')
+    }
 }
 

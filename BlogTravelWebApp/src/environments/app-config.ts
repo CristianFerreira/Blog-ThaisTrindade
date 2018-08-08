@@ -1,4 +1,4 @@
-import { environment } from '../environments/environment';
+import { environment } from './environment';
 
 export const AppConfig = {
     appName: "blog-travel",
@@ -38,18 +38,26 @@ export const AppConfig = {
             },
             post: {
                 getAll: AppConfig.serviceInfo().rootServiceRoute + "api/post",
-                getInactive: AppConfig.serviceInfo().rootServiceRoute + "api/post/Inactive",
+                getInactive: AppConfig.serviceInfo().rootServiceRoute + "api/post/postsInactive/Inactive",
                 create: AppConfig.serviceInfo().rootServiceRoute + "api/post",
                 update: AppConfig.serviceInfo().rootServiceRoute + "api/post",
-                getById: AppConfig.serviceInfo().rootServiceRoute + "api/post",
+                getById: AppConfig.serviceInfo().rootServiceRoute + "api/post/postById",
                 getByTag: AppConfig.serviceInfo().rootServiceRoute + "api/post/tag",
                 getAllTags: AppConfig.serviceInfo().rootServiceRoute + "api/post/tags/getAll/",
+                getTagsMostUsed: AppConfig.serviceInfo().rootServiceRoute + "api/post/tags/getTagsMostUsed/",
                 getByCategory: AppConfig.serviceInfo().rootServiceRoute + "api/post/categoria",
                 getBySearch: AppConfig.serviceInfo().rootServiceRoute + "api/post/search",
+                getAllPostsToSearch: AppConfig.serviceInfo().rootServiceRoute + "api/post/getAllPostsToSearch/search",
                 getAllCategories: AppConfig.serviceInfo().rootServiceRoute + "api/post/categories/getAll/",
                 getAllContinents: AppConfig.serviceInfo().rootServiceRoute +  "api/post/continents/getAll/",
                 getByContinent: AppConfig.serviceInfo().rootServiceRoute +  "api/post/continent",
                 delete: AppConfig.serviceInfo().rootServiceRoute + "api/post",
+            },
+            contactEmail: {
+                create: AppConfig.serviceInfo().rootServiceRoute + "api/contactEmail",
+            },
+            contact: {
+                send: AppConfig.serviceInfo().rootServiceRoute + "api/contact",
             }
         };
     }

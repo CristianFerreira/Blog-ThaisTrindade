@@ -9,7 +9,7 @@ import { MatDialog, MatDialogRef, MatSnackBar, MatSnackBarConfig } from '@angula
 import { UserLoggedService } from './services/user-logged.service';
 import { trigger, transition, useAnimation } from '@angular/animations';
 import { rotateIn } from 'ng-animate';
-
+import { PostDataService } from './services/post-data.service'
 
 
 @Component({
@@ -27,9 +27,11 @@ export class AppComponent {
   title = 'Blog da thais';
   mobile: boolean;
   showSearch: boolean;
+  categories: Array<any>;
+  continents: Array<any>;
   //icones adicionados
   constructor(http: Http, iconReg: MatIconRegistry, sanitizer: DomSanitizer, private router: Router, private authorizationService: AuthorizationService,
-             private snackBar: MatSnackBar, private userLoggedService: UserLoggedService, private changeDetector: ChangeDetectorRef) {
+             private snackBar: MatSnackBar, private userLoggedService: UserLoggedService, private changeDetector: ChangeDetectorRef, private postService :PostDataService) {
     iconReg.addSvgIcon('Viagem', sanitizer.bypassSecurityTrustResourceUrl('../../../assets/icon/categories/Viagem.svg'))
     .addSvgIcon('Viagens', sanitizer.bypassSecurityTrustResourceUrl('../../../assets/icon/categories/Viagem.svg')) 
     .addSvgIcon('Intercâmbio', sanitizer.bypassSecurityTrustResourceUrl('../../../assets/icon/categories/Intercambio.svg'))
@@ -68,7 +70,7 @@ export class AppComponent {
     .addSvgIcon('Youtube-search', sanitizer.bypassSecurityTrustResourceUrl('../../../assets/icon/search/Youtube.svg'))
     .addSvgIcon('Hashtag', sanitizer.bypassSecurityTrustResourceUrl('../../../assets/icon/search/Hashtag.svg'))  
 
-    
+    this.continents = new Array<any>();
 
     
 
@@ -89,11 +91,34 @@ export class AppComponent {
 
     this.mobile = $(window).width() > 700 ? false : true; 
 
+    if(this.mobile){
+      this.loadCategories();
+      this.loadDestinos();
+    }
+
   }
 
   ngAfterViewChecked(){
     this.changeDetector.detectChanges();
   }
+
+  loadCategories() {
+    this.postService.getAllCategories().subscribe(result => {
+      this.categories = result.json().data;
+    }, error => {
+
+    });
+  }
+
+  loadDestinos() {
+    this.postService.getAllContinents().subscribe(result => {
+      this.continents = result.json().data;       
+    
+    }, error => {
+
+    });
+  }
+
 
   clearLocalStorage() {
     localStorage.removeItem(AppConfig.auth_token);

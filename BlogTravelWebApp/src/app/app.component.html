@@ -18,7 +18,7 @@
                 <mat-icon [@rotateIn]="rotateIn" style="color: #424242;">arrow_back</mat-icon>
             </button>
             <mat-form-field floatPlaceholder="never" class="full-width">
-                <input matInput type="text" [(ngModel)]="txt_search" autofocus style="font-size: 0.8em;" />
+                <input class="input-search-mobile" matInput type="text" [(ngModel)]="txt_search" autofocus style="font-size: 0.8em;" />
                 <button *ngIf="txt_search" mat-button matSuffix mat-icon-button aria-label="Clear" (click)="txt_search=''">
                     <mat-icon>close</mat-icon>
                 </button>
@@ -39,8 +39,9 @@
                     <mat-icon class="category-icon" svgIcon="category-add-button"></mat-icon>&nbsp;&nbsp; Categorias
                 </a>
                 <mat-menu #categoria="matMenu">
-                    <button mat-menu-item class="btn-menu-item" (click)="sidenav.toggle(); activeMenu()">Categoria 1</button>
-                    <button mat-menu-item class="btn-menu-item" (click)="sidenav.toggle(); activeMenu()">Categoria 2</button>
+                    <span *ngFor="let category of categories">
+                        <button mat-menu-item [routerLink]="['/post/categoria/', category]">{{category}}</button>
+                    </span>
                 </mat-menu>
             </mat-nav-list>
             <mat-nav-list>
@@ -48,8 +49,9 @@
                     <mat-icon svgIcon="destinos"></mat-icon>&nbsp;&nbsp; Destinos
                 </a>
                 <mat-menu #destinos="matMenu">
-                    <button mat-menu-item class="btn-menu-item" (click)="sidenav.toggle(); activeMenu()">Destino 1</button>
-                    <button mat-menu-item class="btn-menu-item" (click)="sidenav.toggle(); activeMenu()">Destino 2</button>
+                    <span *ngFor="let continent of continents">
+                        <button mat-menu-item [routerLink]="['/post/destino/', continent]">{{continent}}</button>
+                    </span>
                 </mat-menu>
             </mat-nav-list>
             <mat-divider style="margin: 20px 0px;"></mat-divider>

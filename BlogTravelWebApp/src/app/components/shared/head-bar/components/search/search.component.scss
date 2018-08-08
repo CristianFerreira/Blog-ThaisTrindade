@@ -39,15 +39,15 @@ $desktop: "(min-width: 1201px)";
 }
 
 
-/deep/ .mat-input-underline {
-    background-color: #fffff8;    /* replace this color with your accent color hex code */
+:host/deep/ .mat-input-underline {
+    background-color: #fffff8 !important;    /* replace this color with your accent color hex code */
 }
-/deep/ .mat-form-field-placeholder{
-    color: #fffff8;
+/deep/ .example-full-width .mat-form-field-placeholder{
+    color: #fffff8 !important;
 }
 
-/deep/ .mat-form-field-underline .mat-form-field-ripple{
-    background-color:#ffff;
+/deep/ .example-full-width .mat-form-field-underline .mat-form-field-ripple{
+    background-color:#ffff !important;
 }
 
 .placeholder {

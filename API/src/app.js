@@ -16,11 +16,15 @@ mongoose.connect(config.connectionString);
 // Carrega os models
 const Post = require('./models/post');
 const Author = require('./models/author');
+const contactEmail = require('./models/contact-email');
+
 
 // Carrega as Rotas
 const indexRoute = require('./routes/index-route');
 const postRoute = require('./routes/post-route');
 const authorRoute = require('./routes/author-route');
+const contactEmailRoute = require('./routes/contact-email-route');
+const contactRoute = require('./routes/contact-route');
 
 app.use(bodyParser.json({
     limit: '5mb'
@@ -47,5 +51,7 @@ app.get('/', (req, res)=>{
 app.use('/api', indexRoute);
 app.use('/api/post', postRoute);
 app.use('/api/author', authorRoute);
+app.use('/api/contactEmail', contactEmailRoute);
+app.use('/api/contact', contactRoute);
  
 module.exports = app;

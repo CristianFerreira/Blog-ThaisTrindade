@@ -50,6 +50,10 @@ const schema = new Schema({
         type: Boolean,
         required: false
     },
+    updateDate: {
+        type: Boolean,
+        required: false
+    }
 });
 
 module.exports = mongoose.model('Post', schema);

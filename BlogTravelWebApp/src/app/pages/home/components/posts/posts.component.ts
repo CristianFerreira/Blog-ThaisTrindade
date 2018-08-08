@@ -1,5 +1,5 @@
 import { Component, OnInit, EventEmitter, Output, SimpleChanges } from '@angular/core';
-import { Post } from '../../../../models/api/Post';
+import { Post } from '../../../../models/api/post';
 import { PostDataService } from '../../../../services/post-data.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
@@ -33,8 +33,9 @@ export class PostsComponent implements OnInit {
   public pageSizeOptions: any;
   public idPost: number;
   public mobile: Boolean;
-  public fadeIn = false;
-  public teste: any;
+  public page: number;
+ 
+
 
   // MdPaginator Output
   pageEvent: PageEvent;
@@ -43,9 +44,9 @@ export class PostsComponent implements OnInit {
     private route: ActivatedRoute, private userLoggedService: UserLoggedService, public sanitizer: DomSanitizer, private searchService: SearchService) {
     this.posts = new Array<Post>();
     this.postsRender = new Array<Post>();
-    this.pageSize = 2;
     this.currentPage = 1;
     this.pageSizeOptions = [5, 10, 15];
+    this.page = 1;
 
 
   }
@@ -60,7 +61,7 @@ export class PostsComponent implements OnInit {
       if(posts == true)
           this.posts = new Array<Post>();
       else
-          (posts == "") ? (this.getAll(), this.router.navigateByUrl('/')) : (this.posts = posts);
+          (posts == "") ? (this.getAll(), this.router.navigateByUrl('/')) : (this.updatePostForSearch(posts));
     })
 
 
@@ -93,15 +94,23 @@ export class PostsComponent implements OnInit {
     return this.activatedRoute.snapshot.queryParams["pesquisa"] != undefined;
   }
 
+  formatDatePost(date :Date) :string{
+    var mydate = new Date(date); 
+    var str = mydate.getDay();
+    var x = mydate.getFullYear();
+    return ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
+    "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"][mydate.getMonth()] ;
+  }
 
   updateTablePosts(pageEvent: any) {
-    this.backToTop(false);
+    this.page = pageEvent;
+    this.getAll(this.page);
     return pageEvent;
   }
 
   backToTop(topo: boolean) {
     $('html, body').animate({
-      scrollTop: topo ? 0 : ($('#post_id').position().top - 95)
+      scrollTop: topo ? 0 : ($('#post_id').position().top - 65)
     }, 500);
   }
 
@@ -125,19 +134,26 @@ export class PostsComponent implements OnInit {
     return this.sanitizer.bypassSecurityTrustUrl("https://www.facebook.com/plugins/share_button.php?href=http%3A%2F%2Fwww.thaistrindade.com%2F%23%2Fpost%2F" + id + "&layout=button&size=small&mobile_iframe=true&width=97&height=20&appId");
   }
 
-  getAll(): void {
-    this.postDataService.getAll().subscribe(result => {
-      this.posts = <Array<Post>>result.json();
+  getAll(page? :number): void {
+    this.postDataService.getAll(page ? page : 1).subscribe(result => {
+      this.posts = <Array<Post>>result.json().data.posts;
+      this.pageSize = <number>result.json().data.count;
       this.showFooter.emit("true");
-      this.backToTop(true);
+      this.backToTop(page ? false : true);
     }, error => {
 
     });
   }
 
+  updatePostForSearch(posts: any) :void {
+      this.posts = posts
+      this.pageSize = this.posts.length;
+  }
+
   getByTag(tag: string): void {
     this.postDataService.getByTag(tag).subscribe(result => {
       this.posts = <Array<Post>>result.json().data;
+      this.pageSize = this.posts.length;
       this.showFooter.emit("true");
       this.backToTop(false);
     }, error => {
@@ -148,6 +164,7 @@ export class PostsComponent implements OnInit {
   getByCategory(category: string): void {
     this.postDataService.getByCategory(category).subscribe(result => {
       this.posts = <Array<Post>>result.json().data;
+      this.pageSize = this.posts.length;
       this.showFooter.emit("true");
       this.backToTop(false);
     }, error => {
@@ -158,6 +175,7 @@ export class PostsComponent implements OnInit {
   getByDestiny(destiny: string) {
     this.postDataService.getByContinent(destiny).subscribe(result => {
       this.posts = <Array<Post>>result.json().data;
+      this.pageSize = this.posts.length;
       this.showFooter.emit("true");
       this.backToTop(false);
     }, error => {
@@ -168,6 +186,7 @@ export class PostsComponent implements OnInit {
   getById(id: string): void {
     this.postDataService.getById(id).subscribe(result => {
       let post = <Post>result.json().data;
+      this.pageSize = this.posts.length;
       this.posts.push(post);
       this.showFooter.emit("true");
       this.backToTop(false);
