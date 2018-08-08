@@ -119,10 +119,11 @@ exports.getAllCategory = (req, res) => {
 exports.post = async (req, res) => {
     try {
         await repository.post(req.body);
+        const body = global.EMAIL_TMPL.replace("{title}", req.body.title)
         repositoryContactEmail.get().then((emails) => {
             if (emails.length > 0) {
                 emails.forEach((e) => {
-                    emailService.send(e.email,"thaistrindade25@hotmail.com", req.body.title, global.EMAIL_TMPL.replace("{0}", "AAAA"));              
+                    emailService.send(e.email,"thaistrindade25@hotmail.com", req.body.title, body.replace("{id}", "5b54e4a7ad865b14f473257f"));              
                 })
             }
         }).catch((e) => { res.status(400).send({ message: 'Falha ao buscar emails', data: e }); })

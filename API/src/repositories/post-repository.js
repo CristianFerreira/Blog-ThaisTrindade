@@ -50,8 +50,14 @@ exports.getByCategory = (category) => {
 }
 
 
-exports.getByTitle = (text) => {
-    return Post.find({ active: true, title: text, title: text + "?" }).populate('author', 'name email').sort({ date: -1 });;
+exports.getByTitle = async (text) => {
+    const posts = await Post.find({ active: true, title: text }).populate('author', 'name email').sort({ date: -1 });
+    if(posts == ""){
+        return await Post.find({ active: true, title: text + "?" }).populate('author', 'name email').sort({ date: -1 })
+    }else{
+        return posts;
+    }
+    
 }
 
 
