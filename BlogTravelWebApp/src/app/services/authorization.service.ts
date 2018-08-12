@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router, CanActivate } from '@angular/router';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import { HttpServiceBaseService } from "../services/http-service-base.service";
+import { HttpServiceBaseService } from "./http-service-base.service";
 import { AppConfig } from "../../environments/app-config";
 import { MatDialog, MatDialogRef, MatSnackBar, MatSnackBarConfig } from '@angular/material';
 

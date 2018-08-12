@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {MatDialog, MatDialogRef} from '@angular/material';
 import { PostDataService } from '../../../../../../services/post-data.service';
-import { Post } from '../../../../../../models/api/Post';
+import { Post } from '../../../../../../models/api/post';
 import { Router } from '@angular/router';
 
 @Component({

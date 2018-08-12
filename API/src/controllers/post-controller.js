@@ -1,7 +1,7 @@
 'use strict';
 
 const repository = require('../repositories/post-repository');
-const repositoryContactEmail = require('../repositories/contact-email-repository');
+const repositoryContactEmail = require('../repositories/user-notification-email-repository');
 const emailService = require('../services/email-service');
 
 exports.get = (req, res) => {
@@ -67,9 +67,9 @@ exports.getAllTags = (req, res) => {
 
 exports.getTagsMostUsed = (req, res) => {
     repository.getTagsMostUsed()
-    .then((data) => {
-        res.status(200).send({ data });
-    }).catch((e) => { res.status(400).send({ message: 'Falha ao buscar tags', data: e }); })
+        .then((data) => {
+            res.status(200).send({ data });
+        }).catch((e) => { res.status(400).send({ message: 'Falha ao buscar tags', data: e }); })
 };
 
 exports.getByCategory = (req, res) => {
@@ -84,14 +84,14 @@ exports.getByCategory = (req, res) => {
 exports.getBySearch = (req, res) => {
     repository.getByTitle(req.params.search)
         .then(data => {
-            if(data == ""){
+            if (data == "") {
                 repository.getByTag(req.params.search).then((data) => {
                     res.status(200).send({ data });
                 }).catch(e => {
                     res.status(400).send({ message: 'Falha ao buscar pesquisa', data: e });
                 })
             }
-            else { res.status(200).send({ data }); }        
+            else { res.status(200).send({ data }); }
         }).catch(e => {
             res.status(400).send({ message: 'Falha ao buscar pesquisa', data: e });
         })
@@ -117,22 +117,24 @@ exports.getAllCategory = (req, res) => {
 };
 
 exports.post = async (req, res) => {
-    try {
-        await repository.post(req.body);
-        const body = global.EMAIL_TMPL.replace("{title}", req.body.title)
-        repositoryContactEmail.get().then((emails) => {
-            if (emails.length > 0) {
-                emails.forEach((e) => {
-                    emailService.send(e.email,"thaistrindade25@hotmail.com", req.body.title, body.replace("{id}", "5b54e4a7ad865b14f473257f"));              
-                })
-            }
-        }).catch((e) => { res.status(400).send({ message: 'Falha ao buscar emails', data: e }); })
+    repository.post(req.body).then((data) => {
+        exports.sendEmail(data);
+    }).catch((e) => { res.status(400).send({ message: 'Falha ao criar postagem', data: e }); })
 
-        res.status(201).send({ message: 'Postagem criada com sucesso!' });
-    } catch (e) {
-        res.status(400).send({ message: 'Falha ao criar postagem', data: e });
-    }
-};
+    res.status(201).send({ message: 'Postagem criada com sucesso!' });
+}
+
+
+exports.sendEmail = (post) => {
+    const body = global.EMAIL_TMPL.replace("{title}", post.title)
+    repositoryContactEmail.get().then((emails) => {
+        if (emails.length > 0) {
+            emails.forEach((e) => {
+                emailService.send(e.email, "thaistrindade25@hotmail.com", post.title, body.replace("{id}", post._id));
+            })
+        }
+    }).catch((e) => { res.status(400).send({ message: 'Falha ao buscar emails', data: e }); })
+}
 
 exports.put = async (req, res) => {
     try {

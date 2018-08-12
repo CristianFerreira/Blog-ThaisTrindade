@@ -10,4 +10,4 @@ const schema = new Schema({
     }
 });
 
-module.exports = mongoose.model('ContactEmail', schema);
+module.exports = mongoose.model('UserNotificationEmail', schema);

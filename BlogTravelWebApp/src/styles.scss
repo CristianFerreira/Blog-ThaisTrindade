@@ -31,13 +31,25 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.green {
-  background-color:  #26A69A !important;
+.btn-green {
+  background-color:  #1bbc9b !important;
   color: #fff !important;
 }
 
 .border-left .mat-dialog-container {
   border-left: 8px solid #1bbc9b;
+}
+
+.container-info {
+  font-family: 'Montserrat', sans-serif;
+    font-size: 1.4em;
+    text-align: center;
+    text-transform: uppercase;
+    color: #fff;
+    background-color: #1bbc9b;
+    margin: 0px;
+    border-radius: 2px;
+    padding: 2px;
 }
 
 body {

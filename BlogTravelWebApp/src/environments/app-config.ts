@@ -53,8 +53,9 @@ export const AppConfig = {
                 getByContinent: AppConfig.serviceInfo().rootServiceRoute +  "api/post/continent",
                 delete: AppConfig.serviceInfo().rootServiceRoute + "api/post",
             },
-            contactEmail: {
-                create: AppConfig.serviceInfo().rootServiceRoute + "api/contactEmail",
+            userNotificationEmail: {
+                create: AppConfig.serviceInfo().rootServiceRoute + "api/userNotificationEmail",
+                delete: AppConfig.serviceInfo().rootServiceRoute + "api/userNotificationEmail",
             },
             contact: {
                 send: AppConfig.serviceInfo().rootServiceRoute + "api/contact",

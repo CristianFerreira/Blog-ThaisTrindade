@@ -72,9 +72,13 @@ exports.getAllCategory = () => {
 
 }
 
-exports.post = (post) => {
+exports.post = async (post) => {
     var post = new Post(post);
-    post.save();
+    post = await post.save(() => {
+        return post
+    })
+
+    return post
 }
 
 exports.put = async (req) => {

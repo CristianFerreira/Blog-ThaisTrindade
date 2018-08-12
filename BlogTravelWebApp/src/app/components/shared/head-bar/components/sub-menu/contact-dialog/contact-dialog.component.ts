@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {MatDialog, MatDialogRef} from '@angular/material';
 import { ContactService } from '../../../../../../services/contact-service';
-import { Post } from '../../../../../../models/api/Post';
+import { Post } from '../../../../../../models/api/post';
 import { Router } from '@angular/router';
 import { CustomValidator } from '../../../../../../validators/custom.validator';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';

@@ -2,10 +2,10 @@ import { Author } from '../models/api/Author';
 import { Injectable } from '@angular/core';
 import { Http} from '@angular/http';
 import { Router } from '@angular/router';
-import { HttpServiceBaseService } from "../services/http-service-base.service";
+import { HttpServiceBaseService } from "./http-service-base.service";
 import { Login } from "../models/app/Login";
 import { AppConfig } from "../../environments/app-config";
-import { UserLoggedService } from '../services/user-logged.service';
+import { UserLoggedService } from './user-logged.service';
 import { MatDialog, MatSnackBar, } from '@angular/material';
 
 @Injectable()

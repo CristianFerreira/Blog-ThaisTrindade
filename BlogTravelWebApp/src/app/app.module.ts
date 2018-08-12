@@ -69,7 +69,7 @@ import { FacebookComponent } from './pages/home/components/facebook/facebook.com
 import { SpotifyComponent } from './pages/home/components/spotify/spotify.component';
 import { YoutubeComponent } from './pages/home/components/youtube/youtube.component';
 import { SnapchatComponent } from './pages/home/components/snapchat/snapchat.component';
-import { ContactEmailComponent } from './pages/home/components/contact-email/contact-email.component';
+import { UserNotificationEmailComponent } from './pages/home/components/user-notification-email/user-notification-email.component';
 import { FooterComponent } from './pages/home/components/footer/footer.component';
 import { BackToTopComponent } from './pages/home/components/back-to-top/back-to-top.component';
 import { PostsComponent } from './pages/home/components/posts/posts.component';
@@ -96,7 +96,7 @@ import {UserLoggedService} from './services/user-logged.service';
 import {SearchService } from './services/search.service';
 import {AuthenticateDataService} from './services/authenticate-data.service'
 import { PostDataService } from './services/post-data.service';
-import { ContactEmailService } from './services/contact-email.service';
+import { UserNotificationEmailService } from './services/user-notification-email.service';
 import { ContactService } from './services/contact-service';
 
 
@@ -141,7 +141,13 @@ import { environment } from "../environments/environment";
     FooterComponent, 
     SnapchatComponent,
     HeaderSidenavComponent, 
-    BodySidenavComponent, ButtonSharedComponent, SearchComponent, ListSearchComponent, YoutubeComponent, ContactDialogComponent, ContactEmailComponent
+    BodySidenavComponent, 
+    ButtonSharedComponent, 
+    SearchComponent, 
+    ListSearchComponent, 
+    YoutubeComponent, 
+    ContactDialogComponent, 
+    UserNotificationEmailComponent
   ],
   imports: [
     BrowserModule,
@@ -181,7 +187,7 @@ import { environment } from "../environments/environment";
   ],
   providers: [{ provide: APP_BASE_HREF, useValue: environment.APP_BASE_HREF }, 
               // {provide: MdPaginatorIntl, useValue: getSpanishPaginatorIntl()},
-              AuthenticateDataService,AuthorizationService, UserLoggedService, PostDataService, SearchService, ContactEmailService, ContactService],
+              AuthenticateDataService,AuthorizationService, UserLoggedService, PostDataService, SearchService, UserNotificationEmailService, ContactService],
 
   //configuração modal
   entryComponents: [LoadInfoComponent, DialogPostsInactiveComponent, ContactDialogComponent],

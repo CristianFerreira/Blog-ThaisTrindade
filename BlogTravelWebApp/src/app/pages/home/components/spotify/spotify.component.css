@@ -1,17 +1,6 @@
 
 @import url('https://fonts.googleapis.com/css?family=Montserrat:500,700');
 
-.spotify {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.6em;
-    text-align: center;
-    text-transform: uppercase;
-    color: #fff;
-    background-color: #1bbc9b;
-    margin: 0px;
-    border-radius: 2px;
-}
-
 .plugin {
     padding: 2px;
   }

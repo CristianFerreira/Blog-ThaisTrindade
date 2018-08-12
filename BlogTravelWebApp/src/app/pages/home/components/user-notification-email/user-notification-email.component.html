@@ -1,0 +1,22 @@
+<div fxLayout="row" fxLayoutAlign="start center" style="padding-left: 40px;margin-bottom: 45px;">
+  <div fxFlex.sm="90" fxFlex.md="90" fxFlex.lg="80" fxFlex.xl="80">
+    <form [formGroup]="form">
+      <h2 class="container-info">notificação por email</h2>
+      <div fxLayout="column" class="container-notification" fxLayoutGap="10px">
+        <span class="info-notification-email">Receba notificações por email e fique por dentro de todas as postagens do Blog!</span>
+        <div fxLayout="row">
+          <mat-input-container floatPlaceholder="never" fxFlex>
+            <input [(ngModel)]="email" matInput placeholder="Informe seu email" type="email" formControlName="email" fxFlex>
+            <mat-error *ngIf="form.controls.email.errors && form.controls.email.errors.invalidEmail">
+                * E-mail inválido
+            </mat-error>
+            <mat-error *ngIf="form.controls.email.errors && form.controls.email.errors.showErrorEmailDisable">* E-mail não foi ativado</mat-error>
+            <mat-error *ngIf="form.controls.email.errors && form.controls.email.errors.showErrorEmailActive">* E-mail já está ativado</mat-error>
+          </mat-input-container>
+        </div>
+        <button [disabled]="(form.controls.email.errors && (form.controls.email.errors.invalidEmail || form.controls.email.errors.showErrorEmailActive)) || email == ''" mat-raised-button class="btn-green" (click)="Active()">Ativar notificação</button>
+        <button [disabled]="(form.controls.email.errors && (form.controls.email.errors.invalidEmail || form.controls.email.errors.showErrorEmailDisable)) || email == ''" mat-button color="primary" (click)="disable()">Desativar notificação</button>
+      </div>
+    </form>
+  </div>
+</div>
